@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   ShieldCheck,
   Sparkles,
@@ -12,9 +12,19 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
-const fadeIn = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+const fadeIn: Variants = {
+  initial: {
+    opacity: 0,
+    y: 20,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut", // TypeScript now knows this is a valid Framer ease
+    },
+  },
 };
 
 const AboutPage = () => {
