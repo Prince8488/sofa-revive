@@ -1,6 +1,6 @@
 "use client";
 
-import FaqAccordion from "@/components/layout/sections/faq";
+import FaqAccordion from "@/components/layout/sections/FAQs";
 
 export default function FaqPage() {
   return (

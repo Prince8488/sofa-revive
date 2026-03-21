@@ -20,6 +20,7 @@ const FOOTER_DATA = {
       { label: "Contact Us", href: "/contact" },
       { label: "My Bookings", href: "/bookings" },
       { label: "Reviews", href: "/reviews" },
+      { label: "Gallery", href: "/gallery" },
     ],
   },
   explore: {

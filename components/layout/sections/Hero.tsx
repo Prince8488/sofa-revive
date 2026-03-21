@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -44,16 +45,18 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
-            <button
-              type="button"
-              className="w-full sm:w-auto bg-slate-950 text-white px-10 py-4 rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] shadow-2xl active:scale-95 hover:bg-blue-600 transition-all flex items-center justify-center gap-2 group"
-            >
-              Book Inspection
-              <ArrowRight
-                size={14}
-                className="group-hover:translate-x-1 transition-transform"
-              />
-            </button>
+            <Link href="/quote">
+              <button
+                type="button"
+                className="w-full sm:w-auto bg-slate-950 text-white px-10 py-4 rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] shadow-2xl active:scale-95 hover:bg-blue-600 transition-all flex items-center justify-center gap-2 group"
+              >
+                Book Inspection
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </button>
+            </Link>
 
             <div className="flex items-center gap-3 py-2">
               <div className="flex -space-x-2.5">
