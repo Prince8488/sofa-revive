@@ -1,5 +1,3 @@
-"use client";
-
 import FloatingSticky from "@/components/layout/sections/FloatingSticky";
 import Hero from "@/components/layout/sections/Hero";
 import OurServices from "@/components/layout/sections/OurServices";
