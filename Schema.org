@@ -1,0 +1,16 @@
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "DreamDecore",
+  "image": "https://yourdomain.com/logo.png",
+  "description": "Premium sofa repair and custom upholstery services.",
+  "address": {
+    "@type": "560037",
+    "streetAddress": "123 Main St",
+    "addressLocality": "Bangalore",
+    "addressRegion": "ST",
+    "postalCode": "12345",
+    "addressCountry": "IN"
+  },
+  "telephone": "+919304059249"
+};
