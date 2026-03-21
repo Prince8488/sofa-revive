@@ -1,6 +1,7 @@
 "use client";
 
 import { Phone, MessageSquare } from "lucide-react";
+import Link from "next/link";
 
 export default function StickyMobileBar() {
   const PHONE_NUMBER = "+919304059249";
@@ -18,17 +19,14 @@ export default function StickyMobileBar() {
       >
         <Phone size={14} strokeWidth={3} /> Call
       </a>
-
       {/* WhatsApp - Primary Action */}
-      <a
-        href={`https://wa.me/${PHONE_NUMBER.replace("+", "")}?text=${WHATSAPP_MESSAGE}`}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        href={"/quote"}
         className="flex-[2] bg-blue-600 text-white py-4 rounded-xl font-black uppercase tracking-widest text-[10px] flex items-center justify-center gap-2 shadow-xl shadow-blue-600/20 active:scale-95 transition-all"
-        aria-label="Get WhatsApp Quote"
+        aria-label="Get free Quote"
       >
         <MessageSquare size={14} fill="currentColor" /> Get Free Quote
-      </a>
+      </Link>
     </div>
   );
 }

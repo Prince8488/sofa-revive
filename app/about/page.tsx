@@ -10,6 +10,7 @@ import {
   Microscope,
   Award,
 } from "lucide-react";
+import Link from "next/link";
 
 const fadeIn = {
   initial: { opacity: 0, y: 20 },
@@ -165,28 +166,32 @@ const AboutPage = () => {
             just fix furniture—we build legacies."
           </p>
           <div className="pt-12 flex flex-col sm:flex-row gap-6 justify-center">
-            <motion.button
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.98 }}
-              className="relative min-w-[280px] px-12 py-8 bg-blue-600 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(37,99,235,0.4)] hover:shadow-blue-600/60 group z-10"
-            >
-              <span>Book Your Audit</span>
-              <ArrowRight
-                size={20}
-                className="group-hover:translate-x-2 transition-transform"
-              />
-            </motion.button>
-            <motion.button
-              whileHover={{
-                scale: 1.02,
-                backgroundColor: "#0f172a",
-                color: "#fff",
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="px-12 py-6 border-2 border-studio-900 text-studio-900 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all"
-            >
-              View Our Catalog
-            </motion.button>
+            <Link href="/quote">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -5 }}
+                whileTap={{ scale: 0.98 }}
+                className="relative min-w-[280px] px-12 py-8 bg-blue-600 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(37,99,235,0.4)] hover:shadow-blue-600/60 group z-10"
+              >
+                <span>Book Your Audit</span>
+                <ArrowRight
+                  size={20}
+                  className="group-hover:translate-x-2 transition-transform"
+                />
+              </motion.button>
+            </Link>
+            <Link href="/gallery">
+              <motion.button
+                whileHover={{
+                  scale: 1.02,
+                  backgroundColor: "#0f172a",
+                  color: "#fff",
+                }}
+                whileTap={{ scale: 0.98 }}
+                className="px-12 py-6 border-2 border-studio-900 text-studio-900 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all"
+              >
+                View Our Catalog
+              </motion.button>
+            </Link>
           </div>
         </div>
       </section>

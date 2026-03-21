@@ -1,8 +1,10 @@
-import { Inter } from "next/font/google";
+import { Inter, Stick } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Metadata } from "next";
+import Sticky from "@/components/layout/sections/Sticky";
+import FloatingSticky from "@/components/layout/sections/FloatingSticky";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -71,6 +73,8 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <Sticky />
+        <FloatingSticky />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
