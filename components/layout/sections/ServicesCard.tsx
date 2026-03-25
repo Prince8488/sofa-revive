@@ -95,7 +95,11 @@ export default function ServiceCard({ service }: { service: any }) {
         </ul>
 
         {/* 2. Wrap Button in Link */}
-        <Link href={service.href || "#"} className="block w-full">
+        <Link
+          href={service.href || "#"}
+          className="block w-full"
+          aria-label={`View case study for ${service.title}`}
+        >
           <button
             type="button"
             className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm"

@@ -8,12 +8,14 @@ import WhyChooseUS from "@/components/layout/sections/WhyChooseUs";
 export default function UrbanSofaMobile() {
   return (
     <div className="bg-white min-h-screen font-sans text-slate-900 selection:bg-blue-100 pb-20 md:pb-0">
-      <Hero />
-      <OurServices />
-      <WhyChooseUS />
-      <Testimonials />
-      <Sticky />
-      <FloatingSticky />
+      <main>
+        <Hero />
+        <OurServices />
+        <WhyChooseUS />
+        <Testimonials />
+        <Sticky />
+        <FloatingSticky />
+      </main>
     </div>
   );
 }

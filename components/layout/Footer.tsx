@@ -6,7 +6,7 @@ import { Facebook, Instagram, Twitter, Heart, MapPin } from "lucide-react";
 
 const FOOTER_DATA = {
   company: {
-    title: "DreamDecore",
+    title: "SofaRevive",
     links: [
       { label: "About Us", href: "/about" },
       { label: "Terms Of Use", href: "/terms-of-use" },
@@ -48,15 +48,17 @@ const serviceAreas = [
 
 const FooterSection = ({ title, links }: { title: string; links: any[] }) => (
   <nav className="flex flex-col space-y-6" aria-label={`${title} navigation`}>
-    <h4 className="text-white font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
+    {/* FIX 1: Changed h4 to p/span to fix heading hierarchy levels */}
+    <p className="text-white font-black uppercase tracking-[0.2em] text-[10px] md:text-xs">
       {title}
-    </h4>
+    </p>
     <ul className="flex flex-col space-y-3">
       {links.map((link) => (
         <li key={link.label}>
           <Link
             href={link.href}
-            className="text-xs md:text-sm font-medium transition-colors hover:text-blue-500 text-slate-400 focus:outline-none focus:text-blue-400"
+            // FIX 2: Darkened text-slate-400 to text-slate-300 for better contrast on dark bg
+            className="text-xs md:text-sm font-medium transition-colors hover:text-blue-400 text-slate-300 focus:outline-none focus:ring-1 focus:ring-blue-500 rounded"
           >
             {link.label}
           </Link>
@@ -88,12 +90,13 @@ export default function Footer() {
 
           <div className="col-span-2 lg:col-span-2 space-y-8">
             <section aria-labelledby="social-heading">
-              <h4
+              {/* FIX 3: Changed h4 to p */}
+              <p
                 id="social-heading"
                 className="text-white font-black uppercase tracking-[0.2em] text-[10px] md:text-xs mb-6"
               >
                 Follow the craft
-              </h4>
+              </p>
               <div className="flex gap-3">
                 {[
                   { Icon: Instagram, label: "Instagram" },
@@ -104,7 +107,7 @@ export default function Footer() {
                     key={idx}
                     href="#"
                     aria-label={`Visit our ${label} page`}
-                    className="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all active:scale-90 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="w-10 h-10 rounded-xl bg-slate-900 text-slate-300 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all active:scale-90 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                   >
                     <Icon size={18} aria-hidden="true" />
                   </Link>
@@ -114,15 +117,16 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* SERVICE AREAS SECTION (SEO BOOST) */}
+        {/* SERVICE AREAS SECTION */}
         <div className="py-12 border-y border-slate-900/50 mb-12">
           <div className="flex flex-col lg:flex-row gap-8 items-start">
             <div className="lg:w-1/3">
-              <h4 className="text-white font-black uppercase tracking-[0.2em] text-[10px] md:text-xs mb-4 flex items-center gap-2">
+              <p className="text-white font-black uppercase tracking-[0.2em] text-[10px] md:text-xs mb-4 flex items-center gap-2">
                 <MapPin size={14} className="text-blue-500" />
                 Service Areas
-              </h4>
-              <p className="text-[11px] leading-relaxed text-slate-700 uppercase font-bold tracking-wider">
+              </p>
+              {/* FIX 4: Changed text-slate-700 (failed audit) to text-slate-400 for better visibility on dark bg */}
+              <p className="text-[11px] leading-relaxed text-slate-400 uppercase font-bold tracking-wider">
                 Providing premium on-site furniture restoration across
                 Bengaluru's major neighborhoods.
               </p>
@@ -145,19 +149,21 @@ export default function Footer() {
 
         {/* FINAL FOOTNOTE */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase text-center md:text-left">
-            © {currentYear} DreamDecore Services Pvt Ltd. All Rights Reserved.
+          {/* FIX 5: Darkened from slate-400 to slate-300 to ensure readability */}
+          <p className="text-[10px] font-bold tracking-[0.2em] text-slate-300 uppercase text-center md:text-left">
+            © {currentYear} SofaRevive Services Pvt Ltd. All Rights Reserved.
           </p>
 
-          <div className="flex items-center gap-2 text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase">
+          <div className="flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] text-slate-300 uppercase">
             Designed with{" "}
             <Heart
               size={10}
               className="text-red-500 fill-red-500"
+              role="img"
               aria-label="love"
             />{" "}
             in
-            <span className="text-slate-400">Bengaluru</span>
+            <span className="text-slate-200">Bengaluru</span>
           </div>
         </div>
       </div>
