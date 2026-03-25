@@ -80,12 +80,14 @@ export default function Hero() {
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-[12px] border-white ring-1 ring-slate-100">
               <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&&auto=format&fit=crop&q=60&w=800"
                 alt="Luxury Sofa"
                 fill
-                className="object-cover"
                 priority
                 fetchPriority="high"
+                loading="eager"
+                decoding="sync"
+                className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
 
