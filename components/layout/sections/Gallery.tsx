@@ -54,7 +54,7 @@ export default function GallerySection() {
               The <br /> <span className="text-slate-300">Transformation</span>
             </h2>
           </div>
-          <p className="text-slate-500 font-medium max-w-sm text-sm md:text-right">
+          <p className="text-slate-700 font-medium max-w-sm text-sm md:text-right">
             Slide the white divider on any image to see the 1:1 restoration
             quality we provide for every client.
           </p>
@@ -78,7 +78,7 @@ export default function GallerySection() {
                   <h4 className="text-2xl font-black uppercase tracking-tighter italic text-slate-900 group-hover:text-blue-600 transition-colors">
                     {project.title}
                   </h4>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed max-w-[80%]">
+                  <p className="text-sm text-slate-700 font-medium leading-relaxed max-w-[80%]">
                     {project.description}
                   </p>
                 </div>
@@ -95,7 +95,7 @@ export default function GallerySection() {
         {/* "Load More" or CTA for WhatsApp */}
         <div className="mt-24 flex flex-col items-center">
           <div className="h-[1px] w-24 bg-slate-200 mb-8" />
-          <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-6">
+          <p className="text-xs font-black uppercase tracking-widest text-slate-600 mb-6">
             Witnessed enough? Let's restore yours.
           </p>
           <Link href={"/quote"}>

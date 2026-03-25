@@ -22,7 +22,7 @@ const IndustryQuoteForm = () => {
 
   // Updated: Standardized [10px] Bold Tracking-Widest
   const labelBase =
-    "text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-3 block ml-1";
+    "text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const IndustryQuoteForm = () => {
               <span className="text-blue-600">Furniture.</span>
             </h1>
 
-            <p className="text-slate-500 font-medium leading-relaxed max-w-sm text-sm md:text-base">
+            <p className="text-slate-700 font-medium leading-relaxed max-w-sm text-sm md:text-base">
               Bengaluru’s most trusted restoration studio. Get a line-item
               estimate within 15 minutes of sharing photos.
             </p>
@@ -66,7 +66,7 @@ const IndustryQuoteForm = () => {
               },
               {
                 icon: <ShieldCheck size={18} />,
-                text: "5-Year Structural Warranty",
+                text: "1-Year Warranty",
               },
             ].map((pillar, idx) => (
               <motion.div
@@ -189,7 +189,7 @@ const IndustryQuoteForm = () => {
                     <p className="font-bold uppercase text-[10px] tracking-widest text-slate-900">
                       Snap or Upload Photos
                     </p>
-                    <p className="text-[10px] text-slate-400 mt-2 uppercase font-bold tracking-tight">
+                    <p className="text-[10px] text-slate-600 mt-2 uppercase font-bold tracking-tight">
                       Required for 15-min Quotes
                     </p>
                   </div>
@@ -223,7 +223,7 @@ const IndustryQuoteForm = () => {
                   >
                     Receive Expert Estimate
                   </button>
-                  <p className="text-center text-[9px] font-bold text-slate-400 uppercase tracking-[0.2em] mt-8 flex items-center justify-center gap-2">
+                  <p className="text-center text-[9px] font-bold text-slate-600 uppercase tracking-[0.2em] mt-8 flex items-center justify-center gap-2">
                     <ShieldCheck size={12} className="text-green-500" /> Secure
                     & Private Quote Request
                   </p>
@@ -244,7 +244,7 @@ const IndustryQuoteForm = () => {
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900">
                   Request Received
                 </h2>
-                <p className="text-slate-500 font-medium max-w-xs mx-auto text-sm">
+                <p className="text-slate-700 font-medium max-w-xs mx-auto text-sm">
                   Our master craftsmen are reviewing your details. Expect a
                   WhatsApp estimate within 15 minutes.
                 </p>

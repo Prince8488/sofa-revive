@@ -19,7 +19,7 @@ export default function OurServices() {
         </h2>
 
         {/* Updated: Standardized Slate-500 font scale */}
-        <p className="text-sm md:text-base text-slate-500 max-w-2xl leading-relaxed">
+        <p className="text-sm md:text-base text-slate-700 max-w-2xl leading-relaxed">
           Select a service to explore our specialized restoration process,
           premium material options, and high-end results.
         </p>

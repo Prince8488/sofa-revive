@@ -11,6 +11,7 @@ const services = [
     features: ["Frame Strengthening", "Spring Replacement", "Leg Repair"],
     icon: <Hammer className="w-5 h-5" />,
     tag: "Structural Fix",
+    href: "/services/sofa-repair",
   },
   {
     id: "upholstery",
@@ -22,6 +23,7 @@ const services = [
     features: ["500+ Fabric Options", "Foam Top-up", "On-site measurement"],
     icon: <Armchair className="w-5 h-5" />,
     tag: "Fabric Revival",
+    href: "/services/sofa-upholstery",
   },
 
   {
@@ -34,6 +36,7 @@ const services = [
     features: ["Melamine Finish", "PU Coating", "Antique Polish"],
     icon: <Paintbrush className="w-5 h-5" />,
     tag: "Premium Finish",
+    href: "/services/sofa-polishing",
   },
 ];
 

@@ -46,7 +46,7 @@ export default function Testimonials() {
                 ))}
               </div>
               {/* Standardized: [10px] Bold Tracking-Widest */}
-              <p className="text-[10px] font-bold text-slate-400 uppercase tracking-[0.2em]">
+              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">
                 Verified Google Rating
               </p>
             </div>

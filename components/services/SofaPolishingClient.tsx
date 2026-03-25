@@ -44,7 +44,7 @@ export default function SofaPolishingClient() {
           <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
             Unmatched Wood Polishing Services
           </h1>
-          <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-slate-700 max-w-2xl mx-auto leading-relaxed">
             Reliable, professional, and creative solutions. We go beyond mere
             aesthetics, focusing on the preservation and long-term health of
             your wooden heirlooms and corporate furnishings.
@@ -73,11 +73,11 @@ export default function SofaPolishingClient() {
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4">
+              <p className="text-xs text-slate-700 leading-relaxed mb-4">
                 {feature.desc}
               </p>
               <Link
-                href="/quote"
+                href="/gallery"
                 className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
               >
                 Process Details <ArrowUpRight size={12} />
@@ -94,7 +94,7 @@ export default function SofaPolishingClient() {
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
               Furniture That Looks <br /> New, Every Day
             </h2>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Our master polishers understand that wood is organic. We work
               meticulously with the grain to return lost lustre. For intricate
               detail work, we use soft-bristle techniques to ensure the solution
@@ -128,7 +128,7 @@ export default function SofaPolishingClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               Preserve the Lifespan <br /> of Your Assets
             </h2>
-            <p className="text-slate-400 text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-slate-600 text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">
               Our creative staff provides personal consultations to navigate the
               vast variety of polishing combinations. From hardware care to
               designer-grade materials, we tell your story by preserving what
@@ -148,7 +148,7 @@ export default function SofaPolishingClient() {
               <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic">
                 Deep
               </div>
-              <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+              <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">
                 Nourishment
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function SofaPolishingClient() {
               <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic">
                 High
               </div>
-              <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
+              <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">
                 Lustre Finish
               </div>
             </div>
@@ -173,7 +173,7 @@ export default function SofaPolishingClient() {
               Artisan Finesse.
             </span>
           </h2>
-          <p className="text-[10px] text-slate-400 font-bold uppercase tracking-widest leading-loose">
+          <p className="text-[10px] text-slate-600 font-bold uppercase tracking-widest leading-loose">
             From antique dressers to modern boardroom tables, DreamDecore
             delivers the standard of excellence Bangalore demands.
           </p>

@@ -70,7 +70,7 @@ export default function FaqAccordion() {
               className={`transition-transform duration-300 ${
                 activeIdx === idx
                   ? "rotate-180 text-blue-600"
-                  : "text-slate-400"
+                  : "text-slate-600"
               }`}
               size={20}
               aria-hidden="true"
@@ -92,7 +92,7 @@ export default function FaqAccordion() {
               >
                 {/* Updated: Slate-500 font-medium scale */}
                 <div
-                  className="pb-8 text-slate-500 text-sm md:text-[15px] leading-relaxed max-w-2xl font-medium"
+                  className="pb-8 text-slate-700 text-sm md:text-[15px] leading-relaxed max-w-2xl font-medium"
                   itemProp="text"
                 >
                   {item.a}

@@ -92,13 +92,13 @@ const ContactPage = () => {
                 </div>
 
                 <div className="flex-1">
-                  <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-1">
+                  <p className="text-[9px] font-black text-slate-600 uppercase tracking-widest mb-1">
                     {method.title}
                   </p>
                   <h3 className="text-xl md:text-2xl font-black italic tracking-tight group-hover:text-blue-600 transition-colors">
                     {method.value}
                   </h3>
-                  <p className="text-[11px] md:text-sm text-slate-500 font-medium mt-1">
+                  <p className="text-[11px] md:text-sm text-slate-700 font-medium mt-1">
                     {method.desc}
                   </p>
                 </div>
@@ -123,7 +123,7 @@ const ContactPage = () => {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-slate-400">
+                  <div className="flex items-center gap-2 text-slate-600">
                     <Clock size={14} />
                     <span className="text-[10px] font-bold uppercase tracking-widest">
                       Pickup Status
@@ -132,20 +132,20 @@ const ContactPage = () => {
                   <p className="text-lg font-black italic">
                     Active in Bengaluru
                   </p>
-                  <p className="text-[10px] text-slate-500">
+                  <p className="text-[10px] text-slate-700">
                     Next available slot:{" "}
                     <span className="text-white">Today, 4 PM</span>
                   </p>
                 </div>
                 <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-slate-400">
+                  <div className="flex items-center gap-2 text-slate-600">
                     <Camera size={14} />
                     <span className="text-[10px] font-bold uppercase tracking-widest">
                       Quote Speed
                     </span>
                   </div>
                   <p className="text-lg font-black italic">&lt; 15 Minutes</p>
-                  <p className="text-[10px] text-slate-500">
+                  <p className="text-[10px] text-slate-700">
                     For photo-based inquiries
                   </p>
                 </div>

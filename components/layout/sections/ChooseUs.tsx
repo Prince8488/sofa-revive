@@ -113,7 +113,7 @@ export default function ChooseUs() {
                 "The best upholstery experience in HSR layout. Highly
                 recommend!"
               </p>
-              <cite className="not-italic text-[9px] text-slate-400 font-extrabold mt-3 block uppercase tracking-widest">
+              <cite className="not-italic text-[9px] text-slate-600 font-extrabold mt-3 block uppercase tracking-widest">
                 — Rajesh M.
               </cite>
             </blockquote>

@@ -15,7 +15,7 @@ export default function FaqPage() {
           </h1>
 
           {/* Updated: Standardized Slate-500 font scale */}
-          <p className="mt-6 text-slate-500 font-medium max-w-xl text-sm md:text-base leading-relaxed">
+          <p className="mt-6 text-slate-700 font-medium max-w-xl text-sm md:text-base leading-relaxed">
             Everything you need to know about our furniture restoration process,
             booking details, and service standards in Bangalore.
           </p>
@@ -32,7 +32,7 @@ export default function FaqPage() {
           <h3 className="text-xl md:text-2xl font-extrabold tracking-tight text-slate-900">
             Still have questions?
           </h3>
-          <p className="text-slate-500 mt-3 mb-8 text-[13px] md:text-sm font-medium">
+          <p className="text-slate-700 mt-3 mb-8 text-[13px] md:text-sm font-medium">
             Our concierge team is available on WhatsApp for instant support.
           </p>
 

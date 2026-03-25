@@ -39,9 +39,9 @@ export default function Hero() {
                 </span>
               </h1>
 
-              <p className="text-lg text-slate-500 max-w-lg leading-relaxed font-medium">
+              <p className="text-lg text-slate-700 max-w-lg leading-relaxed font-medium">
                 Institutional-grade upholstery and structural repair for luxury
-                homes. Delivered with a 10-year certified warranty.
+                homes. Delivered with a 1-year certified warranty.
               </p>
             </div>
 
@@ -56,13 +56,13 @@ export default function Hero() {
 
             {/* TRUST INDICATORS: CLEAN & LINEAR */}
             <div className="flex items-center gap-8 pt-6 border-t border-slate-100">
-              <div className="flex items-center gap-2 text-slate-400">
+              <div className="flex items-center gap-2 text-slate-600">
                 <ShieldCheck size={18} className="text-blue-600" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
-                  10Y Warranty
+                  1Y Warranty
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-slate-400">
+              <div className="flex items-center gap-2 text-slate-600">
                 <CheckCircle2 size={18} className="text-blue-600" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
                   ISO Certified
@@ -80,12 +80,13 @@ export default function Hero() {
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl border-[12px] border-white ring-1 ring-slate-100">
               <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=2000&auto=format&fit=crop"
+                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop"
                 alt="Luxury Sofa"
                 fill
                 className="object-cover"
                 priority
-                unoptimized
+                fetchPriority="high"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
 
               {/* MINIMALIST FLOATING LABEL */}

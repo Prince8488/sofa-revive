@@ -42,7 +42,7 @@ export default function SofaRepairClient() {
           <h1 className="text-2xl md:text-4xl font-extrabold text-slate-900 tracking-tight">
             Asset Restoration for Corporate & Hospitality
           </h1>
-          <p className="text-sm md:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm md:text-base text-slate-700 max-w-2xl mx-auto leading-relaxed">
             Professional lifecycle management for your seating assets. We help
             facility managers reduce replacement costs through expert on-site
             restoration and structural maintenance.
@@ -71,11 +71,11 @@ export default function SofaRepairClient() {
                   {service.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4">
+              <p className="text-xs text-slate-700 leading-relaxed mb-4">
                 {service.desc}
               </p>
               <Link
-                href="/quote"
+                href="/gallery"
                 className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
               >
                 View Collection <ArrowUpRight size={12} />
@@ -92,7 +92,7 @@ export default function SofaRepairClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               Hospitality & Resort <br /> Seating Solutions
             </h2>
-            <p className="text-slate-400 text-sm leading-relaxed italic border-l-2 border-blue-600 pl-4">
+            <p className="text-slate-600 text-sm leading-relaxed italic border-l-2 border-blue-600 pl-4">
               First impressions set the tone for guest retention. Our quarterly
               programs ensure your lobby and dining furniture never shows signs
               of wear.
@@ -141,7 +141,7 @@ export default function SofaRepairClient() {
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
             Tech Park & Corporate <br /> Breakout Management
           </h2>
-          <p className="text-slate-500 text-sm leading-relaxed">
+          <p className="text-slate-700 text-sm leading-relaxed">
             Bengaluru’s tech hubs require furniture that stands up to 24/7
             usage. We provide on-site repair schedules that align with your
             facility downtime, ensuring zero disruption to your employees.
@@ -149,13 +149,13 @@ export default function SofaRepairClient() {
           <div className="grid grid-cols-2 gap-4">
             <div className="p-4 bg-slate-50 rounded-lg">
               <div className="text-xl font-bold text-slate-900 italic">24h</div>
-              <div className="text-[10px] text-slate-400 font-bold uppercase">
+              <div className="text-[10px] text-slate-600 font-bold uppercase">
                 Rapid Response
               </div>
             </div>
             <div className="p-4 bg-slate-50 rounded-lg">
               <div className="text-xl font-bold text-slate-900 italic">ESG</div>
-              <div className="text-[10px] text-slate-400 font-bold uppercase">
+              <div className="text-[10px] text-slate-600 font-bold uppercase">
                 Sustainable Repair
               </div>
             </div>
@@ -178,7 +178,7 @@ export default function SofaRepairClient() {
               Our Standard.
             </span>
           </h2>
-          <p className="text-xs text-slate-400 font-bold uppercase tracking-widest leading-loose">
+          <p className="text-xs text-slate-600 font-bold uppercase tracking-widest leading-loose">
             Trusted by Bangalore’s leading tech parks, boutique hotels, and
             medical facilities. Experience the DreamDecore standard.
           </p>

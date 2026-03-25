@@ -58,6 +58,9 @@ export const metadata: Metadata = {
     description: "Expert craftsmanship for your beloved furniture.",
     type: "website",
   },
+  other: {
+    preconnect: "https://images.unsplash.com",
+  },
 };
 
 export default function RootLayout({

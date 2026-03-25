@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { useState, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link"; // 1. Import Link
 
 export default function ServiceCard({ service }: { service: any }) {
   const [sliderPos, setSliderPos] = useState(50);
@@ -65,7 +66,7 @@ export default function ServiceCard({ service }: { service: any }) {
           </div>
         </div>
 
-        {/* Floating Labels - Standardized [10px] scale */}
+        {/* Floating Labels */}
         <div className="absolute top-4 left-4 z-30 bg-black/40 backdrop-blur px-2.5 py-1 rounded text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none">
           Before
         </div>
@@ -86,19 +87,22 @@ export default function ServiceCard({ service }: { service: any }) {
           {service.features.map((f: string, i: number) => (
             <li
               key={i}
-              className="text-xs text-slate-500 flex items-center gap-2 italic font-medium"
+              className="text-xs text-slate-700 flex items-center gap-2 italic font-medium"
             >
               <CheckCircle2 size={14} className="text-green-500" /> {f}
             </li>
           ))}
         </ul>
 
-        <button
-          type="button"
-          className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm"
-        >
-          View Case Study
-        </button>
+        {/* 2. Wrap Button in Link */}
+        <Link href={service.href || "#"} className="block w-full">
+          <button
+            type="button"
+            className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm"
+          >
+            View Case Study
+          </button>
+        </Link>
       </div>
     </motion.div>
   );

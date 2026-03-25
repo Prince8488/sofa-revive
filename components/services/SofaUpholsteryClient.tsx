@@ -42,7 +42,7 @@ export default function SofaUpholsteryClient() {
           <h1 className="text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
             Sophisticated Upholstery Restoration
           </h1>
-          <p className="text-sm text-slate-500 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm text-slate-700 max-w-2xl mx-auto leading-relaxed">
             Trusted by interior designers and families alike. We restore the
             value of your furniture with creative, professional solutions that
             tell your unique story.
@@ -71,11 +71,11 @@ export default function SofaUpholsteryClient() {
                   {feature.title}
                 </h3>
               </div>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4">
+              <p className="text-xs text-slate-700 leading-relaxed mb-4">
                 {feature.desc}
               </p>
               <Link
-                href="/quote"
+                href="/gallery"
                 className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
               >
                 View Collection <ArrowUpRight size={12} />
@@ -92,7 +92,7 @@ export default function SofaUpholsteryClient() {
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 leading-tight">
               Restore the Comfort <br /> You Once Loved
             </h2>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <p className="text-slate-700 text-sm leading-relaxed">
               Your sofa or recliner may be sagging, but the frame is often built
               to last. We specialize in replacing worn seat cores and adding
               custom fiber-fill to 'plump-up' backs and pillows.
@@ -132,7 +132,7 @@ export default function SofaUpholsteryClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               A New Lease of Life <br /> for Your Interiors
             </h2>
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed">
               remodeing your space? Don't discard your quality furniture. Our
               craftsmen help you navigate color changes and contemporary design
               needs with an extensive selection of premium fabrics.
@@ -142,7 +142,7 @@ export default function SofaUpholsteryClient() {
                 <div className="text-blue-400 font-bold text-xs uppercase mb-1">
                   Stain Resistant
                 </div>
-                <div className="text-[10px] text-slate-500">
+                <div className="text-[10px] text-slate-700">
                   Commercial Grade
                 </div>
               </div>
@@ -150,7 +150,7 @@ export default function SofaUpholsteryClient() {
                 <div className="text-blue-400 font-bold text-xs uppercase mb-1">
                   Fire Retardant
                 </div>
-                <div className="text-[10px] text-slate-500">
+                <div className="text-[10px] text-slate-700">
                   Safety Standards
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function SofaUpholsteryClient() {
           <h2 className="text-2xl md:text-3xl font-black uppercase text-slate-900 tracking-tight">
             Your Story, Preserved.
           </h2>
-          <p className="text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+          <p className="text-sm text-slate-700 max-w-xl mx-auto leading-relaxed">
             Our creative staff is available for personal consultations to help
             you sort through endless upholstery combinations, hardware, and
             designer options.

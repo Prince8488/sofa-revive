@@ -43,7 +43,7 @@ export default function FloatingSticky() {
                 }}
                 className="flex items-center gap-3"
               >
-                <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm text-slate-500 border border-slate-100">
+                <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm text-slate-700 border border-slate-100">
                   {item.label}
                 </span>
                 <button
@@ -61,6 +61,7 @@ export default function FloatingSticky() {
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         animate={{ rotate: isOpen ? 135 : 0 }}
+        aria-label="Contact us on WhatsApp or Call"
         className={`w-16 h-16 rounded-3xl flex items-center justify-center shadow-2xl transition-colors ${
           isOpen ? "bg-slate-100 text-slate-900" : "bg-slate-900 text-white"
         }`}

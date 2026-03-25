@@ -61,7 +61,7 @@ export default function TermsOfUsePage() {
         <h4 className="font-black uppercase italic text-sm mb-2">
           Legal Support
         </h4>
-        <p className="text-slate-500 text-sm mb-4">
+        <p className="text-slate-700 text-sm mb-4">
           For formal inquiries or data removal requests:
         </p>
         <a

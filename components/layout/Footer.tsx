@@ -122,7 +122,7 @@ export default function Footer() {
                 <MapPin size={14} className="text-blue-500" />
                 Service Areas
               </h4>
-              <p className="text-[11px] leading-relaxed text-slate-500 uppercase font-bold tracking-wider">
+              <p className="text-[11px] leading-relaxed text-slate-700 uppercase font-bold tracking-wider">
                 Providing premium on-site furniture restoration across
                 Bengaluru's major neighborhoods.
               </p>
@@ -134,7 +134,7 @@ export default function Footer() {
                   className="flex items-center gap-2 group cursor-default"
                 >
                   <div className="w-1 h-1 rounded-full bg-slate-800 group-hover:bg-blue-500 transition-colors" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:text-slate-300 transition-colors">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-300 group-hover:text-blue-400 transition-colors">
                     {area}
                   </span>
                 </div>
@@ -145,11 +145,11 @@ export default function Footer() {
 
         {/* FINAL FOOTNOTE */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[9px] font-bold tracking-[0.2em] text-slate-600 uppercase text-center md:text-left">
+          <p className="text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase text-center md:text-left">
             © {currentYear} DreamDecore Services Pvt Ltd. All Rights Reserved.
           </p>
 
-          <div className="flex items-center gap-2 text-[9px] font-bold tracking-[0.2em] text-slate-600 uppercase">
+          <div className="flex items-center gap-2 text-[9px] font-bold tracking-[0.2em] text-slate-400 uppercase">
             Designed with{" "}
             <Heart
               size={10}

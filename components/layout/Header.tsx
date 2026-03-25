@@ -129,7 +129,7 @@ export default function Header() {
                     className="absolute top-[100%] left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-50 overflow-hidden flex"
                   >
                     <div className="w-1/2 p-6 flex flex-col gap-2 border-r border-slate-50">
-                      <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">
+                      <p className="text-[10px] font-black text-slate-600 uppercase tracking-widest mb-2">
                         Our Specialties
                       </p>
                       {mobileServices.map((service) => (
@@ -179,7 +179,7 @@ export default function Header() {
                       <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest leading-none">
                         Expert Care
                       </p>
-                      <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                      <p className="text-xs text-slate-700 font-medium leading-relaxed">
                         Professional {activeService.name.toLowerCase()} for
                         premium furniture.
                       </p>

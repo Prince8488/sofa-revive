@@ -23,7 +23,7 @@ export default function PolicyLayout({
               {title}
             </h1>
             <div className="flex items-center gap-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
                 Effective: {lastUpdated}
               </p>
               {/* Decorative separator ignored by screen readers */}
@@ -40,7 +40,7 @@ export default function PolicyLayout({
           {/* 2. UTILITY: Print Button (Common for Legal Docs) */}
           <button
             onClick={() => window.print()}
-            className="hidden md:block text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-slate-900 transition-colors border border-slate-200 px-4 py-2 rounded-lg active:scale-95"
+            className="hidden md:block text-[10px] font-black uppercase tracking-widest text-slate-600 hover:text-slate-900 transition-colors border border-slate-200 px-4 py-2 rounded-lg active:scale-95"
           >
             Print PDF
           </button>
@@ -72,7 +72,7 @@ export default function PolicyLayout({
       </div>
 
       <footer className="mt-20 pt-10 border-t border-slate-100">
-        <p className="text-xs text-slate-400 italic">
+        <p className="text-xs text-slate-600 italic">
           Questions regarding these terms? Contact our team at{" "}
           <a
             href="mailto:legal@dreamdecore.com"
