@@ -11,6 +11,6 @@ export default function robots(): MetadataRoute.Robots {
         "/private", // Any draft pages you're working on
       ],
     },
-    sitemap: "https://yourdomain.com/sitemap.xml",
+    sitemap: "https://sofa-revive.netlify.app/sitemap.xml",
   };
 }

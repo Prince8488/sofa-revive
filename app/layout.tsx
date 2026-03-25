@@ -47,9 +47,7 @@ const jsonLd = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    "https://project-iy36u-49bc5bvg5-guptaprince210-3119s-projects.vercel.app",
-  ),
+  metadataBase: new URL("https://sofa-revive.netlify.app"),
   title: "LuxeSofa | Premium Sofa Repair, Upholstery & Polishing in Bangalore",
   description:
     "Transform your furniture with the city's top-rated sofa restoration experts. Specializing in leather repair, custom upholstery, and wood polishing.Expert sofa upholstery services. 5-Star Rated. 10+ Years Experience. Choose from 500+ premium fabrics",

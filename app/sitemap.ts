@@ -1,27 +1,39 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://yourdomain.com";
+  const baseUrl = "https://sofa-revive.netlify.app";
+  const lastMod = new Date();
 
-  return [
+  const routes = [
+    // Main Pages
+    { url: "", priority: 1.0, changeFrequency: "monthly" as const },
+    { url: "/about", priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/quote", priority: 1.0, changeFrequency: "always" as const },
+    { url: "/gallery", priority: 0.9, changeFrequency: "weekly" as const },
+    { url: "/contact", priority: 0.7, changeFrequency: "monthly" as const },
+
+    // Core Service Sub-Pages (Crucial for SEO)
     {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/quote`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+      url: "/services/sofa-upholstery",
       priority: 0.9,
+      changeFrequency: "monthly" as const,
     },
-    // Add your service sub-pages here as you create them
+    {
+      url: "/services/sofa-repair",
+      priority: 0.9,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      url: "/services/sofa-polishing",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
   ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route.url}`,
+    lastModified: lastMod,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
 }
