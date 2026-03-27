@@ -12,164 +12,166 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+const FEATURES = [
+  {
+    icon: ShieldCheck,
+    title: "1-Year Warranty",
+    description: "Full coverage on foam sag and stitch durability.",
+  },
+  {
+    icon: Truck,
+    title: "Free Doorstep Pickup",
+    description: "Safe transport from your home to our workshop and back.",
+  },
+  {
+    icon: Award,
+    title: "Branded Materials",
+    description: "We only use original Sleepwell™ and Kurlon™ materials.",
+  },
+  {
+    icon: Clock,
+    title: "7-Day Delivery",
+    description: "Fast turnaround so you're not without your furniture.",
+  },
+];
+
+// Placeholder high-quality avatar images
+const SOCIAL_PROOF_AVATARS = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=100&h=100&fit=crop",
+  "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop",
+];
+
 export default function WhyChooseUS() {
   return (
-    <main id="main-content">
-      <section className="bg-[#050505] text-white py-20 md:py-28 px-6 relative overflow-hidden">
-        {/* 1. PERFORMANCE: Passive background glow */}
-        <div
-          className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none"
-          aria-hidden="true"
-        />
+    <section className="relative bg-slate-50 px-6 py-5 text-slate-900">
+      {/* Decorative subtle dot pattern background */}
+      <div
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `radial-gradient(#2563eb 0.5px, transparent 0.5px)`,
+          backgroundSize: "24px 24px",
+        }}
+      />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-          {/* LEFT CONTENT */}
+      <div className="mx-auto max-w-7xl relative z-10">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          {/* LEFT: CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="space-y-10"
           >
             <div className="space-y-6">
-              {/* Standardized Badge: Matches Hero [10px] Bold Tracking-Widest */}
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-600/10 border border-blue-500/20 rounded-full">
-                <span className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-pulse"></span>
-                <span className="text-blue-400 font-bold uppercase tracking-[0.2em] text-[10px]">
-                  Bengaluru's Rated #1 Studio
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5">
+                <span className="h-2 w-2 rounded-full bg-blue-600 animate-pulse" />
+                <span className="text-[11px] font-bold uppercase tracking-widest text-blue-700">
+                  Bengaluru's #1 Studio
                 </span>
               </div>
 
-              {/* Standardized Header: Extrabold Tracking-Tight */}
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-[1.1]">
+              <h2 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
                 Furniture Revival <br />
-                <span className="text-blue-500">Without the Stress.</span>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                  Without the Stress.
+                </span>
               </h2>
 
-              {/* Standardized Body: Text-base Gray-400 */}
-              <p className="text-gray-400 text-sm md:text-base max-w-lg leading-relaxed font-medium">
+              <p className="max-w-lg text-base font-medium leading-relaxed text-slate-600">
                 We don’t just patch up sofas; we re-engineer them. From
-                40-density foam to Italian fabrics, we bring showroom quality
+                high-density foam to premium fabrics, we bring showroom quality
                 directly to your living room.
               </p>
             </div>
 
-            {/* Grid of Industry Standards */}
-            <div className="grid sm:grid-cols-2 gap-x-8 gap-y-10">
-              <FeatureItem
-                Icon={ShieldCheck}
-                title="1-Year Warranty"
-                desc="Every restoration comes with a written warranty on foam sag and stitch durability."
-              />
-              <FeatureItem
-                Icon={Truck}
-                title="Free Doorstep Pickup"
-                desc="Hassle-free transport from your home to our workshop and back. Zero heavy lifting."
-              />
-              <FeatureItem
-                Icon={Award}
-                title="Branded Materials"
-                desc="Original Sleepwell™ foam and Kurlon™ springs. No local unbranded fillers. Ever."
-              />
-              <FeatureItem
-                Icon={Clock}
-                title="7-Day Delivery"
-                desc="Efficient timelines so you don't have to live without your sofa for weeks."
-              />
-            </div>
+            {/* FEATURES GRID */}
+            <dl className="grid gap-x-8 gap-y-10 sm:grid-cols-2">
+              {FEATURES.map((feature) => (
+                <div key={feature.title} className="group space-y-3">
+                  <dt className="flex items-center gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ring-1 ring-slate-200 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                      <feature.icon size={20} strokeWidth={2} />
+                    </div>
+                    <span className="text-[15px] font-bold tracking-tight text-slate-900 uppercase">
+                      {feature.title}
+                    </span>
+                  </dt>
+                  <dd className="pl-14 text-sm leading-relaxed text-slate-500">
+                    {feature.description}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </motion.div>
 
-          {/* RIGHT: CONVERSION CARD */}
+          {/* RIGHT: CARD */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative group lg:ml-auto"
+            className="relative w-full max-w-lg lg:ml-auto"
           >
-            <div className="absolute -inset-[1px] bg-gradient-to-b from-blue-500/50 to-transparent rounded-[2.5rem] opacity-20" />
-
-            <div className="relative bg-[#0F0F0F] rounded-[2.5rem] p-8 md:p-12 border border-white/5 shadow-2xl">
-              {/* Standardized Card Header: text-2xl Extrabold */}
-              <h3 className="text-xl md:text-2xl font-extrabold mb-8 tracking-tight text-white">
-                Request a <span className="text-blue-500">Price Estimate</span>
+            <div className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl shadow-slate-200/60 md:p-12">
+              <h3 className="mb-8 text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                Request a <span className="text-blue-600">Price Estimate</span>
               </h3>
 
               <div className="space-y-4">
-                <IconDetail Icon={Ruler} text="Free Home Visit & Measurement" />
+                <IconDetail icon={Ruler} text="Free Home Visit & Measurement" />
                 <IconDetail
-                  Icon={Paintbrush}
+                  icon={Paintbrush}
                   text="1000+ Fabric Swatches at Doorstep"
                 />
 
-                <div className="pt-6 space-y-5">
+                <div className="space-y-6 pt-8">
                   <a
-                    href="tel:9876543210"
-                    className="w-full flex items-center justify-center gap-3 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] transition-all active:scale-95 shadow-lg shadow-blue-600/20"
+                    href="tel:+919876543210"
+                    className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-blue-600 active:scale-95 shadow-lg shadow-slate-200"
                   >
-                    <Phone size={14} /> Get Free Consultation
+                    <Phone size={16} /> Get Free Consultation
                   </a>
-                  <p className="text-[10px] text-center text-gray-500 font-bold uppercase tracking-widest leading-loose">
-                    Join 5,000+ Happy Households <br /> in Bangalore
-                  </p>
+
+                  <div className="flex flex-col items-center gap-4">
+                    <div className="flex -space-x-3">
+                      {SOCIAL_PROOF_AVATARS.map((url, i) => (
+                        <div
+                          key={i}
+                          className="h-10 w-10 rounded-full border-4 border-white shadow-sm overflow-hidden bg-slate-100"
+                        >
+                          <img
+                            src={url}
+                            alt={`Customer ${i + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border-4 border-white bg-blue-50 text-[10px] font-bold text-blue-600 shadow-sm">
+                        +5k
+                      </div>
+                    </div>
+                    <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">
+                      Join 5,000+ Happy Households
+                    </p>
+                  </div>
                 </div>
               </div>
-
-              {/* Floating Testimonial Tag */}
-              <blockquote className="absolute -bottom-6 -right-4 md:-right-8 bg-white p-5 rounded-2xl shadow-2xl max-w-[210px] hidden sm:block border border-slate-100">
-                <div className="flex gap-1 mb-2.5 text-amber-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={10} fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-[11px] text-slate-800 font-bold leading-snug">
-                  "The best upholstery experience in HSR layout. Highly
-                  recommend!"
-                </p>
-                <cite className="not-italic text-[9px] text-slate-600 font-extrabold mt-3 block uppercase tracking-widest">
-                  — Rajesh M.
-                </cite>
-              </blockquote>
             </div>
           </motion.div>
         </div>
-      </section>
-    </main>
-  );
-}
-
-function FeatureItem({
-  Icon,
-  title,
-  desc,
-}: {
-  Icon: any;
-  title: string;
-  desc: string;
-}) {
-  return (
-    <div className="space-y-4">
-      <div className="text-blue-500">
-        <Icon size={24} strokeWidth={2} />
       </div>
-      {/* Title standardized to Bold Tracking-Widest [11px] */}
-      <p className="font-bold text-[11px] uppercase tracking-widest text-white">
-        {title}
-      </p>
-      <p className="text-gray-500 text-[13px] leading-relaxed font-medium">
-        {desc}
-      </p>
-    </div>
+    </section>
   );
 }
 
-function IconDetail({ Icon, text }: { Icon: any; text: string }) {
+function IconDetail({ icon: Icon, text }: { icon: any; text: string }) {
   return (
-    <div className="flex items-center gap-4 p-4 bg-white/[0.03] rounded-2xl border border-white/5 hover:bg-white/[0.07] transition-colors group/item">
-      <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-500 group-hover/item:bg-blue-600 group-hover/item:text-white transition-all">
+    <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:bg-white hover:border-blue-100 group">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
         <Icon size={18} />
       </div>
-      <p className="text-[13px] font-bold text-gray-300 tracking-tight">
-        {text}
-      </p>
+      <p className="text-sm font-bold tracking-tight text-slate-700">{text}</p>
     </div>
   );
 }

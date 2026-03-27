@@ -6,11 +6,12 @@ import { Briefcase } from "lucide-react";
 
 export default function OurServices() {
   return (
-    <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+    <section className="py-10 px-6 max-w-7xl mx-auto">
       {/* HEADER SECTION: Standardized with Hero/Service pages */}
-      <div className="mb-12 md:mb-16 text-center md:text-left">
-        <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-[10px] font-bold mb-4 uppercase tracking-widest">
-          <Briefcase size={12} /> Expert Solutions
+      <div className="mb-5 text-center md:text-left">
+        <div className="inline-flex items-center gap-2 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em] pb-5">
+          <span className="w-8 h-[1px] bg-blue-600"></span>
+          Expert Solutions
         </div>
 
         {/* Updated: Extrabold / Tracking-Tight */}

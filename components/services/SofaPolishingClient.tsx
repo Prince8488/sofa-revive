@@ -34,7 +34,7 @@ export default function SofaPolishingClient() {
   ];
 
   return (
-    <div className="bg-white text-slate-800 selection:bg-blue-600 selection:text-white">
+    <div className="bg-white text-slate-800 pt-5 selection:bg-blue-600 selection:text-white">
       {/* 1. INDUSTRY HERO */}
       <section className="pt-20 pb-12 px-6 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto text-center space-y-4">

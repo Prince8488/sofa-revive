@@ -1,6 +1,7 @@
 "use client";
 
 import { Quote, Star } from "lucide-react";
+import { motion } from "framer-motion";
 
 const REVIEWS = [
   {
@@ -19,70 +20,85 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="py-20 md:py-28 px-6 max-w-7xl mx-auto">
-      <div className="grid lg:grid-cols-3 gap-12 lg:gap-20 items-start">
-        {/* LEFT: Trust Header */}
-        <div className="lg:col-span-1 lg:sticky lg:top-32">
-          <Quote
-            size={48}
-            className="text-blue-600/20 mb-6"
-            strokeWidth={1.5}
-          />
+    <section id="reviews" className="relative bg-white px-6 py-5">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-start gap-12 lg:grid-cols-3 lg:gap-20">
+          {/* LEFT: Trust Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-1 lg:sticky lg:top-32"
+          >
+            <Quote
+              size={48}
+              className="mb-6 text-blue-600/20"
+              strokeWidth={1.5}
+            />
 
-          {/* Updated: Extrabold Tracking-Tight (No Italic/Black) */}
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-8 tracking-tight leading-[1.1] text-slate-900">
-            What our <br />
-            <span className="text-blue-600">Clients</span> say
-          </h2>
+            {/* H2: Matched to previous section 4xl/5xl */}
+            <h2 className="mb-8 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
+              What our <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                Clients
+              </span>{" "}
+              say
+            </h2>
 
-          <div className="flex items-center gap-6 p-6 bg-slate-50 rounded-[2rem] border border-slate-100 w-fit shadow-sm">
-            <div className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
-              4.9
-            </div>
-            <div>
-              <div className="flex text-amber-400 mb-1.5 gap-0.5">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" />
-                ))}
+            {/* Rating Card: Matched UI style */}
+            <div className="flex w-fit items-center gap-6 rounded-[2.5rem] border border-slate-100 bg-slate-50 p-6 shadow-sm shadow-slate-200/50">
+              <div className="text-4xl font-black tracking-tighter text-slate-900 md:text-5xl">
+                4.9
               </div>
-              {/* Standardized: [10px] Bold Tracking-Widest */}
-              <p className="text-[10px] font-bold text-slate-600 uppercase tracking-[0.2em]">
-                Verified Google Rating
-              </p>
+              <div>
+                <div className="mb-1.5 flex gap-1 text-amber-400">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} fill="currentColor" />
+                  ))}
+                </div>
+                {/* Badge: Standardized 11px Bold */}
+                <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
+                  Verified Google Rating
+                </p>
+              </div>
             </div>
+          </motion.div>
+
+          {/* RIGHT: Testimonial Cards */}
+          <div className="grid gap-8 lg:col-span-2 md:grid-cols-2">
+            {REVIEWS.map((t, i) => (
+              <motion.article
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="group relative rounded-[2.5rem] border border-slate-100 bg-white p-8 shadow-2xl shadow-slate-200/40 transition-all duration-500 hover:-translate-y-2 md:p-10"
+              >
+                <div className="mb-6 flex gap-1 text-amber-400">
+                  {[...Array(t.rating)].map((_, i) => (
+                    <Star key={i} size={12} fill="currentColor" />
+                  ))}
+                </div>
+
+                {/* Review Text: text-base (16px) matched to main section body */}
+                <p className="mb-8 text-base font-medium leading-relaxed text-slate-600">
+                  "{t.text}"
+                </p>
+
+                <div className="flex flex-col gap-1 border-t border-slate-50 pt-6">
+                  {/* Name: 15px/16px matched to feature titles */}
+                  <p className="text-[15px] font-bold uppercase tracking-tight text-slate-900">
+                    {t.name}
+                  </p>
+                  {/* Area Badge: Matched 11px blue style */}
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
+                    {t.area}
+                  </p>
+                </div>
+              </motion.article>
+            ))}
           </div>
-        </div>
-
-        {/* RIGHT: Testimonial Cards */}
-        <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
-          {REVIEWS.map((t, i) => (
-            <article
-              key={i}
-              className="group bg-white p-8 md:p-10 rounded-[2.5rem] shadow-xl shadow-slate-200/40 border border-slate-100 relative hover:-translate-y-2 transition-all duration-500"
-            >
-              <div className="flex gap-1 mb-6 text-amber-400">
-                {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} size={12} fill="currentColor" />
-                ))}
-              </div>
-
-              {/* Updated: Standardized Professional Font Scale */}
-              <p className="text-slate-600 mb-8 text-sm md:text-base leading-relaxed font-medium">
-                "{t.text}"
-              </p>
-
-              <div className="pt-6 border-t border-slate-50 flex flex-col gap-1">
-                {/* Updated: Extrabold Name */}
-                <p className="font-extrabold text-slate-900 text-sm tracking-tight uppercase">
-                  {t.name}
-                </p>
-                {/* Standardized: Blue [10px] Badge */}
-                <p className="text-blue-600 text-[10px] font-bold uppercase tracking-[0.15em]">
-                  {t.area}
-                </p>
-              </div>
-            </article>
-          ))}
         </div>
       </div>
     </section>
