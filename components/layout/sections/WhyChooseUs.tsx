@@ -127,8 +127,8 @@ export default function WhyChooseUS() {
 
                 <div className="space-y-6 pt-8">
                   <a
-                    href="tel:+919876543210"
-                    className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-blue-600 active:scale-95 shadow-lg shadow-slate-200"
+                    href="tel:+919304059249"
+                    className="flex w-full items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white transition-all hover:bg-blue-600 active:scale-95 shadow-lg shadow-slate-200 cursor-pointer"
                   >
                     <Phone size={16} /> Get Free Consultation
                   </a>
@@ -167,7 +167,7 @@ export default function WhyChooseUS() {
 
 function IconDetail({ icon: Icon, text }: { icon: any; text: string }) {
   return (
-    <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:bg-white hover:border-blue-100 group">
+    <div className="flex items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:bg-white hover:border-blue-100 group cursor-pointer">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white shadow-sm text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
         <Icon size={18} />
       </div>

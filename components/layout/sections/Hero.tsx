@@ -47,8 +47,8 @@ export default function Hero() {
 
             {/* DIRECT CALL TO ACTION */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <Link href="/quote" className="w-full sm:w-auto">
-                <button className="w-full bg-slate-950 text-white px-10 py-5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-3">
+              <Link href="/quote" className="w-full sm:w-auto cursor-pointer">
+                <button className="w-full bg-slate-950 text-white px-10 py-5 rounded-full font-bold text-xs uppercase tracking-widest hover:bg-blue-600 transition-all shadow-xl shadow-slate-200 flex items-center justify-center gap-3 cursor-pointer">
                   Book Free Inspection <ArrowRight size={16} />
                 </button>
               </Link>

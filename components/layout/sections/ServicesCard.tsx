@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 import { useState, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link"; // 1. Import Link
+import Link from "next/link";
 
 export default function ServiceCard({ service }: { service: any }) {
   const [sliderPos, setSliderPos] = useState(50);
@@ -94,15 +94,15 @@ export default function ServiceCard({ service }: { service: any }) {
           ))}
         </ul>
 
-        {/* 2. Wrap Button in Link */}
+        {/* Wrap Button in Link */}
         <Link
           href={service.href || "#"}
-          className="block w-full"
+          className="block w-full cursor-pointer"
           aria-label={`View case study for ${service.title}`}
         >
           <button
             type="button"
-            className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm"
+            className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm cursor-pointer"
           >
             View Case Study
           </button>

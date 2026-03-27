@@ -31,6 +31,7 @@ export default function SofaRepairClient() {
       img: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800",
     },
   ];
+
   return (
     <div className="bg-white text-slate-800 pt-5 selection:bg-blue-600 selection:text-white">
       {/* 1. INDUSTRY HERO */}
@@ -56,13 +57,13 @@ export default function SofaRepairClient() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm"
+              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm group hover:border-blue-200 transition-colors"
             >
               <div className="aspect-video rounded-lg overflow-hidden mb-4">
                 <img
                   src={service.img}
                   alt={service.title}
-                  className="w-full h-full object-cover opacity-90"
+                  className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
                 />
               </div>
               <div className="flex items-center gap-2 mb-2">
@@ -76,7 +77,7 @@ export default function SofaRepairClient() {
               </p>
               <Link
                 href="/gallery"
-                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
+                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1 cursor-pointer hover:gap-2 transition-all"
               >
                 View Collection <ArrowUpRight size={12} />
               </Link>
@@ -92,7 +93,7 @@ export default function SofaRepairClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               Hospitality & Resort <br /> Seating Solutions
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed italic border-l-2 border-blue-600 pl-4">
+            <p className="text-slate-400 text-sm leading-relaxed italic border-l-2 border-blue-600 pl-4">
               First impressions set the tone for guest retention. Our quarterly
               programs ensure your lobby and dining furniture never shows signs
               of wear.
@@ -113,7 +114,7 @@ export default function SofaRepairClient() {
             </ul>
             <Link
               href="/quote"
-              className="inline-block bg-blue-600 text-white px-6 py-3 rounded text-[10px] font-bold uppercase tracking-widest"
+              className="inline-block bg-blue-600 text-white px-6 py-3 rounded text-[10px] font-bold uppercase tracking-widest cursor-pointer hover:bg-blue-700 transition-colors"
             >
               Join Maintenance Program
             </Link>
@@ -122,7 +123,7 @@ export default function SofaRepairClient() {
             <img
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000"
               alt="Luxury Restaurant Interior"
-              className="w-full h-full object-cover transition-all duration-700"
+              className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700"
             />
           </div>
         </div>
@@ -162,7 +163,7 @@ export default function SofaRepairClient() {
           </div>
           <Link
             href="/quote"
-            className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest"
+            className="flex items-center gap-2 text-blue-600 font-bold text-xs uppercase tracking-widest cursor-pointer hover:underline underline-offset-4"
           >
             Request Institutional Pricing <ArrowUpRight size={14} />
           </Link>
@@ -182,8 +183,8 @@ export default function SofaRepairClient() {
             Trusted by Bangalore’s leading tech parks, boutique hotels, and
             medical facilities. Experience the DreamDecore standard.
           </p>
-          <Link href="/quote">
-            <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl">
+          <Link href="/quote" className="cursor-pointer">
+            <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl cursor-pointer">
               Receive Your Complimentary Quote
             </button>
           </Link>

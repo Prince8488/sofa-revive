@@ -6,7 +6,6 @@ const PROJECTS = [
     title: "Classic Velvet Overhaul",
     description:
       "Full structural repair and premium emerald velvet upholstery.",
-    // Replace these with your actual hosted image paths once you have them
     before:
       "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800",
     after:
@@ -63,7 +62,10 @@ export default function GallerySection() {
         {/* The Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
           {PROJECTS.map((project, index) => (
-            <div key={index} className="group flex flex-col gap-6">
+            <div
+              key={index}
+              className="group flex flex-col gap-6 cursor-default"
+            >
               {/* Slider Container */}
               <div className="relative aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)]">
                 <ImageSlider
@@ -75,7 +77,7 @@ export default function GallerySection() {
               {/* Content */}
               <div className="flex justify-between items-start px-4">
                 <div className="space-y-1">
-                  <h4 className="text-2xl font-black uppercase tracking-tighter italic text-slate-900 group-hover:text-blue-600 transition-colors">
+                  <h4 className="text-2xl font-black uppercase tracking-tighter italic text-slate-900 group-hover:text-blue-600 transition-colors duration-300">
                     {project.title}
                   </h4>
                   <p className="text-sm text-slate-700 font-medium leading-relaxed max-w-[80%]">
@@ -84,7 +86,7 @@ export default function GallerySection() {
                 </div>
 
                 {/* Micro-Interaction: Project Number */}
-                <span className="text-4xl font-black text-slate-100 italic select-none">
+                <span className="text-4xl font-black text-slate-100 italic select-none group-hover:text-blue-50 transition-colors duration-500">
                   0{index + 1}
                 </span>
               </div>
@@ -92,14 +94,14 @@ export default function GallerySection() {
           ))}
         </div>
 
-        {/* "Load More" or CTA for WhatsApp */}
+        {/* Footer CTA */}
         <div className="mt-24 flex flex-col items-center">
           <div className="h-[1px] w-24 bg-slate-200 mb-8" />
           <p className="text-xs font-black uppercase tracking-widest text-slate-600 mb-6">
             Witnessed enough? Let's restore yours.
           </p>
-          <Link href={"/quote"}>
-            <button className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-600 transition-all active:scale-95 shadow-2xl">
+          <Link href="/quote" className="cursor-pointer">
+            <button className="px-10 py-5 bg-slate-900 text-white rounded-2xl font-black uppercase tracking-widest text-[11px] hover:bg-blue-600 transition-all active:scale-95 shadow-2xl cursor-pointer">
               Start Your Restoration
             </button>
           </Link>

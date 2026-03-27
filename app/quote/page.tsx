@@ -47,7 +47,9 @@ const IndustryQuoteForm = () => {
             {/* Updated: bold / Tracking-Tight */}
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
               Revive Your <br />
-              <span className="text-blue-600">Furniture.</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                Furniture.
+              </span>
             </h1>
 
             <p className="text-slate-700 font-medium leading-relaxed max-w-sm text-sm md:text-base">
@@ -219,7 +221,7 @@ const IndustryQuoteForm = () => {
                 <div className="pt-6">
                   <button
                     type="submit"
-                    className="w-full py-5 bg-blue-600 text-white rounded-xl font-bold uppercase text-[10px] tracking-[0.25em] shadow-xl shadow-blue-600/30 hover:bg-slate-900 hover:-translate-y-1 transition-all duration-300"
+                    className="cursor-pointer w-full py-5  bg-slate-950  hover:bg-blue-600 text-white rounded-xl font-bold uppercase text-[10px] tracking-[0.25em] shadow-xl shadow-blue-600/30 hover:-translate-y-1 transition-all duration-300"
                   >
                     Receive Expert Estimate
                   </button>

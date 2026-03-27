@@ -31,9 +31,10 @@ export default function SofaUpholsteryClient() {
       img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000",
     },
   ];
+
   return (
     <div className="bg-white text-slate-800 pt-5 selection:bg-blue-600 selection:text-white">
-      {/* 1. HERO SECTION: SUBTLE & ELEGANT */}
+      {/* 1. HERO SECTION */}
       <section className="pt-20 pb-12 px-6 bg-slate-50 border-b border-slate-100">
         <div className="max-w-4xl mx-auto text-center space-y-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-widest">
@@ -56,13 +57,13 @@ export default function SofaUpholsteryClient() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow group"
             >
               <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-slate-100">
                 <img
                   src={feature.img}
                   alt={feature.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="flex items-center gap-2 mb-2">
@@ -76,7 +77,7 @@ export default function SofaUpholsteryClient() {
               </p>
               <Link
                 href="/gallery"
-                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
+                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1 cursor-pointer hover:gap-2 transition-all"
               >
                 View Collection <ArrowUpRight size={12} />
               </Link>
@@ -111,7 +112,7 @@ export default function SofaUpholsteryClient() {
           <div className="rounded-2xl overflow-hidden aspect-video shadow-lg">
             <img
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000"
-              alt="Luxury Restaurant Interior"
+              alt="Comfort restoration work"
               className="w-full h-full object-cover transition-all duration-700"
             />
           </div>
@@ -124,7 +125,7 @@ export default function SofaUpholsteryClient() {
           <div className="order-2 lg:order-1 rounded-2xl overflow-hidden aspect-video shadow-2xl border-4 border-slate-800">
             <img
               src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80&w=1000"
-              alt="Tech Park Office Lounge"
+              alt="Premium office interior"
               className="w-full h-full object-cover shadow-lg"
             />
           </div>
@@ -132,8 +133,8 @@ export default function SofaUpholsteryClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               A New Lease of Life <br /> for Your Interiors
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed">
-              remodeing your space? Don't discard your quality furniture. Our
+            <p className="text-slate-400 text-sm leading-relaxed">
+              Remodeling your space? Don't discard your quality furniture. Our
               craftsmen help you navigate color changes and contemporary design
               needs with an extensive selection of premium fabrics.
             </p>
@@ -142,7 +143,7 @@ export default function SofaUpholsteryClient() {
                 <div className="text-blue-400 font-bold text-xs uppercase mb-1">
                   Stain Resistant
                 </div>
-                <div className="text-[10px] text-slate-700">
+                <div className="text-[10px] text-slate-400">
                   Commercial Grade
                 </div>
               </div>
@@ -150,7 +151,7 @@ export default function SofaUpholsteryClient() {
                 <div className="text-blue-400 font-bold text-xs uppercase mb-1">
                   Fire Retardant
                 </div>
-                <div className="text-[10px] text-slate-700">
+                <div className="text-[10px] text-slate-400">
                   Safety Standards
                 </div>
               </div>
@@ -171,8 +172,8 @@ export default function SofaUpholsteryClient() {
             designer options.
           </p>
           <div className="pt-4">
-            <Link href="/quote">
-              <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95">
+            <Link href="/quote" className="cursor-pointer">
+              <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95 cursor-pointer">
                 Receive Your Complimentary Quote
               </button>
             </Link>

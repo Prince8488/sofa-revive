@@ -59,7 +59,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false); // Mobile accordion state
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const [activeService, setActiveService] = useState(mobileServices[0]);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ export default function Header() {
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(true)}
-            className="p-2 -ml-2 text-slate-900 hover:bg-slate-50 rounded-xl transition-colors"
+            className="p-2 -ml-2 text-slate-900 hover:bg-slate-50 rounded-xl transition-colors cursor-pointer"
             aria-label="Open main menu"
           >
             <Menu size={28} />
@@ -89,7 +89,10 @@ export default function Header() {
         </div>
 
         <div className="flex-1 flex md:justify-center sm:justify-center lg:justify-start lg:flex-none">
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link
+            href="/"
+            className="flex items-center gap-2 group cursor-pointer"
+          >
             <div className="bg-blue-600 text-white p-1.5 rounded-lg group-hover:scale-110 transition-transform">
               <Armchair size={18} />
             </div>
@@ -99,7 +102,7 @@ export default function Header() {
           </Link>
         </div>
 
-        {/* DESKTOP MENU (Megamenu Pattern) */}
+        {/* DESKTOP MENU */}
         <ul className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
           {navLinks.map((link) => (
             <li
@@ -110,7 +113,7 @@ export default function Header() {
             >
               <Link
                 href={link.href}
-                className="text-[11px] font-black text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-1"
+                className="text-[11px] font-black text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-1 cursor-pointer"
               >
                 {link.name}
                 {link.hasDropdown && (
@@ -134,10 +137,14 @@ export default function Header() {
                         Our Specialties
                       </p>
                       {mobileServices.map((service) => (
-                        <Link href={service.href} key={service.name}>
+                        <Link
+                          href={service.href}
+                          key={service.name}
+                          className="cursor-pointer"
+                        >
                           <button
                             onMouseEnter={() => setActiveService(service)}
-                            className={`w-full flex items-center justify-between p-3 rounded-xl transition-all text-left ${
+                            className={`w-full flex items-center justify-between p-3 rounded-xl transition-all text-left cursor-pointer ${
                               activeService.name === service.name
                                 ? "bg-blue-50 text-blue-600"
                                 : "text-slate-600 hover:bg-slate-50"
@@ -193,15 +200,15 @@ export default function Header() {
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link href="/quote">
-            <button className="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-blue-600 transition-all shadow-lg active:scale-95 text-[10px] font-black uppercase tracking-widest">
+          <Link href="/quote" className="cursor-pointer">
+            <button className="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-blue-600 transition-all shadow-lg active:scale-95 text-[10px] font-black uppercase tracking-widest cursor-pointer">
               Get Quote
             </button>
           </Link>
         </div>
       </nav>
 
-      {/* MOBILE DRAWER (Improved for Megamenu feel) */}
+      {/* MOBILE DRAWER */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -215,7 +222,7 @@ export default function Header() {
               <Link
                 href="/"
                 onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 cursor-pointer"
               >
                 <div className="bg-blue-600 text-white p-1.5 rounded-lg">
                   <Armchair size={18} />
@@ -224,7 +231,10 @@ export default function Header() {
                   SOFA<span className="text-blue-600">REVIVE</span>
                 </span>
               </Link>
-              <button onClick={() => setIsOpen(false)}>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="cursor-pointer"
+              >
                 <X size={28} />
               </button>
             </div>
@@ -238,7 +248,7 @@ export default function Header() {
                         onClick={() =>
                           setMobileServicesOpen(!mobileServicesOpen)
                         }
-                        className="py-5 text-2xl font-black uppercase tracking-tighter border-b border-slate-50 flex justify-between items-center text-left"
+                        className="py-5 text-2xl font-black uppercase tracking-tighter border-b border-slate-50 flex justify-between items-center text-left cursor-pointer"
                       >
                         {link.name}
                         <ChevronDown
@@ -250,14 +260,13 @@ export default function Header() {
                       <Link
                         href={link.href}
                         onClick={() => setIsOpen(false)}
-                        className="py-5 text-2xl font-black uppercase tracking-tighter border-b border-slate-50 flex justify-between items-center"
+                        className="py-5 text-2xl font-black uppercase tracking-tighter border-b border-slate-50 flex justify-between items-center cursor-pointer"
                       >
                         {link.name}
                         <ChevronRight size={20} className="text-slate-300" />
                       </Link>
                     )}
 
-                    {/* MOBILE ACCORDION CONTENT */}
                     <AnimatePresence>
                       {link.hasDropdown && mobileServicesOpen && (
                         <motion.div
@@ -272,7 +281,7 @@ export default function Header() {
                                 href={service.href}
                                 key={service.name}
                                 onClick={() => setIsOpen(false)}
-                                className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col gap-2"
+                                className="bg-white p-3 rounded-2xl border border-slate-100 shadow-sm flex flex-col gap-2 cursor-pointer"
                               >
                                 <div className="relative aspect-square w-full rounded-xl overflow-hidden">
                                   <Image
@@ -296,12 +305,11 @@ export default function Header() {
               </nav>
             </div>
 
-            {/* QUICK CONTACTS */}
             <div className="p-5 border-t border-slate-100 bg-white">
               <div className="flex gap-3">
                 <a
                   href="tel:919304059249"
-                  className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-900 rounded-2xl text-white shadow-lg"
+                  className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-900 rounded-2xl text-white shadow-lg cursor-pointer"
                 >
                   <Phone size={16} />
                   <span className="text-[11px] font-black uppercase tracking-widest">
@@ -310,7 +318,7 @@ export default function Header() {
                 </a>
                 <a
                   href="https://wa.me/919304059249"
-                  className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#25D366] rounded-2xl text-white shadow-lg"
+                  className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#25D366] rounded-2xl text-white shadow-lg cursor-pointer"
                 >
                   <MessageSquare size={16} fill="white" />
                   <span className="text-[11px] font-black uppercase tracking-widest">

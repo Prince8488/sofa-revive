@@ -58,13 +58,13 @@ export default function SofaPolishingClient() {
           {polishingFeatures.map((feature, index) => (
             <div
               key={index}
-              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm hover:shadow-md transition-shadow group cursor-default"
             >
               <div className="aspect-video rounded-lg overflow-hidden mb-4 bg-slate-100">
                 <img
                   src={feature.img}
                   alt={feature.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="flex items-center gap-2 mb-2">
@@ -78,7 +78,7 @@ export default function SofaPolishingClient() {
               </p>
               <Link
                 href="/gallery"
-                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1"
+                className="text-blue-600 text-[10px] font-bold uppercase tracking-widest flex items-center gap-1 cursor-pointer hover:gap-2 transition-all"
               >
                 Process Details <ArrowUpRight size={12} />
               </Link>
@@ -114,8 +114,8 @@ export default function SofaPolishingClient() {
           <div className="rounded-2xl overflow-hidden aspect-video shadow-lg">
             <img
               src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=1000"
-              alt="Luxury Restaurant Interior"
-              className="w-full h-full object-cover transition-all duration-700"
+              alt="Artisan wood polishing"
+              className="w-full h-full object-cover grayscale-[30%] hover:grayscale-0 transition-all duration-700"
             />
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function SofaPolishingClient() {
             <h2 className="text-2xl md:text-3xl font-bold leading-tight">
               Preserve the Lifespan <br /> of Your Assets
             </h2>
-            <p className="text-slate-600 text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">
+            <p className="text-slate-400 text-sm leading-relaxed max-w-lg mx-auto lg:mx-0">
               Our creative staff provides personal consultations to navigate the
               vast variety of polishing combinations. From hardware care to
               designer-grade materials, we tell your story by preserving what
@@ -137,26 +137,26 @@ export default function SofaPolishingClient() {
             <div className="flex flex-wrap justify-center lg:justify-start gap-4 pt-4">
               <Link
                 href="/quote"
-                className="bg-blue-600 text-white px-6 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors"
+                className="bg-blue-600 text-white px-6 py-3 rounded text-[10px] font-bold uppercase tracking-widest hover:bg-blue-700 transition-colors cursor-pointer"
               >
                 Request Consultation
               </Link>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="p-6 bg-slate-800 rounded-2xl text-center">
-              <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic">
+            <div className="p-6 bg-slate-800 rounded-2xl text-center group">
+              <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic group-hover:text-blue-400 transition-colors">
                 Deep
               </div>
-              <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">
+              <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
                 Nourishment
               </div>
             </div>
-            <div className="p-6 bg-slate-800 rounded-2xl text-center">
-              <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic">
+            <div className="p-6 bg-slate-800 rounded-2xl text-center group">
+              <div className="text-2xl font-bold text-white mb-1 tracking-tighter italic group-hover:text-blue-400 transition-colors">
                 High
               </div>
-              <div className="text-[9px] text-slate-600 font-bold uppercase tracking-widest">
+              <div className="text-[9px] text-slate-400 font-bold uppercase tracking-widest">
                 Lustre Finish
               </div>
             </div>
@@ -165,7 +165,7 @@ export default function SofaPolishingClient() {
       </section>
 
       {/* 5. FINAL ACTION */}
-      <section className="py-20 px-6 text-center bg-white">
+      <section className="py-20 px-6 text-center bg-white border-t border-slate-100">
         <div className="max-w-xl mx-auto space-y-6">
           <h2 className="text-2xl font-black uppercase text-slate-900 tracking-tight">
             Institutional Quality. <br />
@@ -177,8 +177,8 @@ export default function SofaPolishingClient() {
             From antique dressers to modern boardroom tables, DreamDecore
             delivers the standard of excellence Bangalore demands.
           </p>
-          <Link href="/quote">
-            <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95">
+          <Link href="/quote" className="cursor-pointer">
+            <button className="bg-slate-950 text-white px-10 py-4 rounded-lg font-bold uppercase text-[10px] tracking-[0.2em] hover:bg-blue-600 transition-all shadow-xl active:scale-95 cursor-pointer">
               Receive Your Complimentary Quote
             </button>
           </Link>

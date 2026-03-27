@@ -22,7 +22,7 @@ const fadeIn: Variants = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: "easeOut", // TypeScript now knows this is a valid Framer ease
+      ease: "easeOut",
     },
   },
 };
@@ -85,7 +85,7 @@ const AboutPage = () => {
             <motion.div
               key={i}
               whileHover={{ y: -5 }}
-              className="bg-white p-12 space-y-6 relative group transition-all duration-500"
+              className="bg-white p-12 space-y-6 relative group transition-all duration-500 cursor-pointer"
             >
               <div className="text-brand-600 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3">
                 {item.icon}
@@ -102,7 +102,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* 3. SUSTAINABILITY (IMAGE NOW VISIBLE BY DEFAULT) */}
+      {/* 3. SUSTAINABILITY */}
       <section className="px-6 mb-32 bg-studio-50 py-24 md:rounded-[4rem] mx-0 md:mx-6 border border-studio-100/50">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -148,7 +148,7 @@ const AboutPage = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 1.5, ease: "easeOut" }}
               src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1000"
-              className="w-full aspect-square object-cover transition-all duration-700" // REMOVED grayscale and opacity-90
+              className="w-full aspect-square object-cover transition-all duration-700"
               alt="Sustainability in Action"
             />
             <div className="absolute inset-0 ring-1 ring-inset ring-white/10 rounded-[3rem]" />
@@ -176,11 +176,11 @@ const AboutPage = () => {
             just fix furniture—we build legacies."
           </p>
           <div className="pt-12 flex flex-col sm:flex-row gap-6 justify-center">
-            <Link href="/quote">
+            <Link href="/quote" className="cursor-pointer">
               <motion.button
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.98 }}
-                className="relative min-w-[280px] px-12 py-8 bg-blue-600 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(37,99,235,0.4)] hover:shadow-blue-600/60 group z-10"
+                className="relative min-w-[280px] px-12 py-8 bg-blue-600 text-white rounded-3xl font-black text-xs uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 shadow-[0_20px_50px_rgba(37,99,235,0.4)] hover:shadow-blue-600/60 group z-10 cursor-pointer"
               >
                 <span>Book Your Audit</span>
                 <ArrowRight
@@ -189,7 +189,7 @@ const AboutPage = () => {
                 />
               </motion.button>
             </Link>
-            <Link href="/gallery">
+            <Link href="/gallery" className="cursor-pointer">
               <motion.button
                 whileHover={{
                   scale: 1.02,
@@ -197,7 +197,7 @@ const AboutPage = () => {
                   color: "#fff",
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-12 py-6 border-2 border-studio-900 text-studio-900 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all"
+                className="px-12 py-6 border-2 border-studio-900 text-studio-900 rounded-2xl font-black text-[10px] uppercase tracking-widest transition-all cursor-pointer"
               >
                 View Our Catalog
               </motion.button>
