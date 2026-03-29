@@ -27,9 +27,25 @@ export default function Hero() {
             className="flex-1 space-y-8"
           >
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 text-blue-600 font-bold text-[10px] uppercase tracking-[0.3em]">
-                <span className="w-8 h-[1px] bg-blue-600"></span>
-                Bengaluru's Premier Studio
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-blue-50 rounded-full border border-blue-100">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-star text-blue-600 fill-blue-600"
+                  aria-hidden="true"
+                >
+                  <path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" />
+                </svg>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-700">
+                  Bangalore's #1 Furniture Clinic
+                </span>
               </div>
 
               <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[0.95] text-slate-950">
@@ -40,8 +56,8 @@ export default function Hero() {
               </h1>
 
               <p className="text-lg text-slate-700 max-w-lg leading-relaxed font-medium">
-                Institutional-grade upholstery and structural repair for luxury
-                homes. Delivered with a 1-year certified warranty.
+                Premium sofa repair and custom upholstery designed for
+                longevity. We bring the showroom finish back to your doorstep.
               </p>
             </div>
 
@@ -65,7 +81,7 @@ export default function Hero() {
               <div className="flex items-center gap-2 text-slate-600">
                 <CheckCircle2 size={18} className="text-blue-600" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
-                  ISO Certified
+                  Branded Materials
                 </span>
               </div>
             </div>
