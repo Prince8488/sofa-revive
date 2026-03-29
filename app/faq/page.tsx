@@ -11,7 +11,9 @@ export default function FaqPage() {
           {/* Updated: Extrabold / Tracking-Tight */}
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-slate-900 leading-[1.1]">
             Common <br className="md:hidden" />
-            <span className="text-blue-600">Queries.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+              Queries.
+            </span>
           </h1>
 
           {/* Updated: Standardized Slate-500 font scale */}

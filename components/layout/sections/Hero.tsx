@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative bg-white text-slate-900 pt-24 md:pt-32 pb-16 px-6 overflow-hidden">
+    <section className="relative bg-white text-slate-900 pt-20 md:pt-30 pb-16 px-6 overflow-hidden">
       {/* 1. STRUCTURAL GRID BACKGROUND */}
       <div
         className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"

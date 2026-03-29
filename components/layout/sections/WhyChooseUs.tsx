@@ -26,7 +26,7 @@ const FEATURES = [
   {
     icon: Award,
     title: "Branded Materials",
-    description: "We only use original Sleepwell™ and Kurlon™ materials.",
+    description: "We only use good quality materials.",
   },
   {
     icon: Clock,
@@ -115,7 +115,10 @@ export default function WhyChooseUS() {
           >
             <div className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl shadow-slate-200/60 md:p-12">
               <h3 className="mb-8 text-2xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
-                Request a <span className="text-blue-600">Price Estimate</span>
+                Request a{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                  Price Estimate
+                </span>
               </h3>
 
               <div className="space-y-4">

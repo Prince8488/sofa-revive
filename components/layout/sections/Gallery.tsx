@@ -46,11 +46,14 @@ export default function GallerySection() {
         {/* Header with Luxury Typography */}
         <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
           <div className="max-w-2xl">
-            <span className="text-blue-600 font-black uppercase tracking-[0.3em] text-[10px] mb-4 block">
+            <span className="text-blue-600 font-black tracking-[0.3em] text-[10px] mb-4 block">
               DreamDecore Craftsmanship
             </span>
-            <h2 className="text-5xl md:text-6xl font-black italic tracking-tighter uppercase leading-[0.9] text-slate-900">
-              The <br /> <span className="text-slate-300">Transformation</span>
+            <h2 className="text-5xl md:text-6xl font-black italic tracking-tighter leading-[0.9] text-slate-900">
+              The <br />{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+                Transformation
+              </span>
             </h2>
           </div>
           <p className="text-slate-700 font-medium max-w-sm text-sm md:text-right">

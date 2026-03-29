@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Camera,
@@ -8,26 +8,93 @@ import {
   Zap,
   MessageSquare,
   User,
-  MapPin,
   Phone,
   CheckCircle2,
+  Mail,
+  AlertCircle,
 } from "lucide-react";
+import { validateIndustryForm } from "@/utils/formvalidation";
 
 const IndustryQuoteForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  // Standardized Input Styling
-  const inputBase =
-    "w-full p-5 bg-slate-50 border-2 border-slate-100 rounded-2xl outline-none focus:border-blue-600 focus:bg-white transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm";
+  // Refs for Scroll-to-Error
+  const nameRef = useRef<HTMLDivElement>(null);
+  const emailRef = useRef<HTMLDivElement>(null);
+  const phoneRef = useRef<HTMLDivElement>(null);
 
-  // Updated: Standardized [10px] Bold Tracking-Widest
-  const labelBase =
-    "text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1";
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    condition: "",
+  });
+  const [images, setImages] = useState<File[]>([]);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { name, value } = e.target;
+
+    // Strict typing behavior: block digits in name, block non-digits in phone
+    if (name === "fullName" && /\d/.test(value)) return;
+    if (name === "phone") {
+      const cleaned = value.replace(/\D/g, "").slice(0, 10);
+      setFormData({ ...formData, [name]: cleaned });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
+
+    if (errors[name]) {
+      setErrors({ ...errors, [name]: "" });
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    const result = validateIndustryForm(formData);
+
+    if (result.isValid) {
+      setIsSubmitted(true);
+    } else {
+      setErrors(result.errors);
+
+      // Strict Scroll-to-Error Logic
+      const scrollOpts: ScrollIntoViewOptions = {
+        behavior: "smooth",
+        block: "center",
+      };
+      if (result.firstErrorField === "fullName")
+        nameRef.current?.scrollIntoView(scrollOpts);
+      else if (result.firstErrorField === "email")
+        emailRef.current?.scrollIntoView(scrollOpts);
+      else if (result.firstErrorField === "phone")
+        phoneRef.current?.scrollIntoView(scrollOpts);
+    }
   };
+
+  const inputBase = (fieldName: string) => `
+    w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
+    ${errors[fieldName] ? "border-red-400 focus:border-red-500 bg-red-50/30" : "border-slate-100 focus:border-blue-600 focus:bg-white"}
+  `;
+
+  const labelBase =
+    "text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1";
+
+  const ErrorMsg = ({ name }: { name: string }) => (
+    <AnimatePresence>
+      {errors[name] && (
+        <motion.span
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-[10px] text-red-500 font-bold mt-2 ml-1 flex items-center gap-1 uppercase tracking-wider"
+        >
+          <AlertCircle size={10} /> {errors[name]}
+        </motion.span>
+      )}
+    </AnimatePresence>
+  );
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 md:py-32 px-4 selection:bg-blue-100">
@@ -39,26 +106,21 @@ const IndustryQuoteForm = () => {
             animate={{ opacity: 1, y: 0 }}
             className="space-y-6"
           >
-            {/* Standardized Badge */}
             <div className="inline-flex items-center gap-2 text-blue-600 bg-blue-50 px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] border border-blue-100">
               <Zap size={12} fill="currentColor" /> Instant Estimates
             </div>
-
-            {/* Updated: bold / Tracking-Tight */}
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[1.1] text-slate-900">
               Revive Your <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
                 Furniture.
               </span>
             </h1>
-
             <p className="text-slate-700 font-medium leading-relaxed max-w-sm text-sm md:text-base">
               Bengaluru’s most trusted restoration studio. Get a line-item
               estimate within 15 minutes of sharing photos.
             </p>
           </motion.div>
 
-          {/* Trust Pillars */}
           <div className="space-y-4">
             {[
               { icon: <Zap size={18} />, text: "Free expert advice" },
@@ -66,10 +128,7 @@ const IndustryQuoteForm = () => {
                 icon: <MessageSquare size={18} />,
                 text: "WhatsApp Consultation",
               },
-              {
-                icon: <ShieldCheck size={18} />,
-                text: "1-Year Warranty",
-              },
+              { icon: <ShieldCheck size={18} />, text: "1-Year Warranty" },
             ].map((pillar, idx) => (
               <motion.div
                 key={idx}
@@ -91,7 +150,6 @@ const IndustryQuoteForm = () => {
           animate={{ opacity: 1, x: 0 }}
           className="w-full lg:w-[65%] bg-white rounded-[2.5rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] p-8 md:p-16 border border-white relative overflow-hidden"
         >
-          {/* Progress Bar */}
           <div className="absolute top-0 left-0 w-full h-1.5 bg-slate-50">
             <motion.div
               initial={{ width: 0 }}
@@ -108,8 +166,8 @@ const IndustryQuoteForm = () => {
                 exit={{ opacity: 0, scale: 0.98 }}
                 onSubmit={handleSubmit}
                 className="space-y-12"
+                noValidate
               >
-                {/* Sections standardized to bold Tracking-Tight */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold">
@@ -121,55 +179,75 @@ const IndustryQuoteForm = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="group">
-                      <label className={labelBase}>Full Name</label>
+                    {/* NAME FIELD */}
+                    <div ref={nameRef} className="group">
+                      <label className={labelBase}>
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
                       <div className="relative">
                         <User
-                          className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600"
+                          className={`absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.fullName ? "text-red-400" : "text-slate-300 group-focus-within:text-blue-600"}`}
                           size={18}
                         />
                         <input
+                          name="fullName"
                           type="text"
+                          value={formData.fullName}
+                          onChange={handleChange}
                           placeholder="John Doe"
-                          className={`${inputBase} pl-14`}
-                          required
+                          className={`${inputBase("fullName")} pl-14`}
                         />
                       </div>
+                      <ErrorMsg name="fullName" />
                     </div>
-                    <div className="group">
-                      <label className={labelBase}>Bengaluru Locality</label>
+
+                    {/* EMAIL FIELD */}
+                    <div ref={emailRef} className="group">
+                      <label className={labelBase}>
+                        Email Address <span className="text-red-500">*</span>
+                      </label>
                       <div className="relative">
-                        <MapPin
-                          className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600"
+                        <Mail
+                          className={`absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.email ? "text-red-400" : "text-slate-300 group-focus-within:text-blue-600"}`}
                           size={18}
                         />
                         <input
-                          type="text"
-                          placeholder="e.g., HSR Layout"
-                          className={`${inputBase} pl-14`}
-                          required
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@gmail.com"
+                          className={`${inputBase("email")} pl-14`}
                         />
                       </div>
+                      <ErrorMsg name="email" />
                     </div>
-                    <div className="md:col-span-2 group">
-                      <label className={labelBase}>WhatsApp Number</label>
+
+                    {/* PHONE FIELD */}
+                    <div ref={phoneRef} className="md:col-span-2 group">
+                      <label className={labelBase}>
+                        WhatsApp Number <span className="text-red-500">*</span>
+                      </label>
                       <div className="relative">
                         <Phone
-                          className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-600"
+                          className={`absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.phone ? "text-red-400" : "text-slate-300 group-focus-within:text-blue-600"}`}
                           size={18}
                         />
                         <input
+                          name="phone"
                           type="tel"
-                          placeholder="+91 9XXXX XXXXX"
-                          className={`${inputBase} pl-14`}
-                          required
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="9XXXX XXXXX"
+                          className={`${inputBase("phone")} pl-14`}
                         />
                       </div>
+                      <ErrorMsg name="phone" />
                     </div>
                   </div>
                 </div>
 
-                {/* Visual Assessment */}
+                {/* VISUAL ASSESSMENT (Optional) */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold">
@@ -179,10 +257,12 @@ const IndustryQuoteForm = () => {
                       Visual Assessment
                     </h3>
                   </div>
-
                   <div className="group relative border-2 border-dashed border-slate-200 rounded-[2rem] p-10 text-center hover:border-blue-600 hover:bg-blue-50/30 transition-all cursor-pointer">
                     <input
                       type="file"
+                      onChange={(e) =>
+                        e.target.files && setImages(Array.from(e.target.files))
+                      }
                       className="absolute inset-0 opacity-0 cursor-pointer"
                       accept="image/*"
                       multiple
@@ -192,12 +272,12 @@ const IndustryQuoteForm = () => {
                       Snap or Upload Photos
                     </p>
                     <p className="text-[10px] text-slate-600 mt-2 uppercase font-bold tracking-tight">
-                      Required for 15-min Quotes
+                      Optional
                     </p>
                   </div>
                 </div>
 
-                {/* Project Details */}
+                {/* PROJECT DETAILS (Optional) */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] font-bold">
@@ -210,18 +290,20 @@ const IndustryQuoteForm = () => {
                   <div className="group">
                     <label className={labelBase}>Current Condition</label>
                     <textarea
+                      name="condition"
+                      value={formData.condition}
+                      onChange={handleChange}
                       placeholder="Tell us what needs fixing..."
                       rows={4}
-                      className={`${inputBase} resize-none`}
+                      className={`${inputBase("condition")} resize-none`}
                     />
                   </div>
                 </div>
 
-                {/* SUBMIT BUTTON - Standardized tracking */}
                 <div className="pt-6">
                   <button
                     type="submit"
-                    className="cursor-pointer w-full py-5  bg-slate-950  hover:bg-blue-600 text-white rounded-xl font-bold uppercase text-[10px] tracking-[0.25em] shadow-xl shadow-blue-600/30 hover:-translate-y-1 transition-all duration-300"
+                    className="cursor-pointer w-full py-5 bg-slate-950 hover:bg-blue-600 text-white rounded-xl font-bold uppercase text-[10px] tracking-[0.25em] shadow-xl shadow-blue-600/30 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
                   >
                     Receive Expert Estimate
                   </button>
@@ -232,7 +314,6 @@ const IndustryQuoteForm = () => {
                 </div>
               </motion.form>
             ) : (
-              /* SUCCESS STATE */
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -252,7 +333,7 @@ const IndustryQuoteForm = () => {
                 </p>
                 <button
                   onClick={() => setIsSubmitted(false)}
-                  className="text-blue-600 font-bold uppercase text-[10px] tracking-widest mt-8 hover:underline"
+                  className="text-blue-600 font-bold uppercase text-[10px] tracking-widest mt-8 hover:underline cursor-pointer"
                 >
                   Edit Request
                 </button>

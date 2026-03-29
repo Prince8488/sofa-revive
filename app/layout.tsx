@@ -71,7 +71,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${inter.className} bg-stone-50 text-slate-900`}
+        className={`${inter.className} bg-stone-50 text-slate-900 py-8 md:py-0`}
         suppressHydrationWarning={true} // Add this here
       >
         <Header />
