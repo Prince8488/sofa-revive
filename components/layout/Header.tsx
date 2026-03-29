@@ -15,6 +15,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 
+interface MobileDrawerProps {
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}
+
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "#services", hasDropdown: true },
@@ -220,7 +225,7 @@ function DesktopNav() {
 
 /** * MOBILE DRAWER COMPONENT (Industry Level Style)
  */
-function MobileDrawer({ isOpen, setIsOpen }) {
+function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   useEffect(() => {
