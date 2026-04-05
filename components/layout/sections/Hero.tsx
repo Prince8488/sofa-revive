@@ -15,7 +15,7 @@ export default function Hero() {
     'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop'
 
   return (
-    <section className="md:pt-30 relative overflow-hidden bg-white px-6 pb-16 pt-20 text-slate-900">
+    <section className="md:pt-25 relative overflow-hidden bg-white px-6 pb-5 pt-20 text-slate-900">
       {/* 1. STRUCTURAL GRID BACKGROUND */}
       <div
         className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
@@ -26,7 +26,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-7xl">
-        <div className="flex flex-col items-center gap-16 lg:flex-row lg:gap-24">
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:gap-20">
           {/* LEFT: CONTENT (The Authority Pillar) */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -56,21 +56,21 @@ export default function Hero() {
                 </span>
               </div>
 
-              <h1 className="text-5xl font-extrabold leading-[0.95] tracking-tight text-slate-950 md:text-7xl">
+              <h1 className="h1">
                 Sofa Restoration <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Redefined.
                 </span>
               </h1>
 
-              <p className="max-w-lg text-lg font-medium leading-relaxed text-slate-700">
+              <p className="p max-w-lg">
                 Premium sofa repair and custom upholstery designed for
                 longevity. We bring the showroom finish back to your doorstep.
               </p>
             </div>
 
             {/* DIRECT CALL TO ACTION */}
-            <div className="flex flex-col gap-4 pt-4 sm:flex-row">
+            <div className="flex flex-col gap-4 pt-0 sm:flex-row">
               <Link href="/quote" className="w-full cursor-pointer sm:w-auto">
                 <button className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-slate-950 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-all hover:bg-blue-600">
                   Book Free Inspection <ArrowRight size={16} />
@@ -79,7 +79,7 @@ export default function Hero() {
             </div>
 
             {/* TRUST INDICATORS: CLEAN & LINEAR */}
-            <div className="flex items-center gap-8 border-t border-slate-100 pt-6">
+            <div className="flex items-center gap-8 border-t border-slate-100 pt-0">
               <div className="flex items-center gap-2 text-slate-600">
                 <ShieldCheck size={18} className="text-blue-600" />
                 <span className="text-[10px] font-bold uppercase tracking-widest">

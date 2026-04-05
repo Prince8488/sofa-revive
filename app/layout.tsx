@@ -130,7 +130,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         className={`${inter.className} bg-stone-50 py-8 text-slate-900 md:py-0`}
-        suppressHydrationWarning={true} // Add this here
       >
         <Header />
         {children}

@@ -36,25 +36,81 @@ module.exports = {
       },
       // Integrated Typography Scale from our previous step
       fontSize: {
-        display: [
-          'clamp(3.5rem, 8vw, 6.5rem)',
-          {
-            lineHeight: '0.9',
-            letterSpacing: '-0.05em',
-            fontWeight: '900',
-          },
-        ],
-        heading: [
-          'clamp(2.25rem, 5vw, 3.75rem)',
-          {
-            lineHeight: '1',
-            letterSpacing: '-0.02em',
-            fontWeight: '900',
-          },
-        ],
+        xs: ['0.75rem', { lineHeight: '1.5' }],
+        sm: ['0.875rem', { lineHeight: '1.5' }],
+        base: ['1rem', { lineHeight: '1.5' }],
+        lg: ['1.125rem', { lineHeight: '1.5' }],
+        xl: ['1.25rem', { lineHeight: '1.5' }],
+        '2xl': ['1.5rem', { lineHeight: '1.4' }],
+        '3xl': ['1.875rem', { lineHeight: '1.3' }],
+        '4xl': ['2.25rem', { lineHeight: '1.2' }],
+        '5xl': ['3rem', { lineHeight: '1.1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+        '7xl': ['4.5rem', { lineHeight: '1' }],
+        '8xl': ['6rem', { lineHeight: '1' }],
+        '9xl': ['8rem', { lineHeight: '1' }],
       },
     },
   },
-
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    function ({ addBase, theme }) {
+      addBase({
+        ':root': {
+          '--font-size-xs': theme('fontSize.xs')[0],
+          '--font-size-sm': theme('fontSize.sm')[0],
+          '--font-size-base': theme('fontSize.base')[0],
+          '--font-size-lg': theme('fontSize.lg')[0],
+          '--font-size-xl': theme('fontSize.xl')[0],
+          '--font-size-2xl': theme('fontSize.2xl')[0],
+          '--font-size-3xl': theme('fontSize.3xl')[0],
+          '--font-size-4xl': theme('fontSize.4xl')[0],
+          '--font-size-5xl': theme('fontSize.5xl')[0],
+          '--font-size-6xl': theme('fontSize.6xl')[0],
+          '--font-size-7xl': theme('fontSize.7xl')[0],
+          '--font-size-8xl': theme('fontSize.8xl')[0],
+          '--font-size-9xl': theme('fontSize.9xl')[0],
+        },
+        h1: {
+          fontSize: `clamp(${theme('fontSize.4xl')[0]}, 5vw, ${
+            theme('fontSize.6xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        h2: {
+          fontSize: `clamp(${theme('fontSize.3xl')[0]}, 4vw, ${
+            theme('fontSize.5xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        h3: {
+          fontSize: `clamp(${theme('fontSize.2xl')[0]}, 3vw, ${
+            theme('fontSize.4xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        h4: {
+          fontSize: `clamp(${theme('fontSize.xl')[0]}, 2.5vw, ${
+            theme('fontSize.3xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        h5: {
+          fontSize: `clamp(${theme('fontSize.lg')[0]}, 2vw, ${
+            theme('fontSize.2xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        h6: {
+          fontSize: `clamp(${theme('fontSize.base')[0]}, 1.8vw, ${
+            theme('fontSize.xl')[0]
+          })`,
+          fontWeight: 'bold',
+        },
+        p: {
+          fontSize: theme('fontSize.base')[0],
+        },
+      })
+    },
+  ],
 }

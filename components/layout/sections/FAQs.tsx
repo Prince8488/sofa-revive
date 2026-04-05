@@ -58,7 +58,7 @@ export default function FaqAccordion() {
             {/* Updated: Extrabold / Tracking-Tight (No Italic/Black) */}
             <span
               itemProp="name"
-              className={`text-base font-bold tracking-tight transition-colors md:text-lg ${
+              className={`h6 transition-colors ${
                 activeIdx === idx
                   ? 'text-blue-600'
                   : 'text-slate-900 group-hover:text-blue-600'
@@ -91,10 +91,7 @@ export default function FaqAccordion() {
                 itemType="https://schema.org/Answer"
               >
                 {/* Updated: Slate-500 font-medium scale */}
-                <div
-                  className="max-w-2xl pb-8 text-sm font-medium leading-relaxed text-slate-700 md:text-[15px]"
-                  itemProp="text"
-                >
+                <div className="p max-w-2xl pb-8" itemProp="text">
                   {item.a}
                 </div>
               </motion.div>

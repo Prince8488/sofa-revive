@@ -89,9 +89,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
       {/* TEXT CONTENT */}
       <div className="p-6">
         <div className="mb-4 flex items-center justify-between text-center">
-          <h3 className="text-lg font-bold tracking-tight text-slate-900">
-            {service.title}
-          </h3>
+          <h3 className="h3">{service.title}</h3>
         </div>
 
         <ul className="mb-8 space-y-2.5">

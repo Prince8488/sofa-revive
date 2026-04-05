@@ -20,7 +20,7 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="relative bg-white px-6 py-5">
+    <section id="reviews" className="relative bg-white px-6">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-12 lg:grid-cols-3 lg:gap-20">
           {/* LEFT: Trust Header */}
@@ -37,7 +37,7 @@ export default function Testimonials() {
             />
 
             {/* H2: Matched to previous section 4xl/5xl */}
-            <h2 className="mb-8 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
+            <h2 className="h2 mb-8">
               What our <br />
               <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                 Clients
@@ -82,9 +82,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Review Text: text-base (16px) matched to main section body */}
-                <p className="mb-8 text-base font-medium leading-relaxed text-slate-600">
-                  "{t.text}"
-                </p>
+                <p className="p mb-8">"{t.text}"</p>
 
                 <div className="flex flex-col gap-1 border-t border-slate-50 pt-6">
                   {/* Name: 15px/16px matched to feature titles */}

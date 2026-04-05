@@ -5,7 +5,7 @@ import ServiceCard from './ServicesCard'
 
 export default function OurServices() {
   return (
-    <section className="mx-auto max-w-7xl px-6 py-10">
+    <section className="mx-auto max-w-7xl px-6 py-8">
       {/* HEADER SECTION: Standardized with Hero/Service pages */}
       <div className="mb-5 text-center md:text-left">
         <div className="inline-flex items-center gap-2 pb-5 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-600">
@@ -14,12 +14,10 @@ export default function OurServices() {
         </div>
 
         {/* Updated: Extrabold / Tracking-Tight */}
-        <h2 className="mb-4 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
-          Our Specialist Services
-        </h2>
+        <h2 className="h2 mb-4">Our Specialist Services</h2>
 
         {/* Updated: Standardized Slate-500 font scale */}
-        <p className="max-w-2xl text-sm leading-relaxed text-slate-700 md:text-base">
+        <p className="p max-w-2xl">
           Select a service to explore our specialized restoration process,
           premium material options, and high-end results.
         </p>

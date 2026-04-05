@@ -72,14 +72,14 @@ export default function WhyChooseUS() {
                 </span>
               </div>
 
-              <h2 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
+              <h2 className="h2">
                 Furniture Revival <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Without the Stress.
                 </span>
               </h2>
 
-              <p className="max-w-lg text-base font-medium leading-relaxed text-slate-600">
+              <p className="p max-w-lg">
                 We don’t just patch up sofas; we re-engineer them. From
                 high-density foam to premium fabrics, we bring showroom quality
                 directly to your living room.
@@ -114,7 +114,7 @@ export default function WhyChooseUS() {
             className="relative w-full max-w-lg lg:ml-auto"
           >
             <div className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl shadow-slate-200/60 md:p-12">
-              <h3 className="mb-8 bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-2xl font-bold tracking-tight text-transparent">
+              <h3 className="h3 mb-8">
                 Request a{' '}
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Price Estimate

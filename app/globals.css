@@ -13,5 +13,57 @@
 @layer base {
   body {
     @apply bg-white text-slate-900 antialiased;
+    font-size: var(--font-size-base);
+  }
+
+  /*
+    ========================================
+    Modular Typographic Scale (Ratio: 1.25)
+    ========================================
+    This scale uses a "Major Third" ratio to create a harmonious and
+    professional typographic hierarchy. It's a well-established industry
+    standard for creating clear, readable, and visually appealing text.
+  */
+
+  h1,
+  .h1 {
+    @apply mb-4 text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl;
+    /* 3.052rem */
+  }
+
+  h2,
+  .h2 {
+    @apply mb-4 text-2xl font-bold tracking-tight md:text-3xl lg:text-4xl;
+    /* 2.441rem */
+  }
+
+  h3,
+  .h3 {
+    @apply mb-3 text-xl font-semibold tracking-tight md:text-2xl lg:text-3xl;
+    /* 1.953rem */
+  }
+
+  h4,
+  .h4 {
+    @apply mb-3 text-lg font-semibold tracking-tight md:text-xl lg:text-2xl;
+    /* 1.563rem */
+  }
+
+  h5,
+  .h5 {
+    @apply mb-2 text-base font-semibold tracking-tight md:text-lg lg:text-xl;
+    /* 1.25rem */
+  }
+
+  h6,
+  .h6 {
+    @apply mb-2 text-sm font-semibold tracking-tight md:text-base lg:text-lg;
+    /* 1.0rem -> base */
+  }
+
+  p,
+  .p {
+    @apply mb-2 text-base;
+    /* 1.0rem */
   }
 }
