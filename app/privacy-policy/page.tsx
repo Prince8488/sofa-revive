@@ -1,4 +1,4 @@
-import PolicyLayout from "@/components/layout/legal/PolicyLayout";
+import PolicyLayout from '@/components/layout/legal/PolicyLayout'
 
 export default function PrivacyPolicy() {
   return (
@@ -7,7 +7,7 @@ export default function PrivacyPolicy() {
       <p>
         When you request a <strong>SofaRetrive</strong> estimate or a home
         consultation, we collect your name, WhatsApp number, and specific area
-        in Bangalore. This information is strictly used to coordinate your{" "}
+        in Bangalore. This information is strictly used to coordinate your{' '}
         <strong>free doorstep pickup</strong>
         and provide accurate labor estimates.
       </p>
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
       <p>
         By initiating a quote, you consent to receive communication via WhatsApp
         and Phone regarding your furniture restoration. We do not engage in
-        automated spam; all communications are handled by our{" "}
+        automated spam; all communications are handled by our{' '}
         <strong>Concierge Team</strong>
         to ensure high service standards.
       </p>
@@ -56,5 +56,5 @@ export default function PrivacyPolicy() {
         email us at <strong>legal@dreamdecore.com</strong>.
       </p>
     </PolicyLayout>
-  );
+  )
 }

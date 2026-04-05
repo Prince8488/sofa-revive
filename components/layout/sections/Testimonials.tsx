@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { Quote, Star } from "lucide-react";
-import { motion } from "framer-motion";
+import { Quote, Star } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const REVIEWS = [
   {
-    name: "Rahul Varma",
-    area: "HSR Layout",
-    text: "Incredible transformation! My 8-year-old leather sofa looks brand new. Highly recommend their polishing service.",
+    name: 'Rahul Varma',
+    area: 'HSR Layout',
+    text: 'Incredible transformation! My 8-year-old leather sofa looks brand new. Highly recommend their polishing service.',
     rating: 5,
   },
   {
-    name: "Sneha Kapoor",
-    area: "Whitefield",
-    text: "Professional team and timely delivery. They have a massive fabric collection to choose from. Very happy!",
+    name: 'Sneha Kapoor',
+    area: 'Whitefield',
+    text: 'Professional team and timely delivery. They have a massive fabric collection to choose from. Very happy!',
     rating: 5,
   },
-];
+]
 
 export default function Testimonials() {
   return (
@@ -28,7 +28,7 @@ export default function Testimonials() {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="lg:col-span-1 lg:sticky lg:top-32"
+            className="lg:sticky lg:top-32 lg:col-span-1"
           >
             <Quote
               size={48}
@@ -39,9 +39,9 @@ export default function Testimonials() {
             {/* H2: Matched to previous section 4xl/5xl */}
             <h2 className="mb-8 text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-5xl">
               What our <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-400">
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                 Clients
-              </span>{" "}
+              </span>{' '}
               say
             </h2>
 
@@ -65,7 +65,7 @@ export default function Testimonials() {
           </motion.div>
 
           {/* RIGHT: Testimonial Cards */}
-          <div className="grid gap-8 lg:col-span-2 md:grid-cols-2">
+          <div className="grid gap-8 md:grid-cols-2 lg:col-span-2">
             {REVIEWS.map((t, i) => (
               <motion.article
                 key={i}
@@ -102,5 +102,5 @@ export default function Testimonials() {
         </div>
       </div>
     </section>
-  );
+  )
 }

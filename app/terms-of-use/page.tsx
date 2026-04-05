@@ -1,4 +1,4 @@
-import PolicyLayout from "@/components/layout/legal/PolicyLayout";
+import PolicyLayout from '@/components/layout/legal/PolicyLayout'
 
 export default function TermsOfUsePage() {
   return (
@@ -13,15 +13,15 @@ export default function TermsOfUsePage() {
 
       <h2>2. Customer Information Collection</h2>
       <p>
-        We collect essential contact details such as your{" "}
+        We collect essential contact details such as your{' '}
         <strong>
           name, email address, phone number, and physical service address
-        </strong>{" "}
+        </strong>{' '}
         in Bangalore.
       </p>
       <blockquote>
         Please note that your transaction or banking details required for
-        internet banking or other payment instruments are{" "}
+        internet banking or other payment instruments are{' '}
         <strong>not held by DreamDecore</strong>. These are processed by our
         certified payment gateway partners.
       </blockquote>
@@ -34,7 +34,7 @@ export default function TermsOfUsePage() {
       <h2>3. How We Utilize Information</h2>
       <p>
         We only collect customer information required to conduct our business
-        and to provide the best furniture restoration services.{" "}
+        and to provide the best furniture restoration services.{' '}
         <strong>
           We do not sell or rent this information to third parties.
         </strong>
@@ -57,16 +57,16 @@ export default function TermsOfUsePage() {
         Users may opt-out of non-essential communications at any time. Please
         direct questions or opt-out requests to our support team:
       </p>
-      <div className="not-prose bg-slate-50 p-8 rounded-[2rem] border border-slate-100 my-10">
-        <h4 className="font-black uppercase italic text-sm mb-2">
+      <div className="not-prose my-10 rounded-[2rem] border border-slate-100 bg-slate-50 p-8">
+        <h4 className="mb-2 text-sm font-black uppercase italic">
           Legal Support
         </h4>
-        <p className="text-slate-700 text-sm mb-4">
+        <p className="mb-4 text-sm text-slate-700">
           For formal inquiries or data removal requests:
         </p>
         <a
           href="mailto:dreamdecore12@gmail.com"
-          className="inline-block bg-slate-900 text-white px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-blue-600 transition-all"
+          className="inline-block rounded-xl bg-slate-900 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-blue-600"
         >
           Email: dreamdecore12@gmail.com
         </a>
@@ -79,5 +79,5 @@ export default function TermsOfUsePage() {
         review this policy periodically.
       </p>
     </PolicyLayout>
-  );
+  )
 }

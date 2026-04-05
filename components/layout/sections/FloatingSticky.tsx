@@ -1,34 +1,34 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, MessageCircle, Phone, Plus } from "lucide-react";
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { MessageCircle, Phone, Plus } from 'lucide-react'
 
 export default function FloatingSticky() {
-  const [isOpen, setIsOpen] = useState(false);
-  const phoneNumber = "919304059249";
+  const [isOpen, setIsOpen] = useState(false)
+  const phoneNumber = '919304059249'
 
   // Removed the "Quote" item from this list
   const menuItems = [
     {
       icon: <MessageCircle size={22} />,
-      label: "WhatsApp",
-      color: "bg-green-500",
-      onClick: () => window.open(`https://wa.me/${phoneNumber}`, "_blank"),
+      label: 'WhatsApp',
+      color: 'bg-green-500',
+      onClick: () => window.open(`https://wa.me/${phoneNumber}`, '_blank'),
     },
     {
       icon: <Phone size={22} />,
-      label: "Call",
-      color: "bg-slate-900",
+      label: 'Call',
+      color: 'bg-slate-900',
       onClick: () => (window.location.href = `tel:+${phoneNumber}`),
     },
-  ];
+  ]
 
   return (
-    <div className="fixed bottom-6 right-6 z-[9999] flex flex-col items-end gap-4 hidden md:block lg:block">
+    <div className="fixed bottom-6 right-6 z-[9999] flex hidden flex-col items-end gap-4 md:block lg:block">
       <AnimatePresence>
         {isOpen && (
-          <div className="flex flex-col items-end gap-3 mb-2">
+          <div className="mb-2 flex flex-col items-end gap-3">
             {menuItems.map((item, i) => (
               <motion.div
                 key={i}
@@ -37,18 +37,18 @@ export default function FloatingSticky() {
                 exit={{ opacity: 0, scale: 0.5, y: 20 }}
                 transition={{
                   delay: i * 0.05,
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 300,
                   damping: 20,
                 }}
                 className="flex items-center gap-3"
               >
-                <span className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-sm text-slate-700 border border-slate-100">
+                <span className="rounded-lg border border-slate-100 bg-white/90 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-slate-700 shadow-sm backdrop-blur-md">
                   {item.label}
                 </span>
                 <button
                   onClick={item.onClick}
-                  className={`${item.color} text-white w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl hover:scale-110 active:scale-90 transition-all`}
+                  className={`${item.color} flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-xl transition-all hover:scale-110 active:scale-90`}
                 >
                   {item.icon}
                 </button>
@@ -62,12 +62,12 @@ export default function FloatingSticky() {
         onClick={() => setIsOpen(!isOpen)}
         animate={{ rotate: isOpen ? 135 : 0 }}
         aria-label="Contact us on WhatsApp or Call"
-        className={`w-16 h-16 rounded-3xl flex items-center justify-center shadow-2xl transition-colors ${
-          isOpen ? "bg-slate-100 text-slate-900" : "bg-slate-900 text-white"
+        className={`flex h-16 w-16 items-center justify-center rounded-3xl shadow-2xl transition-colors ${
+          isOpen ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'
         }`}
       >
         <Plus size={32} />
       </motion.button>
     </div>
-  );
+  )
 }

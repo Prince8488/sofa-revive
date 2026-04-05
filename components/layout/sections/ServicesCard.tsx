@@ -1,31 +1,42 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
-import { useState, useCallback } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import { motion } from 'framer-motion'
+import { CheckCircle2 } from 'lucide-react'
+import { useState, useCallback } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
-export default function ServiceCard({ service }: { service: any }) {
-  const [sliderPos, setSliderPos] = useState(50);
+type ServiceCardProps = {
+  service: any
+}
+
+export default function ServiceCard({ service }: ServiceCardProps) {
+  const isMobile = useMediaQuery('(max-width: 768px)')
+  const [sliderPos, setSliderPos] = useState(50)
 
   const handleMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
-    const container = e.currentTarget.getBoundingClientRect();
+    const container = e.currentTarget.getBoundingClientRect()
     const x =
-      "touches" in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX;
+      'touches' in e ? e.touches[0].clientX : (e as React.MouseEvent).clientX
 
-    const position = ((x - container.left) / container.width) * 100;
-    setSliderPos(Math.max(0, Math.min(100, position)));
-  }, []);
+    const position = ((x - container.left) / container.width) * 100
+    setSliderPos(Math.max(0, Math.min(100, position)))
+  }, [])
+
+  const image = isMobile ? `${service.image}&ar=3:4&fit=crop` : service.image
+  const beforeImage = isMobile
+    ? `${service.beforeImage || service.image}&ar=3:4&fit=crop`
+    : service.beforeImage || service.image
 
   return (
     <motion.div
       whileTap={{ scale: 0.98 }}
-      className="bg-white border border-slate-200 rounded-[2rem] overflow-hidden shadow-sm hover:shadow-xl transition-all group"
+      className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl"
     >
       {/* INTERACTIVE SLIDER BOX */}
       <div
-        className="relative h-64 md:h-72 overflow-hidden cursor-ew-resize touch-none"
+        className="relative h-64 cursor-ew-resize touch-none overflow-hidden md:h-72"
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         role="slider"
@@ -33,61 +44,61 @@ export default function ServiceCard({ service }: { service: any }) {
         aria-label={`Before and after comparison for ${service.title}`}
       >
         <Image
-          src={service.image}
+          src={image}
           alt={`${service.title} after restoration`}
           fill
-          sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
 
         <div
-          className="absolute inset-0 w-full h-full overflow-hidden transition-all duration-75 ease-out z-10"
+          className="absolute inset-0 z-10 h-full w-full overflow-hidden transition-all duration-75 ease-out"
           style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
         >
           <Image
-            src={service.beforeImage || service.image}
+            src={beforeImage}
             alt={`${service.title} before restoration`}
             fill
+            className="object-cover brightness-75 grayscale-[0.6]"
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover grayscale-[0.6] brightness-75"
           />
         </div>
 
         {/* Slider Handle */}
         <div
-          className="absolute inset-y-0 w-0.5 bg-white/80 shadow-xl z-20 pointer-events-none"
+          className="pointer-events-none absolute inset-y-0 z-20 w-0.5 bg-white/80 shadow-xl"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-7 h-7 bg-blue-600 rounded-full flex items-center justify-center shadow-lg border-2 border-white">
+          <div className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-blue-600 shadow-lg">
             <div className="flex gap-0.5">
-              <div className="w-0.5 h-2 bg-white rounded-full" />
-              <div className="w-0.5 h-2 bg-white rounded-full" />
+              <div className="h-2 w-0.5 rounded-full bg-white" />
+              <div className="h-2 w-0.5 rounded-full bg-white" />
             </div>
           </div>
         </div>
 
         {/* Floating Labels */}
-        <div className="absolute top-4 left-4 z-30 bg-black/40 backdrop-blur px-2.5 py-1 rounded text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none">
+        <div className="pointer-events-none absolute left-4 top-4 z-30 rounded bg-black/40 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
           Before
         </div>
-        <div className="absolute top-4 right-4 z-30 bg-blue-600 px-2.5 py-1 rounded text-[10px] font-bold text-white uppercase tracking-widest pointer-events-none">
+        <div className="pointer-events-none absolute right-4 top-4 z-30 rounded bg-blue-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           After
         </div>
       </div>
 
       {/* TEXT CONTENT */}
       <div className="p-6">
-        <div className="flex justify-between items-center text-center mb-4">
+        <div className="mb-4 flex items-center justify-between text-center">
           <h3 className="text-lg font-bold tracking-tight text-slate-900">
             {service.title}
           </h3>
         </div>
 
-        <ul className="space-y-2.5 mb-8">
+        <ul className="mb-8 space-y-2.5">
           {service.features.map((f: string, i: number) => (
             <li
               key={i}
-              className="text-xs text-slate-700 flex items-center gap-2 italic font-medium"
+              className="flex items-center gap-2 text-xs font-medium italic text-slate-700"
             >
               <CheckCircle2 size={14} className="text-green-500" /> {f}
             </li>
@@ -96,18 +107,18 @@ export default function ServiceCard({ service }: { service: any }) {
 
         {/* Wrap Button in Link */}
         <Link
-          href={service.href || "#"}
+          href={service.href || '#'}
           className="block w-full cursor-pointer"
           aria-label={`View case study for ${service.title}`}
         >
           <button
             type="button"
-            className="w-full py-4 bg-slate-950 text-white rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-blue-600 transition-all active:scale-[0.97] shadow-sm cursor-pointer"
+            className="w-full cursor-pointer rounded-xl bg-slate-950 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm transition-all hover:bg-blue-600 active:scale-[0.97]"
           >
             View Case Study
           </button>
         </Link>
       </div>
     </motion.div>
-  );
+  )
 }

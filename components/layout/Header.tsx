@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from 'framer-motion'
 import {
   Armchair,
   ChevronRight,
@@ -9,107 +9,112 @@ import {
   MessageSquare,
   Phone,
   X,
-} from "lucide-react";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
+} from 'lucide-react'
+import React, { useState, useEffect } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 interface MobileDrawerProps {
-  isOpen: boolean;
-  setIsOpen: (open: boolean) => void;
+  isOpen: boolean
+  setIsOpen: (open: boolean) => void
 }
 
 const navLinks = [
-  { name: "Home", href: "/" },
-  { name: "Services", href: "#services", hasDropdown: true },
-  { name: "About", href: "/about" },
-  { name: "Gallery", href: "/gallery" },
-  { name: "Contact", href: "/contact" },
-];
+  { name: 'Home', href: '/' },
+  { name: 'Services', href: '#services', hasDropdown: true },
+  { name: 'About', href: '/about' },
+  { name: 'Gallery', href: '/gallery' },
+  { name: 'Contact', href: '/contact' },
+]
 
 const supportLinks = [
-  { label: "Terms Of Use", href: "/terms-of-use" },
-  { label: "Privacy Policy", href: "/privacy-policy" },
-  { label: "FAQs", href: "/faq" },
-];
+  { label: 'Terms Of Use', href: '/terms-of-use' },
+  { label: 'Privacy Policy', href: '/privacy-policy' },
+  { label: 'FAQs', href: '/faq' },
+]
 
 const mobileServices = [
   {
-    name: "Upholstery",
-    img: "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300",
-    href: "/services/sofa-upholstery",
+    name: 'Upholstery',
+    img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300',
+    href: '/services/sofa-upholstery',
   },
   {
-    name: "Repair",
-    img: "https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300",
-    href: "/services/sofa-repair",
+    name: 'Repair',
+    img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300',
+    href: '/services/sofa-repair',
   },
   {
-    name: "Cleaning",
-    img: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=300",
-    href: "/services/sofa-polishing",
+    name: 'Cleaning',
+    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=300',
+    href: '/services/sofa-polishing',
   },
   {
-    name: "Polishing",
-    img: "https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=300",
-    href: "/services/sofa-polishing",
+    name: 'Polishing',
+    img: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=300',
+    href: '/services/sofa-polishing',
   },
   {
-    name: "Custom",
-    img: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300",
-    href: "/services/sofa-repair",
+    name: 'Custom',
+    img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300',
+    href: '/services/sofa-repair',
   },
   {
-    name: "Refill",
-    img: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300",
-    href: "/services/sofa-upholstery",
+    name: 'Refill',
+    img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300',
+    href: '/services/sofa-upholstery',
   },
-];
+]
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // Close mobile menu on route change
   useEffect(() => {
-    setIsOpen(false);
-    document.body.style.overflow = "unset";
-  }, [pathname]);
+    setIsOpen(false)
+    document.body.style.overflow = 'unset'
+  }, [pathname])
 
   return (
     <header
-      className={`fixed top-0 w-full z-[100] transition-all duration-300 shadow-lg  bg-white ${
+      className={`fixed top-0 z-[100] w-full bg-white shadow-lg transition-all  duration-300 ${
         isScrolled
-          ? "bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm"
-          : "bg-white"
+          ? 'border-b border-slate-100 bg-white/80 shadow-sm backdrop-blur-md'
+          : 'bg-white'
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 h-16 md:h-20 flex items-center justify-between relative">
+      <nav
+        aria-label="Main navigation"
+        role="navigation"
+        className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 md:h-20"
+      >
         {/* Mobile Toggle */}
         <div className="lg:hidden">
           <button
             onClick={() => setIsOpen(true)}
-            className="p-2 -ml-2 text-slate-900 cursor-pointer"
+            className="-ml-2 cursor-pointer p-2 text-slate-900"
+            aria-label="Open menu"
           >
             <Menu size={28} />
           </button>
         </div>
 
         {/* Logo */}
-        <div className="flex-1 flex md:justify-center lg:justify-start lg:flex-none">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="bg-blue-600 text-white p-1.5 rounded-lg group-hover:scale-110 transition-transform shadow-lg shadow-blue-100">
+        <div className="flex flex-1 md:justify-center lg:flex-none lg:justify-start">
+          <Link href="/" className="group flex items-center gap-2">
+            <div className="rounded-lg bg-blue-600 p-1.5 text-white shadow-lg shadow-blue-100 transition-transform group-hover:scale-110">
               <Armchair size={18} />
             </div>
-            <span className="text-xl font-black tracking-tighter uppercase text-slate-900">
+            <span className="text-xl font-black uppercase tracking-tighter text-slate-900">
               SOFA<span className="text-blue-600">REVIVE</span>
             </span>
           </Link>
@@ -121,7 +126,7 @@ export default function Header() {
         {/* Action Button */}
         <div className="flex items-center gap-2">
           <Link href="/quote">
-            <button className="bg-slate-900 text-white px-5 py-2.5 rounded-full hover:bg-blue-600 transition-all shadow-lg active:scale-95 text-[10px] font-black uppercase tracking-widest cursor-pointer">
+            <button className="cursor-pointer rounded-full bg-slate-900 px-5 py-2.5 text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-blue-600 active:scale-95">
               Get Quote
             </button>
           </Link>
@@ -131,17 +136,17 @@ export default function Header() {
       {/* --- SEGREGATED MOBILE DRAWER --- */}
       <MobileDrawer isOpen={isOpen} setIsOpen={setIsOpen} />
     </header>
-  );
+  )
 }
 
 /** * DESKTOP NAVIGATION COMPONENT
  */
 function DesktopNav() {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [activeService, setActiveService] = useState(mobileServices[0]);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const [activeService, setActiveService] = useState(mobileServices[0])
 
   return (
-    <ul className="hidden lg:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
+    <ul className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 lg:flex">
       {navLinks.map((link) => (
         <li
           key={link.name}
@@ -151,13 +156,13 @@ function DesktopNav() {
         >
           <Link
             href={link.href}
-            className="text-[11px] font-black text-slate-600 hover:text-blue-600 transition-colors uppercase tracking-[0.2em] flex items-center gap-1"
+            className="flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.2em] text-slate-600 transition-colors hover:text-blue-600"
           >
             {link.name}
             {link.hasDropdown && (
               <ChevronDown
                 size={12}
-                className={`transition-transform ${isDropdownOpen ? "rotate-180" : ""}`}
+                className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
               />
             )}
           </Link>
@@ -168,10 +173,11 @@ function DesktopNav() {
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 15 }}
-                className="absolute top-[100%] left-1/2 -translate-x-1/2 w-[500px] bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-slate-50 overflow-hidden flex"
+                className="absolute left-1/2 top-[100%] flex w-[500px] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-slate-50 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.15)]"
+                aria-label="Services dropdown"
               >
-                <div className="w-1/2 p-6 flex flex-col gap-2 border-r border-slate-50">
-                  <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">
+                <div className="flex w-1/2 flex-col gap-2 border-r border-slate-50 p-6">
+                  <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
                     Specialties
                   </p>
                   {mobileServices.map((service) => (
@@ -181,7 +187,7 @@ function DesktopNav() {
                       onMouseEnter={() => setActiveService(service)}
                     >
                       <div
-                        className={`w-full flex items-center justify-between p-3 rounded-xl transition-all ${activeService.name === service.name ? "bg-blue-50 text-blue-600" : "text-slate-600 hover:bg-slate-50"}`}
+                        className={`flex w-full items-center justify-between rounded-xl p-3 transition-all ${activeService.name === service.name ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50'}`}
                       >
                         <span className="text-[11px] font-black uppercase tracking-wider">
                           {service.name}
@@ -190,16 +196,16 @@ function DesktopNav() {
                           size={14}
                           className={
                             activeService.name === service.name
-                              ? "opacity-100"
-                              : "opacity-0"
+                              ? 'opacity-100'
+                              : 'opacity-0'
                           }
                         />
                       </div>
                     </Link>
                   ))}
                 </div>
-                <div className="w-1/2 p-6 bg-slate-50 flex flex-col gap-4">
-                  <div className="relative aspect-[4/3] w-full rounded-2xl overflow-hidden shadow-lg">
+                <div className="flex w-1/2 flex-col gap-4 bg-slate-50 p-6">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg">
                     <Image
                       src={activeService.img}
                       alt={activeService.name}
@@ -207,10 +213,10 @@ function DesktopNav() {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-[10px] font-black text-blue-600 uppercase tracking-widest leading-none">
+                  <p className="text-[10px] font-black uppercase leading-none tracking-widest text-blue-600">
                     Expert Care
                   </p>
-                  <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                  <p className="text-xs font-medium leading-relaxed text-slate-500">
                     Professional {activeService.name.toLowerCase()} services.
                   </p>
                 </div>
@@ -220,18 +226,18 @@ function DesktopNav() {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
 /** * MOBILE DRAWER COMPONENT (Industry Level Style)
  */
 function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false)
 
   useEffect(() => {
-    if (isOpen) document.body.style.overflow = "hidden";
-    else document.body.style.overflow = "unset";
-  }, [isOpen]);
+    if (isOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = 'unset'
+  }, [isOpen])
 
   return (
     <AnimatePresence>
@@ -243,32 +249,32 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[998] lg:hidden"
+            className="fixed inset-0 z-[998] bg-slate-900/60 backdrop-blur-sm lg:hidden"
             aria-hidden="true"
           />
 
           <motion.div
-            initial={{ x: "-100%" }}
+            initial={{ x: '-100%' }}
             animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
-            transition={{ type: "spring", damping: 28, stiffness: 220 }}
-            className="fixed inset-y-0 left-0 w-[88%] max-w-sm bg-white z-[999] lg:hidden flex flex-col h-[100dvh] shadow-2xl border-r border-slate-100"
+            exit={{ x: '-100%' }}
+            transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+            className="fixed inset-y-0 left-0 z-[999] flex h-[100dvh] w-[88%] max-w-sm flex-col border-r border-slate-100 bg-white shadow-2xl lg:hidden"
             role="dialog"
             aria-modal="true"
           >
             {/* --- HEADER: Identity & Close --- */}
-            <div className="flex-none p-6 flex justify-between items-center border-b border-slate-50">
+            <div className="flex flex-none items-center justify-between border-b border-slate-50 p-6">
               <div className="flex flex-col">
-                <span className="text-lg font-black uppercase text-slate-900 leading-none">
+                <span className="text-lg font-black uppercase leading-none text-slate-900">
                   SOFA<span className="text-blue-600">REVIVE</span>
                 </span>
-                <span className="text-[9px] font-medium text-slate-400 uppercase tracking-tighter mt-1">
+                <span className="mt-1 text-[9px] font-medium uppercase tracking-tighter text-slate-400">
                   Premium Furniture Care
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 -mr-2 text-slate-400 hover:text-slate-900 transition-colors"
+                className="-mr-2 p-2 text-slate-400 transition-colors hover:text-slate-900"
                 aria-label="Close menu"
               >
                 <X size={24} />
@@ -276,10 +282,10 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             </div>
 
             {/* --- BODY: Navigation & Services --- */}
-            <div className="flex-1 overflow-y-auto px-6 py-8 overscroll-contain">
+            <div className="flex-1 overflow-y-auto overscroll-contain px-6 py-8">
               {/* Main Navigation Group */}
               <div className="mb-10">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600/60 mb-4">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600/60">
                   Main Menu
                 </p>
                 <nav className="flex flex-col">
@@ -296,12 +302,12 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                             onClick={() =>
                               setMobileServicesOpen(!mobileServicesOpen)
                             }
-                            className="w-full py-3 text-xl font-bold tracking-tight text-slate-800 flex justify-between items-center"
+                            className="flex w-full items-center justify-between py-3 text-xl font-bold tracking-tight text-slate-800"
                           >
                             {link.name}
                             <ChevronDown
                               size={18}
-                              className={`transition-transform duration-300 ${mobileServicesOpen ? "rotate-180" : ""}`}
+                              className={`transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`}
                             />
                           </button>
 
@@ -309,7 +315,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                             {mobileServicesOpen && (
                               <motion.div
                                 initial={{ height: 0, opacity: 0 }}
-                                animate={{ height: "auto", opacity: 1 }}
+                                animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                               >
@@ -318,9 +324,9 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                                     <Link
                                       href={service.href}
                                       key={service.name}
-                                      className="group bg-slate-50 p-2.5 rounded-2xl border border-slate-100 flex flex-col gap-2 active:scale-95 transition-all"
+                                      className="group flex flex-col gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 transition-all active:scale-95"
                                     >
-                                      <div className="relative aspect-square w-full rounded-xl overflow-hidden grayscale-[0.5] group-hover:grayscale-0 transition-all">
+                                      <div className="relative aspect-square w-full overflow-hidden rounded-xl grayscale-[0.5] transition-all group-hover:grayscale-0">
                                         <Image
                                           src={service.img}
                                           alt={service.name}
@@ -328,7 +334,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                                           className="object-cover"
                                         />
                                       </div>
-                                      <span className="text-[10px] font-black uppercase tracking-tighter text-slate-600 text-center">
+                                      <span className="text-center text-[10px] font-black uppercase tracking-tighter text-slate-600">
                                         {service.name}
                                       </span>
                                     </Link>
@@ -341,7 +347,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                       ) : (
                         <Link
                           href={link.href}
-                          className="py-4 text-xl font-bold tracking-tight text-slate-800 border-b border-slate-50/50 flex justify-between items-center"
+                          className="flex items-center justify-between border-b border-slate-50/50 py-4 text-xl font-bold tracking-tight text-slate-800"
                         >
                           {link.name}
                           <ChevronRight size={16} className="text-slate-200" />
@@ -353,8 +359,8 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
               </div>
 
               {/* Legal & Support Section: Professional touch */}
-              <div className="border-t border-slate-50 pt-8 pb-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400 mb-4">
+              <div className="border-t border-slate-50 pb-4 pt-8">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                   Legal & Support
                 </p>
                 <div className="grid grid-cols-1 gap-4">
@@ -362,7 +368,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="text-xs font-semibold text-slate-500 hover:text-blue-600 transition-colors"
+                      className="text-xs font-semibold text-slate-500 transition-colors hover:text-blue-600"
                     >
                       {item.label}
                     </Link>
@@ -372,15 +378,16 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             </div>
 
             {/* --- FOOTER: High-Impact Actions --- */}
-            <div className="flex-none p-6 bg-slate-50/80 border-t border-slate-100">
-              <p className="text-[10px] font-black uppercase tracking-widest text-slate-400 mb-4 text-center">
+            <div className="flex-none border-t border-slate-100 bg-slate-50/80 p-6">
+              <p className="mb-4 text-center text-[10px] font-black uppercase tracking-widest text-slate-400">
                 Ready to revive your sofa?
               </p>
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3">
                   <a
                     href="tel:+919304059249"
-                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-white border border-slate-200 rounded-2xl text-slate-900 shadow-sm active:scale-95 transition-all"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-4 text-slate-900 shadow-sm transition-all active:scale-95"
+                    aria-label="Call us at +919304059249"
                   >
                     <Phone size={16} className="text-blue-600" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
@@ -389,7 +396,8 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                   </a>
                   <a
                     href="https://wa.me/919304059249"
-                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#25D366] rounded-2xl text-white shadow-lg shadow-green-200 active:scale-95 transition-all"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-4 text-white shadow-lg shadow-green-200 transition-all active:scale-95"
+                    aria-label="Chat with us on WhatsApp"
                   >
                     <MessageSquare size={16} fill="white" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
@@ -399,7 +407,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </div>
 
                 <Link href="/quote" className="w-full">
-                  <button className="w-full py-4 bg-blue-600 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] shadow-xl shadow-blue-100 active:scale-95 transition-all">
+                  <button className="w-full rounded-2xl bg-blue-600 py-4 text-[11px] font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-blue-100 transition-all active:scale-95">
                     Book Inspection
                   </button>
                 </Link>
@@ -409,5 +417,5 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
         </>
       )}
     </AnimatePresence>
-  );
+  )
 }

@@ -1,49 +1,49 @@
-"use client";
+'use client'
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronDown } from 'lucide-react'
 
 const FAQ_DATA = [
   {
-    q: "When will I get my report?",
-    a: "Our technicians submit reports almost immediately. After our quality team ensures every detail is perfect, your final report is dispatched within a few days.",
+    q: 'When will I get my report?',
+    a: 'Our technicians submit reports almost immediately. After our quality team ensures every detail is perfect, your final report is dispatched within a few days.',
   },
   {
-    q: "How do I cancel or reschedule an appointment?",
+    q: 'How do I cancel or reschedule an appointment?',
     a: "Simply contact our booking team at +91 93040 59249 via call or WhatsApp. We'll help you find a new time that works for you.",
   },
   {
-    q: "Can you provide a quote over the phone?",
+    q: 'Can you provide a quote over the phone?',
     a: "Yes. Our domestic work department can provide estimates over the phone. We'll ask a few questions about the furniture and may request a few photos via WhatsApp to be precise.",
   },
   {
-    q: "Will my furniture be taken away for repair?",
-    a: "In most cases, no. We prioritize in-home repairs which often take as little as 30 minutes. We only transport pieces to our workshop for severe structural damage or complex restoration.",
+    q: 'Will my furniture be taken away for repair?',
+    a: 'In most cases, no. We prioritize in-home repairs which often take as little as 30 minutes. We only transport pieces to our workshop for severe structural damage or complex restoration.',
   },
   {
-    q: "What areas do you currently serve?",
-    a: "We are currently operating throughout Bangalore. We plan to expand to other major cities soon based on regional demand.",
+    q: 'What areas do you currently serve?',
+    a: 'We are currently operating throughout Bangalore. We plan to expand to other major cities soon based on regional demand.',
   },
   {
-    q: "Do you offer custom reupholstery?",
+    q: 'Do you offer custom reupholstery?',
     a: "Absolutely. We offer a curated selection of premium fabrics and leathers. If you have your own material, we can work with that too, depending on the fabric's suitability.",
   },
   {
-    q: "Can old furniture be restored to its original state?",
+    q: 'Can old furniture be restored to its original state?',
     a: "Yes. Whether it's a 'glorious restoration' to its original state or a complete style overhaul, our master technicians have the skills to revive any piece.",
   },
-];
+]
 
 export default function FaqAccordion() {
-  const [activeIdx, setActiveIdx] = useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null)
 
   return (
     <div className="space-y-0" itemScope itemType="https://schema.org/FAQPage">
       {FAQ_DATA.map((item, idx) => (
         <div
           key={idx}
-          className="border-b border-slate-200 first:border-t overflow-hidden transition-colors"
+          className="overflow-hidden border-b border-slate-200 transition-colors first:border-t"
           itemProp="mainEntity"
           itemScope
           itemType="https://schema.org/Question"
@@ -52,16 +52,16 @@ export default function FaqAccordion() {
             onClick={() => setActiveIdx(activeIdx === idx ? null : idx)}
             aria-expanded={activeIdx === idx}
             aria-controls={`faq-answer-${idx}`}
-            className="w-full flex justify-between items-center py-7 text-left group transition-all"
+            className="group flex w-full items-center justify-between py-7 text-left transition-all"
             type="button"
           >
             {/* Updated: Extrabold / Tracking-Tight (No Italic/Black) */}
             <span
               itemProp="name"
-              className={`text-base md:text-lg font-bold tracking-tight transition-colors ${
+              className={`text-base font-bold tracking-tight transition-colors md:text-lg ${
                 activeIdx === idx
-                  ? "text-blue-600"
-                  : "text-slate-900 group-hover:text-blue-600"
+                  ? 'text-blue-600'
+                  : 'text-slate-900 group-hover:text-blue-600'
               }`}
             >
               {item.q}
@@ -69,8 +69,8 @@ export default function FaqAccordion() {
             <ChevronDown
               className={`transition-transform duration-300 ${
                 activeIdx === idx
-                  ? "rotate-180 text-blue-600"
-                  : "text-slate-600"
+                  ? 'rotate-180 text-blue-600'
+                  : 'text-slate-600'
               }`}
               size={20}
               aria-hidden="true"
@@ -83,7 +83,7 @@ export default function FaqAccordion() {
                 id={`faq-answer-${idx}`}
                 role="region"
                 initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
+                animate={{ height: 'auto', opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
                 itemProp="acceptedAnswer"
@@ -92,7 +92,7 @@ export default function FaqAccordion() {
               >
                 {/* Updated: Slate-500 font-medium scale */}
                 <div
-                  className="pb-8 text-slate-700 text-sm md:text-[15px] leading-relaxed max-w-2xl font-medium"
+                  className="max-w-2xl pb-8 text-sm font-medium leading-relaxed text-slate-700 md:text-[15px]"
                   itemProp="text"
                 >
                   {item.a}
@@ -103,5 +103,5 @@ export default function FaqAccordion() {
         </div>
       ))}
     </div>
-  );
+  )
 }
