@@ -1,9 +1,11 @@
 import FloatingSticky from '@/components/layout/sections/FloatingSticky'
 import Hero from '@/components/layout/sections/Hero'
+import ProcessSection from '@/components/layout/sections/Ourprocess'
 import OurServices from '@/components/layout/sections/OurServices'
 import Sticky from '@/components/layout/sections/Sticky'
 import Testimonials from '@/components/layout/sections/Testimonials'
 import WhyChooseUS from '@/components/layout/sections/WhyChooseUs'
+import RestoreSection from '@/components/layout/sections/RestoreSection'
 
 export default function UrbanSofaMobile() {
   return (
@@ -12,6 +14,8 @@ export default function UrbanSofaMobile() {
         <Hero />
         <OurServices />
         <WhyChooseUS />
+        <ProcessSection />
+        <RestoreSection />
         <Testimonials />
         <Sticky />
         <FloatingSticky />
