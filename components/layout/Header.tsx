@@ -17,7 +17,7 @@ import { usePathname } from 'next/navigation'
 
 interface MobileDrawerProps {
   isOpen: boolean
-  setIsOpen: (open: boolean) => void
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const navLinks = [
