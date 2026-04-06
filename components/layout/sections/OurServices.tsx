@@ -14,9 +14,7 @@ export default function OurServices() {
         </div>
 
         {/* Updated: Extrabold / Tracking-Tight */}
-        <h2 className="h2 mb-4" style={{ fontFamily: 'Roboto, sans-serif' }}>
-          Our Specialist Services
-        </h2>
+        <h2 className="h2 mb-4 font-roboto">Our Specialist Services</h2>
 
         {/* Updated: Standardized Slate-500 font scale */}
         <p className="p max-w-2xl">

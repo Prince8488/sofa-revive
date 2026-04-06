@@ -8,7 +8,7 @@ const FOOTER_DATA = {
   company: {
     title: 'SofaRevive',
     links: [
-      { label: 'About Us', href: '/about' },
+      { label: 'About SofaRevive', href: '/about' },
       { label: 'Terms Of Use', href: '/terms-of-use' },
       { label: 'Privacy Policy', href: '/privacy-policy' },
       { label: 'FAQs', href: '/faq' },
@@ -18,7 +18,7 @@ const FOOTER_DATA = {
     title: 'Need Help?',
     links: [
       { label: 'Contact Us', href: '/contact' },
-      { label: 'Gallery', href: '/gallery' },
+      { label: 'View Our Work', href: '/gallery' },
     ],
   },
   explore: {
@@ -103,20 +103,27 @@ export default function Footer() {
                 Follow the craft
               </p>
               <div className="flex gap-3">
-                {[
-                  { Icon: Instagram, label: 'Instagram' },
-                  { Icon: Facebook, label: 'Facebook' },
-                  { Icon: Twitter, label: 'Twitter' },
-                ].map(({ Icon, label }, idx) => (
-                  <Link
-                    key={idx}
-                    href="#"
-                    aria-label={`Visit our ${label} page`}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
-                  >
-                    <Icon size={18} aria-hidden="true" />
-                  </Link>
-                ))}
+                <Link
+                  href="https://www.instagram.com/your-instagram"
+                  aria-label="Visit our Instagram page"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
+                >
+                  <Instagram size={18} aria-hidden="true" />
+                </Link>
+                <Link
+                  href="https://www.facebook.com/your-facebook"
+                  aria-label="Visit our Facebook page"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
+                >
+                  <Facebook size={18} aria-hidden="true" />
+                </Link>
+                <Link
+                  href="https://www.twitter.com/your-twitter"
+                  aria-label="Visit our Twitter page"
+                  className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
+                >
+                  <Twitter size={18} aria-hidden="true" />
+                </Link>
               </div>
             </section>
           </div>

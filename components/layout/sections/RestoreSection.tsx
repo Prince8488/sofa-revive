@@ -47,10 +47,7 @@ const RestoreSection = () => {
               <Heart size={14} fill="currentColor" /> Why Restore?
             </motion.div>
 
-            <h2
-              className="h2 font-black leading-[0.9] tracking-tighter"
-              style={{ fontFamily: 'Roboto, sans-serif' }}
-            >
+            <h2 className="h2 font-roboto font-black leading-[0.9] tracking-tighter">
               Don't let <br />
               go to waste.
             </h2>

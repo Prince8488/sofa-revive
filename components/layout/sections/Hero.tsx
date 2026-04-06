@@ -18,7 +18,7 @@ export default function Hero() {
   const desktopImage =
     'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop'
   const mobileImage =
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop'
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&h=600&auto=format&fit=crop'
 
   return (
     <section className="md:pt-25 relative overflow-hidden bg-white px-6 pb-5 pt-20 text-slate-900">
@@ -62,7 +62,7 @@ export default function Hero() {
                 </span>
               </div>
 
-              <h1 className="h1" style={{ fontFamily: 'Roboto, sans-serif' }}>
+              <h1 className="h1 font-roboto">
                 Sofa Restoration <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Redefined.
@@ -70,8 +70,9 @@ export default function Hero() {
               </h1>
 
               <p className="p max-w-lg">
-                Premium sofa repair and custom upholstery designed for
-                longevity. We bring the showroom finish back to your doorstep.
+                With our sofa restoration redefined, we offer premium sofa
+                repair and custom upholstery designed for longevity. We bring
+                the showroom finish back to your doorstep.
               </p>
             </div>
 
@@ -84,7 +85,7 @@ export default function Hero() {
               </Link>
               <Link href="/gallery" className="w-full cursor-pointer sm:w-auto">
                 <button className="w-full cursor-pointer rounded-2xl border border-zinc-200 bg-white px-10 py-6 text-[11px] font-black uppercase tracking-widest text-zinc-900 transition-all hover:bg-zinc-50 active:scale-95 sm:w-auto">
-                  View Work Gallery
+                  Explore Our Gallery
                 </button>
               </Link>
             </div>
@@ -125,7 +126,7 @@ export default function Hero() {
                   src={isMobile ? mobileImage : desktopImage}
                   alt="A beautifully restored sofa, showcasing the quality of our upholstery work."
                   width={isMobile ? 800 : 1200}
-                  height={isMobile ? 1067 : 900}
+                  height={isMobile ? 600 : 900}
                   priority
                   fetchPriority="high"
                   loading="eager"

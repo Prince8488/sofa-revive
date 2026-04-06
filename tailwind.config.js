@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Red Hat Display', 'sans-serif'],
-        pangram: ['var(--font-pangram)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
+        roboto: ['var(--font-roboto)', 'sans-serif'],
       },
       colors: {
         // "Brand" is your primary blue.
@@ -76,39 +76,27 @@ module.exports = {
           '--font-size-9xl': theme('fontSize.9xl')[0],
         },
         h1: {
-          fontSize: `clamp(${theme('fontSize.4xl')[0]}, 5vw, ${
-            theme('fontSize.6xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.4xl')[0]}, 5vw, ${theme('fontSize.6xl')[0]})`,
           fontWeight: 'bold',
         },
         h2: {
-          fontSize: `clamp(${theme('fontSize.3xl')[0]}, 4vw, ${
-            theme('fontSize.5xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.3xl')[0]}, 4vw, ${theme('fontSize.5xl')[0]})`,
           fontWeight: 'bold',
         },
         h3: {
-          fontSize: `clamp(${theme('fontSize.2xl')[0]}, 3vw, ${
-            theme('fontSize.4xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.2xl')[0]}, 3vw, ${theme('fontSize.4xl')[0]})`,
           fontWeight: 'bold',
         },
         h4: {
-          fontSize: `clamp(${theme('fontSize.xl')[0]}, 2.5vw, ${
-            theme('fontSize.3xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.xl')[0]}, 2.5vw, ${theme('fontSize.3xl')[0]})`,
           fontWeight: 'bold',
         },
         h5: {
-          fontSize: `clamp(${theme('fontSize.lg')[0]}, 2vw, ${
-            theme('fontSize.2xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.lg')[0]}, 2vw, ${theme('fontSize.2xl')[0]})`,
           fontWeight: 'bold',
         },
         h6: {
-          fontSize: `clamp(${theme('fontSize.base')[0]}, 1.8vw, ${
-            theme('fontSize.xl')[0]
-          })`,
+          fontSize: `clamp(${theme('fontSize.base')[0]}, 1.8vw, ${theme('fontSize.xl')[0]})`,
           fontWeight: 'bold',
         },
         p: {

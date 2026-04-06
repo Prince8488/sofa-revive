@@ -126,7 +126,7 @@ export default function Header() {
         {/* Action Button */}
         <div className="flex items-center gap-2">
           <Link href="/quote">
-            <button className="cursor-pointer rounded-full bg-slate-900 px-5 py-2.5 text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-gray-800 active:scale-95">
+            <button className="cursor-pointer rounded-full bg-slate-900 px-6 py-3 text-xs font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-gray-800 active:scale-95">
               Get Quote
             </button>
           </Link>
@@ -347,7 +347,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                       ) : (
                         <Link
                           href={link.href}
-                          className="flex items-center justify-between border-b border-slate-50/50 py-4 text-xl font-bold tracking-tight text-slate-800"
+                          className="flex items-center justify-between border-b border-slate-50/50 py-5 text-xl font-bold tracking-tight text-slate-800"
                         >
                           {link.name}
                           <ChevronRight size={16} className="text-slate-200" />
@@ -363,12 +363,12 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
                   Legal & Support
                 </p>
-                <div className="grid grid-cols-1 gap-4">
+                <div className="grid grid-cols-1">
                   {supportLinks.map((item: { label: string; href: string }) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="text-xs font-semibold text-slate-500 transition-colors hover:text-gray-800"
+                      className="py-3 text-xs font-semibold text-slate-500 transition-colors hover:text-gray-800"
                     >
                       {item.label}
                     </Link>
@@ -386,7 +386,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 <div className="flex gap-3">
                   <a
                     href="tel:+919304059249"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-4 text-slate-900 shadow-sm transition-all active:scale-95"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-5 text-slate-900 shadow-sm transition-all active:scale-95"
                     aria-label="Call us at +919304059249"
                   >
                     <Phone size={16} className="text-gray-800" />
@@ -396,7 +396,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                   </a>
                   <a
                     href="https://wa.me/919304059249"
-                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-4 text-white shadow-lg shadow-green-200 transition-all active:scale-95"
+                    className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-5 text-white shadow-lg shadow-green-200 transition-all active:scale-95"
                     aria-label="Chat with us on WhatsApp"
                   >
                     <MessageSquare size={16} fill="white" />

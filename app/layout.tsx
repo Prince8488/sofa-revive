@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter, Roboto } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -9,6 +9,12 @@ import FloatingSticky from '@/components/layout/sections/FloatingSticky'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
 })
 
 const jsonLd = {
@@ -80,12 +86,11 @@ const jsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://sofa-revive.netlify.app'),
   title: {
-    default:
-      'SofaRevive | Premium Sofa Repair, Upholstery & Polishing in Bengaluru',
+    default: 'SofaRevive | Sofa Repair, Upholstery & Polishing in Bengaluru',
     template: `%s | SofaRevive`,
   },
   description:
-    "Breathe new life into your furniture with Bengaluru's top-rated sofa restoration experts. We specialize in commercial and residential sofa repair, custom upholstery, and wood polishing. 5-Star Rated. 10+ Years of Experience. Get a free quote today!",
+    "Bengaluru's top-rated sofa restoration. We specialize in commercial and residential sofa repair, custom upholstery, and wood polishing. 5-Star Rated. 10+ Years of Experience. Get a free quote!",
   keywords: [
     'sofa repair bangalore',
     'furniture upholstery bengaluru',
@@ -132,15 +137,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="preconnect" href="https://images.unsplash.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
       </head>
       <body
-        className={`${inter.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
+        className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
         suppressHydrationWarning
       >
         <Header />

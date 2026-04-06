@@ -37,10 +37,7 @@ export default function Testimonials() {
             />
 
             {/* H2: Matched to previous section 4xl/5xl */}
-            <h2
-              className="h2 mb-8"
-              style={{ fontFamily: 'Roboto, sans-serif' }}
-            >
+            <h2 className="h2 mb-8 font-roboto">
               What our <br />
               <span className="bg-gradient-to-r from-[#3e3d3d] to-gray-600 bg-clip-text text-transparent">
                 Clients

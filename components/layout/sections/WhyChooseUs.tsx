@@ -72,7 +72,7 @@ export default function WhyChooseUS() {
                 </span>
               </div>
 
-              <h2 className="h2" style={{ fontFamily: 'Roboto, sans-serif' }}>
+              <h2 className="h2 font-roboto">
                 Furniture Revival <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Without the Stress.
