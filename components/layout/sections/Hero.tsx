@@ -83,7 +83,7 @@ export default function Hero() {
                 </button>
               </Link>
               <Link href="/gallery" className="w-full cursor-pointer sm:w-auto">
-                <button className="w-full cursor-pointer rounded-2xl border border-zinc-200 bg-white px-10 py-5 text-[11px] font-black uppercase tracking-widest text-zinc-900 transition-all hover:bg-zinc-50 active:scale-95 sm:w-auto">
+                <button className="w-full cursor-pointer rounded-2xl border border-zinc-200 bg-white px-10 py-6 text-[11px] font-black uppercase tracking-widest text-zinc-900 transition-all hover:bg-zinc-50 active:scale-95 sm:w-auto">
                   View Work Gallery
                 </button>
               </Link>

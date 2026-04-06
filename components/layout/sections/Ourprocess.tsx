@@ -128,7 +128,7 @@ const ProcessSection = () => {
                     <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-xs font-bold text-white shadow-lg shadow-slate-200">
                       {step.id}
                     </span>
-                    <h4 className="h4">{step.title}</h4>
+                    <h3 className="h4">{step.title}</h3>
                   </div>
                   <span className="hidden rounded-full border border-slate-200 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-slate-400 sm:block">
                     {step.tag}
