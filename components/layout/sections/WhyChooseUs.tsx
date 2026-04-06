@@ -50,7 +50,7 @@ export default function WhyChooseUS() {
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `radial-gradient(#2563eb 0.5px, transparent 0.5px)`,
+          backgroundImage: `radial-gradient(#1f2937 0.5px, transparent 0.5px)`,
           backgroundSize: '24px 24px',
         }}
       />
@@ -65,14 +65,14 @@ export default function WhyChooseUS() {
             className="space-y-10"
           >
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5">
-                <span className="h-2 w-2 animate-pulse rounded-full bg-blue-600" />
-                <span className="text-[11px] font-bold uppercase tracking-widest text-blue-700">
+              <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5">
+                <span className="h-2 w-2 animate-pulse rounded-full  text-blue-600" />
+                <span className="text-[11px] font-bold uppercase tracking-widest  text-blue-700">
                   Bengaluru's #1 Studio
                 </span>
               </div>
 
-              <h2 className="h2">
+              <h2 className="h2" style={{ fontFamily: 'Roboto, sans-serif' }}>
                 Furniture Revival <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Without the Stress.
@@ -91,7 +91,7 @@ export default function WhyChooseUS() {
               {FEATURES.map((feature) => (
                 <div key={feature.title} className="group space-y-3">
                   <dt className="flex items-center gap-4">
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm ring-1 ring-slate-200 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-gray-800 shadow-sm ring-1 ring-slate-200 transition-all duration-300 group-hover:bg-gray-800 group-hover:text-white">
                       <feature.icon size={20} strokeWidth={2} />
                     </div>
                     <span className="text-[15px] font-bold uppercase tracking-tight text-slate-900">
@@ -116,7 +116,7 @@ export default function WhyChooseUS() {
             <div className="rounded-[2.5rem] border border-slate-200 bg-white p-8 shadow-2xl shadow-slate-200/60 md:p-12">
               <h3 className="h3 mb-8">
                 Request a{' '}
-                <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-gray-800 to-gray-500 bg-clip-text text-transparent">
                   Price Estimate
                 </span>
               </h3>
@@ -131,7 +131,7 @@ export default function WhyChooseUS() {
                 <div className="space-y-6 pt-8">
                   <a
                     href="tel:+919304059249"
-                    className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-slate-200 transition-all hover:bg-blue-600 active:scale-95"
+                    className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-slate-200 transition-all hover:bg-gray-800 active:scale-95"
                     aria-label="Get a free consultation by calling us"
                   >
                     <Phone size={16} /> Get Free Consultation
@@ -154,7 +154,7 @@ export default function WhyChooseUS() {
                           />
                         </div>
                       ))}
-                      <div className="flex h-10 w-10 items-center justify-center rounded-full border-4 border-white bg-blue-50 text-[10px] font-bold text-blue-600 shadow-sm">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full border-4 border-white bg-gray-100 text-[10px] font-bold text-gray-800 shadow-sm">
                         +5k
                       </div>
                     </div>
@@ -179,8 +179,8 @@ type IconDetailProps = {
 
 function IconDetail({ icon: Icon, text }: IconDetailProps) {
   return (
-    <div className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-blue-100 hover:bg-white">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-blue-600 shadow-sm transition-colors group-hover:bg-blue-600 group-hover:text-white">
+    <div className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-gray-200 hover:bg-white">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-gray-800 shadow-sm transition-colors group-hover:bg-gray-800 group-hover:text-white">
         <Icon size={18} />
       </div>
       <p className="text-sm font-bold tracking-tight text-slate-700">{text}</p>

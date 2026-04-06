@@ -60,16 +60,17 @@ export default function FaqAccordion() {
               itemProp="name"
               className={`h6 transition-colors ${
                 activeIdx === idx
-                  ? 'text-blue-600'
-                  : 'text-slate-900 group-hover:text-blue-600'
+                  ? 'text-[#3e3d3d]'
+                  : 'text-slate-900 group-hover:text-[#3e3d3d]'
               }`}
+              style={{ fontFamily: 'Roboto, sans-serif' }}
             >
               {item.q}
             </span>
             <ChevronDown
               className={`transition-transform duration-300 ${
                 activeIdx === idx
-                  ? 'rotate-180 text-blue-600'
+                  ? 'rotate-180 text-gray-800'
                   : 'text-slate-600'
               }`}
               size={20}

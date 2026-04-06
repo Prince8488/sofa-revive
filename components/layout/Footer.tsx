@@ -63,7 +63,7 @@ const FooterSection = ({ title, links }: FooterSectionProps) => (
           <Link
             href={link.href}
             // FIX 2: Darkened text-slate-400 to text-slate-300 for better contrast on dark bg
-            className="rounded text-xs font-medium text-slate-300 transition-colors hover:text-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-500 md:text-sm"
+            className="rounded text-xs font-medium text-slate-300 transition-colors hover:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-500 md:text-sm"
           >
             {link.label}
           </Link>
@@ -112,7 +112,7 @@ export default function Footer() {
                     key={idx}
                     href="#"
                     aria-label={`Visit our ${label} page`}
-                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-blue-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 active:scale-90"
+                    className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                   >
                     <Icon size={18} aria-hidden="true" />
                   </Link>
@@ -127,7 +127,7 @@ export default function Footer() {
           <div className="flex flex-col items-start gap-8 lg:flex-row">
             <div className="lg:w-1/3">
               <p className="mb-4 flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.2em] text-white md:text-xs">
-                <MapPin size={14} className="text-blue-500" />
+                <MapPin size={14} className="text-gray-500" />
                 Service Areas
               </p>
               {/* FIX 4: Changed text-slate-700 (failed audit) to text-slate-400 for better visibility on dark bg */}
@@ -142,8 +142,8 @@ export default function Footer() {
                   key={area}
                   className="group flex cursor-default items-center gap-2"
                 >
-                  <div className="h-1 w-1 rounded-full bg-slate-800 transition-colors group-hover:bg-blue-500" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-300 transition-colors group-hover:text-blue-400">
+                  <div className="h-1 w-1 rounded-full bg-slate-800 transition-colors group-hover:bg-gray-500" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-slate-300 transition-colors group-hover:text-gray-400">
                     {area}
                   </span>
                 </div>

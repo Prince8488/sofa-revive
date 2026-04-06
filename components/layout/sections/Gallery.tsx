@@ -51,12 +51,15 @@ export default function GallerySection() {
         {/* Header with Luxury Typography */}
         <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
           <div className="max-w-2xl">
-            <span className="mb-4 block text-[10px] font-black tracking-[0.3em] text-blue-600">
+            <span className="mb-4 block text-[10px] font-black tracking-[0.3em] text-gray-800">
               DreamDecore Craftsmanship
             </span>
-            <h2 className="text-5xl font-black italic leading-[0.9] tracking-tighter text-slate-900 md:text-6xl">
+            <h2
+              className="text-2xl font-black italic leading-[0.9] tracking-tighter text-slate-900 md:text-4xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               The <br />{' '}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3e3d3d] to-gray-600 bg-clip-text text-transparent">
                 Transformation
               </span>
             </h2>
@@ -93,7 +96,7 @@ export default function GallerySection() {
                 {/* Content */}
                 <div className="flex items-start justify-between px-4">
                   <div className="space-y-1">
-                    <h4 className="text-2xl font-black uppercase italic tracking-tighter text-slate-900 transition-colors duration-300 group-hover:text-blue-600">
+                    <h4 className="text-2xl font-black uppercase italic tracking-tighter text-slate-900 transition-colors duration-300 group-hover:text-gray-800">
                       {project.title}
                     </h4>
                     <p className="max-w-[80%] text-sm font-medium leading-relaxed text-slate-700">
@@ -102,7 +105,7 @@ export default function GallerySection() {
                   </div>
 
                   {/* Micro-Interaction: Project Number */}
-                  <span className="select-none text-4xl font-black italic text-slate-100 transition-colors duration-500 group-hover:text-blue-50">
+                  <span className="select-none text-4xl font-black italic text-slate-100 transition-colors duration-500 group-hover:text-gray-200">
                     0{index + 1}
                   </span>
                 </div>
@@ -118,7 +121,7 @@ export default function GallerySection() {
             Witnessed enough? Let's restore yours.
           </p>
           <Link href="/quote" aria-label="Start your sofa restoration project">
-            <button className="cursor-pointer rounded-2xl bg-slate-900 px-10 py-5 text-[11px] font-black uppercase tracking-widest text-white shadow-2xl transition-all hover:bg-blue-600 active:scale-95">
+            <button className="cursor-pointer rounded-2xl bg-slate-900 px-10 py-5 text-[11px] font-black uppercase tracking-widest text-white shadow-2xl transition-all hover:bg-gray-800 active:scale-95">
               Start Your Restoration
             </button>
           </Link>

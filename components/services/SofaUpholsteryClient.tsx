@@ -17,32 +17,35 @@ export default function SofaUpholsteryClient() {
     {
       title: 'Artisan Reupholstery',
       desc: 'Bring new life to heirlooms and antiques with sophisticated, modern tailoring.',
-      icon: <Gem className="text-blue-600" size={20} />,
+      icon: <Gem className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&q=80&w=800',
     },
     {
       title: 'Padding Upgrades',
       desc: "Replace sagging cores with high-density foam and fiber-fill for a 'like-new' sit.",
-      icon: <Layers className="text-blue-600" size={20} />,
+      icon: <Layers className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&q=80&w=1000',
     },
     {
       title: 'Premium Fabric Curation',
       desc: 'Extensive selection of designer fabrics, Italian leathers, and commercial materials.',
-      icon: <Palette className="text-blue-600" size={20} />,
+      icon: <Palette className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
     },
   ]
 
   return (
-    <div className="bg-white pt-5 text-slate-800 selection:bg-blue-600 selection:text-white">
+    <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. HERO SECTION */}
       <section className="border-b border-slate-100 bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-700">
+          <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
             <Sparkles size={12} /> Unmatched Restoration
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
+          <h1
+            className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Sophisticated Upholstery Restoration
           </h1>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-700">
@@ -81,7 +84,7 @@ export default function SofaUpholsteryClient() {
               </p>
               <Link
                 href="/gallery"
-                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-blue-600 transition-all hover:gap-2"
+                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-800 transition-all hover:gap-2"
               >
                 View Collection <ArrowUpRight size={12} />
               </Link>
@@ -94,7 +97,10 @@ export default function SofaUpholsteryClient() {
       <section className="overflow-hidden bg-white py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
+            <h2
+              className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Restore the Comfort <br /> You Once Loved
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -104,11 +110,11 @@ export default function SofaUpholsteryClient() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <CheckCircle2 size={16} className="text-blue-600" />{' '}
+                <CheckCircle2 size={16} className="text-gray-800" />{' '}
                 High-Density Foam Replacement
               </div>
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <CheckCircle2 size={16} className="text-blue-600" /> Custom Seat
+                <CheckCircle2 size={16} className="text-gray-800" /> Custom Seat
                 Core Repair
               </div>
             </div>
@@ -138,7 +144,10 @@ export default function SofaUpholsteryClient() {
             />
           </div>
           <div className="order-1 space-y-6 lg:order-2">
-            <h2 className="text-2xl font-bold leading-tight md:text-3xl">
+            <h2
+              className="text-2xl font-bold leading-tight md:text-3xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               A New Lease of Life <br /> for Your Interiors
             </h2>
             <p className="text-sm leading-relaxed text-slate-400">
@@ -148,7 +157,7 @@ export default function SofaUpholsteryClient() {
             </p>
             <div className="grid grid-cols-2 gap-4 pt-4">
               <div className="rounded-lg bg-slate-800 p-4">
-                <div className="mb-1 text-xs font-bold uppercase text-blue-400">
+                <div className="mb-1 text-xs font-bold uppercase text-gray-400">
                   Stain Resistant
                 </div>
                 <div className="text-[10px] text-slate-400">
@@ -156,7 +165,7 @@ export default function SofaUpholsteryClient() {
                 </div>
               </div>
               <div className="rounded-lg bg-slate-800 p-4">
-                <div className="mb-1 text-xs font-bold uppercase text-blue-400">
+                <div className="mb-1 text-xs font-bold uppercase text-gray-400">
                   Fire Retardant
                 </div>
                 <div className="text-[10px] text-slate-400">
@@ -171,7 +180,10 @@ export default function SofaUpholsteryClient() {
       {/* 5. CONSULTATION & CTA */}
       <section className="relative overflow-hidden bg-slate-50 px-6 py-20 text-center">
         <div className="relative z-10 mx-auto max-w-3xl space-y-8">
-          <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 md:text-3xl">
+          <h2
+            className="text-2xl font-black uppercase tracking-tight text-slate-900 md:text-3xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Your Story, Preserved.
           </h2>
           <p className="mx-auto max-w-xl text-sm leading-relaxed text-slate-700">
@@ -181,7 +193,7 @@ export default function SofaUpholsteryClient() {
           </p>
           <div className="pt-4">
             <Link href="/quote" className="cursor-pointer">
-              <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-blue-600 active:scale-95">
+              <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-gray-800 active:scale-95">
                 Receive Your Complimentary Quote
               </button>
             </Link>

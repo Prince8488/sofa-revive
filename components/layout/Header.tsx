@@ -111,7 +111,7 @@ export default function Header() {
         {/* Logo */}
         <div className="flex flex-1 md:justify-center lg:flex-none lg:justify-start">
           <Link href="/" className="group flex items-center gap-2">
-            <div className="rounded-lg bg-blue-600 p-1.5 text-white shadow-lg shadow-blue-100 transition-transform group-hover:scale-110">
+            <div className="rounded-lg bg-gray-800 p-1.5 text-white shadow-lg shadow-gray-200 transition-transform group-hover:scale-110">
               <Armchair size={18} />
             </div>
             <span className="text-xl font-black uppercase tracking-tighter text-slate-900">
@@ -126,7 +126,7 @@ export default function Header() {
         {/* Action Button */}
         <div className="flex items-center gap-2">
           <Link href="/quote">
-            <button className="cursor-pointer rounded-full bg-slate-900 px-5 py-2.5 text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-blue-600 active:scale-95">
+            <button className="cursor-pointer rounded-full bg-slate-900 px-5 py-2.5 text-[10px] font-black uppercase tracking-widest text-white shadow-lg transition-all hover:bg-gray-800 active:scale-95">
               Get Quote
             </button>
           </Link>
@@ -156,7 +156,7 @@ function DesktopNav() {
         >
           <Link
             href={link.href}
-            className="flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.2em] text-slate-600 transition-colors hover:text-blue-600"
+            className="flex items-center gap-1 text-[11px] font-black uppercase tracking-[0.2em] text-slate-600 transition-colors hover:text-gray-800"
           >
             {link.name}
             {link.hasDropdown && (
@@ -187,7 +187,7 @@ function DesktopNav() {
                       onMouseEnter={() => setActiveService(service)}
                     >
                       <div
-                        className={`flex w-full items-center justify-between rounded-xl p-3 transition-all ${activeService.name === service.name ? 'bg-blue-50 text-blue-600' : 'text-slate-600 hover:bg-slate-50'}`}
+                        className={`flex w-full items-center justify-between rounded-xl p-3 transition-all ${activeService.name === service.name ? 'bg-gray-100 text-gray-800' : 'text-slate-600 hover:bg-slate-50'}`}
                       >
                         <span className="text-[11px] font-black uppercase tracking-wider">
                           {service.name}
@@ -213,7 +213,7 @@ function DesktopNav() {
                       className="object-cover"
                     />
                   </div>
-                  <p className="text-[10px] font-black uppercase leading-none tracking-widest text-blue-600">
+                  <p className="text-[10px] font-black uppercase leading-none tracking-widest text-gray-800">
                     Expert Care
                   </p>
                   <p className="text-xs font-medium leading-relaxed text-slate-500">
@@ -266,7 +266,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             <div className="flex flex-none items-center justify-between border-b border-slate-50 p-6">
               <div className="flex flex-col">
                 <span className="text-lg font-black uppercase leading-none text-slate-900">
-                  SOFA<span className="text-blue-600">REVIVE</span>
+                  SOFA<span className="text-gray-800">REVIVE</span>
                 </span>
                 <span className="mt-1 text-[9px] font-medium uppercase tracking-tighter text-slate-400">
                   Premium Furniture Care
@@ -285,7 +285,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             <div className="flex-1 overflow-y-auto overscroll-contain px-6 py-8">
               {/* Main Navigation Group */}
               <div className="mb-10">
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600/60">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-800/60">
                   Main Menu
                 </p>
                 <nav className="flex flex-col">
@@ -368,7 +368,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="text-xs font-semibold text-slate-500 transition-colors hover:text-blue-600"
+                      className="text-xs font-semibold text-slate-500 transition-colors hover:text-gray-800"
                     >
                       {item.label}
                     </Link>
@@ -389,7 +389,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-4 text-slate-900 shadow-sm transition-all active:scale-95"
                     aria-label="Call us at +919304059249"
                   >
-                    <Phone size={16} className="text-blue-600" />
+                    <Phone size={16} className="text-gray-800" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
                       Call Now
                     </span>
@@ -407,7 +407,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </div>
 
                 <Link href="/quote" className="w-full">
-                  <button className="w-full rounded-2xl bg-blue-600 py-4 text-[11px] font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-blue-100 transition-all active:scale-95">
+                  <button className="w-full rounded-2xl bg-gray-800 py-4 text-[11px] font-black uppercase tracking-[0.2em] text-white shadow-xl shadow-gray-200 transition-all active:scale-95">
                     Book Inspection
                   </button>
                 </Link>

@@ -20,7 +20,7 @@ const REVIEWS = [
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="relative bg-white px-6">
+    <section id="reviews" className="relative bg-white px-6 py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid items-start gap-12 lg:grid-cols-3 lg:gap-20">
           {/* LEFT: Trust Header */}
@@ -32,14 +32,17 @@ export default function Testimonials() {
           >
             <Quote
               size={48}
-              className="mb-6 text-blue-600/20"
+              className="mb-6 text-gray-800/20"
               strokeWidth={1.5}
             />
 
             {/* H2: Matched to previous section 4xl/5xl */}
-            <h2 className="h2 mb-8">
+            <h2
+              className="h2 mb-8"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               What our <br />
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#3e3d3d] to-gray-600 bg-clip-text text-transparent">
                 Clients
               </span>{' '}
               say
@@ -90,7 +93,7 @@ export default function Testimonials() {
                     {t.name}
                   </p>
                   {/* Area Badge: Matched 11px blue style */}
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-blue-600">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-gray-800">
                     {t.area}
                   </p>
                 </div>

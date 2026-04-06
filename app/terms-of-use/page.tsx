@@ -66,7 +66,7 @@ export default function TermsOfUsePage() {
         </p>
         <a
           href="mailto:dreamdecore12@gmail.com"
-          className="inline-block rounded-xl bg-slate-900 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-blue-600"
+          className="inline-block rounded-xl bg-slate-900 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-gray-800"
         >
           Email: dreamdecore12@gmail.com
         </a>

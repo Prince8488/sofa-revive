@@ -9,7 +9,7 @@ import RestoreSection from '@/components/layout/sections/RestoreSection'
 
 export default function UrbanSofaMobile() {
   return (
-    <div className="min-h-screen bg-white pb-20 font-sans text-slate-900 selection:bg-blue-100 md:pb-0">
+    <div className="min-h-screen bg-white pb-20 font-sans text-slate-900 selection:bg-gray-200 md:pb-0">
       <main>
         <Hero />
         <OurServices />

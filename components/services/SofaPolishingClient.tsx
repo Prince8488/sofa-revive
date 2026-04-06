@@ -17,32 +17,35 @@ export default function SofaPolishingClient() {
     {
       title: 'Lustre Restoration',
       desc: 'Specialized substances applied to restore the deep, original shine to tables, chairs, and armoires.',
-      icon: <Sparkles className="text-blue-600" size={20} />,
+      icon: <Sparkles className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800',
     },
     {
       title: 'Grain Preservation',
       desc: 'Techniques that nourish dry wood and highlight natural patterns without compromising the finish.',
-      icon: <Droplets className="text-blue-600" size={20} />,
+      icon: <Droplets className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
     },
     {
       title: 'Detail Buffing',
       desc: 'Soft-bristle precision work for intricate grooves and antique carvings to ensure a uniform glow.',
-      icon: <Wind className="text-blue-600" size={20} />,
+      icon: <Wind className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1622397333309-3056849bc70b?auto=format&fit=crop&q=80&w=800',
     },
   ]
 
   return (
-    <div className="bg-white pt-5 text-slate-800 selection:bg-blue-600 selection:text-white">
+    <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. INDUSTRY HERO */}
       <section className="border-b border-slate-100 bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-700">
+          <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
             <Briefcase size={12} /> Master Wood Finishing
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
+          <h1
+            className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Unmatched Wood Polishing Services
           </h1>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-700">
@@ -81,7 +84,7 @@ export default function SofaPolishingClient() {
               </p>
               <Link
                 href="/gallery"
-                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-blue-600 transition-all hover:gap-2"
+                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-800 transition-all hover:gap-2"
               >
                 Process Details <ArrowUpRight size={12} />
               </Link>
@@ -94,7 +97,10 @@ export default function SofaPolishingClient() {
       <section className="overflow-hidden border-t border-slate-50 bg-white py-16">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
+            <h2
+              className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Furniture That Looks <br /> New, Every Day
             </h2>
             <p className="text-sm leading-relaxed text-slate-700">
@@ -105,11 +111,11 @@ export default function SofaPolishingClient() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <Layers size={16} className="text-blue-600" /> Multi-Stage
+                <Layers size={16} className="text-gray-800" /> Multi-Stage
                 Buffing Process
               </div>
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <ShieldCheck size={16} className="text-blue-600" /> Protective
+                <ShieldCheck size={16} className="text-gray-800" /> Protective
                 Surface Sealing
               </div>
             </div>
@@ -130,7 +136,10 @@ export default function SofaPolishingClient() {
       <section className="bg-slate-900 py-16 text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 text-center lg:grid-cols-2 lg:text-left">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold leading-tight md:text-3xl">
+            <h2
+              className="text-2xl font-bold leading-tight md:text-3xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Preserve the Lifespan <br /> of Your Assets
             </h2>
             <p className="mx-auto max-w-lg text-sm leading-relaxed text-slate-400 lg:mx-0">
@@ -142,7 +151,7 @@ export default function SofaPolishingClient() {
             <div className="flex flex-wrap justify-center gap-4 pt-4 lg:justify-start">
               <Link
                 href="/quote"
-                className="cursor-pointer rounded bg-blue-600 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-blue-700"
+                className="cursor-pointer rounded bg-gray-800 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-900"
               >
                 Request Consultation
               </Link>
@@ -150,7 +159,7 @@ export default function SofaPolishingClient() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="group rounded-2xl bg-slate-800 p-6 text-center">
-              <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-blue-400">
+              <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-gray-400">
                 Deep
               </div>
               <div className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
@@ -158,7 +167,7 @@ export default function SofaPolishingClient() {
               </div>
             </div>
             <div className="group rounded-2xl bg-slate-800 p-6 text-center">
-              <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-blue-400">
+              <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-gray-400">
                 High
               </div>
               <div className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
@@ -172,9 +181,12 @@ export default function SofaPolishingClient() {
       {/* 5. FINAL ACTION */}
       <section className="border-t border-slate-100 bg-white px-6 py-20 text-center">
         <div className="mx-auto max-w-xl space-y-6">
-          <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900">
+          <h2
+            className="text-2xl font-black uppercase tracking-tight text-slate-900"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Institutional Quality. <br />
-            <span className="text-blue-600 underline decoration-slate-200 underline-offset-8">
+            <span className="text-gray-800 underline decoration-slate-200 underline-offset-8">
               Artisan Finesse.
             </span>
           </h2>
@@ -183,7 +195,7 @@ export default function SofaPolishingClient() {
             delivers the standard of excellence Bangalore demands.
           </p>
           <Link href="/quote" className="cursor-pointer">
-            <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-blue-600 active:scale-95">
+            <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-gray-800 active:scale-95">
               Receive Your Complimentary Quote
             </button>
           </Link>

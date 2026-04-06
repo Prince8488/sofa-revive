@@ -63,7 +63,7 @@ const SERVICES = [
 
 export default function ServicesClient() {
   return (
-    <div className="min-h-screen bg-white pb-20 pt-20 text-slate-900 selection:bg-blue-100 md:pt-32">
+    <div className="min-h-screen bg-white pb-20 pt-20 text-slate-900 selection:bg-gray-200 md:pt-32">
       {/* 1. HERO */}
       <motion.section
         initial="initial"
@@ -71,12 +71,15 @@ export default function ServicesClient() {
         className="mb-24 px-6 text-center"
       >
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-blue-600">
+          <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600">
             Our Expertise
           </p>
-          <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-6xl">
+          <h1
+            className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 md:text-6xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Comprehensive Care <br />
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#3e3d3d] to-gray-600 bg-clip-text text-transparent">
               For Your Furniture
             </span>
           </h1>
@@ -102,10 +105,13 @@ export default function ServicesClient() {
           >
             <div className={`space-y-8 ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
               <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-600 text-white">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-800 text-white">
                   {service.icon}
                 </div>
-                <h2 className="text-2xl font-bold tracking-tight">
+                <h2
+                  className="text-2xl font-bold tracking-tight"
+                  style={{ fontFamily: 'Roboto, sans-serif' }}
+                >
                   {service.title}
                 </h2>
               </div>
@@ -117,7 +123,7 @@ export default function ServicesClient() {
                   <li key={j} className="flex items-center gap-3">
                     <CheckCircle2
                       size={16}
-                      className="text-blue-600"
+                      className="text-gray-600"
                       strokeWidth={3}
                     />
                     <span className="text-sm font-medium text-slate-700">
@@ -144,7 +150,10 @@ export default function ServicesClient() {
       {/* 3. CTA SECTION */}
       <section className="mt-32 border-t border-slate-100 py-24">
         <div className="mx-auto max-w-4xl px-6 text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+          <h2
+            className="text-3xl font-extrabold tracking-tight md:text-4xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Ready to Transform Your Space?
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-slate-600">
@@ -156,7 +165,7 @@ export default function ServicesClient() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -5 }}
                 whileTap={{ scale: 0.98 }}
-                className="flex items-center gap-3 rounded-full bg-slate-900 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-300 transition-all hover:bg-blue-600"
+                className="flex items-center gap-3 rounded-full bg-slate-900 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-300 transition-all hover:bg-gray-800"
               >
                 Get a Free Quote <ArrowRight size={16} />
               </motion.button>

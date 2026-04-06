@@ -1,200 +1,190 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  Award,
-  Hammer,
-  Leaf,
-  Microscope,
-  Sparkles,
-} from 'lucide-react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { MapPin, Scissors, Hammer, Leaf, ArrowRight } from 'lucide-react'
 
-export default function AboutClient() {
+export default function AboutGenuine() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white pb-20 pt-20 text-studio-900 selection:bg-brand-100 selection:text-brand-900 md:pt-32">
-      {/* 1. HERO: THE MANIFESTO */}
-      <section className="relative mb-24 px-6 md:mb-32">
-        <div className="absolute left-1/2 top-0 -z-10 h-full w-full -translate-x-1/2 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-50/50 via-transparent to-transparent opacity-70" />
-
-        <div className="mx-auto max-w-7xl text-center">
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-          >
-            <p className="mb-6 flex items-center justify-center gap-3 text-[10px] font-black uppercase tracking-[0.4em] text-brand-600">
-              <span className="h-[1px] w-8 bg-brand-200" />
-              Anti-Fast Furniture • Since 2014
-              <span className="h-[1px] w-8 bg-brand-200" />
-            </p>
-            <h1 className="text-4xl font-black uppercase italic leading-[1.1] tracking-tighter md:text-6xl">
-              We don't just repair. <br />
-              <span className="animate-gradient bg-gradient-to-r from-brand-600 via-brand-500 to-brand-400 bg-clip-text text-transparent">
-                We Reimagine.
-              </span>
-            </h1>
-            <p className="mx-auto mt-8 max-w-2xl text-sm font-medium leading-relaxed text-studio-500 opacity-90 md:text-base">
-              Most furniture today is built to be replaced. At DreamDecore, we
-              believe the best piece in your home is the one you already own. We
-              combine Bengaluru’s heritage craftsmanship with modern material
-              science to give legacies a second life.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* 2. TECHNICAL AUTHORITY */}
-      <section className="mb-32 px-4 md:px-6">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-px overflow-hidden rounded-[2.5rem] border border-studio-200/60 bg-studio-100 shadow-2xl shadow-brand-900/5 md:grid-cols-3">
-          {[
-            {
-              icon: <Microscope />,
-              title: 'Material Science',
-              text: "We use multi-density Sleepwell™ foam and high-tensile webbing for a 'better-than-new' ergonomic feel.",
-            },
-            {
-              icon: <Hammer />,
-              title: 'Structural Integrity',
-              text: 'Every restoration starts with a frame audit. We reinforce joints with industrial-grade fasteners.',
-            },
-            {
-              icon: <Sparkles />,
-              title: 'Contract Grade',
-              text: 'Our fabrics exceed 50,000 rub counts, sourced from premium mills in Italy and Turkey.',
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ y: -5 }}
-              className="group relative cursor-pointer space-y-6 bg-white p-12 transition-all duration-500"
-            >
-              <div className="text-brand-600 transition-transform duration-500 group-hover:rotate-3 group-hover:scale-110">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-black uppercase italic tracking-tight transition-colors group-hover:text-brand-600">
-                {item.title}
-              </h3>
-              <p className="text-xs font-medium leading-relaxed text-studio-500">
-                {item.text}
-              </p>
-              <div className="absolute bottom-0 left-0 h-1 w-0 bg-brand-600 transition-all duration-500 group-hover:w-full" />
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* 3. SUSTAINABILITY */}
-      <section className="mx-0 mb-32 border border-studio-100/50 bg-studio-50 px-6 py-24 md:mx-6 md:rounded-[4rem]">
-        <div className="mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-2">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-green-100 bg-white px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-green-700 shadow-sm">
-              <Leaf size={12} className="animate-pulse" /> Eco-Conscious Choice
-            </div>
-            <h2 className="mb-8 text-3xl font-black uppercase italic tracking-tighter md:text-5xl">
-              Restoration is a <br />{' '}
-              <span className="text-brand-600">Radical Act.</span>
-            </h2>
-            <p className="mb-10 text-sm leading-relaxed text-studio-600 md:text-base">
-              Every sofa restored is 40kg of carbon emissions saved and 60kg of
-              wood kept out of Bengaluru's landfills. Choosing DreamDecore isn’t
-              just a design choice; it’s a commitment to a circular economy.
-            </p>
-            <div className="grid grid-cols-2 gap-8 border-t border-studio-200 pt-10">
-              <div className="group cursor-default">
-                <p className="text-4xl font-black italic text-brand-600">
-                  5,000+
-                </p>
-                <p className="mt-2 text-[9px] font-bold uppercase tracking-widest text-studio-400">
-                  Pieces Saved
-                </p>
-              </div>
-              <div className="group cursor-default">
-                <p className="text-4xl font-black italic text-brand-600">
-                  300 Tons
-                </p>
-                <p className="mt-2 text-[9px] font-bold uppercase tracking-widest text-studio-400">
-                  Waste Diverted
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          <div className="group relative overflow-hidden rounded-[3rem] shadow-2xl">
-            <Image
-              src="https://images.unsplash.com/photo-1556761175-4b46a572b786?q=80&w=1000"
-              alt="Two colleagues collaborating in a modern, eco-friendly office, symbolizing SofaRevive's commitment to sustainability."
-              width={1000}
-              height={1000}
-              className="aspect-square w-full object-cover transition-all duration-700 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 rounded-[3rem] ring-1 ring-inset ring-white/10" />
-          </div>
-        </div>
-      </section>
-
-      {/* 4. THE PROMISE */}
-      <section className="mb-32 px-6">
-        <div className="mx-auto max-w-4xl space-y-10 text-center">
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-brand-50"
-          >
-            <Award className="h-8 w-8 text-brand-600" />
-          </motion.div>
-          <h2 className="text-3xl font-black uppercase italic tracking-tight md:text-4xl">
-            The DreamDecore Warranty
-          </h2>
-          <p className="mx-auto max-w-2xl text-sm italic leading-relaxed text-studio-500 md:text-base">
-            "Every restoration is accompanied by a signed Certificate of
-            Quality. We provide a 5-year structural warranty because we don't
-            just fix furniture—we build legacies."
+    <main className="min-h-screen bg-[#FDFBF7] text-stone-900 selection:bg-stone-200">
+      {/* 1. HERO: THE QUIET CONFIDENCE */}
+      {/* Notice the use of font-serif for a high-end, timeless feel. */}
+      <section className="relative px-6 pb-24 pt-32 md:pb-32 md:pt-48">
+        <div className="mx-auto max-w-5xl">
+          <p className="mb-8 text-xs font-semibold uppercase tracking-[0.2em] text-stone-500">
+            The Bengaluru Workshop
           </p>
-          <div className="flex flex-col justify-center gap-6 pt-12 sm:flex-row">
-            <Link
-              href="/quote"
-              aria-label="Book a consultation to get a project audit"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05, y: -5 }}
-                whileTap={{ scale: 0.98 }}
-                className="group relative z-10 flex min-w-[280px] cursor-pointer items-center justify-center gap-4 rounded-3xl bg-blue-600 px-12 py-8 text-xs font-black uppercase tracking-[0.2em] text-white shadow-[0_20px_50px_rgba(37,99,235,0.4)] transition-all hover:shadow-blue-600/60"
-              >
-                <span>Book Your Audit</span>
-                <ArrowRight
-                  size={20}
-                  className="transition-transform group-hover:translate-x-2"
-                />
-              </motion.button>
-            </Link>
-            <Link
-              href="/gallery"
-              aria-label="View our gallery of completed projects"
-            >
-              <motion.button
-                whileHover={{
-                  scale: 1.02,
-                  backgroundColor: '#0f172a',
-                  color: '#fff',
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="cursor-pointer rounded-2xl border-2 border-studio-900 px-12 py-6 text-[10px] font-black uppercase tracking-widest text-studio-900 transition-all"
-              >
-                View Our Catalog
-              </motion.button>
-            </Link>
+          <h1 className="max-w-4xl font-serif text-[clamp(2rem,4vw,4rem)] leading-[1.1] tracking-tight text-stone-900">
+            We preserve the furniture that holds your history.
+          </h1>
+        </div>
+      </section>
+
+      {/* 2. THE STORY: ASYMMETRICAL & EDITORIAL */}
+      <section className="px-6 pb-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="relative mb-20 aspect-[21/9] w-full overflow-hidden bg-stone-200">
+            {/* Use a wide, cinematic shot of your workshop here */}
+            <Image
+              src="https://images.unsplash.com/photo-1610384467816-5b4122d6b38c?q=80&w=2000"
+              alt="Artisans at work in the SofaRevive studio"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          <div className="mx-auto grid max-w-6xl grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-24">
+            <div className="top-32 md:sticky md:col-span-5">
+              <h2 className="font-serif text-3xl leading-snug md:text-4xl">
+                Restoration is not merely repair. It is an act of deep respect
+                for materials.
+              </h2>
+            </div>
+
+            <div className="space-y-8 text-lg font-light leading-relaxed text-stone-600 md:col-span-7">
+              <p>
+                SofaRevive was established in 2014 out of a quiet frustration.
+                We watched as Bengaluru's homes filled up with "fast
+                furniture"—pieces engineered to look beautiful for a season,
+                only to fail structurally within a few years.
+              </p>
+              <p>
+                We built our workshop to offer an alternative. When a piece
+                comes to us, we don't just put fresh fabric over old problems.
+                We strip it down to its skeleton. We inspect the joinery. We
+                replace weak staples with hardened dowels and corner blocks. We
+                select foams and springs designed for decades of use, not
+                months.
+              </p>
+              <p>
+                This is slow, deliberate work. It requires hands that understand
+                the tension of a spring and the grain of seasoned wood.
+              </p>
+              <div className="mt-8 border-t border-stone-200 pt-8">
+                <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-stone-900">
+                  Our Promise
+                </p>
+                <p className="text-base italic text-stone-500">
+                  "If we cannot restore it to outlast its original factory
+                  build, we will not take the commission."
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-    </div>
+
+      {/* 3. THE CRAFT (Simple, Honest Icons) */}
+      <section className="bg-stone-900 px-6 py-24 text-stone-100">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-16 md:mb-24">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-stone-400">
+              Our Standards
+            </p>
+            <h2 className="font-serif text-3xl md:text-5xl">
+              The Workshop Method.
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-12 border-t border-stone-800 pt-16 md:grid-cols-3 md:gap-16">
+            <div className="space-y-6">
+              <Hammer className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <h3 className="font-serif text-xl">Structural Integrity</h3>
+              <p className="font-light leading-relaxed text-stone-400">
+                We discard cheap manufacturing shortcuts. Every frame is
+                reinforced with kiln-dried timber and marine-grade adhesives,
+                ensuring a foundation that will not creak or sway.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <Scissors className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <h3 className="font-serif text-xl">Bespoke Tailoring</h3>
+              <p className="font-light leading-relaxed text-stone-400">
+                Upholstery is a mathematical art. We pattern-match fabrics with
+                millimeter precision, using contract-grade textiles that resist
+                wear, fading, and the daily rigors of life.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <Leaf className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <h3 className="font-serif text-xl">Conscious Practice</h3>
+              <p className="font-light leading-relaxed text-stone-400">
+                True luxury is sustainable. By choosing to restore rather than
+                replace, you partner with us in diverting massive amounts of
+                timber and foam from Karnataka's landfills.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. THE PROOF (Image heavy, text light) */}
+      <section className="px-6 py-24">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 md:grid-cols-2">
+          <div className="flex flex-col justify-center bg-stone-100 p-12 md:p-20">
+            <h2 className="mb-6 font-serif text-4xl text-stone-900">
+              Decades of combined expertise.
+            </h2>
+            <p className="mb-12 text-lg font-light text-stone-600">
+              Our artisans have spent their lives mastering the nuances of
+              traditional upholstery and modern material science.
+            </p>
+            <div className="grid grid-cols-2 gap-8 border-t border-stone-300 pt-8">
+              <div>
+                <p className="mb-1 font-serif text-3xl text-stone-900">5,00+</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-stone-500">
+                  Pieces Restored
+                </p>
+              </div>
+              <div>
+                <p className="mb-1 font-serif text-3xl text-stone-900">1 Yr</p>
+                <p className="text-xs font-semibold uppercase tracking-widest text-stone-500">
+                  Structural Warranty
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="relative min-h-[400px] bg-stone-200">
+            <Image
+              src="https://images.unsplash.com/photo-1544457070-4cd773b4d71e?q=80&w=1000"
+              alt="Close up of fabric selection"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FOOTER & LOCAL CONNECTION */}
+      <section className="border-t border-stone-200 px-6 py-24 text-center">
+        <div className="mx-auto max-w-2xl">
+          <h2 className="mb-8 font-serif text-3xl md:text-5xl">
+            Discuss a project.
+          </h2>
+          <p className="mb-10 text-lg font-light text-stone-600">
+            We offer in-home consultations to assess the structural health of
+            your furniture.
+          </p>
+
+          <Link
+            href="/quote"
+            className="inline-flex items-center gap-3 bg-stone-900 px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-stone-800"
+          >
+            Request a Consultation <ArrowRight className="h-4 w-4" />
+          </Link>
+
+          <div className="mt-16 flex flex-col items-center gap-4 border-t border-stone-200 pt-8">
+            <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-stone-400">
+              <MapPin className="h-4 w-4" /> Proudly serving
+            </div>
+            <p className="text-sm text-stone-500">
+              Indiranagar · Whitefield · Koramangala · Jayanagar ·
+              Sadashivanagar
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
   )
 }

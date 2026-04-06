@@ -18,8 +18,8 @@ export default function TermOfUseLayout({
             {title}
           </h1>
           <div className="mt-6 flex items-center gap-3">
-            <span className="h-[2px] w-8 bg-blue-600" aria-hidden="true" />
-            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-600">
+            <span className="h-[2px] w-8 bg-gray-800" aria-hidden="true" />
+            <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-800">
               DreamDecore Privacy Standards • 2026
             </p>
           </div>
@@ -30,9 +30,9 @@ export default function TermOfUseLayout({
           max-w-none prose-headings:font-black prose-headings:uppercase prose-headings:italic prose-headings:tracking-tight
           prose-headings:text-slate-900 prose-p:mb-8 prose-p:leading-relaxed
           prose-p:text-slate-600 prose-a:font-bold
-          prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:font-black
+          prose-a:text-gray-800 prose-a:no-underline hover:prose-a:underline prose-strong:font-black
           prose-strong:text-slate-950 prose-li:text-slate-600
-          prose-li:marker:text-blue-600
+          prose-li:marker:text-gray-800
           prose-hr:border-slate-100"
         >
           {children}

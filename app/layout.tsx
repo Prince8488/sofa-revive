@@ -6,7 +6,10 @@ import { Metadata } from 'next'
 import Sticky from '@/components/layout/sections/Sticky'
 import FloatingSticky from '@/components/layout/sections/FloatingSticky'
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -137,7 +140,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
         />
       </head>
       <body
-        className={`${inter.className} bg-stone-50 py-8 text-slate-900 md:py-0`}
+        className={`${inter.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
+        suppressHydrationWarning
       >
         <Header />
         {children}

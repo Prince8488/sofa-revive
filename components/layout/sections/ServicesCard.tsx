@@ -69,7 +69,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           className="pointer-events-none absolute inset-y-0 z-20 w-0.5 bg-white/80 shadow-xl"
           style={{ left: `${sliderPos}%` }}
         >
-          <div className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-blue-600 shadow-lg">
+          <div className="absolute top-1/2 flex h-7 w-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-white bg-gray-800 shadow-lg">
             <div className="flex gap-0.5">
               <div className="h-2 w-0.5 rounded-full bg-white" />
               <div className="h-2 w-0.5 rounded-full bg-white" />
@@ -81,7 +81,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         <div className="pointer-events-none absolute left-4 top-4 z-30 rounded bg-black/40 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white backdrop-blur">
           Before
         </div>
-        <div className="pointer-events-none absolute right-4 top-4 z-30 rounded bg-blue-600 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+        <div className="pointer-events-none absolute right-4 top-4 z-30 rounded bg-gray-800 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
           After
         </div>
       </div>
@@ -111,7 +111,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         >
           <button
             type="button"
-            className="w-full cursor-pointer rounded-xl bg-slate-950 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm transition-all hover:bg-blue-600 active:scale-[0.97]"
+            className="w-full cursor-pointer rounded-xl bg-slate-950 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-sm transition-all hover:bg-gray-800 active:scale-[0.97]"
           >
             View Case Study
           </button>

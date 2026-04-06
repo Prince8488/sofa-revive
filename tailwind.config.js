@@ -2,6 +2,10 @@
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Red Hat Display', 'sans-serif'],
+        pangram: ['var(--font-pangram)', 'sans-serif'],
+      },
       colors: {
         // "Brand" is your primary blue.
         // 600 is your main accent, 950 is for deep 'almost-black' UI elements.

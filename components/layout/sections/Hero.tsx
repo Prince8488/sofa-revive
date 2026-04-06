@@ -5,9 +5,15 @@ import { ArrowRight, ShieldCheck, CheckCircle2 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import useMediaQuery from '@/hooks/useMediaQuery'
+import { useEffect, useState } from 'react'
 
 export default function Hero() {
   const isMobile = useMediaQuery('(max-width: 768px)')
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const desktopImage =
     'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop'
@@ -56,7 +62,7 @@ export default function Hero() {
                 </span>
               </div>
 
-              <h1 className="h1">
+              <h1 className="h1" style={{ fontFamily: 'Roboto, sans-serif' }}>
                 Sofa Restoration <br />
                 <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                   Redefined.
@@ -72,7 +78,7 @@ export default function Hero() {
             {/* DIRECT CALL TO ACTION */}
             <div className="flex flex-col gap-4 pt-0 sm:flex-row">
               <Link href="/quote" className="w-full cursor-pointer sm:w-auto">
-                <button className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-slate-950 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-all hover:bg-blue-600">
+                <button className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-slate-950 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-all hover:bg-gray-800">
                   Book Free Inspection <ArrowRight size={16} />
                 </button>
               </Link>
@@ -84,15 +90,21 @@ export default function Hero() {
             </div>
 
             {/* TRUST INDICATORS: CLEAN & LINEAR */}
-            <div className="flex items-center gap-8 border-t border-slate-100 pt-0">
-              <div className="flex items-center gap-2 text-slate-600">
-                <ShieldCheck size={18} className="text-blue-600" />
+            <div className="flex items-center gap-8 border-t border-blue-100 pt-6">
+              <div className="flex items-center gap-2 text-blue-700">
+                <ShieldCheck
+                  size={18}
+                  className="lucide lucide-shield-check text-blue-600"
+                />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
                   1Y Warranty
                 </span>
               </div>
-              <div className="flex items-center gap-2 text-slate-600">
-                <CheckCircle2 size={18} className="text-blue-600" />
+              <div className="flex items-center gap-2 text-blue-700">
+                <CheckCircle2
+                  size={18}
+                  className="lucide lucide-shield-check text-blue-600"
+                />
                 <span className="text-[10px] font-bold uppercase tracking-widest">
                   Branded Materials
                 </span>
@@ -108,30 +120,32 @@ export default function Hero() {
             className="relative w-full flex-1"
           >
             <div className="relative aspect-[4/3] overflow-hidden rounded-3xl border-[12px] border-white shadow-2xl ring-1 ring-slate-100">
-              <Image
-                src={isMobile ? mobileImage : desktopImage}
-                alt="A beautifully restored sofa, showcasing the quality of our upholstery work."
-                width={isMobile ? 800 : 1200}
-                height={isMobile ? 1067 : 900}
-                priority
-                fetchPriority="high"
-                loading="eager"
-                decoding="sync"
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              {isClient && (
+                <Image
+                  src={isMobile ? mobileImage : desktopImage}
+                  alt="A beautifully restored sofa, showcasing the quality of our upholstery work."
+                  width={isMobile ? 800 : 1200}
+                  height={isMobile ? 1067 : 900}
+                  priority
+                  fetchPriority="high"
+                  loading="eager"
+                  decoding="sync"
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              )}
 
               {/* MINIMALIST FLOATING LABEL */}
               <div className="absolute right-6 top-6 rounded-full border border-slate-200/50 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-md">
                 <p className="flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.2em] text-slate-900">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600"></span>
+                  <span className="h-1.5 w-1.5 rounded-full bg-gray-800"></span>
                   Craftsmanship Excellence
                 </p>
               </div>
             </div>
 
             {/* GEOMETRIC ACCENT */}
-            <div className="absolute -bottom-6 -right-6 -z-10 h-32 w-32 rounded-full bg-blue-50 blur-2xl" />
+            <div className="absolute -bottom-6 -right-6 -z-10 h-32 w-32 rounded-full bg-gray-100 blur-2xl" />
           </motion.div>
         </div>
       </div>

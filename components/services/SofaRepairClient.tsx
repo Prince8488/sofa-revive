@@ -17,32 +17,35 @@ export default function SofaRepairClient() {
     {
       title: 'Sofa Restoration',
       desc: 'Comprehensive structural and aesthetic overhauls for high-traffic corporate breakout areas.',
-      icon: <Sofa className="text-blue-600" size={20} />,
+      icon: <Sofa className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
     },
     {
       title: 'Recliner Mechanics',
       desc: 'Precision maintenance for motorized reclining systems in executive cabins and lounge rooms.',
-      icon: <Armchair className="text-blue-600" size={20} />,
+      icon: <Armchair className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&q=80&w=1000',
     },
     {
       title: 'Custom Upholstery',
       desc: 'Specialized material sourcing including fire-retardant fabrics and premium Italian leathers.',
-      icon: <PenTool className="text-blue-600" size={20} />,
+      icon: <PenTool className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800',
     },
   ]
 
   return (
-    <div className="bg-white pt-5 text-slate-800 selection:bg-blue-600 selection:text-white">
+    <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. INDUSTRY HERO */}
       <section className="bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
-          <div className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-blue-700">
+          <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
             <Briefcase size={12} /> Institutional Furniture Management
           </div>
-          <h1 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
+          <h1
+            className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-4xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Asset Restoration for Corporate & Hospitality
           </h1>
           <p className="mx-auto max-w-2xl text-sm leading-relaxed text-slate-700 md:text-base">
@@ -59,7 +62,7 @@ export default function SofaRepairClient() {
           {services.map((service, index) => (
             <div
               key={index}
-              className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors hover:border-blue-200"
+              className="group rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-colors hover:border-gray-200"
             >
               <div className="relative mb-4 aspect-video overflow-hidden rounded-lg">
                 <Image
@@ -81,7 +84,7 @@ export default function SofaRepairClient() {
               </p>
               <Link
                 href="/gallery"
-                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-blue-600 transition-all hover:gap-2"
+                className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-800 transition-all hover:gap-2"
               >
                 View Collection <ArrowUpRight size={12} />
               </Link>
@@ -94,31 +97,34 @@ export default function SofaRepairClient() {
       <section className="bg-slate-900 py-16 text-white">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 px-6 lg:grid-cols-2">
           <div className="space-y-6">
-            <h2 className="text-2xl font-bold leading-tight md:text-3xl">
+            <h2
+              className="text-2xl font-bold leading-tight md:text-3xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               Hospitality & Resort <br /> Seating Solutions
             </h2>
-            <p className="border-l-2 border-blue-600 pl-4 text-sm italic leading-relaxed text-slate-400">
+            <p className="border-l-2 border-gray-600 pl-4 text-sm italic leading-relaxed text-slate-400">
               First impressions set the tone for guest retention. Our quarterly
               programs ensure your lobby and dining furniture never shows signs
               of wear.
             </p>
             <ul className="space-y-3 text-xs text-slate-300">
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-blue-500" /> Structural
+                <ShieldCheck size={14} className="text-gray-500" /> Structural
                 frame leveling and reinforcement
               </li>
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-blue-500" />{' '}
+                <ShieldCheck size={14} className="text-gray-500" />{' '}
                 Commercial-grade stain protection treatments
               </li>
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-blue-500" /> Specialized
+                <ShieldCheck size={14} className="text-gray-500" /> Specialized
                 leather conditioning for fine dining
               </li>
             </ul>
             <Link
               href="/quote"
-              className="inline-block cursor-pointer rounded bg-blue-600 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-blue-700"
+              className="inline-block cursor-pointer rounded bg-gray-800 px-6 py-3 text-[10px] font-bold uppercase tracking-widest text-white transition-colors hover:bg-gray-900"
             >
               Join Maintenance Program
             </Link>
@@ -147,7 +153,10 @@ export default function SofaRepairClient() {
           />
         </div>
         <div className="order-1 space-y-6 lg:order-2">
-          <h2 className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl">
+          <h2
+            className="text-2xl font-bold leading-tight text-slate-900 md:text-3xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Tech Park & Corporate <br /> Breakout Management
           </h2>
           <p className="text-sm leading-relaxed text-slate-700">
@@ -171,7 +180,7 @@ export default function SofaRepairClient() {
           </div>
           <Link
             href="/quote"
-            className="flex cursor-pointer items-center gap-2 text-xs font-bold uppercase tracking-widest text-blue-600 underline-offset-4 hover:underline"
+            className="flex cursor-pointer items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-800 underline-offset-4 hover:underline"
           >
             Request Institutional Pricing <ArrowUpRight size={14} />
           </Link>
@@ -181,9 +190,12 @@ export default function SofaRepairClient() {
       {/* 5. FINAL ACTION */}
       <section className="border-t border-slate-100 px-6 py-20 text-center">
         <div className="mx-auto max-w-3xl space-y-6">
-          <h2 className="text-2xl font-black uppercase text-slate-900 md:text-3xl">
+          <h2
+            className="text-2xl font-black uppercase text-slate-900 md:text-3xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Professional Excellence. <br />
-            <span className="text-blue-600 underline decoration-slate-200 underline-offset-8">
+            <span className="text-gray-800 underline decoration-slate-200 underline-offset-8">
               Our Standard.
             </span>
           </h2>
@@ -192,7 +204,7 @@ export default function SofaRepairClient() {
             medical facilities. Experience the DreamDecore standard.
           </p>
           <Link href="/quote" className="cursor-pointer">
-            <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-blue-600">
+            <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-gray-800">
               Receive Your Complimentary Quote
             </button>
           </Link>

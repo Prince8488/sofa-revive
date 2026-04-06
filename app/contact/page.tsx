@@ -30,7 +30,7 @@ const ContactPage = () => {
       value: '+91 73383 31370',
       desc: 'Mon-Sun, 9am to 8pm',
       link: 'tel:+917338331370',
-      color: 'bg-blue-600',
+      color: 'bg-gray-800',
     },
     {
       icon: <Mail className="h-5 w-5 md:h-6 md:w-6" />,
@@ -50,7 +50,7 @@ const ContactPage = () => {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-blue-600"
+            className="mb-4 text-[10px] font-black uppercase tracking-[0.4em] text-gray-600"
           >
             Connect With The Studio
           </motion.p>
@@ -58,10 +58,11 @@ const ContactPage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="mb-8 text-4xl font-black uppercase italic leading-[1.1] tracking-tighter sm:text-5xl md:text-6xl"
+            className="mb-8 text-2xl font-black uppercase italic leading-[1.1] tracking-tighter sm:text-xs md:text-4xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
           >
             Start Your <br />
-            <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#3e3d3d] via-gray-600 to-gray-500 bg-clip-text text-transparent">
               Furniture Revival.
             </span>
           </motion.h1>
@@ -79,10 +80,10 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 + 0.3 }}
-                className="group relative flex items-center gap-4 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 transition-all duration-500 hover:border-blue-200 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.1)] md:gap-6 md:p-8"
+                className="group relative flex items-center gap-4 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 transition-all duration-500 hover:border-gray-200 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.1)] md:gap-6 md:p-8"
               >
                 {method.tag && (
-                  <span className="absolute right-8 top-4 rounded-full bg-blue-600 px-3 py-1 text-[8px] font-black uppercase tracking-widest text-white">
+                  <span className="absolute right-8 top-4 rounded-full bg-gray-800 px-3 py-1 text-[8px] font-black uppercase tracking-widest text-white">
                     {method.tag}
                   </span>
                 )}
@@ -97,7 +98,7 @@ const ContactPage = () => {
                   <p className="mb-1 text-[9px] font-black uppercase tracking-widest text-slate-600">
                     {method.title}
                   </p>
-                  <h3 className="text-xl font-black italic tracking-tight transition-colors group-hover:text-blue-600 md:text-2xl">
+                  <h3 className="text-xl font-black italic tracking-tight transition-colors group-hover:text-gray-800 md:text-2xl">
                     {method.value}
                   </h3>
                   <p className="mt-1 text-[11px] font-medium text-slate-700 md:text-sm">
@@ -105,20 +106,20 @@ const ContactPage = () => {
                   </p>
                 </div>
 
-                <ArrowUpRight className="text-slate-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-blue-600" />
+                <ArrowUpRight className="text-slate-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gray-800" />
               </motion.a>
             ))}
 
             {/* LIVE INDICATOR BOX */}
             <div className="group relative overflow-hidden rounded-[2.5rem] bg-slate-900 p-8 text-white md:p-10">
-              <div className="absolute right-0 top-0 h-32 w-32 bg-blue-600/20 blur-[50px] transition-all group-hover:bg-blue-600/40"></div>
+              <div className="absolute right-0 top-0 h-32 w-32 bg-gray-800/20 blur-[50px] transition-all group-hover:bg-gray-800/40"></div>
 
               <div className="mb-8 flex items-center gap-4">
                 <div className="relative">
                   <div className="absolute inset-0 h-3 w-3 animate-ping rounded-full bg-green-500"></div>
                   <div className="relative h-3 w-3 rounded-full bg-green-500"></div>
                 </div>
-                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-400">
+                <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">
                   Logistics Availability
                 </h4>
               </div>
@@ -176,7 +177,7 @@ const ContactPage = () => {
               {/* GLASS ADDRESS CARD */}
               <div className="absolute bottom-6 left-6 right-6 rounded-[2.5rem] border border-white/10 bg-white/5 p-8 text-white backdrop-blur-2xl">
                 <div className="flex items-start gap-5">
-                  <div className="rounded-2xl bg-blue-600 p-4 shadow-xl">
+                  <div className="rounded-2xl bg-gray-800 p-4 shadow-xl">
                     <MapPin size={24} />
                   </div>
                   <div>
@@ -192,7 +193,7 @@ const ContactPage = () => {
                       href="https://goo.gl/maps/example"
                       target="_blank"
                       aria-label="Get directions to our main studio on Google Maps"
-                      className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-950 shadow-xl transition-all hover:bg-blue-600 hover:text-white active:scale-95"
+                      className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-950 shadow-xl transition-all hover:bg-gray-800 hover:text-white active:scale-95"
                       rel="noreferrer"
                     >
                       <Navigation size={14} /> Get Directions

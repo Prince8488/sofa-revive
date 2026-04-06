@@ -21,7 +21,8 @@ const IndustryQuoteForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
-  // Refs for Scroll-to-Error
+  // --- REFS FOR NAVIGATION ---
+  const formTopRef = useRef<HTMLDivElement>(null) // Ref for scroll-to-top on success
   const nameRef = useRef<HTMLDivElement>(null)
   const emailRef = useRef<HTMLDivElement>(null)
   const phoneRef = useRef<HTMLDivElement>(null)
@@ -34,7 +35,7 @@ const IndustryQuoteForm = () => {
     serviceType: 'Sofa Upholstery',
     condition: '',
   })
-  // const [images, setImages] = useState<File[]>([])
+
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
     {},
   )
@@ -46,7 +47,6 @@ const IndustryQuoteForm = () => {
   ) => {
     const { name, value } = e.target
 
-    // Strict typing behavior: block digits in name, block non-digits in phone
     if (name === 'fullName' && /\d/.test(value)) return
     if (name === 'phone') {
       const cleaned = value.replace(/\D/g, '').slice(0, 10)
@@ -66,34 +66,44 @@ const IndustryQuoteForm = () => {
 
     if (result.isValid) {
       setIsLoading(true)
-      console.log('Form Data:', formData)
-      // Simulate API call
+
+      // Simulate API Logic
       await new Promise((resolve) => setTimeout(resolve, 1500))
+
       setIsLoading(false)
       setIsSubmitted(true)
+
+      // --- PRO SCROLL LOGIC ---
+      // We use a small timeout to ensure the DOM has swapped to the Success state
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+      }, 100)
     } else {
       setErrors(result.errors)
 
-      // Strict Scroll-to-Error Logic
       const scrollOpts: ScrollIntoViewOptions = {
         behavior: 'smooth',
         block: 'center',
       }
+
       if (result.firstErrorField === 'fullName')
         nameRef.current?.scrollIntoView(scrollOpts)
       else if (result.firstErrorField === 'email')
         emailRef.current?.scrollIntoView(scrollOpts)
       else if (result.firstErrorField === 'phone')
         phoneRef.current?.scrollIntoView(scrollOpts)
-      else if (result.firstErrorField === 'serviceType') {
+      else if (result.firstErrorField === 'serviceType')
         serviceRef.current?.scrollIntoView(scrollOpts)
-      }
     }
   }
 
+  // --- STYLING MACROS ---
   const inputBase = (fieldName: keyof FormData) => `
     w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
-    ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-blue-600 focus:bg-white'}
+    ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
   `
 
   const labelBase =
@@ -106,7 +116,6 @@ const IndustryQuoteForm = () => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="ml-1 mt-2 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-red-500"
-          aria-live="polite"
         >
           <AlertCircle size={10} /> {errors[name]}
         </motion.span>
@@ -115,9 +124,12 @@ const IndustryQuoteForm = () => {
   )
 
   return (
-    <div className="min-h-screen bg-slate-50 px-4 py-12 selection:bg-blue-100 md:py-32">
+    <div
+      ref={formTopRef}
+      className="min-h-screen bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
+    >
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-16 lg:flex-row">
-        {/* LEFT: THE MOTIVATION */}
+        {/* LEFT COLUMN: BRANDING */}
         <div className="w-full space-y-12 lg:sticky lg:top-32 lg:w-[35%]">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -127,7 +139,7 @@ const IndustryQuoteForm = () => {
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">
               <Zap size={12} fill="currentColor" /> Instant Estimates
             </div>
-            <h1 className="text-5xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-6xl">
+            <h1 className="text-2xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-4xl">
               Revive Your <br />
               <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
                 Furniture.
@@ -135,7 +147,7 @@ const IndustryQuoteForm = () => {
             </h1>
             <p className="max-w-sm text-sm font-medium leading-relaxed text-slate-700 md:text-base">
               Bengaluru’s most trusted restoration studio. Get a line-item
-              estimate within 15 minutes of sharing photos.
+              estimate within 15 minutes.
             </p>
           </motion.div>
 
@@ -162,18 +174,19 @@ const IndustryQuoteForm = () => {
           </div>
         </div>
 
-        {/* RIGHT: THE CONCIERGE FORM */}
+        {/* RIGHT COLUMN: FORM CONTAINER */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           className="relative w-full overflow-hidden rounded-[2.5rem] border border-white bg-white p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] md:p-16 lg:w-[65%]"
         >
+          {/* Top Progress Accent */}
           <div className="absolute left-0 top-0 h-1.5 w-full bg-slate-50">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
               transition={{ duration: 2 }}
-              className="h-full bg-blue-600"
+              className="h-full bg-gray-800"
             />
           </div>
 
@@ -181,11 +194,12 @@ const IndustryQuoteForm = () => {
             {!isSubmitted ? (
               <motion.form
                 key="form"
-                exit={{ opacity: 0, scale: 0.98 }}
+                exit={{ opacity: 0, y: -20 }}
                 onSubmit={handleSubmit}
                 className="space-y-12"
                 noValidate
               >
+                {/* SECTION 01: LOGISTICS */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
@@ -197,44 +211,36 @@ const IndustryQuoteForm = () => {
                   </div>
 
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                    {/* SERVICE TYPE FIELD */}
                     <div ref={serviceRef} className="group md:col-span-2">
-                      <label className={labelBase}>
-                        Service Type <span className="text-red-500">*</span>
-                      </label>
+                      <label className={labelBase}>Service Type *</label>
                       <div className="relative">
                         <Sofa
-                          className={`pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.serviceType ? 'text-red-400' : 'text-slate-300 group-focus-within:text-blue-600'}`}
+                          className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
                         <select
                           name="serviceType"
                           value={formData.serviceType}
                           onChange={handleChange}
-                          className={`${inputBase(
-                            'serviceType',
-                          )} appearance-none pl-14`}
+                          className={`${inputBase('serviceType')} appearance-none pl-14`}
                         >
                           <option>Sofa Upholstery</option>
                           <option>Sofa Repair</option>
                           <option>Sofa Polishing</option>
                         </select>
                         <ChevronDown
-                          className={`pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 transition-colors ${errors.serviceType ? 'text-red-400' : 'text-slate-300'}`}
+                          className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-300"
                           size={18}
                         />
                       </div>
                       <ErrorMsg name="serviceType" />
                     </div>
 
-                    {/* NAME FIELD */}
                     <div ref={nameRef} className="group">
-                      <label className={labelBase}>
-                        Full Name <span className="text-red-500">*</span>
-                      </label>
+                      <label className={labelBase}>Full Name *</label>
                       <div className="relative">
                         <User
-                          className={`pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.fullName ? 'text-red-400' : 'text-slate-300 group-focus-within:text-blue-600'}`}
+                          className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
                         <input
@@ -249,14 +255,11 @@ const IndustryQuoteForm = () => {
                       <ErrorMsg name="fullName" />
                     </div>
 
-                    {/* EMAIL FIELD */}
                     <div ref={emailRef} className="group">
-                      <label className={labelBase}>
-                        Email Address <span className="text-red-500">*</span>
-                      </label>
+                      <label className={labelBase}>Email Address *</label>
                       <div className="relative">
                         <Mail
-                          className={`pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.email ? 'text-red-400' : 'text-slate-300 group-focus-within:text-blue-600'}`}
+                          className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
                         <input
@@ -271,14 +274,11 @@ const IndustryQuoteForm = () => {
                       <ErrorMsg name="email" />
                     </div>
 
-                    {/* PHONE FIELD */}
                     <div ref={phoneRef} className="group md:col-span-2">
-                      <label className={labelBase}>
-                        WhatsApp Number <span className="text-red-500">*</span>
-                      </label>
+                      <label className={labelBase}>WhatsApp Number *</label>
                       <div className="relative">
                         <Phone
-                          className={`pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 transition-colors ${errors.phone ? 'text-red-400' : 'text-slate-300 group-focus-within:text-blue-600'}`}
+                          className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
                         <input
@@ -295,39 +295,7 @@ const IndustryQuoteForm = () => {
                   </div>
                 </div>
 
-                {/* VISUAL ASSESSMENT (Optional) */}
-                {/* <div className="space-y-8">
-                  <div className="flex items-center gap-4">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
-                      02
-                    </span>
-                    <h3 className="text-xl font-bold tracking-tight text-slate-900">
-                      Visual Assessment
-                    </h3>
-                  </div>
-                  <div className="group relative cursor-pointer rounded-[2rem] border-2 border-dashed border-slate-200 p-10 text-center transition-all hover:border-blue-600 hover:bg-blue-50/30">
-                    <input
-                      type="file"
-                      onChange={(e) =>
-                        e.target.files && setImages(Array.from(e.target.files))
-                      }
-                      className="absolute inset-0 cursor-pointer opacity-0"
-                      accept="image/*"
-                      multiple
-                    />
-                    <Camera className="mx-auto mb-4 text-blue-600" size={32} />
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-slate-900">
-                      Snap or Upload Photos
-                    </p>
-                    <p className="mt-2 text-[10px] font-bold uppercase tracking-tight text-slate-600">
-                      {images.length > 0
-                        ? `${images.length} image(s) selected`
-                        : 'Optional'}
-                    </p>
-                  </div>
-                </div> */}
-
-                {/* PROJECT DETAILS (Optional) */}
+                {/* SECTION 02: DETAILS */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
@@ -354,7 +322,7 @@ const IndustryQuoteForm = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="flex w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 py-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-xl shadow-blue-600/30 transition-all duration-300 hover:-translate-y-1 hover:bg-blue-600 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="flex w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 py-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-xl shadow-gray-800/30 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-800 disabled:opacity-70"
                   >
                     {isLoading ? (
                       <Loader2 className="animate-spin" />
@@ -369,6 +337,7 @@ const IndustryQuoteForm = () => {
                 </div>
               </motion.form>
             ) : (
+              /* SUCCESS STATE */
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -382,14 +351,13 @@ const IndustryQuoteForm = () => {
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900">
                   Request Received
                 </h2>
-                <p className="mx-auto max-w-xs text-sm font-medium text-slate-700">
+                <p className="mx-auto max-w-xs text-sm font-medium leading-relaxed text-slate-700">
                   Our master craftsmen are reviewing your details. Expect a
                   WhatsApp estimate within 15 minutes.
                 </p>
                 <button
                   onClick={() => {
                     setIsSubmitted(false)
-                    setErrors({})
                     setFormData({
                       fullName: '',
                       email: '',
@@ -398,7 +366,7 @@ const IndustryQuoteForm = () => {
                       condition: '',
                     })
                   }}
-                  className="mt-8 cursor-pointer text-[10px] font-bold uppercase tracking-widest text-blue-600 hover:underline"
+                  className="mt-8 cursor-pointer text-[10px] font-bold uppercase tracking-widest text-gray-800 hover:underline"
                 >
                   Submit Another Request
                 </button>

@@ -9,9 +9,12 @@ export default function FaqPage() {
         {/* HEADER SECTION: Standardized with Hero/Service pages */}
         <header className="mb-12 text-center md:mb-16 md:text-left">
           {/* Updated: Extrabold / Tracking-Tight */}
-          <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-6xl">
+          <h1
+            className="text-4xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-6xl"
+            style={{ fontFamily: 'Roboto, sans-serif' }}
+          >
             Common <br className="md:hidden" />
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#3e3d3d] to-gray-600 bg-clip-text text-transparent">
               Queries.
             </span>
           </h1>
@@ -43,7 +46,7 @@ export default function FaqPage() {
             href="https://wa.me/919304059249"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block rounded-xl bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-slate-900/10 transition-all hover:bg-blue-600 active:scale-95"
+            className="inline-block rounded-xl bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-slate-900/10 transition-all hover:bg-gray-800 active:scale-95"
           >
             Chat with us
           </a>

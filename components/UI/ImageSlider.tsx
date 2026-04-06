@@ -44,7 +44,7 @@ export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
       <div className="absolute left-4 top-4 rounded-full bg-slate-900/50 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md">
         Before
       </div>
-      <div className="absolute right-4 top-4 rounded-full bg-blue-600/80 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md">
+      <div className="absolute right-4 top-4 rounded-full bg-gray-800/80 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-md">
         After
       </div>
 

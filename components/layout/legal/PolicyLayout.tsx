@@ -19,7 +19,10 @@ export default function PolicyLayout({
       <header className="mb-16 border-b border-slate-100 pb-10">
         <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="space-y-4">
-            <h1 className="text-4xl font-black uppercase italic leading-[0.9] tracking-tighter text-slate-900 md:text-6xl">
+            <h1
+              className="text-4xl font-black uppercase italic leading-[0.9] tracking-tighter text-slate-900 md:text-6xl"
+              style={{ fontFamily: 'Roboto, sans-serif' }}
+            >
               {title}
             </h1>
             <div className="flex items-center gap-4">
@@ -31,7 +34,7 @@ export default function PolicyLayout({
                 className="h-1 w-1 rounded-full bg-slate-200"
                 aria-hidden="true"
               />
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">
+              <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-800">
                 DreamDecore Legal
               </p>
             </div>
@@ -60,12 +63,12 @@ export default function PolicyLayout({
           prose-p:leading-relaxed
           prose-p:text-slate-600 
           prose-a:font-bold
-          prose-a:text-blue-600 
+          prose-a:text-gray-800 
           prose-a:no-underline
           hover:prose-a:underline 
           prose-strong:font-black
-          prose-strong:text-blue-600
-          prose-li:marker:text-blue-500
+          prose-strong:text-gray-800
+          prose-li:marker:text-gray-800
         "
       >
         {children}
@@ -76,7 +79,7 @@ export default function PolicyLayout({
           Questions regarding these terms? Contact our team at{' '}
           <a
             href="mailto:legal@dreamdecore.com"
-            className="font-bold not-italic text-blue-600"
+            className="font-bold not-italic text-gray-800"
           >
             legal@dreamdecore.com
           </a>
