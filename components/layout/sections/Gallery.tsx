@@ -52,7 +52,7 @@ export default function GallerySection() {
         <div className="mb-16 flex flex-col items-end justify-between gap-6 md:flex-row">
           <div className="max-w-2xl">
             <span className="mb-4 block text-[10px] font-black tracking-[0.3em] text-gray-800">
-              DreamDecore Craftsmanship
+              SofaRevive Craftsmanship
             </span>
             <h2
               className="text-2xl font-black italic leading-[0.9] tracking-tighter text-slate-900 md:text-4xl"

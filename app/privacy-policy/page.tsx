@@ -5,11 +5,10 @@ export default function PrivacyPolicy() {
     <PolicyLayout title="Privacy Policy" lastUpdated="March 21, 2026">
       <h2>1. Information We Collect</h2>
       <p>
-        When you request a <strong>SofaRetrive</strong> estimate or a home
-        consultation, we collect your name, WhatsApp number, and specific area
-        in Bangalore. This information is strictly used to coordinate your{' '}
+        When you request a <strong>Sofa Quote</strong> estimate or a home
+        consultation, we collect your name, email, WhatsApp number, and specific
+        area in Bangalore. This information is strictly used to coordinate your{' '}
         <strong>free doorstep pickup</strong>
-        and provide accurate labor estimates.
       </p>
 
       <h2>2. Visual Data & Furniture Photos</h2>

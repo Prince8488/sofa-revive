@@ -14,15 +14,18 @@ import {
   Loader2,
   ChevronDown,
   Sofa,
+  RefreshCcw,
 } from 'lucide-react'
 import { validateIndustryForm, FormData } from '@/utils/formvalidation'
 
 const IndustryQuoteForm = () => {
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [submissionStatus, setSubmissionStatus] = useState<
+    'idle' | 'success' | 'error'
+  >('idle')
   const [isLoading, setIsLoading] = useState(false)
 
   // --- REFS FOR NAVIGATION ---
-  const formTopRef = useRef<HTMLDivElement>(null) // Ref for scroll-to-top on success
+  const formTopRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLDivElement>(null)
   const emailRef = useRef<HTMLDivElement>(null)
   const phoneRef = useRef<HTMLDivElement>(null)
@@ -36,9 +39,9 @@ const IndustryQuoteForm = () => {
     condition: '',
   })
 
-  const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>(
-    {},
-  )
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof FormData | 'form', string>>
+  >({})
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -46,7 +49,6 @@ const IndustryQuoteForm = () => {
     >,
   ) => {
     const { name, value } = e.target
-
     if (name === 'fullName' && /\d/.test(value)) return
     if (name === 'phone') {
       const cleaned = value.replace(/\D/g, '').slice(0, 10)
@@ -54,10 +56,17 @@ const IndustryQuoteForm = () => {
     } else {
       setFormData({ ...formData, [name]: value })
     }
-
     if (errors[name as keyof FormData]) {
       setErrors({ ...errors, [name]: '' })
     }
+  }
+
+  const handleWhatsApp = () => {
+    const message = `Hi, I tried to request a quote for ${formData.serviceType} but the form failed. Can you help me?`
+    window.open(
+      `https://wa.me/916366921602?text=${encodeURIComponent(message)}`,
+      '_blank',
+    )
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -66,29 +75,31 @@ const IndustryQuoteForm = () => {
 
     if (result.isValid) {
       setIsLoading(true)
-
-      // Simulate API Logic
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      setIsLoading(false)
-      setIsSubmitted(true)
-
-      // --- PRO SCROLL LOGIC ---
-      // We use a small timeout to ensure the DOM has swapped to the Success state
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth',
+      try {
+        const response = await fetch('/api/quote', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
         })
-      }, 100)
+
+        if (!response.ok) throw new Error('Server error')
+
+        setSubmissionStatus('success')
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }, 100)
+      } catch (error) {
+        console.error('Failed to submit form:', error)
+        setSubmissionStatus('error')
+      } finally {
+        setIsLoading(false)
+      }
     } else {
       setErrors(result.errors)
-
       const scrollOpts: ScrollIntoViewOptions = {
         behavior: 'smooth',
         block: 'center',
       }
-
       if (result.firstErrorField === 'fullName')
         nameRef.current?.scrollIntoView(scrollOpts)
       else if (result.firstErrorField === 'email')
@@ -100,12 +111,10 @@ const IndustryQuoteForm = () => {
     }
   }
 
-  // --- STYLING MACROS ---
   const inputBase = (fieldName: keyof FormData) => `
     w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
     ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
   `
-
   const labelBase =
     'text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1'
 
@@ -129,7 +138,7 @@ const IndustryQuoteForm = () => {
       className="min-h-screen bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
     >
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-16 lg:flex-row">
-        {/* LEFT COLUMN: BRANDING */}
+        {/* LEFT COLUMN */}
         <div className="w-full space-y-12 lg:sticky lg:top-32 lg:w-[35%]">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -146,11 +155,9 @@ const IndustryQuoteForm = () => {
               </span>
             </h1>
             <p className="max-w-sm text-sm font-medium leading-relaxed text-slate-700 md:text-base">
-              Bengaluru’s most trusted restoration studio. Get a line-item
-              estimate within 15 minutes.
+              Bengaluru’s most trusted restoration studio.
             </p>
           </motion.div>
-
           <div className="space-y-4">
             {[
               { icon: <Zap size={18} />, text: 'Free expert advice' },
@@ -174,13 +181,12 @@ const IndustryQuoteForm = () => {
           </div>
         </div>
 
-        {/* RIGHT COLUMN: FORM CONTAINER */}
+        {/* RIGHT COLUMN */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           className="relative w-full overflow-hidden rounded-[2.5rem] border border-white bg-white p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] md:p-16 lg:w-[65%]"
         >
-          {/* Top Progress Accent */}
           <div className="absolute left-0 top-0 h-1.5 w-full bg-slate-50">
             <motion.div
               initial={{ width: 0 }}
@@ -191,7 +197,7 @@ const IndustryQuoteForm = () => {
           </div>
 
           <AnimatePresence mode="wait">
-            {!isSubmitted ? (
+            {submissionStatus === 'idle' && (
               <motion.form
                 key="form"
                 exit={{ opacity: 0, y: -20 }}
@@ -199,7 +205,6 @@ const IndustryQuoteForm = () => {
                 className="space-y-12"
                 noValidate
               >
-                {/* SECTION 01: LOGISTICS */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
@@ -209,7 +214,6 @@ const IndustryQuoteForm = () => {
                       Logistics
                     </h3>
                   </div>
-
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <div ref={serviceRef} className="group md:col-span-2">
                       <label className={labelBase}>Service Type *</label>
@@ -235,7 +239,6 @@ const IndustryQuoteForm = () => {
                       </div>
                       <ErrorMsg name="serviceType" />
                     </div>
-
                     <div ref={nameRef} className="group">
                       <label className={labelBase}>Full Name *</label>
                       <div className="relative">
@@ -254,7 +257,6 @@ const IndustryQuoteForm = () => {
                       </div>
                       <ErrorMsg name="fullName" />
                     </div>
-
                     <div ref={emailRef} className="group">
                       <label className={labelBase}>Email Address *</label>
                       <div className="relative">
@@ -273,7 +275,6 @@ const IndustryQuoteForm = () => {
                       </div>
                       <ErrorMsg name="email" />
                     </div>
-
                     <div ref={phoneRef} className="group md:col-span-2">
                       <label className={labelBase}>WhatsApp Number *</label>
                       <div className="relative">
@@ -294,8 +295,6 @@ const IndustryQuoteForm = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* SECTION 02: DETAILS */}
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
@@ -317,7 +316,6 @@ const IndustryQuoteForm = () => {
                     />
                   </div>
                 </div>
-
                 <div className="pt-6">
                   <button
                     type="submit"
@@ -330,14 +328,11 @@ const IndustryQuoteForm = () => {
                       'Receive Expert Estimate'
                     )}
                   </button>
-                  <p className="mt-8 flex items-center justify-center gap-2 text-center text-[9px] font-bold uppercase tracking-[0.2em] text-slate-600">
-                    <ShieldCheck size={12} className="text-green-500" /> Secure
-                    & Private Quote Request
-                  </p>
                 </div>
               </motion.form>
-            ) : (
-              /* SUCCESS STATE */
+            )}
+
+            {submissionStatus === 'success' && (
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -351,24 +346,56 @@ const IndustryQuoteForm = () => {
                 <h2 className="text-3xl font-bold tracking-tight text-slate-900">
                   Request Received
                 </h2>
-                <p className="mx-auto max-w-xs text-sm font-medium leading-relaxed text-slate-700">
-                  Our master craftsmen are reviewing your details. Expect a
-                  WhatsApp estimate within 15 minutes.
+                <p className="mx-auto max-w-xs text-sm font-medium text-slate-700">
+                  Expect a WhatsApp estimate within 15 minutes.
                 </p>
                 <button
-                  onClick={() => {
-                    setIsSubmitted(false)
-                    setFormData({
-                      fullName: '',
-                      email: '',
-                      phone: '',
-                      serviceType: 'Sofa Upholstery',
-                      condition: '',
-                    })
-                  }}
+                  onClick={() => setSubmissionStatus('idle')}
                   className="mt-8 cursor-pointer text-[10px] font-bold uppercase tracking-widest text-gray-800 hover:underline"
                 >
                   Submit Another Request
+                </button>
+              </motion.div>
+            )}
+
+            {submissionStatus === 'error' && (
+              <motion.div
+                key="error"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="space-y-8 py-20 text-center"
+              >
+                <AlertCircle size={48} className="mx-auto mb-4 text-red-500" />
+                <div className="space-y-2">
+                  <h2 className="text-3xl font-bold tracking-tight text-slate-900">
+                    Submission Failed
+                  </h2>
+                  <p className="mx-auto max-w-xs text-sm font-medium text-slate-600">
+                    Something went wrong on our end. Please try again or reach
+                    out directly.
+                  </p>
+                </div>
+
+                <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
+                  <button
+                    onClick={handleWhatsApp}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
+                  >
+                    <MessageSquare size={16} /> WhatsApp Us
+                  </button>
+                  <button
+                    onClick={() => (window.location.href = 'tel:+916366921602')}
+                    className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
+                  >
+                    <Phone size={16} /> Call Support
+                  </button>
+                </div>
+
+                <button
+                  onClick={() => setSubmissionStatus('idle')}
+                  className="mx-auto mt-4 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 transition-colors hover:text-slate-900"
+                >
+                  <RefreshCcw size={12} /> Try Form Again
                 </button>
               </motion.div>
             )}

@@ -5,7 +5,7 @@ export default function TermsOfUsePage() {
     <PolicyLayout title="Terms of Use" lastUpdated="March 21, 2026">
       <h2>1. General Instruction of Payments</h2>
       <p>
-        <strong>DreamDecore</strong> takes privacy protection very seriously and
+        <strong>SofaRevive</strong> takes privacy protection very seriously and
         we set the highest standards in this regard. We value the trust you
         place in us and ensure that all financial interactions are handled
         through secure, encrypted channels.
@@ -22,7 +22,7 @@ export default function TermsOfUsePage() {
       <blockquote>
         Please note that your transaction or banking details required for
         internet banking or other payment instruments are{' '}
-        <strong>not held by DreamDecore</strong>. These are processed by our
+        <strong>not held by SofaRevive</strong>. These are processed by our
         certified payment gateway partners.
       </blockquote>
       <p>
@@ -49,7 +49,7 @@ export default function TermsOfUsePage() {
         We utilize data to understand customer behavior and inform you about
         deals, new fabric launches, and order status. We may communicate special
         offers for up to <strong>6 months</strong> after your last engagement
-        with DreamDecore.
+        with SofaRevive.
       </p>
 
       <h2>4. Opt-Out & Support</h2>
@@ -65,10 +65,10 @@ export default function TermsOfUsePage() {
           For formal inquiries or data removal requests:
         </p>
         <a
-          href="mailto:dreamdecore12@gmail.com"
+          href="mailto:SofaRevive12@gmail.com"
           className="inline-block rounded-xl bg-slate-900 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-gray-800"
         >
-          Email: dreamdecore12@gmail.com
+          Email: Sofarevive72@gmail.com
         </a>
       </div>
 

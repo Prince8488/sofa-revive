@@ -191,7 +191,7 @@ export default function SofaPolishingClient() {
             </span>
           </h2>
           <p className="text-[10px] font-bold uppercase leading-loose tracking-widest text-slate-600">
-            From antique dressers to modern boardroom tables, DreamDecore
+            From antique dressers to modern boardroom tables, SofaRevive
             delivers the standard of excellence Bangalore demands.
           </p>
           <Link href="/quote" className="cursor-pointer">

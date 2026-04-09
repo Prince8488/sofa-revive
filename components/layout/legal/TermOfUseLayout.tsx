@@ -20,7 +20,7 @@ export default function TermOfUseLayout({
           <div className="mt-6 flex items-center gap-3">
             <span className="h-[2px] w-8 bg-gray-800" aria-hidden="true" />
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-800">
-              DreamDecore Privacy Standards • 2026
+              SofaRevive Privacy Standards • 2026
             </p>
           </div>
         </header>

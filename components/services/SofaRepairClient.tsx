@@ -201,7 +201,7 @@ export default function SofaRepairClient() {
           </h2>
           <p className="text-xs font-bold uppercase leading-loose tracking-widest text-slate-600">
             Trusted by Bangalore’s leading tech parks, boutique hotels, and
-            medical facilities. Experience the DreamDecore standard.
+            medical facilities. Experience the SofaRevive standard.
           </p>
           <Link href="/quote" className="cursor-pointer">
             <button className="cursor-pointer rounded-lg bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-xl transition-all hover:bg-gray-800">
