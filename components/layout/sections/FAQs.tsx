@@ -11,7 +11,7 @@ const FAQ_DATA = [
   },
   {
     q: 'How do I cancel or reschedule an appointment?',
-    a: "Simply contact our booking team at +91 93040 59249 via call or WhatsApp. We'll help you find a new time that works for you.",
+    a: "Simply contact our booking team at +916366921602 via call or WhatsApp. We'll help you find a new time that works for you.",
   },
   {
     q: 'Can you provide a quote over the phone?',
