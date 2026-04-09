@@ -43,7 +43,7 @@ export default function FaqPage() {
 
           {/* Updated: Standardized [10px] Button Style */}
           <a
-            href="https://wa.me/919304059249"
+            href="https://wa.me/916366921602"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block rounded-xl bg-slate-950 px-10 py-4 text-[10px] font-bold uppercase tracking-[0.2em] text-white shadow-2xl shadow-slate-900/10 transition-all hover:bg-gray-800 active:scale-95"

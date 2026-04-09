@@ -130,7 +130,7 @@ export default function WhyChooseUS() {
 
                 <div className="space-y-6 pt-8">
                   <a
-                    href="tel:+919304059249"
+                    href="tel:+916366921602"
                     className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-slate-200 transition-all hover:bg-gray-800 active:scale-95"
                     aria-label="Get a free consultation by calling us"
                   >

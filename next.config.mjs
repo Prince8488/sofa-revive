@@ -7,10 +7,10 @@ const nextConfig = {
         has: [
           {
             type: 'host',
-            value: 'www.sofarevive.netlify.app',
+            value: 'www.sofarevive.com',
           },
         ],
-        destination: 'https://sofarevive.netlify.app/:path*',
+        destination: 'https://sofarevive.com/:path*',
         permanent: true,
       },
     ]

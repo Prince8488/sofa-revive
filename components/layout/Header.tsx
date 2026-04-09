@@ -385,9 +385,9 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
               <div className="flex flex-col gap-3">
                 <div className="flex gap-3">
                   <a
-                    href="tel:+919304059249"
+                    href="tel:+916366921602"
                     className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-5 text-slate-900 shadow-sm transition-all active:scale-95"
-                    aria-label="Call us at +919304059249"
+                    aria-label="Call us at +916366921602"
                   >
                     <Phone size={16} className="text-gray-800" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
@@ -395,7 +395,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     </span>
                   </a>
                   <a
-                    href="https://wa.me/919304059249"
+                    href="https://wa.me/916366921602"
                     className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-5 text-white shadow-lg shadow-green-200 transition-all active:scale-95"
                     aria-label="Chat with us on WhatsApp"
                   >

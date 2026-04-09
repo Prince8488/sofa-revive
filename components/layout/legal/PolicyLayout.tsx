@@ -35,7 +35,7 @@ export default function PolicyLayout({
                 aria-hidden="true"
               />
               <p className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-800">
-                DreamDecore Legal
+                sofarevive Legal
               </p>
             </div>
           </div>
@@ -78,10 +78,10 @@ export default function PolicyLayout({
         <p className="text-xs italic text-slate-600">
           Questions regarding these terms? Contact our team at{' '}
           <a
-            href="mailto:legal@dreamdecore.com"
+            href="mailto:legal@sofarevive.com"
             className="font-bold not-italic text-gray-800"
           >
-            legal@dreamdecore.com
+            legal@sofarevive.com
           </a>
         </p>
       </footer>

@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
 
       <h2>5. Your Rights</h2>
       <p>
-        As a DreamDecore client, you have the right to request the deletion of
+        As a sofarevive client, you have the right to request the deletion of
         your contact details from our database once your restoration project is
         complete and the 5-year warranty period has been registered.
       </p>
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
       <h2>6. Contact Our Legal Team</h2>
       <p>
         If you have questions about how we handle your data in Bangalore, please
-        email us at <strong>legal@dreamdecore.com</strong>.
+        email us at <strong>legal@sofarevive.com</strong>.
       </p>
     </PolicyLayout>
   )

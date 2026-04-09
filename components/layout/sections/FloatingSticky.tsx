@@ -6,7 +6,7 @@ import { MessageCircle, Phone, Plus } from 'lucide-react'
 
 export default function FloatingSticky() {
   const [isOpen, setIsOpen] = useState(false)
-  const phoneNumber = '919304059249'
+  const phoneNumber = '916366921602'
 
   // Removed the "Quote" item from this list
   const menuItems = [

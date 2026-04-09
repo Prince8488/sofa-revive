@@ -20,24 +20,24 @@ const ContactPage = () => {
       title: 'Fastest Response',
       value: 'WhatsApp Support',
       desc: 'Send sofa photos for an instant quote',
-      link: 'https://wa.me/917338331370',
+      link: 'https://wa.me/916366921602',
       color: 'bg-[#25D366]',
       tag: 'Popular',
     },
     {
       icon: <Phone className="h-5 w-5 md:h-6 md:w-6" />,
       title: 'Call our Expert',
-      value: '+91 73383 31370',
-      desc: 'Mon-Sun, 9am to 8pm',
-      link: 'tel:+917338331370',
+      value: '+91 63669 21602',
+      desc: 'Sun-Sat, 9am to 8pm',
+      link: 'tel:+916366921602',
       color: 'bg-gray-800',
     },
     {
       icon: <Mail className="h-5 w-5 md:h-6 md:w-6" />,
       title: 'Email Studio',
-      value: 'hello@sofarevisit.in',
+      value: 'hello@sofarevive.com',
       desc: 'For corporate/hotel inquiries',
-      link: 'mailto:hello@sofarevisit.in',
+      link: 'mailto:hello@sofarevive.com',
       color: 'bg-slate-900',
     },
   ]
@@ -185,12 +185,13 @@ const ContactPage = () => {
                       Main Studio
                     </h4>
                     <p className="text-sm font-medium leading-relaxed text-slate-300">
-                      12th Main Rd, Sector 6, HSR Layout,
+                      16, behind aqsa Masjid, Rajiv Gandhi Nagar, Muneswara
+                      Nagar, Sector 6, Bommanahalli, Gundu Thopu
                       <br />
-                      Bengaluru, Karnataka 560102
+                      Bengaluru, Karnataka 560068
                     </p>
                     <a
-                      href="https://goo.gl/maps/example"
+                      href="https://maps.app.goo.gl/4fZyc8EeepfFKXE16"
                       target="_blank"
                       aria-label="Get directions to our main studio on Google Maps"
                       className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-950 shadow-xl transition-all hover:bg-gray-800 hover:text-white active:scale-95"

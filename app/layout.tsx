@@ -21,28 +21,29 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
   name: 'SofaRevive',
-  image: 'https://sofa-revive.netlify.app/og-image.jpg',
+  image: 'https://www.sofarevive.com/og-image.jpg',
   description:
     'Premium sofa repair, upholstery, and wood polishing services in Bengaluru, specializing in commercial and hospitality furniture restoration.',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '123 Main Street',
-    addressLocality: 'Bengaluru',
-    addressRegion: 'KA',
-    postalCode: '560001',
+    streetAddress: '16, behind aqsa Masjid, Rajiv Gandhi nagar',
+    addressLocality: ' Muneswara Nagar, Sector 6, Bommanahalli, Gundu Thopu',
+    addressRegion: 'Bengaluru',
+    postalCode: '560068',
     addressCountry: 'IN',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: 12.9716,
-    longitude: 77.5946,
+    latitude: 12.906843,
+    longitude: 77.630683,
   },
-  url: 'https://sofa-revive.netlify.app',
-  telephone: '+919304059249',
+  url: 'https://www.sofarevive.com',
+  telephone: '+916366921602',
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
       dayOfWeek: [
+        'Sunday',
         'Monday',
         'Tuesday',
         'Wednesday',
@@ -84,7 +85,7 @@ const jsonLd = {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sofa-revive.netlify.app'),
+  metadataBase: new URL('https://www.sofarevive.com'),
   title: {
     default: 'SofaRevive | Sofa Repair, Upholstery & Polishing in Bengaluru',
     template: `%s | SofaRevive`,
@@ -107,10 +108,10 @@ export const metadata: Metadata = {
     description:
       'Expert craftsmanship for your beloved furniture. We bring the showroom finish back to your doorstep, serving commercial and hospitality sectors.',
     type: 'website',
-    url: 'https://sofa-revive.netlify.app',
+    url: 'https://www.sofarevive.com',
     images: [
       {
-        url: 'og-image.jpg',
+        url: 'og-image.svg',
         width: 1200,
         height: 630,
         alt: 'A beautifully restored sofa by SofaRevive in a commercial lounge',

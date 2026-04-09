@@ -6,7 +6,7 @@ import { Phone, MessageSquare } from 'lucide-react'
 import Link from 'next/link'
 
 export default function StickyMobileBar() {
-  const PHONE_NUMBER = '+919304059249'
+  const PHONE_NUMBER = '+916366921602'
 
   // 1. Track visibility state
   const [hidden, setHidden] = useState(false)

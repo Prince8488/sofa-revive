@@ -1,16 +1,16 @@
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "DreamDecore",
-  "image": "https://yourdomain.com/logo.png",
+  "name": "SofaRevive",
+  "image": "https://sofarevive.com/logo.png",
   "description": "Premium sofa repair and custom upholstery services.",
   "address": {
-    "@type": "560037",
-    "streetAddress": "123 Main St",
-    "addressLocality": "Bangalore",
-    "addressRegion": "ST",
-    "postalCode": "12345",
+    "@type": "PostalAddress",
+    "streetAddress": " 16, behind aqsa Masjid, Rajiv Gandhi Nagar, Muneswara Nagar",
+    "addressLocality": "Rajiv Gandhi Nagar, Muneswara Nagar, Sector 6, Bommanahalli, Gundu Thopu",
+    "addressRegion": "Bangalore",
+    "postalCode": "560068",
     "addressCountry": "IN"
   },
-  "telephone": "+919304059249"
+  "telephone": "+916366921602"
 };

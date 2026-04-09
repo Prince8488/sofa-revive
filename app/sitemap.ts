@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://sofa-revive.netlify.app'
+  const baseUrl = 'https://www.sofarevive.com'
   const lastMod = new Date()
 
   const routes = [
