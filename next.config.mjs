@@ -1,20 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
-    return [
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.sofarevive.com',
-          },
-        ],
-        destination: 'https://sofarevive.com/:path*',
-        permanent: true,
-      },
-    ]
+    return []
   },
+
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
@@ -39,7 +28,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.upholsterygal.com',
       },
-      { protocol: 'https', hostname: 'i.pravatar.cc' },
+      {
+        protocol: 'https',
+        hostname: 'i.pravatar.cc',
+      },
     ],
   },
 }
