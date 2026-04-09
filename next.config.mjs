@@ -39,6 +39,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'www.upholsterygal.com',
       },
+      { protocol: 'https', hostname: 'i.pravatar.cc' },
     ],
   },
 }
