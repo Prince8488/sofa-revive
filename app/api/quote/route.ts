@@ -1,28 +1,62 @@
-import { NextRequest, NextResponse } from 'next/server'
+export const runtime = 'edge'
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Request, context: any) {
   try {
-    const formData = await req.json()
-    const { fullName, email, phone, serviceType, condition } = formData
+    // ✅ Parse request body (ONLY once)
+    const body = await req.json()
 
-    // Get the D1 database binding
-    const db = (process.env as unknown as CloudflareEnv).DB
+    const { fullName, email, phone, serviceType, condition } = body
 
-    // Prepare and execute the SQL statement
-    const stmt = db.prepare(
-      'INSERT INTO quotes (fullName, email, phone, serviceType, condition) VALUES (?, ?, ?, ?, ?)',
+    // ✅ Basic validation
+    if (!fullName || !phone) {
+      return new Response(
+        JSON.stringify({ error: 'Missing required fields' }),
+        { status: 400 },
+      )
+    }
+
+    // ✅ Get D1 database from Cloudflare context
+    const db = context.env.DB
+
+    // ✅ Insert into database
+    const result = await db
+      .prepare(
+        `
+        INSERT INTO quotes 
+        (fullName, email, phone, serviceType, condition)
+        VALUES (?, ?, ?, ?, ?)
+      `,
+      )
+      .bind(fullName, email, phone, serviceType || '', condition || '')
+      .run()
+
+    // ✅ Success response
+    return new Response(
+      JSON.stringify({
+        success: true,
+        data: result,
+      }),
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
     )
-    await stmt.bind(fullName, email, phone, serviceType, condition).run()
+  } catch (error: any) {
+    console.error('API Error:', error)
 
-    return NextResponse.json(
-      { message: 'Quote request received successfully!' },
-      { status: 200 },
-    )
-  } catch (error) {
-    console.error('Error processing quote request:', error)
-    return NextResponse.json(
-      { message: 'Error processing quote request' },
-      { status: 500 },
+    return new Response(
+      JSON.stringify({
+        error: 'Failed to save data',
+        details: error?.message || error,
+      }),
+      {
+        status: 500,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
     )
   }
 }
