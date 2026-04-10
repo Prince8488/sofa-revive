@@ -19,7 +19,8 @@
     "picomatch": "~4.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwind-merge": "^3.5.0"
+    "tailwind-merge": "^3.5.0",
+    "workerd": "~1.20260410.1"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "~1.13.16",
