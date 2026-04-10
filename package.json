@@ -7,9 +7,7 @@
     "build": "next build",
     "cf:build": "npx @cloudflare/next-on-pages",
     "preview": "wrangler pages dev .vercel/output/static",
-    "deploy": "wrangler pages deploy .vercel/output/static",
-    "lint": "eslint",
-    "prettier": "prettier --write ."
+    "deploy": "wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
     "clsx": "^2.1.1",
