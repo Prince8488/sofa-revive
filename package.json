@@ -16,6 +16,7 @@
     "framer-motion": "^12.38.0",
     "lucide-react": "^0.577.0",
     "next": "^15.4.11",
+    "picomatch": "~4.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^3.5.0"
