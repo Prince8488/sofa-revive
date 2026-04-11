@@ -5,14 +5,12 @@ import { CheckCircle2 } from 'lucide-react'
 import { useState, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import useMediaQuery from '@/hooks/useMediaQuery'
 
 type ServiceCardProps = {
   service: any
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
-  const isMobile = useMediaQuery('(max-width: 768px)')
   const [sliderPos, setSliderPos] = useState(50)
 
   const handleMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
@@ -24,10 +22,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     setSliderPos(Math.max(0, Math.min(100, position)))
   }, [])
 
-  const image = isMobile ? `${service.image}&ar=3:4&fit=crop` : service.image
-  const beforeImage = isMobile
-    ? `${service.beforeImage || service.image}&ar=3:4&fit=crop`
-    : service.beforeImage || service.image
+  const image = service.image
+  const beforeImage = service.beforeImage || service.image
 
   return (
     <motion.div
@@ -36,7 +32,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     >
       {/* INTERACTIVE SLIDER BOX */}
       <div
-        className="relative h-64 cursor-ew-resize touch-none overflow-hidden md:h-72"
+        className="relative aspect-[3/4] cursor-ew-resize touch-none overflow-hidden"
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         role="slider"
@@ -49,6 +45,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
+          quality={80}
         />
 
         <div
@@ -61,6 +58,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             fill
             className="object-cover brightness-75 grayscale-[0.6]"
             sizes="(max-width: 768px) 100vw, 33vw"
+            quality={80}
           />
         </div>
 

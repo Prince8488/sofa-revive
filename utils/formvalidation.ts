@@ -15,7 +15,7 @@ export const validateIndustryForm = (data: FormData) => {
     errors.fullName = 'Name is required'
   } else if (!nameRegex.test(data.fullName)) {
     errors.fullName = 'Use only letters. (Example: Rohan Sharma)'
-  } else if (data.fullName.length >= 15) {
+  } else if (data.fullName.length > 15) {
     // Corrected logic: error if length is 15 or more
     errors.fullName = 'Name must be less than 15 characters.'
   }

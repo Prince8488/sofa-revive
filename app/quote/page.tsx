@@ -84,6 +84,17 @@ const IndustryQuoteForm = () => {
 
         if (!response.ok) throw new Error('Server error')
 
+        // ✅ GTM Event
+        if (typeof window !== 'undefined') {
+          window.dataLayer = window.dataLayer || []
+
+          window.dataLayer.push({
+            event: 'form_submit',
+            form_name: 'quote_form',
+            service_type: formData.serviceType,
+          })
+        }
+
         setSubmissionStatus('success')
         setTimeout(() => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
@@ -320,7 +331,7 @@ const IndustryQuoteForm = () => {
                   <button
                     type="submit"
                     disabled={isLoading}
-                    className="flex w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 py-5 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-xl shadow-gray-800/30 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-800 disabled:opacity-70"
+                    className="flex w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 px-6 py-6 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-xl shadow-gray-800/30 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-800 disabled:opacity-70"
                   >
                     {isLoading ? (
                       <Loader2 className="animate-spin" />

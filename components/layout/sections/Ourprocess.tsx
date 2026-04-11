@@ -89,10 +89,10 @@ const ProcessSection = () => {
               <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-gray-800">
                 Current Focus
               </p>
-              <h4 className="mb-1 flex items-center gap-2 font-bold text-slate-900">
+              <h3 className="mb-1 flex items-center gap-2 font-bold text-slate-900">
                 Deep Assessment{' '}
                 <ChevronRight size={14} className="text-slate-300" />
-              </h4>
+              </h3>
               <p className="text-xs font-medium leading-relaxed text-slate-500">
                 We identify structural weaknesses, wood-rot, and fabric fatigue.
               </p>

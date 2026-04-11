@@ -1,10 +1,11 @@
 import { Inter, Roboto } from 'next/font/google'
-import './globals.css'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
 import Sticky from '@/components/layout/sections/Sticky'
 import FloatingSticky from '@/components/layout/sections/FloatingSticky'
+import Script from 'next/script'
+import './globals.css'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,10 +19,11 @@ const roboto = Roboto({
 })
 
 const jsonLd = {
+  '@id': 'https://www.sofarevive.com',
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
   name: 'SofaRevive',
-  image: 'https://www.sofarevive.com/og-image.jpg',
+  image: 'https://www.sofarevive.com/og-image.svg',
   description:
     'Premium sofa repair, upholstery, and wood polishing services in Bengaluru, specializing in commercial and hospitality furniture restoration.',
   address: {
@@ -86,12 +88,15 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sofarevive.com'),
+  alternates: {
+    canonical: '/',
+  },
   title: {
-    default: 'SofaRevive | Sofa Repair, Upholstery & Polishing in Bengaluru',
+    default: 'SofaRevive | Repair, Upholstery & Polishing in Bengaluru',
     template: `%s | SofaRevive`,
   },
   description:
-    "Bengaluru's top-rated sofa restoration. We specialize in commercial and residential sofa repair, custom upholstery, and wood polishing. 5-Star Rated. 10+ Years of Experience. Get a free quote!",
+    'Top-rated sofa restoration in Bengaluru. We specialize in commercial and residential sofa repair, custom upholstery, and wood polishing. Get a free quote!',
   keywords: [
     'sofa repair bangalore',
     'furniture upholstery bengaluru',
@@ -111,7 +116,7 @@ export const metadata: Metadata = {
     url: 'https://www.sofarevive.com',
     images: [
       {
-        url: 'og-image.svg',
+        url: 'https://www.sofarevive.com/og-image.svg',
         width: 1200,
         height: 630,
         alt: 'A beautifully restored sofa by SofaRevive in a commercial lounge',
@@ -123,7 +128,7 @@ export const metadata: Metadata = {
     title: 'SofaRevive | Restore Your Furniture to Its Former Glory',
     description:
       'From 5-star hotels to cozy homes, SofaRevive offers expert sofa repair, upholstery, and cleaning services across Bengaluru.',
-    images: ['og-image.jpg'],
+    images: ['https://www.sofarevive.com/og-image.svg'],
   },
   other: {
     preconnect: 'https://images.unsplash.com',
@@ -138,13 +143,48 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <Script id="google-tag-manager" strategy="lazyOnload">
+          {`
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-N97Q3C7P');
+          `}
+        </Script>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.svg"
+        />
+        <link
+          rel="icon"
+          type="image/svg"
+          sizes="32x32"
+          href="/favicon-32x32.svg"
+        />
+        <link
+          rel="icon"
+          type="image/svg"
+          sizes="16x16"
+          href="/favicon-16x16.svg"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preconnect" href="https://images.unsplash.com" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body
         className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
         suppressHydrationWarning
       >
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N97Q3C7P"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
         <Header />
         {children}
         <Footer />

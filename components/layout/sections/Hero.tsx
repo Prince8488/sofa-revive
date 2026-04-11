@@ -16,20 +16,22 @@ export default function Hero() {
   }, [])
 
   const desktopImage =
-    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop'
+    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop&fm=webp'
   const mobileImage =
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&h=600&auto=format&fit=crop'
+    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&h=600&auto=format&fit=crop&fm=webp'
 
   return (
     <section className="md:pt-25 relative overflow-hidden bg-white px-6 pb-5 pt-20 text-slate-900">
-      {/* 1. STRUCTURAL GRID BACKGROUND */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)`,
-          backgroundSize: '40px 40px',
-        }}
-      />
+      {isClient && (
+        <Image
+          src={isMobile ? mobileImage : desktopImage}
+          alt="A beautifully restored sofa by SofaRevive"
+          layout="fill"
+          objectFit="cover"
+          quality={80}
+          className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
+        />
+      )}
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:gap-20">

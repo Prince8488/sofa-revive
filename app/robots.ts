@@ -12,6 +12,10 @@ export default function robots(): MetadataRoute.Robots {
           '/private', // Any draft pages you're working on
         ],
       },
+      {
+        userAgent: ['Google-Extended', 'GPTBot', 'CCBot'],
+        disallow: '/',
+      },
     ],
     sitemap: 'https://www.sofarevive.com/sitemap.xml',
   }
