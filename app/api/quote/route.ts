@@ -1,34 +1,44 @@
 export const runtime = 'edge'
 
-export async function POST(req: Request) {
+export async function POST(req: Request, context: any) {
   try {
+    // ✅ Parse request body
     const body = await req.json()
 
     const { fullName, email, phone, serviceType, condition } = body
 
+    // ✅ Basic validation
     if (!fullName || !phone) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400 },
+        { status: 400, headers: { 'Content-Type': 'application/json' } },
       )
     }
 
-    const db = (globalThis as any).DB
+    // ✅ Get DB from Cloudflare context (CORRECT WAY)
+    const db = context?.env?.DB
 
-    // ✅ Create table if not exists (safe)
+    if (!db) {
+      return new Response(JSON.stringify({ error: 'Database not connected' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      })
+    }
+
+    // ✅ Create table if not exists (safe fallback)
     await db
       .prepare(
         `
-  CREATE TABLE IF NOT EXISTS quotes (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    fullName TEXT,
-    email TEXT,
-    phone TEXT NOT NULL,
-    serviceType TEXT,
-    condition TEXT,
-    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`,
+      CREATE TABLE IF NOT EXISTS quotes (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        fullName TEXT,
+        email TEXT,
+        phone TEXT NOT NULL,
+        serviceType TEXT,
+        condition TEXT,
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    `,
       )
       .run()
 
@@ -41,15 +51,19 @@ export async function POST(req: Request) {
         VALUES (?, ?, ?, ?, ?)
       `,
       )
-      .bind(fullName, email, phone, serviceType || '', condition || '')
+      .bind(fullName, email || '', phone, serviceType || '', condition || '')
       .run()
 
+    // ✅ Success response with inserted ID
     return new Response(
       JSON.stringify({
         success: true,
-        data: result,
+        id: result.meta?.last_row_id || null,
       }),
-      { status: 200 },
+      {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
   } catch (error: any) {
     console.error('API Error:', error)
@@ -59,7 +73,10 @@ export async function POST(req: Request) {
         error: 'Failed to save data',
         details: error?.message || error,
       }),
-      { status: 500 },
+      {
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      },
     )
   }
 }
