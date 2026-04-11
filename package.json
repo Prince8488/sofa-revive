@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "cf:build": "npx @cloudflare/next-on-pages",
-    "preview": "wrangler pages dev .vercel/output/static",
-    "deploy": "wrangler pages deploy .vercel/output/static"
+    "preview": "wrangler pages dev .vercel/output/static"
   },
   "dependencies": {
     "clsx": "^2.1.1",
