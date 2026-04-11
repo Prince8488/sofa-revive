@@ -16,17 +16,21 @@ export async function POST(req: Request) {
     const db = (globalThis as any).DB
 
     // ✅ Create table if not exists (safe)
-    await db.exec(`
-      CREATE TABLE IF NOT EXISTS quotes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        fullName TEXT,
-        email TEXT,
-        phone TEXT NOT NULL,
-        serviceType TEXT,
-        condition TEXT,
-        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-      );
-    `)
+    await db
+      .prepare(
+        `
+  CREATE TABLE IF NOT EXISTS quotes (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    fullName TEXT,
+    email TEXT,
+    phone TEXT NOT NULL,
+    serviceType TEXT,
+    condition TEXT,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
+  )
+`,
+      )
+      .run()
 
     // ✅ Insert data
     const result = await db
