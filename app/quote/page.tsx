@@ -27,14 +27,30 @@ const IndustryQuoteForm = () => {
 
   const [activeErrorField, setActiveErrorField] = useState<string | null>(null)
 
+  const successRef = useRef<HTMLDivElement>(null)
+  const errorRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
-    if (submissionStatus === 'success' || submissionStatus === 'error') {
+    if (submissionStatus === 'success') {
       setTimeout(() => {
-        formTopRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start',
-        })
-      }, 100)
+        if (successRef.current) {
+          successRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          })
+        }
+      }, 300)
+    }
+
+    if (submissionStatus === 'error') {
+      setTimeout(() => {
+        if (errorRef.current) {
+          errorRef.current.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+          })
+        }
+      }, 300)
     }
   }, [submissionStatus])
 
@@ -92,7 +108,7 @@ const IndustryQuoteForm = () => {
     )
   }
 
-  const scrollToField = (ref: React.RefObject<HTMLDivElement>) => {
+  const scrollToField = (ref: React.RefObject<HTMLDivElement | null>) => {
     if (!ref.current) return
 
     const yOffset = -120
@@ -135,12 +151,27 @@ const IndustryQuoteForm = () => {
         }
 
         setSubmissionStatus('success')
-        setTimeout(() => {
-          window.scrollTo({ top: 0, behavior: 'smooth' })
-        }, 100)
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            successRef.current?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            })
+          })
+        })
       } catch (error) {
         console.error('Failed to submit form:', error)
         setSubmissionStatus('error')
+
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            errorRef.current?.scrollIntoView({
+              behavior: 'smooth',
+              block: 'center',
+            })
+          })
+        })
       } finally {
         setIsLoading(false)
       }
@@ -381,6 +412,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
 
             {submissionStatus === 'success' && (
               <motion.div
+                ref={successRef}
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -407,6 +439,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
 
             {submissionStatus === 'error' && (
               <motion.div
+                ref={errorRef}
                 key="error"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
