@@ -22,8 +22,7 @@ const ProcessSection = () => {
         "We don't just change the cloth. Our team strips the sofa down to its skeleton, replacing worn-out webbing and reinforcing joints with industrial-grade adhesives and seasoned wood blocks.",
       icon: <Hammer size={20} />,
       tag: 'Structural',
-      image:
-        'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&q=80&w=800',
+      image: '/images/repair.png',
     },
     {
       id: '02',
@@ -32,8 +31,7 @@ const ProcessSection = () => {
         "Using high-density 40-count foam and pocket springs, we ensure your sofa feels 'showroom new' for years. We layer it with poly-fill for that signature plush finish.",
       icon: <Layers size={20} />,
       tag: 'Comfort',
-      image:
-        'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=800',
+      image: '/images/premium-cushioning.png',
     },
     {
       id: '03',
@@ -42,8 +40,7 @@ const ProcessSection = () => {
         'Before the new fabric goes on, the entire internal structure undergoes a multi-point anti-dust mite and anti-fungal treatment to ensure a healthy living environment.',
       icon: <Droplets size={20} />,
       tag: 'Hygiene',
-      image:
-        'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&q=80&w=800',
+      image: '/images/deep-senitization.png',
     },
     {
       id: '04',
@@ -52,8 +49,7 @@ const ProcessSection = () => {
         'Our master tailors use computerized stitching and pattern matching. Every fold and seam is inspected for 100% symmetry before the final QC stamp.',
       icon: <Sparkles size={20} />,
       tag: 'Finish',
-      image:
-        'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800',
+      image: '/images/precious-upholstery.png',
     },
   ]
 

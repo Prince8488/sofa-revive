@@ -18,13 +18,13 @@ export default function SofaRepairClient() {
       title: 'Sofa Restoration',
       desc: 'Comprehensive structural and aesthetic overhauls for high-traffic corporate breakout areas.',
       icon: <Sofa className="text-gray-800" size={20} />,
-      img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
+      img: '/images/premium-cushion.png',
     },
     {
       title: 'Recliner Mechanics',
       desc: 'Precision maintenance for motorized reclining systems in executive cabins and lounge rooms.',
       icon: <Armchair className="text-gray-800" size={20} />,
-      img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?auto=format&fit=crop&q=80&w=1000',
+      img: '/images/recliner-repair-services.png',
     },
     {
       title: 'Custom Upholstery',

@@ -78,18 +78,83 @@ export async function POST(req: Request, context: any) {
     // 📧 AUTO REPLY TO CUSTOMER
     // =========================
     if (email && isValidEmail) {
+      const whatsappLink = `https://wa.me/6366921602`
       try {
         await sendEmail({
           from: 'SofaRevive <hello@sofarevive.com>',
           to: [email],
-          subject: 'Booking Confirmation',
-          html: `
-            <h2>Hi ${fullName},</h2>
-            <p>Your request for <b>${serviceType}</b> has been received.</p>
-            <p>We will contact you shortly.</p>
-            <br/>
-            <p>📞 SofaRevive Team</p>
-          `,
+          subject: 'Thank You for Choosing Us',
+          html: `  <div style="font-family: Arial; max-width:600px; margin:auto; padding:20px;">
+
+  <p>Dear <strong>Valued Customer</strong>,</p>
+
+  <p>
+    We hope this message finds you well.
+  </p>
+
+  <p>
+    Thank you for choosing <b>SofaRevive</b>. We truly appreciate your trust and support.
+  </p>
+
+  <p>
+    Your request for <b>${serviceType}</b> has been successfully received.
+  </p>
+
+  <div style="background:#f8f9fa; padding:15px; border-radius:8px; margin:15px 0;">
+    <p><strong>Service:</strong> ${serviceType}</p>
+    <p><strong>Condition:</strong> ${condition}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+  </div>
+
+  <p>
+    Our team is committed to delivering the highest quality experience and will contact you shortly.
+  </p>
+
+  <p>
+    If you have any questions or need immediate assistance, feel free to reach out.
+  </p>
+
+  <a href="tel:+916366921602" style="
+    display:inline-block;
+    margin-top:10px;
+    padding:10px 15px;
+    background:black;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+  ">
+    📞 Call Us
+  </a>
+
+
+<p>Need quick help?</p>
+
+<a href="${whatsappLink}" style="
+  display:inline-block;
+  padding:12px 20px;
+  background:#25D366;
+  color:white;
+  text-decoration:none;
+  border-radius:5px;
+">
+  💬 Chat on WhatsApp
+</a>
+
+
+  <hr style="margin:20px 0;" />
+
+  <p>
+    We look forward to continuing to serve you.
+  </p>
+
+  <p>
+    Warm regards,<br/>
+    <b>SofaRevive Team</b><br/>
+    📞 +916366921602<br/>
+    🌐 www.sofarevive.com
+  </p>
+
+</div>`,
         })
       } catch (err) {
         console.error('Customer email failed:', err)

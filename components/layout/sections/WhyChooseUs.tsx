@@ -125,7 +125,7 @@ export default function WhyChooseUS() {
                 <IconDetail icon={Ruler} text="Free Home Visit & Measurement" />
                 <IconDetail
                   icon={Paintbrush}
-                  text="1000+ Fabric Swatches at Doorstep"
+                  text="50+ Fabric Swatches at Doorstep"
                 />
 
                 <div className="space-y-6 pt-8">
@@ -159,7 +159,7 @@ export default function WhyChooseUS() {
                       </div>
                     </div>
                     <p className="text-[11px] font-bold uppercase tracking-widest text-slate-500">
-                      Join 5,000+ Happy Households
+                      Join 500+ Happy Households
                     </p>
                   </div>
                 </div>

@@ -3,15 +3,25 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { useState, useCallback } from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
 
+type Service = {
+  title: string
+  afterImage: StaticImageData
+  beforeImage: StaticImageData
+  features: string[]
+  href?: string
+}
+
 type ServiceCardProps = {
-  service: any
+  service: Service
 }
 
 export default function ServiceCard({ service }: ServiceCardProps) {
   const [sliderPos, setSliderPos] = useState(50)
+
+  const aspectRatio = service.afterImage.width / service.afterImage.height
 
   const handleMove = useCallback((e: React.MouseEvent | React.TouchEvent) => {
     const container = e.currentTarget.getBoundingClientRect()
@@ -22,9 +32,6 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     setSliderPos(Math.max(0, Math.min(100, position)))
   }, [])
 
-  const image = service.image
-  const beforeImage = service.beforeImage || service.image
-
   return (
     <motion.div
       whileTap={{ scale: 0.98 }}
@@ -32,7 +39,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
     >
       {/* INTERACTIVE SLIDER BOX */}
       <div
-        className="relative aspect-[3/4] cursor-ew-resize touch-none overflow-hidden"
+        className="relative cursor-ew-resize touch-none overflow-hidden"
+        style={{ aspectRatio }}
         onMouseMove={handleMove}
         onTouchMove={handleMove}
         role="slider"
@@ -40,7 +48,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
         aria-label={`Before and after comparison for ${service.title}`}
       >
         <Image
-          src={image}
+          src={service.afterImage}
           alt={`${service.title} after restoration`}
           fill
           className="object-cover"
@@ -53,7 +61,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
         >
           <Image
-            src={beforeImage}
+            src={service.beforeImage}
             alt={`${service.title} before restoration`}
             fill
             className="object-cover brightness-75 grayscale-[0.6]"

@@ -15,6 +15,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
+import upholsteryImg from '@/public/images/upholstery.png'
+import repairImg from '@/public/images/repair.png'
+import polishingImg from '@/public/images/polish.png'
+
 interface MobileDrawerProps {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -37,33 +41,23 @@ const supportLinks = [
 const mobileServices = [
   {
     name: 'Upholstery',
-    img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=300',
+    img: upholsteryImg,
     href: '/services/sofa-upholstery',
   },
   {
     name: 'Repair',
-    img: 'https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=300',
+    img: repairImg,
     href: '/services/sofa-repair',
   },
   {
-    name: 'Cleaning',
-    img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=300',
-    href: '/services/sofa-polishing',
-  },
-  {
     name: 'Polishing',
-    img: 'https://images.unsplash.com/photo-1581539250439-c96689b516dd?w=300',
+    img: polishingImg,
     href: '/services/sofa-polishing',
   },
   {
     name: 'Custom',
     img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300',
     href: '/services/sofa-repair',
-  },
-  {
-    name: 'Refill',
-    img: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=300',
-    href: '/services/sofa-upholstery',
   },
 ]
 

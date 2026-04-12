@@ -18,19 +18,19 @@ export default function SofaPolishingClient() {
       title: 'Lustre Restoration',
       desc: 'Specialized substances applied to restore the deep, original shine to tables, chairs, and armoires.',
       icon: <Sparkles className="text-gray-800" size={20} />,
-      img: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800',
+      img: '/images/lustre-Restoration.png',
     },
     {
       title: 'Grain Preservation',
       desc: 'Techniques that nourish dry wood and highlight natural patterns without compromising the finish.',
       icon: <Droplets className="text-gray-800" size={20} />,
-      img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
+      img: '/images/wodden-sofa-polishing-after.png',
     },
     {
       title: 'Detail Buffing',
       desc: 'Soft-bristle precision work for intricate grooves and antique carvings to ensure a uniform glow.',
       icon: <Wind className="text-gray-800" size={20} />,
-      img: 'https://images.unsplash.com/photo-1622397333309-3056849bc70b?auto=format&fit=crop&q=80&w=800',
+      img: '/images/grain-preservation.png',
     },
   ]
 

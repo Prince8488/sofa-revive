@@ -165,7 +165,7 @@ const ContactPage = () => {
               className="shadow-3xl relative aspect-[4/5] overflow-hidden rounded-[3rem] shadow-slate-200 lg:h-[700px]"
             >
               <Image
-                src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000"
+                src="/images/Vintage-Armchair-after.png"
                 alt="Studio"
                 fill
                 quality={75}

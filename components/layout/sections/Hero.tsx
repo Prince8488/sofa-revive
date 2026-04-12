@@ -15,10 +15,8 @@ export default function Hero() {
     setIsClient(true)
   }, [])
 
-  const desktopImage =
-    'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1200&auto=format&fit=crop&fm=webp'
-  const mobileImage =
-    'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&h=600&auto=format&fit=crop&fm=webp'
+  const desktopImage = '/images/sofa-banner-hero.png'
+  const mobileImage = '/images/sofa-banner-hero.png'
 
   return (
     <section className="md:pt-25 relative overflow-hidden bg-white px-6 pb-5 pt-20 text-slate-900">

@@ -25,7 +25,7 @@ export default function AboutGenuine() {
           <div className="relative mb-20 aspect-[21/9] w-full overflow-hidden bg-stone-200">
             {/* Use a wide, cinematic shot of your workshop here */}
             <Image
-              src="https://images.unsplash.com/photo-1610384467816-5b4122d6b38c?q=80&w=2000"
+              src="/images/preserve-furniture-history.png"
               alt="Artisans at work in the SofaRevive studio"
               fill
               className="object-cover"
@@ -59,15 +59,6 @@ export default function AboutGenuine() {
                 This is slow, deliberate work. It requires hands that understand
                 the tension of a spring and the grain of seasoned wood.
               </p>
-              <div className="mt-8 border-t border-stone-200 pt-8">
-                <p className="mb-2 text-sm font-semibold uppercase tracking-widest text-stone-900">
-                  Our Promise
-                </p>
-                <p className="text-base italic text-stone-500">
-                  "If we cannot restore it to outlast its original factory
-                  build, we will not take the commission."
-                </p>
-              </div>
             </div>
           </div>
         </div>

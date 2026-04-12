@@ -9,36 +9,28 @@ const PROJECTS = [
     title: 'Classic Velvet Overhaul',
     description:
       'Full structural repair and premium emerald velvet upholstery.',
-    before:
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=800',
-    after:
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=800',
+    before: '/images/velvet-upholstery.png',
+    after: '/images/velvet-upholstery-after.png',
   },
   {
     title: 'Teak Wood French Polish',
     description:
       'Removal of deep scratches and water rings with a high-gloss finish.',
-    before:
-      'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800',
-    after:
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=800',
+    before: '/images/wodden-sofa-polishing-before.png',
+    after: '/images/wodden-sofa-polishing-after.png',
   },
   {
     title: 'Leather Sectional Refresh',
     description:
       'Leather conditioning and color restoration for a tired sectional.',
-    before:
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=800',
-    after:
-      'https://images.unsplash.com/photo-1540932239986-30128078f3c5?auto=format&fit=crop&q=80&w=800',
+    before: '/images/Leather-Sectional-before.png',
+    after: '/images/Leather-Sectional-after.png',
   },
   {
     title: 'Vintage Armchair Revival',
     description: 'Period-accurate fabric replacement and spring tightening.',
-    before:
-      'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&q=80&w=800',
-    after:
-      'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=800',
+    before: '/images/vintage-Armchair-before.png',
+    after: '/images/vintage-Armchair-after.png',
   },
 ]
 

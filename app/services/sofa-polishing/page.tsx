@@ -4,7 +4,7 @@ export const metadata = {
   title:
     'Wood Furniture Polishing & Antique Restoration in Bengaluru | SofaRevive',
   description:
-    'Restore the shine to your teak, rosewood, or mahogany furniture. Professional Melamine and PU polishing for a mirror-like finish. Expert sofa upholstery services. 5-Star Rated. 10+ Years Experience. Choose from 500+ premium fabrics',
+    'Restore the shine to your teak, rosewood, or mahogany furniture. Professional Melamine and PU polishing for a mirror-like finish. Expert sofa upholstery services. 5-Star Rated. 5+ Years Experience. Choose from 50+ premium fabrics',
   keywords:
     'wood polishing near me, teak wood restoration, furniture buffing, antique sofa polishing',
   openGraph: {

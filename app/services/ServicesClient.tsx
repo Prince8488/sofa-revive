@@ -24,7 +24,7 @@ const SERVICES = [
     icon: <Sofa size={24} />,
     title: 'Custom Upholstery',
     description:
-      'From premium leather to sustainable fabrics, choose from over 1,000+ options to give your sofa a new identity.',
+      'From premium leather to sustainable fabrics, choose from over 50+ options to give your sofa a new identity.',
     features: [
       'Contract-grade durability',
       'Pet & child-friendly materials',
@@ -41,7 +41,7 @@ const SERVICES = [
     features: [
       'Frame strengthening',
       'Spring & webbing replacement',
-      '5-year structural warranty',
+      '1-year structural warranty',
     ],
     image: 'https://images.unsplash.com/photo-1611212074931-d5a34787b5a3?w=800',
     alt: 'Close-up of a craftsman repairing the wooden frame of a sofa.',
