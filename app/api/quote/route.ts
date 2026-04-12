@@ -1,12 +1,18 @@
-import { Resend } from 'resend'
+export const runtime = 'edge'
 
-export const runtime = 'nodejs'
+// ✅ EDGE SAFE EMAIL FUNCTION
+const sendEmail = async (payload: any) => {
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
 
-if (!process.env.RESEND_API_KEY) {
-  throw new Error('RESEND_API_KEY is missing')
+  return res.json()
 }
-
-const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request, context: any) {
   let body: any
@@ -16,7 +22,9 @@ export async function POST(req: Request, context: any) {
 
     const { fullName, email, phone, serviceType, condition, source } = body
 
-    // ✅ Basic validation
+    // =========================
+    // ✅ VALIDATION
+    // =========================
     if (!fullName || !phone) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
@@ -24,7 +32,6 @@ export async function POST(req: Request, context: any) {
       )
     }
 
-    // ✅ Phone validation (India)
     const isValidPhone = /^[6-9]\d{9}$/.test(phone)
     if (!isValidPhone) {
       return new Response(JSON.stringify({ error: 'Invalid phone number' }), {
@@ -32,19 +39,18 @@ export async function POST(req: Request, context: any) {
       })
     }
 
-    // ✅ Email validation (optional)
     const isValidEmail = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
     const db = context?.env?.DB
     if (!db) console.warn('⚠️ DB not available (local dev)')
 
     // =========================
-    // 📧 SEND EMAIL TO YOU
+    // 📧 SEND EMAIL (ADMIN)
     // =========================
     let emailStatus = 'failed'
 
     try {
-      const emailResponse = await resend.emails.send({
+      const emailResponse = await sendEmail({
         from: 'SofaRevive <hello@sofarevive.com>',
         to: ['sofarevive72@gmail.com'],
         subject: 'New Lead 🚀',
@@ -58,8 +64,11 @@ export async function POST(req: Request, context: any) {
         `,
       })
 
-      if (emailResponse?.data?.id) {
+      if (emailResponse?.id) {
         emailStatus = 'sent'
+      } else {
+        emailStatus = 'failed'
+        console.error('Email error:', emailResponse)
       }
     } catch (err) {
       console.error('Email send failed:', err)
@@ -70,7 +79,7 @@ export async function POST(req: Request, context: any) {
     // =========================
     if (email && isValidEmail) {
       try {
-        await resend.emails.send({
+        await sendEmail({
           from: 'SofaRevive <hello@sofarevive.com>',
           to: [email],
           subject: 'Booking Confirmation',
@@ -88,7 +97,7 @@ export async function POST(req: Request, context: any) {
     }
 
     // =========================
-    // 📲 WHATSAPP (NO OTP)
+    // 📲 WHATSAPP LINK
     // =========================
     const whatsappMessage = encodeURIComponent(
       `Hi ${fullName}, your booking for ${serviceType} is confirmed. Our team will contact you shortly.`,
@@ -101,15 +110,14 @@ export async function POST(req: Request, context: any) {
     // =========================
     // 💾 SAVE TO DB
     // =========================
-
     if (db) {
       await db
         .prepare(
           `
-  INSERT INTO quotes 
-  (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-`,
+          INSERT INTO quotes 
+          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        `,
         )
         .bind(
           fullName,
@@ -142,7 +150,7 @@ export async function POST(req: Request, context: any) {
 
     return new Response(
       JSON.stringify({
-        error: 'Something went wrong',
+        error: error?.message || 'Something went wrong',
       }),
       { status: 500 },
     )
