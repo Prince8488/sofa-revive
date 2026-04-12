@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
 import {
   ShieldCheck,
   Zap,
@@ -24,6 +25,19 @@ const IndustryQuoteForm = () => {
   >('idle')
   const [isLoading, setIsLoading] = useState(false)
 
+  const [activeErrorField, setActiveErrorField] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (submissionStatus === 'success' || submissionStatus === 'error') {
+      setTimeout(() => {
+        formTopRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+        })
+      }, 100)
+    }
+  }, [submissionStatus])
+
   // --- REFS FOR NAVIGATION ---
   const formTopRef = useRef<HTMLDivElement>(null)
   const nameRef = useRef<HTMLDivElement>(null)
@@ -35,7 +49,7 @@ const IndustryQuoteForm = () => {
     fullName: '',
     email: '',
     phone: '',
-    serviceType: 'Sofa Upholstery',
+    serviceType: 'Sofa Repair',
     condition: '',
   })
 
@@ -49,15 +63,24 @@ const IndustryQuoteForm = () => {
     >,
   ) => {
     const { name, value } = e.target
+
     if (name === 'fullName' && /\d/.test(value)) return
+
     if (name === 'phone') {
       const cleaned = value.replace(/\D/g, '').slice(0, 10)
       setFormData({ ...formData, [name]: cleaned })
     } else {
       setFormData({ ...formData, [name]: value })
     }
+
+    // ✅ clear field error
     if (errors[name as keyof FormData]) {
       setErrors({ ...errors, [name]: '' })
+    }
+
+    // ✅ ADD THIS HERE (very important)
+    if (activeErrorField === name) {
+      setActiveErrorField(null)
     }
   }
 
@@ -67,6 +90,22 @@ const IndustryQuoteForm = () => {
       `https://wa.me/916366921602?text=${encodeURIComponent(message)}`,
       '_blank',
     )
+  }
+
+  const scrollToField = (ref: React.RefObject<HTMLDivElement>) => {
+    if (!ref.current) return
+
+    const yOffset = -120
+    const y =
+      ref.current.getBoundingClientRect().top + window.pageYOffset + yOffset
+
+    window.scrollTo({ top: y, behavior: 'smooth' })
+
+    const input = ref.current.querySelector(
+      'input, select, textarea',
+    ) as HTMLElement
+
+    input?.focus()
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -107,24 +146,20 @@ const IndustryQuoteForm = () => {
       }
     } else {
       setErrors(result.errors)
-      const scrollOpts: ScrollIntoViewOptions = {
-        behavior: 'smooth',
-        block: 'center',
-      }
-      if (result.firstErrorField === 'fullName')
-        nameRef.current?.scrollIntoView(scrollOpts)
-      else if (result.firstErrorField === 'email')
-        emailRef.current?.scrollIntoView(scrollOpts)
-      else if (result.firstErrorField === 'phone')
-        phoneRef.current?.scrollIntoView(scrollOpts)
+      setActiveErrorField(result.firstErrorField || null)
+
+      if (result.firstErrorField === 'fullName') scrollToField(nameRef)
+      else if (result.firstErrorField === 'email') scrollToField(emailRef)
+      else if (result.firstErrorField === 'phone') scrollToField(phoneRef)
       else if (result.firstErrorField === 'serviceType')
-        serviceRef.current?.scrollIntoView(scrollOpts)
+        scrollToField(serviceRef)
     }
   }
 
   const inputBase = (fieldName: keyof FormData) => `
     w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
     ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
+${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
   `
   const labelBase =
     'text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1'
@@ -239,9 +274,10 @@ const IndustryQuoteForm = () => {
                           onChange={handleChange}
                           className={`${inputBase('serviceType')} appearance-none pl-14`}
                         >
-                          <option>Sofa Upholstery</option>
                           <option>Sofa Repair</option>
+                          <option>Sofa Upholstery</option>
                           <option>Sofa Polishing</option>
+                          <option>Others</option>
                         </select>
                         <ChevronDown
                           className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-300"
@@ -262,7 +298,7 @@ const IndustryQuoteForm = () => {
                           type="text"
                           value={formData.fullName}
                           onChange={handleChange}
-                          placeholder="John Doe"
+                          placeholder="Rohan Sharma"
                           className={`${inputBase('fullName')} pl-14`}
                         />
                       </div>
@@ -280,7 +316,7 @@ const IndustryQuoteForm = () => {
                           type="email"
                           value={formData.email}
                           onChange={handleChange}
-                          placeholder="john@gmail.com"
+                          placeholder="rohan@gmail.com"
                           className={`${inputBase('email')} pl-14`}
                         />
                       </div>

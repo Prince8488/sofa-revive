@@ -1,82 +1,150 @@
-export const runtime = 'edge'
+import { Resend } from 'resend'
+
+export const runtime = 'nodejs'
+
+if (!process.env.RESEND_API_KEY) {
+  throw new Error('RESEND_API_KEY is missing')
+}
+
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(req: Request, context: any) {
-  try {
-    // ✅ Parse request body
-    const body = await req.json()
+  let body: any
 
-    const { fullName, email, phone, serviceType, condition } = body
+  try {
+    body = await req.json()
+
+    const { fullName, email, phone, serviceType, condition, source } = body
 
     // ✅ Basic validation
     if (!fullName || !phone) {
       return new Response(
         JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } },
+        { status: 400 },
       )
     }
 
-    // ✅ Get DB from Cloudflare context (CORRECT WAY)
-    const db = context?.env?.DB
-
-    if (!db) {
-      return new Response(JSON.stringify({ error: 'Database not connected' }), {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
+    // ✅ Phone validation (India)
+    const isValidPhone = /^[6-9]\d{9}$/.test(phone)
+    if (!isValidPhone) {
+      return new Response(JSON.stringify({ error: 'Invalid phone number' }), {
+        status: 400,
       })
     }
 
-    // ✅ Create table if not exists (safe fallback)
-    await db
-      .prepare(
-        `
-      CREATE TABLE IF NOT EXISTS quotes (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        fullName TEXT,
-        email TEXT,
-        phone TEXT NOT NULL,
-        serviceType TEXT,
-        condition TEXT,
-        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
-      )
-    `,
-      )
-      .run()
+    // ✅ Email validation (optional)
+    const isValidEmail = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-    // ✅ Insert data
-    const result = await db
-      .prepare(
-        `
-        INSERT INTO quotes 
-        (fullName, email, phone, serviceType, condition)
-        VALUES (?, ?, ?, ?, ?)
-      `,
-      )
-      .bind(fullName, email || '', phone, serviceType || '', condition || '')
-      .run()
+    const db = context?.env?.DB
+    if (!db) console.warn('⚠️ DB not available (local dev)')
 
-    // ✅ Success response with inserted ID
+    // =========================
+    // 📧 SEND EMAIL TO YOU
+    // =========================
+    let emailStatus = 'failed'
+
+    try {
+      const emailResponse = await resend.emails.send({
+        from: 'SofaRevive <hello@sofarevive.com>',
+        to: ['sofarevive72@gmail.com'],
+        subject: 'New Lead 🚀',
+        html: `
+          <h2>New Booking</h2>
+          <p><b>Name:</b> ${fullName}</p>
+          <p><b>Phone:</b> ${phone}</p>
+          <p><b>Email:</b> ${email || 'N/A'}</p>
+          <p><b>Service:</b> ${serviceType}</p>
+          <p><b>Condition:</b> ${condition}</p>
+        `,
+      })
+
+      if (emailResponse?.id) {
+        emailStatus = 'sent'
+      }
+    } catch (err) {
+      console.error('Email send failed:', err)
+    }
+
+    // =========================
+    // 📧 AUTO REPLY TO CUSTOMER
+    // =========================
+    if (email && isValidEmail) {
+      try {
+        await resend.emails.send({
+          from: 'SofaRevive <hello@sofarevive.com>',
+          to: [email],
+          subject: 'Booking Confirmation',
+          html: `
+            <h2>Hi ${fullName},</h2>
+            <p>Your request for <b>${serviceType}</b> has been received.</p>
+            <p>We will contact you shortly.</p>
+            <br/>
+            <p>📞 SofaRevive Team</p>
+          `,
+        })
+      } catch (err) {
+        console.error('Customer email failed:', err)
+      }
+    }
+
+    // =========================
+    // 📲 WHATSAPP (NO OTP)
+    // =========================
+    const whatsappMessage = encodeURIComponent(
+      `Hi ${fullName}, your booking for ${serviceType} is confirmed. Our team will contact you shortly.`,
+    )
+
+    const whatsappUrl = `https://wa.me/91${phone}?text=${whatsappMessage}`
+
+    const whatsappStatus = 'initiated'
+
+    // =========================
+    // 💾 SAVE TO DB
+    // =========================
+
+    if (db) {
+      await db
+        .prepare(
+          `
+  INSERT INTO quotes 
+  (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source)
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+`,
+        )
+        .bind(
+          fullName,
+          email || '',
+          phone,
+          serviceType || '',
+          condition || '',
+          emailStatus,
+          whatsappStatus,
+          'new',
+          source || 'website',
+          isValidPhone ? 1 : 0,
+        )
+        .run()
+    }
+
+    // =========================
+    // ✅ RESPONSE
+    // =========================
     return new Response(
       JSON.stringify({
         success: true,
-        id: result.meta?.last_row_id || null,
+        whatsappUrl,
+        emailStatus,
       }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      },
+      { status: 200 },
     )
   } catch (error: any) {
     console.error('API Error:', error)
 
     return new Response(
       JSON.stringify({
-        error: 'Failed to save data',
-        details: error?.message || error,
+        error: 'Something went wrong',
       }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      },
+      { status: 500 },
     )
   }
 }
