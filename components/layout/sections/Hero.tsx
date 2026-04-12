@@ -15,8 +15,8 @@ export default function Hero() {
     setIsClient(true)
   }, [])
 
-  const desktopImage = '/images/sofa-banner-hero.png'
-  const mobileImage = '/images/sofa-banner-hero.png'
+  const desktopImage = '/images/sofa-banner-hero.webp'
+  const mobileImage = '/images/sofa-banner-hero.webp'
 
   return (
     <section className="md:pt-25 relative overflow-hidden bg-white px-6 pb-5 pt-20 text-slate-900">

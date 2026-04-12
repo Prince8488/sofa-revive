@@ -15,9 +15,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
-import upholsteryImg from '@/public/images/upholstery.png'
-import repairImg from '@/public/images/repair.png'
-import polishingImg from '@/public/images/polish.png'
+import upholsteryImg from '@/public/images/upholstery.webp'
+import repairImg from '@/public/images/repair.webp'
+import polishingImg from '@/public/images/polish.webp'
 
 interface MobileDrawerProps {
   isOpen: boolean

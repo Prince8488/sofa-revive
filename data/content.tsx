@@ -1,11 +1,11 @@
 import { Hammer, Armchair, Paintbrush } from 'lucide-react'
 
-import sofaRepairAfter from '@/public/images/sofa-repair-after.png'
-import sofaRepairBefore from '@/public/images/sofa-repair-before.png'
-import sofaUpholsteryAfter from '@/public/images/sofa-upholstery-after.png'
-import sofaUpholsteryBefore from '@/public/images/sofa-upholstery-before.png'
-import woddenSofaPolishingAfter from '@/public/images/wodden-sofa-polishing-after.png'
-import woddenSofaPolishingBefore from '@/public/images/wodden-sofa-polishing-before.png'
+import sofaRepairAfter from '@/public/images/sofa-repair-after.webp'
+import sofaRepairBefore from '@/public/images/sofa-repair-before.webp'
+import sofaUpholsteryAfter from '@/public/images/sofa-upholstery-after.webp'
+import sofaUpholsteryBefore from '@/public/images/sofa-upholstery-before.webp'
+import woddenSofaPolishingAfter from '@/public/images/wodden-sofa-polishing-after.webp'
+import woddenSofaPolishingBefore from '@/public/images/wodden-sofa-polishing-before.webp'
 
 const services = [
   {

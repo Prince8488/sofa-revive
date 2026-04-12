@@ -3,9 +3,14 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
 
+export type ImageProps = {
+  src: string
+  alt: string
+}
+
 interface SliderProps {
-  beforeImage: string
-  afterImage: string
+  beforeImage: ImageProps
+  afterImage: ImageProps
 }
 
 export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
@@ -19,8 +24,7 @@ export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
     <div className="group relative aspect-[4/3] w-full overflow-hidden rounded-[2rem] border-4 border-white shadow-2xl">
       {/* After Image (The "New" look) */}
       <Image
-        src={afterImage}
-        alt="Restored Furniture"
+        {...afterImage}
         fill
         className="object-cover"
         sizes="(max-width: 768px) 100vw, 50vw"
@@ -32,8 +36,7 @@ export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
         style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
       >
         <Image
-          src={beforeImage}
-          alt="Original Furniture"
+          {...beforeImage}
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, 50vw"

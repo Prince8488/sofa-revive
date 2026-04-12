@@ -25,7 +25,7 @@ export default function AboutGenuine() {
           <div className="relative mb-20 aspect-[21/9] w-full overflow-hidden bg-stone-200">
             {/* Use a wide, cinematic shot of your workshop here */}
             <Image
-              src="/images/preserve-furniture-history.png"
+              src="/images/preserve-furniture-history.webp"
               alt="Artisans at work in the SofaRevive studio"
               fill
               className="object-cover"

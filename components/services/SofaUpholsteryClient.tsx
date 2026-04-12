@@ -18,13 +18,13 @@ export default function SofaUpholsteryClient() {
       title: 'Artisan Reupholstery',
       desc: 'Bring new life to heirlooms and antiques with sophisticated, modern tailoring.',
       icon: <Gem className="text-gray-800" size={20} />,
-      img: '/images/sofa-banner.png',
+      img: '/images/sofa-banner.webp',
     },
     {
       title: 'Padding Upgrades',
       desc: "Replace sagging cores with high-density foam and fiber-fill for a 'like-new' sit.",
       icon: <Layers className="text-gray-800" size={20} />,
-      img: '/images/sofa-padding-upgrade.png',
+      img: '/images/sofa-padding-upgrade.webp',
     },
     {
       title: 'Premium Fabric Curation',

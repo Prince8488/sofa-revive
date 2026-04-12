@@ -1,6 +1,6 @@
 'use client'
 
-import ImageSlider from '@/components/UI/ImageSlider'
+import ImageSlider, { type ImageProps } from '@/components/UI/ImageSlider'
 import Link from 'next/link'
 import useMediaQuery from '@/hooks/useMediaQuery'
 
@@ -9,28 +9,28 @@ const PROJECTS = [
     title: 'Classic Velvet Overhaul',
     description:
       'Full structural repair and premium emerald velvet upholstery.',
-    before: '/images/velvet-upholstery.png',
-    after: '/images/velvet-upholstery-after.png',
+    before: '/images/velvet-upholstery.webp',
+    after: '/images/velvet-upholstery-after.webp',
   },
   {
     title: 'Teak Wood French Polish',
     description:
       'Removal of deep scratches and water rings with a high-gloss finish.',
-    before: '/images/wodden-sofa-polishing-before.png',
-    after: '/images/wodden-sofa-polishing-after.png',
+    before: '/images/wodden-sofa-polishing-before.webp',
+    after: '/images/wodden-sofa-polishing-after.webp',
   },
   {
     title: 'Leather Sectional Refresh',
     description:
       'Leather conditioning and color restoration for a tired sectional.',
-    before: '/images/Leather-Sectional-before.png',
-    after: '/images/Leather-Sectional-after.png',
+    before: '/images/Leather-Sectional-before.webp',
+    after: '/images/Leather-Sectional-after.webp',
   },
   {
     title: 'Vintage Armchair Revival',
     description: 'Period-accurate fabric replacement and spring tightening.',
-    before: '/images/vintage-Armchair-before.png',
-    after: '/images/vintage-Armchair-after.png',
+    before: '/images/vintage-Armchair-before.webp',
+    after: '/images/vintage-Armchair-after.webp',
   },
 ]
 
@@ -72,6 +72,15 @@ export default function GallerySection() {
               ? `${project.after}&ar=3:4&fit=crop`
               : project.after
 
+            const beforeImageProps: ImageProps = {
+              src: beforeImage,
+              alt: `Before restoration: ${project.title}`,
+            }
+            const afterImageProps: ImageProps = {
+              src: afterImage,
+              alt: `After restoration: ${project.title}`,
+            }
+
             return (
               <div
                 key={index}
@@ -80,8 +89,8 @@ export default function GallerySection() {
                 {/* Slider Container */}
                 <div className="relative aspect-[4/3] overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.2)]">
                   <ImageSlider
-                    beforeImage={beforeImage}
-                    afterImage={afterImage}
+                    beforeImage={beforeImageProps}
+                    afterImage={afterImageProps}
                   />
                 </div>
 
