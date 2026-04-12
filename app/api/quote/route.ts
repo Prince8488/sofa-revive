@@ -58,7 +58,7 @@ export async function POST(req: Request, context: any) {
         `,
       })
 
-      if (emailResponse?.id) {
+      if (emailResponse?.data?.id) {
         emailStatus = 'sent'
       }
     } catch (err) {
