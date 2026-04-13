@@ -25,10 +25,6 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
-  experimental: {
-    optimizeCss: true,
-  },
-
   async redirects() {
     return []
   },
