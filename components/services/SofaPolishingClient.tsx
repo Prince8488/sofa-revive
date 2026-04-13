@@ -1,15 +1,7 @@
 'use client'
 import Image from 'next/image'
 
-import {
-  Sparkles,
-  Droplets,
-  Wind,
-  Briefcase,
-  ArrowUpRight,
-  Layers,
-  ShieldCheck,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import Link from 'next/link'
 
 export default function SofaPolishingClient() {
@@ -17,19 +9,19 @@ export default function SofaPolishingClient() {
     {
       title: 'Lustre Restoration',
       desc: 'Specialized substances applied to restore the deep, original shine to tables, chairs, and armoires.',
-      icon: <Sparkles className="text-gray-800" size={20} />,
+      icon: <Icon name="Sparkles" className="text-gray-800" size={20} />,
       img: '/images/lustre-Restoration.webp',
     },
     {
       title: 'Grain Preservation',
       desc: 'Techniques that nourish dry wood and highlight natural patterns without compromising the finish.',
-      icon: <Droplets className="text-gray-800" size={20} />,
+      icon: <Icon name="Droplets" className="text-gray-800" size={20} />,
       img: '/images/wodden-sofa-polishing-after.webp',
     },
     {
       title: 'Detail Buffing',
       desc: 'Soft-bristle precision work for intricate grooves and antique carvings to ensure a uniform glow.',
-      icon: <Wind className="text-gray-800" size={20} />,
+      icon: <Icon name="Wind" className="text-gray-800" size={20} />,
       img: '/images/grain-preservation.webp',
     },
   ]
@@ -37,10 +29,10 @@ export default function SofaPolishingClient() {
   return (
     <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. INDUSTRY HERO */}
-      <section className="border-b border-slate-100 bg-slate-50 px-6 pb-12 pt-20">
+      <section className="border-b border-slate-100 border-slate-200 bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
-            <Briefcase size={12} /> Master Wood Finishing
+            <Icon name="Briefcase" size={12} /> Master Wood Finishing
           </div>
           <h1
             className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl"
@@ -86,7 +78,7 @@ export default function SofaPolishingClient() {
                 href="/gallery"
                 className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-800 transition-all hover:gap-2"
               >
-                Process Details <ArrowUpRight size={12} />
+                Process Details <Icon name="ArrowUpRight" size={12} />
               </Link>
             </div>
           ))}
@@ -111,12 +103,12 @@ export default function SofaPolishingClient() {
             </p>
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <Layers size={16} className="text-gray-800" /> Multi-Stage
-                Buffing Process
+                <Icon name="Layers" size={16} className="text-gray-800" />{' '}
+                Multi-Stage Buffing Process
               </div>
               <div className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-slate-600">
-                <ShieldCheck size={16} className="text-gray-800" /> Protective
-                Surface Sealing
+                <Icon name="ShieldCheck" size={16} className="text-gray-800" />{' '}
+                Protective Surface Sealing
               </div>
             </div>
           </div>
@@ -142,7 +134,7 @@ export default function SofaPolishingClient() {
             >
               Preserve the Lifespan <br /> of Your Assets
             </h2>
-            <p className="mx-auto max-w-lg text-sm leading-relaxed text-slate-400 lg:mx-0">
+            <p className="mx-auto max-w-lg text-sm leading-relaxed text-slate-600 lg:mx-0">
               Our creative staff provides personal consultations to navigate the
               vast variety of polishing combinations. From hardware care to
               designer-grade materials, we tell your story by preserving what
@@ -162,7 +154,7 @@ export default function SofaPolishingClient() {
               <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-gray-400">
                 Deep
               </div>
-              <div className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
+              <div className="text-[9px] font-bold uppercase tracking-widest text-slate-600">
                 Nourishment
               </div>
             </div>
@@ -170,7 +162,7 @@ export default function SofaPolishingClient() {
               <div className="mb-1 text-2xl font-bold italic tracking-tighter text-white transition-colors group-hover:text-gray-400">
                 High
               </div>
-              <div className="text-[9px] font-bold uppercase tracking-widest text-slate-400">
+              <div className="text-[9px] font-bold uppercase tracking-widest text-slate-600">
                 Lustre Finish
               </div>
             </div>

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
-import { Phone, MessageSquare } from 'lucide-react'
+import Icon from '@/components/icons'
 import Link from 'next/link'
 
 export default function StickyMobileBar() {
@@ -41,7 +41,7 @@ export default function StickyMobileBar() {
         className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-slate-100 py-4 text-[10px] font-black uppercase tracking-widest text-slate-900 transition-all active:scale-95"
         aria-label="Call Now"
       >
-        <Phone size={14} strokeWidth={3} /> Call
+        <Icon name="Phone" size={14} strokeWidth={3} /> Call
       </a>
 
       {/* Quote - Primary Action */}
@@ -50,7 +50,8 @@ export default function StickyMobileBar() {
         className="flex flex-[2] items-center justify-center gap-2 rounded-2xl bg-slate-950 py-4 text-[10px] font-black uppercase tracking-widest text-white shadow-2xl shadow-slate-950/20 transition-all active:scale-95"
         aria-label="Get Free Quote"
       >
-        <MessageSquare size={14} fill="currentColor" /> Get Free Quote
+        <Icon name="MessageSquare" size={14} fill="currentColor" /> Get Free
+        Quote
       </Link>
     </motion.div>
   )

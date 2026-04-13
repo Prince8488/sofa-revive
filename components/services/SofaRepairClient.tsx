@@ -2,14 +2,7 @@
 
 import Image from 'next/image'
 
-import {
-  ArrowUpRight,
-  Briefcase,
-  ShieldCheck,
-  Armchair,
-  PenTool,
-  Sofa,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import Link from 'next/link'
 
 export default function SofaRepairClient() {
@@ -17,19 +10,19 @@ export default function SofaRepairClient() {
     {
       title: 'Sofa Restoration',
       desc: 'Comprehensive structural and aesthetic overhauls for high-traffic corporate breakout areas.',
-      icon: <Sofa className="text-gray-800" size={20} />,
+      icon: <Icon name="Sofa" className="text-gray-800" size={20} />,
       img: '/images/premium-cushion.webp',
     },
     {
       title: 'Recliner Mechanics',
       desc: 'Precision maintenance for motorized reclining systems in executive cabins and lounge rooms.',
-      icon: <Armchair className="text-gray-800" size={20} />,
+      icon: <Icon name="Armchair" className="text-gray-800" size={20} />,
       img: '/images/recliner-repair-services.webp',
     },
     {
       title: 'Custom Upholstery',
       desc: 'Specialized material sourcing including fire-retardant fabrics and premium Italian leathers.',
-      icon: <PenTool className="text-gray-800" size={20} />,
+      icon: <Icon name="PenTool" className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&q=80&w=800',
     },
   ]
@@ -37,10 +30,11 @@ export default function SofaRepairClient() {
   return (
     <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. INDUSTRY HERO */}
-      <section className="bg-slate-50 px-6 pb-12 pt-20">
+      <section className="border-slate-200 bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
-            <Briefcase size={12} /> Institutional Furniture Management
+            <Icon name="Briefcase" size={12} /> Institutional Furniture
+            Management
           </div>
           <h1
             className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-4xl"
@@ -86,7 +80,7 @@ export default function SofaRepairClient() {
                 href="/gallery"
                 className="flex cursor-pointer items-center gap-1 text-[10px] font-bold uppercase tracking-widest text-gray-800 transition-all hover:gap-2"
               >
-                View Collection <ArrowUpRight size={12} />
+                View Collection <Icon name="ArrowUpRight" size={12} />
               </Link>
             </div>
           ))}
@@ -103,15 +97,15 @@ export default function SofaRepairClient() {
             >
               Hospitality & Resort <br /> Seating Solutions
             </h2>
-            <p className="border-l-2 border-gray-600 pl-4 text-sm italic leading-relaxed text-slate-400">
+            <p className="border-l-2 border-gray-600 pl-4 text-sm italic leading-relaxed text-slate-600">
               First impressions set the tone for guest retention. Our quarterly
               programs ensure your lobby and dining furniture never shows signs
               of wear.
             </p>
             <ul className="space-y-3 text-xs text-slate-300">
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-gray-500" /> Structural
-                frame leveling and reinforcement
+                <Icon name="ShieldCheck" size={14} className="text-gray-500" />{' '}
+                Structural frame leveling and reinforcement
               </li>
               <li className="flex items-center gap-2 italic">
                 <ShieldCheck size={14} className="text-gray-500" />{' '}
@@ -165,13 +159,13 @@ export default function SofaRepairClient() {
             facility downtime, ensuring zero disruption to your employees.
           </p>
           <div className="grid grid-cols-2 gap-4">
-            <div className="rounded-lg bg-slate-50 p-4">
+            <div className="rounded-lg border-slate-200 bg-slate-50 p-4">
               <div className="text-xl font-bold italic text-slate-900">24h</div>
               <div className="text-[10px] font-bold uppercase text-slate-600">
                 Rapid Response
               </div>
             </div>
-            <div className="rounded-lg bg-slate-50 p-4">
+            <div className="rounded-lg border-slate-200 bg-slate-50 p-4">
               <div className="text-xl font-bold italic text-slate-900">ESG</div>
               <div className="text-[10px] font-bold uppercase text-slate-600">
                 Sustainable Repair
@@ -182,7 +176,7 @@ export default function SofaRepairClient() {
             href="/quote"
             className="flex cursor-pointer items-center gap-2 text-xs font-bold uppercase tracking-widest text-gray-800 underline-offset-4 hover:underline"
           >
-            Request Institutional Pricing <ArrowUpRight size={14} />
+            Request Institutional Pricing <Icon name="ArrowUpRight" size={14} />
           </Link>
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { Hammer, Armchair, Paintbrush } from 'lucide-react'
+import Icon from '@/components/icons'
 
 import sofaRepairAfter from '@/public/images/sofa-repair-after.webp'
 import sofaRepairBefore from '@/public/images/sofa-repair-before.webp'
@@ -14,7 +14,7 @@ const services = [
     afterImage: sofaRepairAfter,
     beforeImage: sofaRepairBefore,
     features: ['Frame Strengthening', 'Spring Replacement', 'Leg Repair'],
-    icon: <Hammer className="h-5 w-5" />,
+    icon: <Icon name="Hammer" className="h-5 w-5" />,
     tag: 'Structural Fix',
     href: '/services/sofa-repair',
   },
@@ -24,7 +24,7 @@ const services = [
     afterImage: sofaUpholsteryAfter,
     beforeImage: sofaUpholsteryBefore,
     features: ['50+ Fabric Options', 'Foam Top-up', 'On-site measurement'],
-    icon: <Armchair className="h-5 w-5" />,
+    icon: <Icon name="Armchair" className="h-5 w-5" />,
     tag: 'Fabric Revival',
     href: '/services/sofa-upholstery',
   },
@@ -34,7 +34,7 @@ const services = [
     beforeImage: woddenSofaPolishingBefore,
     afterImage: woddenSofaPolishingAfter,
     features: ['Melamine Finish', 'PU Coating', 'Antique Polish'],
-    icon: <Paintbrush className="h-5 w-5" />,
+    icon: <Icon name="Paintbrush" className="h-5 w-5" />,
     tag: 'Premium Finish',
     href: '/services/sofa-polishing',
   },

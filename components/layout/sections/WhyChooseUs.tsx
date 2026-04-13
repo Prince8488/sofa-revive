@@ -1,35 +1,27 @@
 'use client'
 
-import {
-  ShieldCheck,
-  Truck,
-  Award,
-  Clock,
-  Ruler,
-  Paintbrush,
-  Phone,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 const FEATURES = [
   {
-    icon: ShieldCheck,
+    icon: 'ShieldCheck',
     title: '1-Year Warranty',
     description: 'Full coverage on foam sag and stitch durability.',
   },
   {
-    icon: Truck,
+    icon: 'Truck',
     title: 'Free Doorstep Pickup',
     description: 'Safe transport from your home to our workshop and back.',
   },
   {
-    icon: Award,
+    icon: 'Award',
     title: 'Branded Materials',
     description: 'We only use good quality materials.',
   },
   {
-    icon: Clock,
+    icon: 'Clock',
     title: '7-Day Delivery',
     description: "Fast turnaround so you're not without your furniture.",
   },
@@ -45,7 +37,7 @@ const SOCIAL_PROOF_AVATARS = [
 
 export default function WhyChooseUS() {
   return (
-    <section className="relative bg-slate-50 px-6 py-5 text-slate-900">
+    <section className="relative border-slate-200 bg-slate-50 px-6 py-5 text-slate-900">
       {/* Decorative subtle dot pattern background */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -92,7 +84,7 @@ export default function WhyChooseUS() {
                 <div key={feature.title} className="group space-y-3">
                   <dt className="flex items-center gap-4">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-gray-800 shadow-sm ring-1 ring-slate-200 transition-all duration-300 group-hover:bg-gray-800 group-hover:text-white">
-                      <feature.icon size={20} strokeWidth={2} />
+                      <Icon name={feature.icon} size={20} strokeWidth={2} />
                     </div>
                     <span className="text-[15px] font-bold uppercase tracking-tight text-slate-900">
                       {feature.title}
@@ -122,9 +114,9 @@ export default function WhyChooseUS() {
               </h3>
 
               <div className="space-y-4">
-                <IconDetail icon={Ruler} text="Free Home Visit & Measurement" />
+                <IconDetail icon="Ruler" text="Free Home Visit & Measurement" />
                 <IconDetail
-                  icon={Paintbrush}
+                  icon="Paintbrush"
                   text="50+ Fabric Swatches at Doorstep"
                 />
 
@@ -134,7 +126,7 @@ export default function WhyChooseUS() {
                     className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl bg-slate-950 py-5 text-xs font-bold uppercase tracking-[0.15em] text-white shadow-lg shadow-slate-200 transition-all hover:bg-gray-800 active:scale-95"
                     aria-label="Get a free consultation by calling us"
                   >
-                    <Phone size={16} /> Get Free Consultation
+                    <Icon name="Phone" size={16} /> Get Free Consultation
                   </a>
 
                   <div className="flex flex-col items-center gap-4">
@@ -173,15 +165,15 @@ export default function WhyChooseUS() {
 }
 
 type IconDetailProps = {
-  icon: any
+  icon: string
   text: string
 }
 
-function IconDetail({ icon: Icon, text }: IconDetailProps) {
+function IconDetail({ icon, text }: IconDetailProps) {
   return (
-    <div className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-100 bg-slate-50 p-4 transition-all hover:border-gray-200 hover:bg-white">
+    <div className="group flex cursor-pointer items-center gap-4 rounded-2xl border border-slate-100 border-slate-200 bg-slate-50 p-4 transition-all hover:border-gray-200 hover:bg-white">
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white text-gray-800 shadow-sm transition-colors group-hover:bg-gray-800 group-hover:text-white">
-        <Icon size={18} />
+        <Icon name={icon} size={18} />
       </div>
       <p className="text-sm font-bold tracking-tight text-slate-700">{text}</p>
     </div>

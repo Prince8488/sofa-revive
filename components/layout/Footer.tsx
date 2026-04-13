@@ -2,7 +2,8 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { Facebook, Instagram, Twitter, Heart, MapPin } from 'lucide-react'
+import Icon from '@/components/icons'
+import { Heart, MapPin } from 'lucide-react'
 
 const FOOTER_DATA = {
   company: {
@@ -62,7 +63,7 @@ const FooterSection = ({ title, links }: FooterSectionProps) => (
         <li key={link.label}>
           <Link
             href={link.href}
-            // FIX 2: Darkened text-slate-400 to text-slate-300 for better contrast on dark bg
+            // FIX 2: Darkened text-slate-600 to text-slate-300 for better contrast on dark bg
             className="rounded text-xs font-medium text-slate-300 transition-colors hover:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-500 md:text-sm"
           >
             {link.label}
@@ -108,21 +109,21 @@ export default function Footer() {
                   aria-label="Visit our Instagram page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
-                  <Instagram size={18} aria-hidden="true" />
+                  <Icon name="Instagram" size={18} aria-hidden="true" />
                 </Link>
                 <Link
                   href="https://www.facebook.com/your-facebook"
                   aria-label="Visit our Facebook page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
-                  <Facebook size={18} aria-hidden="true" />
+                  <Icon name="Facebook" size={18} aria-hidden="true" />
                 </Link>
                 <Link
                   href="https://www.twitter.com/your-twitter"
                   aria-label="Visit our Twitter page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
-                  <Twitter size={18} aria-hidden="true" />
+                  <Icon name="Twitter" size={18} aria-hidden="true" />
                 </Link>
               </div>
             </section>
@@ -137,8 +138,8 @@ export default function Footer() {
                 <MapPin size={14} className="text-gray-500" />
                 Service Areas
               </p>
-              {/* FIX 4: Changed text-slate-700 (failed audit) to text-slate-400 for better visibility on dark bg */}
-              <p className="text-[11px] font-bold uppercase leading-relaxed tracking-wider text-slate-400">
+              {/* FIX 4: Changed text-slate-700 (failed audit) to text-slate-600 for better visibility on dark bg */}
+              <p className="text-[11px] font-bold uppercase leading-relaxed tracking-wider text-slate-300">
                 Providing premium on-site furniture restoration across
                 Bengaluru's major neighborhoods.
               </p>

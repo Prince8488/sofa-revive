@@ -1,13 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  CheckCircle2,
-  Sofa,
-  PaintRoller,
-  Wrench,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -21,7 +15,7 @@ const stagger = {
 
 const SERVICES = [
   {
-    icon: <Sofa size={24} />,
+    icon: <Icon name="Sofa" size={24} />,
     title: 'Custom Upholstery',
     description:
       'From premium leather to sustainable fabrics, choose from over 50+ options to give your sofa a new identity.',
@@ -34,7 +28,7 @@ const SERVICES = [
     alt: 'A skilled artisan carefully stretching fabric over a sofa frame.',
   },
   {
-    icon: <Wrench size={24} />,
+    icon: <Icon name="Wrench" size={24} />,
     title: 'Structural Repair',
     description:
       'We go beyond the surface to reinforce frames, replace broken springs, and restore structural integrity for lasting comfort.',
@@ -47,7 +41,7 @@ const SERVICES = [
     alt: 'Close-up of a craftsman repairing the wooden frame of a sofa.',
   },
   {
-    icon: <PaintRoller size={24} />,
+    icon: <Icon name="PaintRoller" size={24} />,
     title: 'Wood Polishing',
     description:
       'Our multi-step polishing process removes scratches and restores the original luster of your wooden furniture.',
@@ -104,7 +98,7 @@ export default function ServicesClient() {
             className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-24"
           >
             <div className={`space-y-8 ${i % 2 === 1 ? 'lg:order-last' : ''}`}>
-              <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-4">
+              <div className="inline-flex items-center gap-4 rounded-2xl border border-slate-200 border-slate-200 bg-slate-50 p-4">
                 <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gray-800 text-white">
                   {service.icon}
                 </div>
@@ -121,7 +115,8 @@ export default function ServicesClient() {
               <ul className="space-y-3">
                 {service.features.map((feature, j) => (
                   <li key={j} className="flex items-center gap-3">
-                    <CheckCircle2
+                    <Icon
+                      name="CheckCircle2"
                       size={16}
                       className="text-gray-600"
                       strokeWidth={3}
@@ -167,7 +162,7 @@ export default function ServicesClient() {
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-3 rounded-full bg-slate-900 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-300 transition-all hover:bg-gray-800"
               >
-                Get a Free Quote <ArrowRight size={16} />
+                Get a Free Quote <Icon name="ArrowRight" size={16} />
               </motion.button>
             </Link>
           </div>

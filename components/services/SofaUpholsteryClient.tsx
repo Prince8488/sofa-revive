@@ -2,14 +2,8 @@
 
 import Image from 'next/image'
 
-import {
-  Gem,
-  Layers,
-  Palette,
-  Sparkles,
-  ArrowUpRight,
-  CheckCircle2,
-} from 'lucide-react'
+import Icon from '@/components/icons'
+import { ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
 
 export default function SofaUpholsteryClient() {
@@ -17,19 +11,19 @@ export default function SofaUpholsteryClient() {
     {
       title: 'Artisan Reupholstery',
       desc: 'Bring new life to heirlooms and antiques with sophisticated, modern tailoring.',
-      icon: <Gem className="text-gray-800" size={20} />,
+      icon: <Icon name="Gem" className="text-gray-800" size={20} />,
       img: '/images/sofa-banner.webp',
     },
     {
       title: 'Padding Upgrades',
       desc: "Replace sagging cores with high-density foam and fiber-fill for a 'like-new' sit.",
-      icon: <Layers className="text-gray-800" size={20} />,
+      icon: <Icon name="Layers" className="text-gray-800" size={20} />,
       img: '/images/sofa-padding-upgrade.webp',
     },
     {
       title: 'Premium Fabric Curation',
       desc: 'Extensive selection of designer fabrics, Italian leathers, and commercial materials.',
-      icon: <Palette className="text-gray-800" size={20} />,
+      icon: <Icon name="Palette" className="text-gray-800" size={20} />,
       img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000',
     },
   ]
@@ -37,10 +31,10 @@ export default function SofaUpholsteryClient() {
   return (
     <div className="bg-white pt-5 text-slate-800 selection:bg-gray-800 selection:text-white">
       {/* 1. HERO SECTION */}
-      <section className="border-b border-slate-100 bg-slate-50 px-6 pb-12 pt-20">
+      <section className="border-b border-slate-100 border-slate-200 bg-slate-50 px-6 pb-12 pt-20">
         <div className="mx-auto max-w-4xl space-y-4 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-gray-200 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-gray-800">
-            <Sparkles size={12} /> Unmatched Restoration
+            <Icon name="Sparkles" size={12} /> Unmatched Restoration
           </div>
           <h1
             className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl"
@@ -150,7 +144,7 @@ export default function SofaUpholsteryClient() {
             >
               A New Lease of Life <br /> for Your Interiors
             </h2>
-            <p className="text-sm leading-relaxed text-slate-400">
+            <p className="text-sm leading-relaxed text-slate-600">
               Remodeling your space? Don't discard your quality furniture. Our
               craftsmen help you navigate color changes and contemporary design
               needs with an extensive selection of premium fabrics.
@@ -160,7 +154,7 @@ export default function SofaUpholsteryClient() {
                 <div className="mb-1 text-xs font-bold uppercase text-gray-400">
                   Stain Resistant
                 </div>
-                <div className="text-[10px] text-slate-400">
+                <div className="text-[10px] text-slate-600">
                   Commercial Grade
                 </div>
               </div>
@@ -168,7 +162,7 @@ export default function SofaUpholsteryClient() {
                 <div className="mb-1 text-xs font-bold uppercase text-gray-400">
                   Fire Retardant
                 </div>
-                <div className="text-[10px] text-slate-400">
+                <div className="text-[10px] text-slate-600">
                   Safety Standards
                 </div>
               </div>
@@ -178,7 +172,7 @@ export default function SofaUpholsteryClient() {
       </section>
 
       {/* 5. CONSULTATION & CTA */}
-      <section className="relative overflow-hidden bg-slate-50 px-6 py-20 text-center">
+      <section className="relative overflow-hidden border-slate-200 bg-slate-50 px-6 py-20 text-center">
         <div className="relative z-10 mx-auto max-w-3xl space-y-8">
           <h2
             className="text-2xl font-black uppercase tracking-tight text-slate-900 md:text-3xl"

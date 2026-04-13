@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDown } from 'lucide-react'
+import Icon from '@/components/icons'
 
 const FAQ_DATA = [
   {
@@ -67,7 +67,8 @@ export default function FaqAccordion() {
             >
               {item.q}
             </span>
-            <ChevronDown
+            <Icon
+              name="ChevronDown"
               className={`transition-transform duration-300 ${
                 activeIdx === idx
                   ? 'rotate-180 text-gray-800'

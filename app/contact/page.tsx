@@ -2,21 +2,12 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import {
-  Phone,
-  MessageSquare,
-  Mail,
-  MapPin,
-  Clock,
-  Navigation,
-  ArrowUpRight,
-  Camera,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 
 const ContactPage = () => {
   const contactMethods = [
     {
-      icon: <MessageSquare className="h-5 w-5 md:h-6 md:w-6" />,
+      icon: <Icon name="MessageSquare" className="h-5 w-5 md:h-6 md:w-6" />,
       title: 'Fastest Response',
       value: 'WhatsApp Support',
       desc: 'Send sofa photos for an instant quote',
@@ -25,7 +16,7 @@ const ContactPage = () => {
       tag: 'Popular',
     },
     {
-      icon: <Phone className="h-5 w-5 md:h-6 md:w-6" />,
+      icon: <Icon name="Phone" className="h-5 w-5 md:h-6 md:w-6" />,
       title: 'Call our Expert',
       value: '+91 63669 21602',
       desc: 'Sun-Sat, 9am to 8pm',
@@ -33,7 +24,7 @@ const ContactPage = () => {
       color: 'bg-gray-800',
     },
     {
-      icon: <Mail className="h-5 w-5 md:h-6 md:w-6" />,
+      icon: <Icon name="Mail" className="h-5 w-5 md:h-6 md:w-6" />,
       title: 'Email Studio',
       value: 'hello@sofarevive.com',
       desc: 'For corporate/hotel inquiries',
@@ -80,7 +71,7 @@ const ContactPage = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 + 0.3 }}
-                className="group relative flex items-center gap-4 rounded-[2rem] border border-slate-100 bg-slate-50 p-6 transition-all duration-500 hover:border-gray-200 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.1)] md:gap-6 md:p-8"
+                className="group relative flex items-center gap-4 rounded-[2rem] border border-slate-100 border-slate-200 bg-slate-50 p-6 transition-all duration-500 hover:border-gray-200 hover:bg-white hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.1)] md:gap-6 md:p-8"
               >
                 {method.tag && (
                   <span className="absolute right-8 top-4 rounded-full bg-gray-800 px-3 py-1 text-[8px] font-black uppercase tracking-widest text-white">
@@ -106,7 +97,10 @@ const ContactPage = () => {
                   </p>
                 </div>
 
-                <ArrowUpRight className="text-slate-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gray-800" />
+                <Icon
+                  name="ArrowUpRight"
+                  className="text-slate-300 transition-all group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-gray-800"
+                />
               </motion.a>
             ))}
 
@@ -127,7 +121,7 @@ const ContactPage = () => {
               <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-slate-600">
-                    <Clock size={14} />
+                    <Icon name="Clock" size={14} />
                     <span className="text-[10px] font-bold uppercase tracking-widest">
                       Pickup Status
                     </span>
@@ -142,7 +136,7 @@ const ContactPage = () => {
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2 text-slate-600">
-                    <Camera size={14} />
+                    <Icon name="Camera" size={14} />
                     <span className="text-[10px] font-bold uppercase tracking-widest">
                       Quote Speed
                     </span>
@@ -178,7 +172,7 @@ const ContactPage = () => {
               <div className="absolute bottom-6 left-6 right-6 rounded-[2.5rem] border border-white/10 bg-white/5 p-8 text-white backdrop-blur-2xl">
                 <div className="flex items-start gap-5">
                   <div className="rounded-2xl bg-gray-800 p-4 shadow-xl">
-                    <MapPin size={24} />
+                    <Icon name="MapPin" size={24} />
                   </div>
                   <div>
                     <h4 className="mb-2 text-2xl font-black uppercase italic tracking-tighter">
@@ -197,7 +191,7 @@ const ContactPage = () => {
                       className="mt-8 inline-flex items-center gap-3 rounded-2xl bg-white px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-950 shadow-xl transition-all hover:bg-gray-800 hover:text-white active:scale-95"
                       rel="noreferrer"
                     >
-                      <Navigation size={14} /> Get Directions
+                      <Icon name="Navigation" size={14} /> Get Directions
                     </a>
                   </div>
                 </div>

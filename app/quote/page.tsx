@@ -3,20 +3,7 @@
 import React, { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
-import {
-  ShieldCheck,
-  Zap,
-  MessageSquare,
-  User,
-  Phone,
-  CheckCircle2,
-  Mail,
-  AlertCircle,
-  Loader2,
-  ChevronDown,
-  Sofa,
-  RefreshCcw,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import { validateIndustryForm, FormData } from '@/utils/formvalidation'
 
 const IndustryQuoteForm = () => {
@@ -188,7 +175,7 @@ const IndustryQuoteForm = () => {
   }
 
   const inputBase = (fieldName: keyof FormData) => `
-    w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
+    w-full p-5 bg-slate-50 border-slate-200 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
     ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
 ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
   `
@@ -203,7 +190,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
           animate={{ opacity: 1, y: 0 }}
           className="ml-1 mt-2 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-red-500"
         >
-          <AlertCircle size={10} /> {errors[name]}
+          <Icon name="AlertCircle" size={10} /> {errors[name]}
         </motion.span>
       )}
     </AnimatePresence>
@@ -212,7 +199,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
   return (
     <div
       ref={formTopRef}
-      className="min-h-screen bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
+      className="min-h-screen border-slate-200 bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
     >
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-16 lg:flex-row">
         {/* LEFT COLUMN */}
@@ -223,7 +210,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
             className="space-y-6"
           >
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600">
-              <Zap size={12} fill="currentColor" /> Instant Estimates
+              <Icon name="Zap" size={12} fill="currentColor" /> Instant
+              Estimates
             </div>
             <h1 className="text-2xl font-bold leading-[1.1] tracking-tight text-slate-900 md:text-4xl">
               Revive Your <br />
@@ -237,12 +225,18 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
           </motion.div>
           <div className="space-y-4">
             {[
-              { icon: <Zap size={18} />, text: 'Free expert advice' },
               {
-                icon: <MessageSquare size={18} />,
+                icon: <Icon name="Zap" size={18} />,
+                text: 'Free expert advice',
+              },
+              {
+                icon: <Icon name="MessageSquare" size={18} />,
                 text: 'WhatsApp Consultation',
               },
-              { icon: <ShieldCheck size={18} />, text: '1-Year Warranty' },
+              {
+                icon: <Icon name="ShieldCheck" size={18} />,
+                text: '1-Year Warranty',
+              },
             ].map((pillar, idx) => (
               <motion.div
                 key={idx}
@@ -264,7 +258,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
           animate={{ opacity: 1, x: 0 }}
           className="relative w-full overflow-hidden rounded-[2.5rem] border border-white bg-white p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] md:p-16 lg:w-[65%]"
         >
-          <div className="absolute left-0 top-0 h-1.5 w-full bg-slate-50">
+          <div className="absolute left-0 top-0 h-1.5 w-full border-slate-200 bg-slate-50">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
@@ -295,7 +289,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     <div ref={serviceRef} className="group md:col-span-2">
                       <label className={labelBase}>Service Type *</label>
                       <div className="relative">
-                        <Sofa
+                        <Icon
+                          name="Sofa"
                           className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
@@ -310,7 +305,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                           <option>Sofa Polishing</option>
                           <option>Others</option>
                         </select>
-                        <ChevronDown
+                        <Icon
+                          name="ChevronDown"
                           className="pointer-events-none absolute right-5 top-1/2 -translate-y-1/2 text-slate-300"
                           size={18}
                         />
@@ -320,7 +316,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     <div ref={nameRef} className="group">
                       <label className={labelBase}>Full Name *</label>
                       <div className="relative">
-                        <User
+                        <Icon
+                          name="User"
                           className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
@@ -338,7 +335,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     <div ref={emailRef} className="group">
                       <label className={labelBase}>Email Address *</label>
                       <div className="relative">
-                        <Mail
+                        <Icon
+                          name="Mail"
                           className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
@@ -356,7 +354,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     <div ref={phoneRef} className="group md:col-span-2">
                       <label className={labelBase}>WhatsApp Number *</label>
                       <div className="relative">
-                        <Phone
+                        <Icon
+                          name="Phone"
                           className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
                           size={18}
                         />
@@ -401,7 +400,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     className="flex w-full cursor-pointer items-center justify-center rounded-xl bg-slate-950 px-6 py-6 text-[10px] font-bold uppercase tracking-[0.25em] text-white shadow-xl shadow-gray-800/30 transition-all duration-300 hover:-translate-y-1 hover:bg-gray-800 disabled:opacity-70"
                   >
                     {isLoading ? (
-                      <Loader2 className="animate-spin" />
+                      <Icon name="Loader2" className="animate-spin" />
                     ) : (
                       'Receive Expert Estimate'
                     )}
@@ -418,7 +417,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                 animate={{ opacity: 1, scale: 1 }}
                 className="space-y-6 py-20 text-center"
               >
-                <CheckCircle2
+                <Icon
+                  name="CheckCircle2"
                   size={48}
                   className="mx-auto mb-4 text-green-500"
                 />
@@ -445,7 +445,11 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                 animate={{ opacity: 1, scale: 1 }}
                 className="space-y-8 py-20 text-center"
               >
-                <AlertCircle size={48} className="mx-auto mb-4 text-red-500" />
+                <Icon
+                  name="AlertCircle"
+                  size={48}
+                  className="mx-auto mb-4 text-red-500"
+                />
                 <div className="space-y-2">
                   <h2 className="text-3xl font-bold tracking-tight text-slate-900">
                     Submission Failed
@@ -461,21 +465,21 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     onClick={handleWhatsApp}
                     className="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
                   >
-                    <MessageSquare size={16} /> WhatsApp Us
+                    <Icon name="MessageSquare" size={16} /> WhatsApp Us
                   </button>
                   <button
                     onClick={() => (window.location.href = 'tel:+916366921602')}
                     className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
                   >
-                    <Phone size={16} /> Call Support
+                    <Icon name="Phone" size={16} /> Call Support
                   </button>
                 </div>
 
                 <button
                   onClick={() => setSubmissionStatus('idle')}
-                  className="mx-auto mt-4 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-400 transition-colors hover:text-slate-900"
+                  className="mx-auto mt-4 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-600 transition-colors hover:text-slate-900"
                 >
-                  <RefreshCcw size={12} /> Try Form Again
+                  <Icon name="RefreshCcw" size={12} /> Try Form Again
                 </button>
               </motion.div>
             )}

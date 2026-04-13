@@ -32,7 +32,7 @@ export default function FaqPage() {
         </section>
 
         {/* Support CTA - Standardized with the Page Aesthetic */}
-        <footer className="mt-16 rounded-[2.5rem] border border-slate-200/60 bg-slate-50 p-8 text-center md:p-14">
+        <footer className="mt-16 rounded-[2.5rem] border border-slate-200 border-slate-200/60 bg-slate-50 p-8 text-center md:p-14">
           {/* Updated: Extrabold Subheader */}
           <h3 className="text-xl font-extrabold tracking-tight text-slate-900 md:text-2xl">
             Still have questions?

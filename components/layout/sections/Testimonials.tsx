@@ -1,6 +1,6 @@
 'use client'
 
-import { Quote, Star } from 'lucide-react'
+import Icon from '@/components/icons'
 import { motion } from 'framer-motion'
 
 const REVIEWS = [
@@ -30,7 +30,8 @@ export default function Testimonials() {
             viewport={{ once: true }}
             className="lg:sticky lg:top-32 lg:col-span-1"
           >
-            <Quote
+            <Icon
+              name="Quote"
               size={48}
               className="mb-6 text-gray-800/20"
               strokeWidth={1.5}
@@ -46,14 +47,14 @@ export default function Testimonials() {
             </h2>
 
             {/* Rating Card: Matched UI style */}
-            <div className="flex w-fit items-center gap-6 rounded-[2.5rem] border border-slate-100 bg-slate-50 p-6 shadow-sm shadow-slate-200/50">
+            <div className="flex w-fit items-center gap-6 rounded-[2.5rem] border border-slate-100 border-slate-200 bg-slate-50 p-6 shadow-sm shadow-slate-200/50">
               <div className="text-4xl font-black tracking-tighter text-slate-900 md:text-5xl">
                 4.9
               </div>
               <div>
                 <div className="mb-1.5 flex gap-1 text-amber-400">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} size={14} fill="currentColor" />
+                    <Icon name="Star" key={i} size={14} fill="currentColor" />
                   ))}
                 </div>
                 {/* Badge: Standardized 11px Bold */}
@@ -77,7 +78,7 @@ export default function Testimonials() {
               >
                 <div className="mb-6 flex gap-1 text-amber-400">
                   {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} size={12} fill="currentColor" />
+                    <Icon name="Star" key={i} size={12} fill="currentColor" />
                   ))}
                 </div>
 

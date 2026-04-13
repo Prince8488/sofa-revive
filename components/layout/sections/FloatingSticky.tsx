@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { MessageCircle, Phone, Plus } from 'lucide-react'
+import Icon from '@/components/icons'
 
 export default function FloatingSticky() {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,13 +11,13 @@ export default function FloatingSticky() {
   // Removed the "Quote" item from this list
   const menuItems = [
     {
-      icon: <MessageCircle size={22} />,
+      icon: <Icon name="MessageCircle" size={22} />,
       label: 'WhatsApp',
       color: 'bg-green-500',
       onClick: () => window.open(`https://wa.me/${phoneNumber}`, '_blank'),
     },
     {
-      icon: <Phone size={22} />,
+      icon: <Icon name="Phone" size={22} />,
       label: 'Call',
       color: 'bg-slate-900',
       onClick: () => (window.location.href = `tel:+${phoneNumber}`),
@@ -66,7 +66,7 @@ export default function FloatingSticky() {
           isOpen ? 'bg-slate-100 text-slate-900' : 'bg-slate-900 text-white'
         }`}
       >
-        <Plus size={32} />
+        <Icon name="Plus" size={32} />
       </motion.button>
     </div>
   )

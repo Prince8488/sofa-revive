@@ -57,7 +57,7 @@ export default function TermsOfUsePage() {
         Users may opt-out of non-essential communications at any time. Please
         direct questions or opt-out requests to our support team:
       </p>
-      <div className="not-prose my-10 rounded-[2rem] border border-slate-100 bg-slate-50 p-8">
+      <div className="not-prose my-10 rounded-[2rem] border border-slate-100 border-slate-200 bg-slate-50 p-8">
         <h4 className="mb-2 text-sm font-black uppercase italic">
           Legal Support
         </h4>

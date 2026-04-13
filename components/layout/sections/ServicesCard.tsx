@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { CheckCircle2 } from 'lucide-react'
+import Icon from '@/components/icons'
 import { useState, useCallback } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
@@ -104,7 +104,8 @@ export default function ServiceCard({ service }: ServiceCardProps) {
               key={i}
               className="flex items-center gap-2 text-xs font-medium italic text-slate-700"
             >
-              <CheckCircle2 size={14} className="text-green-500" /> {f}
+              <Icon name="CheckCircle2" size={14} className="text-green-500" />{' '}
+              {f}
             </li>
           ))}
         </ul>

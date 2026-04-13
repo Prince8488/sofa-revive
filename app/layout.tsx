@@ -1,3 +1,4 @@
+import { Inter, Roboto } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
@@ -6,7 +7,17 @@ import './globals.css'
 import FloatingSticky from '@/components/layout/sections/FloatingSticky'
 import Sticky from '@/components/layout/sections/Sticky'
 
-// ✅ FULL JSON-LD (KEEP EVERYTHING)
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+})
+
+const roboto = Roboto({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-roboto',
+})
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
@@ -82,7 +93,8 @@ const jsonLd = {
   },
 }
 
-// ✅ METADATA (THIS FIXES YOUR SEO ISSUE)
+export const dynamic = 'force-static'
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sofarevive.com'),
 
@@ -145,14 +157,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-stone-50 py-8 text-slate-900 md:py-0">
-        {/* ✅ GTM (non-blocking) */}
+      <body
+        className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
+      >
         <Script
           src="https://www.googletagmanager.com/gtm.js?id=GTM-N97Q3C7P"
           strategy="lazyOnload"
         />
 
-        {/* ✅ JSON-LD (FULL SEO STRUCTURE) */}
         <Script
           id="json-ld"
           type="application/ld+json"
@@ -160,7 +172,6 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
-        {/* ✅ GTM fallback */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-N97Q3C7P"
@@ -170,12 +181,10 @@ export default function RootLayout({
           />
         </noscript>
 
-        {/* Layout */}
         <Header />
         {children}
         <Footer />
 
-        {/* Non-critical UI */}
         <Sticky />
         <FloatingSticky />
       </body>

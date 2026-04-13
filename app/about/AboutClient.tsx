@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { MapPin, Scissors, Hammer, Leaf, ArrowRight } from 'lucide-react'
+import Icon from '@/components/icons'
 
 export default function AboutGenuine() {
   return (
@@ -78,7 +78,10 @@ export default function AboutGenuine() {
 
           <div className="grid grid-cols-1 gap-12 border-t border-stone-800 pt-16 md:grid-cols-3 md:gap-16">
             <div className="space-y-6">
-              <Hammer className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <Icon
+                name="Hammer"
+                className="h-8 w-8 stroke-[1.5] text-stone-400"
+              />
               <h3 className="font-serif text-xl">Structural Integrity</h3>
               <p className="font-light leading-relaxed text-stone-400">
                 We discard cheap manufacturing shortcuts. Every frame is
@@ -88,7 +91,10 @@ export default function AboutGenuine() {
             </div>
 
             <div className="space-y-6">
-              <Scissors className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <Icon
+                name="Scissors"
+                className="h-8 w-8 stroke-[1.5] text-stone-400"
+              />
               <h3 className="font-serif text-xl">Bespoke Tailoring</h3>
               <p className="font-light leading-relaxed text-stone-400">
                 Upholstery is a mathematical art. We pattern-match fabrics with
@@ -98,7 +104,10 @@ export default function AboutGenuine() {
             </div>
 
             <div className="space-y-6">
-              <Leaf className="h-8 w-8 stroke-[1.5] text-stone-400" />
+              <Icon
+                name="Leaf"
+                className="h-8 w-8 stroke-[1.5] text-stone-400"
+              />
               <h3 className="font-serif text-xl">Conscious Practice</h3>
               <p className="font-light leading-relaxed text-stone-400">
                 True luxury is sustainable. By choosing to restore rather than
@@ -162,12 +171,13 @@ export default function AboutGenuine() {
             href="/quote"
             className="inline-flex items-center gap-3 bg-stone-900 px-8 py-4 text-sm font-semibold uppercase tracking-[0.15em] text-white transition-colors hover:bg-stone-800"
           >
-            Request a Consultation <ArrowRight className="h-4 w-4" />
+            Request a Consultation{' '}
+            <Icon name="ArrowRight" className="h-4 w-4" />
           </Link>
 
           <div className="mt-16 flex flex-col items-center gap-4 border-t border-stone-200 pt-8">
             <div className="flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-stone-400">
-              <MapPin className="h-4 w-4" /> Proudly serving
+              <Icon name="MapPin" className="h-4 w-4" /> Proudly serving
             </div>
             <p className="text-sm text-stone-500">
               Indiranagar · Whitefield · Koramangala · Jayanagar ·

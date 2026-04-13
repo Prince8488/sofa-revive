@@ -1,15 +1,7 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import {
-  Armchair,
-  ChevronRight,
-  ChevronDown,
-  Menu,
-  MessageSquare,
-  Phone,
-  X,
-} from 'lucide-react'
+import Icon from '@/components/icons'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -98,7 +90,7 @@ export default function Header() {
             className="-ml-2 cursor-pointer p-2 text-slate-900"
             aria-label="Open menu"
           >
-            <Menu size={28} />
+            <Icon name="Menu" size={28} />
           </button>
         </div>
 
@@ -106,7 +98,7 @@ export default function Header() {
         <div className="flex flex-1 md:justify-center lg:flex-none lg:justify-start">
           <Link href="/" className="group flex items-center gap-2">
             <div className="rounded-lg bg-gray-800 p-1.5 text-white shadow-lg shadow-gray-200 transition-transform group-hover:scale-110">
-              <Armchair size={18} />
+              <Icon name="Armchair" size={18} />
             </div>
             <span className="text-xl font-black uppercase tracking-tighter text-slate-900">
               SOFA<span className="text-blue-600">REVIVE</span>
@@ -154,7 +146,8 @@ function DesktopNav() {
           >
             {link.name}
             {link.hasDropdown && (
-              <ChevronDown
+              <Icon
+                name="ChevronDown"
                 size={12}
                 className={`transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`}
               />
@@ -171,7 +164,7 @@ function DesktopNav() {
                 aria-label="Services dropdown"
               >
                 <div className="flex w-1/2 flex-col gap-2 border-r border-slate-50 p-6">
-                  <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-400">
+                  <p className="mb-2 text-[10px] font-black uppercase tracking-widest text-slate-600">
                     Specialties
                   </p>
                   {mobileServices.map((service) => (
@@ -181,12 +174,13 @@ function DesktopNav() {
                       onMouseEnter={() => setActiveService(service)}
                     >
                       <div
-                        className={`flex w-full items-center justify-between rounded-xl p-3 transition-all ${activeService.name === service.name ? 'bg-gray-100 text-gray-800' : 'text-slate-600 hover:bg-slate-50'}`}
+                        className={`flex w-full items-center justify-between rounded-xl p-3 transition-all ${activeService.name === service.name ? 'bg-gray-100 text-gray-800' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}`}
                       >
                         <span className="text-[11px] font-black uppercase tracking-wider">
                           {service.name}
                         </span>
-                        <ChevronRight
+                        <Icon
+                          name="ChevronRight"
                           size={14}
                           className={
                             activeService.name === service.name
@@ -198,7 +192,7 @@ function DesktopNav() {
                     </Link>
                   ))}
                 </div>
-                <div className="flex w-1/2 flex-col gap-4 bg-slate-50 p-6">
+                <div className="flex w-1/2 flex-col gap-4 border-slate-200 bg-slate-50 p-6">
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg">
                     <Image
                       src={activeService.img}
@@ -262,16 +256,16 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 <span className="text-lg font-black uppercase leading-none text-slate-900">
                   SOFA<span className="text-gray-800">REVIVE</span>
                 </span>
-                <span className="mt-1 text-[9px] font-medium uppercase tracking-tighter text-slate-400">
+                <span className="mt-1 text-[9px] font-medium uppercase tracking-tighter text-slate-600">
                   Premium Furniture Care
                 </span>
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="-mr-2 p-2 text-slate-400 transition-colors hover:text-slate-900"
+                className="-mr-2 p-2 text-slate-600 transition-colors hover:text-slate-900"
                 aria-label="Close menu"
               >
-                <X size={24} />
+                <Icon name="X" size={24} />
               </button>
             </div>
 
@@ -299,7 +293,8 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                             className="flex w-full items-center justify-between py-3 text-xl font-bold tracking-tight text-slate-800"
                           >
                             {link.name}
-                            <ChevronDown
+                            <Icon
+                              name="ChevronDown"
                               size={18}
                               className={`transition-transform duration-300 ${mobileServicesOpen ? 'rotate-180' : ''}`}
                             />
@@ -318,7 +313,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                                     <Link
                                       href={service.href}
                                       key={service.name}
-                                      className="group flex flex-col gap-2 rounded-2xl border border-slate-100 bg-slate-50 p-2.5 transition-all active:scale-95"
+                                      className="group flex flex-col gap-2 rounded-2xl border border-slate-100 border-slate-200 bg-slate-50 p-2.5 transition-all active:scale-95"
                                     >
                                       <div className="relative aspect-square w-full overflow-hidden rounded-xl grayscale-[0.5] transition-all group-hover:grayscale-0">
                                         <Image
@@ -344,7 +339,11 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                           className="flex items-center justify-between border-b border-slate-50/50 py-5 text-xl font-bold tracking-tight text-slate-800"
                         >
                           {link.name}
-                          <ChevronRight size={16} className="text-slate-200" />
+                          <Icon
+                            name="ChevronRight"
+                            size={16}
+                            className="text-slate-200"
+                          />
                         </Link>
                       )}
                     </motion.div>
@@ -354,7 +353,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
 
               {/* Legal & Support Section: Professional touch */}
               <div className="border-t border-slate-50 pb-4 pt-8">
-                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                <p className="mb-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600">
                   Legal & Support
                 </p>
                 <div className="grid grid-cols-1">
@@ -372,8 +371,8 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             </div>
 
             {/* --- FOOTER: High-Impact Actions --- */}
-            <div className="flex-none border-t border-slate-100 bg-slate-50/80 p-6">
-              <p className="mb-4 text-center text-[10px] font-black uppercase tracking-widest text-slate-400">
+            <div className="flex-none border-t border-slate-100 border-slate-200/80 bg-slate-50 p-6">
+              <p className="mb-4 text-center text-[10px] font-black uppercase tracking-widest text-slate-600">
                 Ready to revive your sofa?
               </p>
               <div className="flex flex-col gap-3">
@@ -383,7 +382,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     className="flex flex-1 items-center justify-center gap-2 rounded-2xl border border-slate-200 bg-white py-5 text-slate-900 shadow-sm transition-all active:scale-95"
                     aria-label="Call us at +916366921602"
                   >
-                    <Phone size={16} className="text-gray-800" />
+                    <Icon name="Phone" size={16} className="text-gray-800" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
                       Call Now
                     </span>
@@ -393,7 +392,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                     className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#25D366] py-5 text-white shadow-lg shadow-green-200 transition-all active:scale-95"
                     aria-label="Chat with us on WhatsApp"
                   >
-                    <MessageSquare size={16} fill="white" />
+                    <Icon name="MessageSquare" size={16} fill="white" />
                     <span className="text-[11px] font-bold uppercase tracking-widest">
                       WhatsApp
                     </span>
