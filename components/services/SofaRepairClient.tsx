@@ -108,12 +108,12 @@ export default function SofaRepairClient() {
                 Structural frame leveling and reinforcement
               </li>
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-gray-500" />{' '}
+                <Icon name="ShieldCheck" size={14} className="text-gray-500" />{' '}
                 Commercial-grade stain protection treatments
               </li>
               <li className="flex items-center gap-2 italic">
-                <ShieldCheck size={14} className="text-gray-500" /> Specialized
-                leather conditioning for fine dining
+                <Icon name="ShieldCheck" size={14} className="text-gray-500" />{' '}
+                Specialized leather conditioning for fine dining
               </li>
             </ul>
             <Link
