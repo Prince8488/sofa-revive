@@ -65,12 +65,8 @@ export default function GallerySection() {
         {/* The Grid */}
         <div className="grid grid-cols-1 gap-x-12 gap-y-20 md:grid-cols-2">
           {PROJECTS.map((project, index) => {
-            const beforeImage = isMobile
-              ? `${project.before}&ar=3:4&fit=crop`
-              : project.before
-            const afterImage = isMobile
-              ? `${project.after}&ar=3:4&fit=crop`
-              : project.after
+            const beforeImage = isMobile ? `${project.before}` : project.before
+            const afterImage = isMobile ? `${project.after}` : project.after
 
             const beforeImageProps: ImageProps = {
               src: beforeImage,

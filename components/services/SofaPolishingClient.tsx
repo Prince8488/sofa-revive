@@ -10,7 +10,7 @@ export default function SofaPolishingClient() {
       title: 'Lustre Restoration',
       desc: 'Specialized substances applied to restore the deep, original shine to tables, chairs, and armoires.',
       icon: <Icon name="Sparkles" className="text-gray-800" size={20} />,
-      img: '/images/lustre-Restoration.webp',
+      img: '/images/Lustre-Restoration.webp',
     },
     {
       title: 'Grain Preservation',
