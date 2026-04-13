@@ -1,7 +1,5 @@
 /** @type {import('next').NextConfig} */
 
-const isDev = process.env.NODE_ENV === 'development'
-
 const securityHeaders = [
   {
     key: 'Content-Security-Policy',
@@ -15,7 +13,6 @@ const securityHeaders = [
       font-src 'self' https://fonts.gstatic.com;
       connect-src 'self' https://www.google-analytics.com;
       frame-src https://www.googletagmanager.com;
-      ${!isDev ? "require-trusted-types-for 'script';" : ''}
     `.replace(/\n/g, ''),
   },
   {
