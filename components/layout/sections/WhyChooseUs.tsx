@@ -1,6 +1,6 @@
 'use client'
 
-import Icon from '@/components/icons'
+import Icon, { icons } from '@/components/icons'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 
@@ -25,7 +25,7 @@ const FEATURES = [
     title: '7-Day Delivery',
     description: "Fast turnaround so you're not without your furniture.",
   },
-]
+] as const
 
 // Placeholder high-quality avatar images
 const SOCIAL_PROOF_AVATARS = [
@@ -165,7 +165,7 @@ export default function WhyChooseUS() {
 }
 
 type IconDetailProps = {
-  icon: string
+  icon: keyof typeof icons
   text: string
 }
 
