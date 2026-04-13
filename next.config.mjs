@@ -1,4 +1,4 @@
-/** @type {import('next').NextConfig} */
+const isDev = process.env.NODE_ENV === 'development'
 
 const securityHeaders = [
   {
@@ -7,17 +7,13 @@ const securityHeaders = [
       default-src 'self';
       script-src 'self' 'unsafe-inline' ${
         isDev ? "'unsafe-eval'" : ''
-      } https://www.googletagmanager.com;
+      } https://www.googletagmanager.com https://static.cloudflareinsights.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       img-src 'self' data: https:;
       font-src 'self' https://fonts.gstatic.com;
-      connect-src 'self' https://www.google-analytics.com;
+      connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com;
       frame-src https://www.googletagmanager.com;
     `.replace(/\n/g, ''),
-  },
-  {
-    key: 'Strict-Transport-Security',
-    value: 'max-age=63072000; includeSubDomains; preload',
   },
 ]
 
