@@ -70,7 +70,7 @@ export default function SofaUpholsteryClient() {
                   alt={feature.title}
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="mb-2 flex items-center gap-2">

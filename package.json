@@ -45,9 +45,8 @@
     "wrangler": "^4.81.1"
   },
   "browserslist": [
-    "last 3 Chrome versions",
-    "last 3 Firefox versions",
-    "last 3 Safari versions",
-    "last 3 Edge versions"
+    "> 0.5%",
+    "not dead",
+    "not op_mini all"
   ]
 }

@@ -26,7 +26,8 @@ export default function Hero() {
           alt="A beautifully restored sofa by SofaRevive"
           layout="fill"
           objectFit="cover"
-          quality={80}
+          quality={40}
+          priority
           className="pointer-events-none absolute inset-0 z-0 opacity-[0.03]"
         />
       )}
@@ -78,7 +79,13 @@ export default function Hero() {
 
             {/* DIRECT CALL TO ACTION */}
             <div className="flex flex-col gap-4 pt-0 sm:flex-row">
-              <Link href="/quote" className="w-full cursor-pointer sm:w-auto">
+              <Link
+                href="/quote"
+                className="flex min-h-[48px] w-full items-center justify-center 
+             rounded-full px-6 py-3 
+             text-base 
+             font-medium sm:w-auto"
+              >
                 <button className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full bg-slate-950 px-10 py-5 text-xs font-bold uppercase tracking-widest text-white shadow-xl shadow-slate-200 transition-all hover:bg-gray-800">
                   Book Free Inspection <ArrowRight size={16} />
                 </button>
@@ -132,7 +139,7 @@ export default function Hero() {
                   loading="eager"
                   decoding="sync"
                   className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                 />
               )}
 

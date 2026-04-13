@@ -138,7 +138,7 @@ const ProcessSection = () => {
                     alt={step.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, 60vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   <div className="absolute inset-0 bg-slate-900/10 transition-colors group-hover:bg-transparent" />
                 </div>

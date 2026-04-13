@@ -1,4 +1,3 @@
-import { Inter, Roboto } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
@@ -6,17 +5,6 @@ import Sticky from '@/components/layout/sections/Sticky'
 import FloatingSticky from '@/components/layout/sections/FloatingSticky'
 import Script from 'next/script'
 import './globals.css'
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-})
-
-const roboto = Roboto({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-roboto',
-})
 
 const jsonLd = {
   '@id': 'https://www.sofarevive.com',
@@ -130,9 +118,7 @@ export const metadata: Metadata = {
       'From 5-star hotels to cozy homes, SofaRevive offers expert sofa repair, upholstery, and cleaning services across Bengaluru.',
     images: ['https://www.sofarevive.com/og-image.svg'],
   },
-  other: {
-    preconnect: 'https://images.unsplash.com',
-  },
+  other: {},
 }
 
 interface RootLayoutProps {
@@ -170,11 +156,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
           href="/favicon-16x16.svg"
         />
         <link rel="manifest" href="/site.webmanifest" />
-        <link rel="preconnect" href="https://images.unsplash.com" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <noscript>
+          <link rel="stylesheet" href="/styles/globals.css" />
+        </noscript>
+        <Script
+          src="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap"
+          strategy="lazyOnload"
+        />
       </head>
       <body
-        className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
+        className="bg-stone-50 py-8 text-slate-900 md:py-0"
         suppressHydrationWarning
       >
         <noscript>

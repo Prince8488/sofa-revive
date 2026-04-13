@@ -2,21 +2,27 @@ import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
+    host: 'https://www.sofarevive.com',
+    sitemap: 'https://www.sofarevive.com/sitemap.xml',
     rules: [
       {
-        userAgent: '*', // Applies to all bots (Google, Bing, etc.)
-        allow: '/', // Let them see the whole site
-        disallow: [
-          '/admin', // Don't index your login area
-          '/api', // Don't index your backend logic
-          '/private', // Any draft pages you're working on
-        ],
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/admin', '/private'],
       },
       {
-        userAgent: ['Google-Extended', 'GPTBot', 'CCBot'],
+        userAgent: [
+          'GPTBot',
+          'Google-Extended',
+          'CCBot',
+          'ClaudeBot',
+          'Amazonbot',
+          'PerplexityBot',
+          'YouBot',
+          'Bytespider',
+        ],
         disallow: '/',
       },
     ],
-    sitemap: 'https://www.sofarevive.com/sitemap.xml',
   }
 }

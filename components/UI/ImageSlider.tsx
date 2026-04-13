@@ -27,7 +27,7 @@ export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
         {...afterImage}
         fill
         className="object-cover"
-        sizes="(max-width: 768px) 100vw, 50vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       {/* Before Image (The "Old" look - Clipped) */}
@@ -39,7 +39,7 @@ export default function ImageSlider({ beforeImage, afterImage }: SliderProps) {
           {...beforeImage}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       </div>
 

@@ -70,7 +70,7 @@ export default function SofaRepairClient() {
                   alt={service.title}
                   fill
                   className="object-cover opacity-90 transition-opacity group-hover:opacity-100"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="mb-2 flex items-center gap-2">

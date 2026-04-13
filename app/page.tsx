@@ -1,11 +1,25 @@
-import FloatingSticky from '@/components/layout/sections/FloatingSticky'
+import dynamic from 'next/dynamic'
 import Hero from '@/components/layout/sections/Hero'
-import ProcessSection from '@/components/layout/sections/Ourprocess'
-import OurServices from '@/components/layout/sections/OurServices'
-import Sticky from '@/components/layout/sections/Sticky'
-import Testimonials from '@/components/layout/sections/Testimonials'
-import WhyChooseUS from '@/components/layout/sections/WhyChooseUs'
-import RestoreSection from '@/components/layout/sections/RestoreSection'
+
+const FloatingSticky = dynamic(
+  () => import('@/components/layout/sections/FloatingSticky'),
+)
+const ProcessSection = dynamic(
+  () => import('@/components/layout/sections/Ourprocess'),
+)
+const OurServices = dynamic(
+  () => import('@/components/layout/sections/OurServices'),
+)
+const Sticky = dynamic(() => import('@/components/layout/sections/Sticky'))
+const Testimonials = dynamic(
+  () => import('@/components/layout/sections/Testimonials'),
+)
+const WhyChooseUS = dynamic(
+  () => import('@/components/layout/sections/WhyChooseUs'),
+)
+const RestoreSection = dynamic(
+  () => import('@/components/layout/sections/RestoreSection'),
+)
 
 export default function UrbanSofaMobile() {
   return (
