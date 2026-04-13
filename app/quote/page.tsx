@@ -129,11 +129,15 @@ const IndustryQuoteForm = () => {
 
     if (result.isValid) {
       setIsLoading(true)
+      const payload = {
+        ...formData,
+        source: localStorage.getItem('lead_source') || 'website',
+      }
       try {
         const response = await fetch('/api/quote', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
+          body: JSON.stringify(payload),
         })
 
         if (!response.ok) throw new Error('Server error')

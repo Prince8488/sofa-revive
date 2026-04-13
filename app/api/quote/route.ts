@@ -184,8 +184,8 @@ export async function POST(req: Request) {
         .prepare(
           `
           INSERT INTO quotes 
-          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source, isValidLead)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,
         )
         .bind(
