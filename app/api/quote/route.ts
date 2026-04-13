@@ -197,7 +197,7 @@ export async function POST(req: Request) {
           emailStatus,
           whatsappStatus,
           'new',
-          source,
+          source || 'website',
           isValidPhone ? 1 : 0,
         )
         .run()
