@@ -2,19 +2,19 @@ import { Inter, Roboto } from 'next/font/google'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
-import Script from 'next/script'
 import './globals.css'
-import FloatingSticky from '@/components/layout/sections/FloatingSticky'
-import Sticky from '@/components/layout/sections/Sticky'
+import GTMClient from '@/components/GTMClient'
 
 const inter = Inter({
   subsets: ['latin'],
+  display: 'swap',
   variable: '--font-inter',
 })
 
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['400', '700'],
+  display: 'swap',
   variable: '--font-roboto',
 })
 
@@ -160,18 +160,11 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
       >
-        <Script
-          src="https://www.googletagmanager.com/gtm.js?id=GTM-N97Q3C7P"
-          strategy="lazyOnload"
-        />
-
-        <Script
-          id="json-ld"
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-
+        <GTMClient />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-N97Q3C7P"
@@ -184,9 +177,6 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
-
-        <Sticky />
-        <FloatingSticky />
       </body>
     </html>
   )

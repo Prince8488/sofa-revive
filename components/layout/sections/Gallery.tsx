@@ -29,8 +29,8 @@ const PROJECTS = [
   {
     title: 'Vintage Armchair Revival',
     description: 'Period-accurate fabric replacement and spring tightening.',
-    before: '/images/vintage-Armchair-before.webp',
-    after: '/images/vintage-Armchair-after.webp',
+    before: '/images/Vintage-Armchair-before.webp',
+    after: '/images/Vintage-Armchair-after.webp',
   },
 ]
 
