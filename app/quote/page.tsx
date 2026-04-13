@@ -17,6 +17,17 @@ const IndustryQuoteForm = () => {
   const successRef = useRef<HTMLDivElement>(null)
   const errorRef = useRef<HTMLDivElement>(null)
 
+  const [source, setSource] = useState('website')
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+
+    const src = params.get('utm_source') || params.get('source') || 'website'
+
+    setSource(src)
+    localStorage.setItem('lead_source', src)
+  }, [])
+
   useEffect(() => {
     if (submissionStatus === 'success') {
       setTimeout(() => {
@@ -54,6 +65,7 @@ const IndustryQuoteForm = () => {
     phone: '',
     serviceType: 'Sofa Repair',
     condition: '',
+    source: source,
   })
 
   const [errors, setErrors] = useState<

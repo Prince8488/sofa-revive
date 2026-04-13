@@ -1,6 +1,7 @@
 export const runtime = 'edge'
 
-// ✅ EDGE SAFE EMAIL FUNCTION
+import { getRequestContext } from '@cloudflare/next-on-pages'
+
 const sendEmail = async (payload: any) => {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
@@ -14,10 +15,12 @@ const sendEmail = async (payload: any) => {
   return res.json()
 }
 
-export async function POST(req: Request, context: any) {
+export async function POST(req: Request) {
   let body: any
 
   try {
+    console.log('🔥 API HIT')
+
     body = await req.json()
 
     const { fullName, email, phone, serviceType, condition, source } = body
@@ -41,7 +44,8 @@ export async function POST(req: Request, context: any) {
 
     const isValidEmail = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 
-    const db = context?.env?.DB
+    const { env } = getRequestContext()
+    const db = env?.DB
     if (!db) console.warn('⚠️ DB not available (local dev)')
 
     // =========================
@@ -193,7 +197,7 @@ export async function POST(req: Request, context: any) {
           emailStatus,
           whatsappStatus,
           'new',
-          source || 'website',
+          source,
           isValidPhone ? 1 : 0,
         )
         .run()
@@ -202,6 +206,7 @@ export async function POST(req: Request, context: any) {
     // =========================
     // ✅ RESPONSE
     // =========================
+
     return new Response(
       JSON.stringify({
         success: true,

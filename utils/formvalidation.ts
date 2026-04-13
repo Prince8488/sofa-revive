@@ -4,6 +4,7 @@ export type FormData = {
   phone: string
   serviceType: string
   condition: string
+  source?: string
 }
 
 export const validateIndustryForm = (data: FormData) => {
