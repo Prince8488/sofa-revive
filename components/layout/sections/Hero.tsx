@@ -87,10 +87,10 @@ export default function Hero() {
                 alt="Sofa restoration"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 600px"
                 priority
                 fetchPriority="high"
-                quality={65}
+                quality={50}
               />
 
               {/* FLOATING LABEL */}

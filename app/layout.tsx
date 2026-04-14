@@ -4,6 +4,7 @@ import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
 import './globals.css'
 import GTMClient from '@/components/GTMClient'
+import Script from 'next/script'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -18,6 +19,46 @@ const roboto = Roboto({
   variable: '--font-roboto',
 })
 
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'How much does sofa repair cost in Bangalore?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sofa repair costs depend on material and damage. Contact us for a free quote.',
+      },
+    },
+
+    {
+      '@type': 'Question',
+      name: 'Do you provide sofa pickup and delivery in Bangalore?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, we offer free pickup and delivery across Bengaluru.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How long does sofa repair take?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Most sofa repairs are completed within 7 days depending on the work required.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do you offer custom upholstery?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes, we provide a wide range of fabric and leather upholstery options.',
+      },
+    },
+  ],
+}
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FurnitureStore',
@@ -27,7 +68,7 @@ const jsonLd = {
   image: 'https://www.sofarevive.com/og-image.svg',
   description:
     'Premium sofa repair, upholstery, and wood polishing services in Bengaluru, specializing in commercial and hospitality furniture restoration.',
-
+  serviceType: 'Sofa Repair, Sofa Cleaning, Wood Polishing, & Upholstery',
   address: {
     '@type': 'PostalAddress',
     streetAddress:
@@ -98,6 +139,15 @@ export const dynamic = 'force-static'
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.sofarevive.com'),
 
+  alternates: {
+    canonical: '/',
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
+
   title: {
     default: 'SofaRevive | Repair, Upholstery & Polishing in Bengaluru',
     template: `%s | SofaRevive`,
@@ -160,9 +210,20 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${roboto.variable} bg-stone-50 py-8 text-slate-900 md:py-0`}
       >
-        <script
+        <Script
+          id="json-ld"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        <Script
+          id="faq-schema"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
         />
         <GTMClient />
         <noscript>

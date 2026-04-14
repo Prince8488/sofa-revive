@@ -7,7 +7,8 @@
     "build": "next build",
     "cf:build": "npx @cloudflare/next-on-pages",
     "preview": "wrangler pages dev .vercel/output/static",
-    "deploy": "npm run cf:build && wrangler pages deploy .vercel/output/static"
+    "deploy": "npm run cf:build && wrangler pages deploy .vercel/output/static",
+    "optimize": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "@react-email/render": "~2.0.6",
@@ -19,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "resend": "~6.10.0",
+    "sharp": "~0.34.5",
     "tailwind-merge": "^3.5.0",
     "workerd": "~1.20260410.1"
   },
