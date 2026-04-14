@@ -16,7 +16,7 @@ const services = [
     features: ['Frame Strengthening', 'Spring Replacement', 'Leg Repair'],
     icon: <Icon name="Hammer" className="h-5 w-5" />,
     tag: 'Structural Fix',
-    href: '/services/sofa-repair',
+    href: '/services/sofa-repair-bangalore',
   },
   {
     id: 'upholstery',
@@ -26,7 +26,7 @@ const services = [
     features: ['50+ Fabric Options', 'Foam Top-up', 'On-site measurement'],
     icon: <Icon name="Armchair" className="h-5 w-5" />,
     tag: 'Fabric Revival',
-    href: '/services/sofa-upholstery',
+    href: '/services/sofa-upholstery-bangalore',
   },
   {
     id: 'polishing',
@@ -36,7 +36,7 @@ const services = [
     features: ['Melamine Finish', 'PU Coating', 'Antique Polish'],
     icon: <Icon name="Paintbrush" className="h-5 w-5" />,
     tag: 'Premium Finish',
-    href: '/services/sofa-polishing',
+    href: '/services/sofa-polishing-bangalore',
   },
 ]
 

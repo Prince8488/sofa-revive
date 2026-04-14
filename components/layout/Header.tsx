@@ -34,22 +34,22 @@ const mobileServices = [
   {
     name: 'Upholstery',
     img: upholsteryImg,
-    href: '/services/sofa-upholstery',
+    href: '/services/sofa-upholstery-bangalore',
   },
   {
     name: 'Repair',
     img: repairImg,
-    href: '/services/sofa-repair',
+    href: '/services/sofa-repair-bangalore',
   },
   {
     name: 'Polishing',
     img: polishingImg,
-    href: '/services/sofa-polishing',
+    href: '/services/sofa-polishing-bangalore',
   },
   {
     name: 'Custom',
     img: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300',
-    href: '/services/sofa-repair',
+    href: '/services/sofa-repair-bangalore',
   },
 ]
 

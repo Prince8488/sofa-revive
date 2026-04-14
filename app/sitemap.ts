@@ -15,17 +15,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Core Service Sub-Pages (Crucial for SEO)
     {
-      url: '/services/sofa-upholstery',
+      url: '/services/sofa-upholstery-bangalore',
       priority: 0.9,
       changeFrequency: 'monthly' as const,
     },
     {
-      url: '/services/sofa-repair',
+      url: '/services/sofa-repair-bangalore',
       priority: 0.9,
       changeFrequency: 'monthly' as const,
     },
     {
-      url: '/services/sofa-polishing',
+      url: '/services/sofa-polishing-bangalore',
       priority: 0.8,
       changeFrequency: 'monthly' as const,
     },

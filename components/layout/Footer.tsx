@@ -25,9 +25,9 @@ const FOOTER_DATA = {
   explore: {
     title: 'Explore More',
     links: [
-      { label: 'Sofa Repair', href: '/services/sofa-repair' },
-      { label: 'Sofa Upholstery', href: '/services/sofa-upholstery' },
-      { label: 'Sofa Polishing', href: '/services/sofa-polishing' },
+      { label: 'Sofa Repair', href: '/services/sofa-repair-bangalore' },
+      { label: 'Sofa Upholstery', href: '/services/sofa-upholstery-bangalore' },
+      { label: 'Sofa Polishing', href: '/services/sofa-polishing-bangalore' },
     ],
   },
 }
