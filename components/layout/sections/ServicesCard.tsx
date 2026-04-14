@@ -52,7 +52,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           alt={`${service.title} after restoration`}
           fill
           className="object-cover"
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 634px"
           quality={80}
         />
 
@@ -65,7 +65,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             alt={`${service.title} before restoration`}
             fill
             className="object-cover brightness-75 grayscale-[0.6]"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 634px"
             quality={80}
           />
         </div>

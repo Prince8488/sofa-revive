@@ -25,6 +25,9 @@ const securityHeaders = [
 ]
 
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: ['lodash', 'date-fns'],
+  },
   async redirects() {
     return []
   },
