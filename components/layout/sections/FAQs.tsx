@@ -6,10 +6,6 @@ import Icon from '@/components/icons'
 
 const FAQ_DATA = [
   {
-    q: 'When will I get my report?',
-    a: 'Our technicians submit reports almost immediately. After our quality team ensures every detail is perfect, your final report is dispatched within a few days.',
-  },
-  {
     q: 'How do I cancel or reschedule an appointment?',
     a: "Simply contact our booking team at +916366921602 via call or WhatsApp. We'll help you find a new time that works for you.",
   },
@@ -19,7 +15,7 @@ const FAQ_DATA = [
   },
   {
     q: 'Will my furniture be taken away for repair?',
-    a: 'In most cases, no. We prioritize in-home repairs which often take as little as 30 minutes. We only transport pieces to our workshop for severe structural damage or complex restoration.',
+    a: 'Most of the cases we take the sofa to out factory because we dont work with small machinery, small machinery does not give you proper finishing. Only minor repair we do at your place',
   },
   {
     q: 'What areas do you currently serve?',

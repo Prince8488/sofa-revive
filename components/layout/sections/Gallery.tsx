@@ -22,7 +22,7 @@ const PROJECTS = [
   {
     title: 'Leather Sectional Refresh',
     description:
-      'Leather conditioning and color restoration for a tired sectional.',
+      'Leather conditioning and full structural repair and premium emerald leather upholstery.',
     before: '/images/Leather-Sectional-before.webp',
     after: '/images/Leather-Sectional-after.webp',
   },

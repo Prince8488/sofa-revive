@@ -46,7 +46,7 @@ export default function PrivacyPolicy() {
       <p>
         As a sofarevive client, you have the right to request the deletion of
         your contact details from our database once your restoration project is
-        complete and the 5-year warranty period has been registered.
+        complete and the 1-year warranty period has been registered.
       </p>
 
       <h2>6. Contact Our Legal Team</h2>

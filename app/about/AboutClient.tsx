@@ -14,7 +14,7 @@ export default function AboutGenuine() {
             The Bengaluru Workshop
           </p>
           <h1 className="max-w-4xl font-serif text-[clamp(2rem,4vw,4rem)] leading-[1.1] tracking-tight text-stone-900">
-            We preserve the furniture that holds your history.
+            We preserve the furniture that holds your comfort.
           </h1>
         </div>
       </section>

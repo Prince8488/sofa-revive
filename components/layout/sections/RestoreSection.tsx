@@ -102,7 +102,7 @@ const RestoreSection = () => {
             />
             <div className="leading-tight">
               <p className="text-[13px] font-bold italic text-slate-900">
-                94% Cheaper than Premium New Purchases
+                60% Cheaper than Premium New Purchases
               </p>
               <p className="mt-0.5 text-[9px] font-black uppercase tracking-widest text-gray-800">
                 Industrial quality • fraction of the cost
