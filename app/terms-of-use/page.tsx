@@ -65,7 +65,7 @@ export default function TermsOfUsePage() {
           For formal inquiries or data removal requests:
         </p>
         <a
-          href="mailto:SofaRevive12@gmail.com"
+          href="mailto:sofarevive72@gmail.com"
           className="inline-block rounded-xl bg-slate-900 px-6 py-3 text-[10px] font-black uppercase tracking-widest text-white transition-all hover:bg-gray-800"
         >
           Email: Sofarevive72@gmail.com

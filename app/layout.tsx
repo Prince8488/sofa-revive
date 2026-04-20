@@ -61,7 +61,7 @@ const faqSchema = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'FurnitureStore',
+  '@type': 'LocalBusiness',
   '@id': 'https://www.sofarevive.com',
   name: 'SofaRevive',
   url: 'https://www.sofarevive.com',
@@ -149,12 +149,13 @@ export const metadata: Metadata = {
   },
 
   title: {
-    default: 'SofaRevive | Repair, Upholstery & Polishing in Bengaluru',
+    default:
+      'Sofa Repair in Bangalore | Upholstery, Cleaning & Polishing | SofaRevive',
     template: `%s | SofaRevive`,
   },
 
   description:
-    'Top-rated sofa restoration in Bengaluru. We specialize in commercial and residential sofa repair, custom upholstery, and wood polishing. Get a free quote!',
+    'Affordable sofa repair & upholstery in Bangalore. Free pickup, expert service & quick turnaround. Get your sofa restored today – call now!',
 
   keywords: [
     'sofa repair bangalore',
@@ -167,6 +168,10 @@ export const metadata: Metadata = {
     'hospitality furniture repair',
     'sofa cleaning services',
   ],
+  other: {
+    'geo.region': 'IN-KA',
+    'geo.placename': 'Bangalore',
+  },
 
   openGraph: {
     title: 'SofaRevive | Bengaluru`s Premier Sofa Restoration Services',
@@ -213,14 +218,14 @@ export default function RootLayout({
         <Script
           id="json-ld"
           type="application/ld+json"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
         <Script
           id="faq-schema"
           type="application/ld+json"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(faqSchema),
           }}
