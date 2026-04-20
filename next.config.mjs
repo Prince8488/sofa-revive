@@ -7,11 +7,11 @@ const securityHeaders = [
       default-src 'self';
       script-src 'self' 'unsafe-inline' ${
         isDev ? "'unsafe-eval'" : ''
-      } https://www.googletagmanager.com https://static.cloudflareinsights.com;
+      } https://www.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://static.cloudflareinsights.com;
       style-src 'self' 'unsafe-inline';
       img-src 'self' data: https:;
       font-src 'self' https://fonts.gstatic.com;
-      connect-src 'self' https://www.google-analytics.com https://static.cloudflareinsights.com;
+      connect-src 'self' https://www.google-analytics.com https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://static.cloudflareinsights.com;
       frame-src https://www.googletagmanager.com;
     `.replace(/\n/g, ''),
   },

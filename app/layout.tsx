@@ -174,14 +174,14 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: 'SofaRevive | Bengaluru`s Premier Sofa Restoration Services',
+    title: 'Bengaluru`s Premier Sofa Restoration Services | SofaRevive',
     description:
-      'Expert craftsmanship for your beloved furniture. We bring the showroom finish back to your doorstep.',
+      'Affordable sofa repair & upholstery in Bangalore. Free pickup & quick service. Call now!',
     url: 'https://www.sofarevive.com',
     siteName: 'SofaRevive',
     images: [
       {
-        url: 'https://www.sofarevive.com/og-image.svg',
+        url: 'https://www.sofarevive.com/og-image.jpg',
         width: 1200,
         height: 630,
       },
@@ -192,9 +192,10 @@ export const metadata: Metadata = {
 
   twitter: {
     card: 'summary_large_image',
-    title: 'SofaRevive',
-    description: 'Restore your furniture to its former glory.',
-    images: ['https://www.sofarevive.com/og-image.svg'],
+    title: 'Bengaluru`s Premier Sofa Restoration Services | SofaRevive',
+    description:
+      'Affordable sofa repair & upholstery in Bangalore. Free pickup & quick service. Call now!',
+    images: ['https://www.sofarevive.com/og-image.jpg'],
   },
 
   icons: {
