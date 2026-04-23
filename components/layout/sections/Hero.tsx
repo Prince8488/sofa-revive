@@ -90,7 +90,7 @@ export default function Hero() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 600px"
                 priority
                 fetchPriority="high"
-                quality={50}
+                quality={65}
               />
 
               {/* FLOATING LABEL */}

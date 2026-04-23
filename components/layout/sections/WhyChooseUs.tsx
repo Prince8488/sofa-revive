@@ -1,8 +1,13 @@
 'use client'
 
 import Icon, { icons } from '@/components/icons'
-import { motion } from 'framer-motion'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
+
+const MotionDiv = dynamic(
+  () => import('framer-motion').then((mod) => mod.motion.div),
+  { ssr: false },
+)
 
 const FEATURES = [
   {
@@ -50,7 +55,7 @@ export default function WhyChooseUS() {
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
           {/* LEFT: CONTENT */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -96,10 +101,10 @@ export default function WhyChooseUS() {
                 </div>
               ))}
             </dl>
-          </motion.div>
+          </MotionDiv>
 
           {/* RIGHT: CARD */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -157,7 +162,7 @@ export default function WhyChooseUS() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </div>
       </div>
     </section>

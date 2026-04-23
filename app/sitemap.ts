@@ -36,6 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly' as const,
     },
     { url: '/terms-of-use', priority: 0.5, changeFrequency: 'yearly' as const },
+    { url: '/faq', priority: 0.5, changeFrequency: 'yearly' as const },
   ]
 
   return routes.map((route) => ({

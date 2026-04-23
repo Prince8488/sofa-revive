@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import Icon from '@/components/icons'
 import { useState, useCallback } from 'react'
 import Image, { StaticImageData } from 'next/image'
@@ -18,6 +18,11 @@ type ServiceCardProps = {
   service: Service
 }
 
+const MotionDiv = dynamic(
+  () => import('framer-motion').then((mod) => mod.motion.div),
+  { ssr: false },
+)
+
 export default function ServiceCard({ service }: ServiceCardProps) {
   const [sliderPos, setSliderPos] = useState(50)
 
@@ -33,7 +38,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
   }, [])
 
   return (
-    <motion.div
+    <MotionDiv
       whileTap={{ scale: 0.98 }}
       className="group overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm transition-all hover:shadow-xl"
     >
@@ -53,7 +58,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           fill
           className="object-cover"
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 634px"
-          quality={80}
+          quality={60}
         />
 
         <div
@@ -66,7 +71,7 @@ export default function ServiceCard({ service }: ServiceCardProps) {
             fill
             className="object-cover brightness-75 grayscale-[0.6]"
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 70vw, 634px"
-            quality={80}
+            quality={60}
           />
         </div>
 
@@ -124,6 +129,6 @@ export default function ServiceCard({ service }: ServiceCardProps) {
           </button>
         </Link>
       </div>
-    </motion.div>
+    </MotionDiv>
   )
 }

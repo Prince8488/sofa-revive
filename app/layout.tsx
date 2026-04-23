@@ -149,13 +149,12 @@ export const metadata: Metadata = {
   },
 
   title: {
-    default:
-      'Sofa Repair in Bangalore | Upholstery, Cleaning & Polishing | SofaRevive',
+    default: 'Sofa Repair in Bangalore | Upholstery & Cleaning',
     template: `%s | SofaRevive`,
   },
 
   description:
-    'Affordable sofa repair & upholstery in Bangalore. Free pickup, expert service & quick turnaround. Get your sofa restored today – call now!',
+    'Affordable sofa repair, upholstery & cleaning in Bangalore. Free pickup & delivery, expert craftsmanship & quick service. Book your sofa restoration today!',
 
   keywords: [
     'sofa repair bangalore',
@@ -219,14 +218,14 @@ export default function RootLayout({
         <Script
           id="json-ld"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
 
         <Script
           id="faq-schema"
           type="application/ld+json"
-          strategy="beforeInteractive"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(faqSchema),
           }}

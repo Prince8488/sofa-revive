@@ -122,6 +122,8 @@ const ProcessSection = () => {
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={60}
+                      priority={step.id === '01'}
                     />
                     <div className="absolute inset-0 bg-slate-900/10 transition group-hover:bg-transparent" />
                   </div>

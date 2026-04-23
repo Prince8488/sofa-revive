@@ -1,6 +1,7 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import Icon from '@/components/icons'
 import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -15,6 +16,11 @@ interface MobileDrawerProps {
   isOpen: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+const MotionDiv = dynamic(
+  () => import('framer-motion').then((mod) => mod.motion.div),
+  { ssr: false },
+)
 
 const navLinks = [
   { name: 'Home', href: '/' },
@@ -156,7 +162,7 @@ function DesktopNav() {
 
           <AnimatePresence>
             {link.hasDropdown && isDropdownOpen && (
-              <motion.div
+              <MotionDiv
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 15 }}
@@ -208,7 +214,7 @@ function DesktopNav() {
                     Professional {activeService.name.toLowerCase()} services.
                   </p>
                 </div>
-              </motion.div>
+              </MotionDiv>
             )}
           </AnimatePresence>
         </li>
@@ -232,7 +238,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
       {isOpen && (
         <>
           {/* 1. Accessible Backdrop: Handles click-to-close and focus trapping */}
-          <motion.div
+          <MotionDiv
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -241,7 +247,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
             aria-hidden="true"
           />
 
-          <motion.div
+          <MotionDiv
             initial={{ x: '-100%' }}
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
@@ -278,7 +284,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </p>
                 <nav className="flex flex-col">
                   {navLinks.map((link, i) => (
-                    <motion.div
+                    <MotionDiv
                       key={link.name}
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -302,7 +308,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
 
                           <AnimatePresence>
                             {mobileServicesOpen && (
-                              <motion.div
+                              <MotionDiv
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: 'auto', opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
@@ -329,7 +335,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                                     </Link>
                                   ))}
                                 </div>
-                              </motion.div>
+                              </MotionDiv>
                             )}
                           </AnimatePresence>
                         </div>
@@ -346,7 +352,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                           />
                         </Link>
                       )}
-                    </motion.div>
+                    </MotionDiv>
                   ))}
                 </nav>
               </div>
@@ -406,7 +412,7 @@ function MobileDrawer({ isOpen, setIsOpen }: MobileDrawerProps) {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </MotionDiv>
         </>
       )}
     </AnimatePresence>
