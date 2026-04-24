@@ -1,6 +1,13 @@
-'use client'
-
 import FaqAccordion from '@/components/layout/sections/FAQs'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'FAQ | SofaRevive',
+  description: 'FAQ SofaRevive.',
+  alternates: {
+    canonical: '/faq',
+  },
+}
 
 export default function FaqPage() {
   return (

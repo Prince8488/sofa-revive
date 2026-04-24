@@ -12,6 +12,9 @@ export const metadata = {
     description: 'Bringing back the natural glow of your wooden furniture.',
     images: ['/images/wood-polishing-results.jpg'],
   },
+  alternates: {
+    canonical: '/services/sofa-polishing-bangalore',
+  },
 }
 
 const SofaPolishingService = () => {

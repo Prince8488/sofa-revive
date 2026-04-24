@@ -11,6 +11,9 @@ export const metadata = {
     description: "Don't buy new—repair your favorite sofa today.",
     images: ['/images/sofa-repair-process.jpg'],
   },
+  alternates: {
+    canonical: '/services/sofa-repair-bangalore',
+  },
 }
 
 const SofaFurnitureService = () => {

@@ -1,4 +1,14 @@
 import PolicyLayout from '@/components/layout/legal/PolicyLayout'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | SofaRevive',
+  description:
+    'Learn about how we collect, use, and protect your personal information when you use our sofa restoration services in Bengaluru.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+}
 
 export default function PrivacyPolicy() {
   return (

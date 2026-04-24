@@ -11,6 +11,9 @@ export const metadata = {
     description: 'Premium fabric and leather restoration for your home.',
     images: ['/images/upholstery-before-after.jpg'],
   },
+  alternates: {
+    canonical: '/services/sofa-upholstery-bangalore',
+  },
 }
 
 const UpholsteryRestorationService = () => {

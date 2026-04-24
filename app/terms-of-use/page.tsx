@@ -1,4 +1,14 @@
 import PolicyLayout from '@/components/layout/legal/PolicyLayout'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms of Use | SofaRevive',
+  description:
+    'Learn about our terms of use when you use our sofa restoration services in Bengaluru.',
+  alternates: {
+    canonical: '/terms-of-use',
+  },
+}
 
 export default function TermsOfUsePage() {
   return (
