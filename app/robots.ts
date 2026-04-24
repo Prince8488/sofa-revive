@@ -2,13 +2,12 @@ import { MetadataRoute } from 'next'
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    host: 'https://www.sofarevive.com',
     sitemap: 'https://www.sofarevive.com/sitemap.xml',
     rules: [
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/admin', '/private', '/api'],
+        disallow: ['/admin', '/private', '/api/'],
       },
       {
         userAgent: [

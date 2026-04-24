@@ -2,47 +2,81 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.sofarevive.com'
-  const lastMod = new Date()
 
-  const routes = [
-    // Main Pages
-    { url: '', priority: 1.0, changeFrequency: 'monthly' as const },
-    { url: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
-    { url: '/quote', priority: 1.0, changeFrequency: 'daily' as const },
-    { url: '/gallery', priority: 0.9, changeFrequency: 'weekly' as const },
-    { url: '/contact', priority: 0.7, changeFrequency: 'monthly' as const },
-    { url: '/services', priority: 0.9, changeFrequency: 'monthly' as const },
-
-    // Core Service Sub-Pages (Crucial for SEO)
+  return [
     {
-      url: '/services/sofa-upholstery-bangalore',
-      priority: 0.9,
-      changeFrequency: 'monthly' as const,
+      url: `${baseUrl}/`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 1.0,
     },
     {
-      url: '/services/sofa-repair-bangalore',
-      priority: 0.9,
-      changeFrequency: 'monthly' as const,
-    },
-    {
-      url: '/services/sofa-polishing-bangalore',
+      url: `${baseUrl}/about`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
       priority: 0.8,
-      changeFrequency: 'monthly' as const,
     },
-    // Legal Pages
     {
-      url: '/privacy-policy',
-      priority: 0.5,
-      changeFrequency: 'yearly' as const,
+      url: `${baseUrl}/quote`,
+      lastModified: new Date(),
+      changeFrequency: 'daily',
+      priority: 1.0,
     },
-    { url: '/terms-of-use', priority: 0.5, changeFrequency: 'yearly' as const },
-    { url: '/faq', priority: 0.5, changeFrequency: 'yearly' as const },
-  ]
+    {
+      url: `${baseUrl}/gallery`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
 
-  return routes.map((route) => ({
-    url: `${baseUrl}${route.url}`,
-    lastModified: lastMod,
-    changeFrequency: route.changeFrequency,
-    priority: route.priority,
-  }))
+    {
+      url: `${baseUrl}/services/sofa-repair-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/sofa-upholstery-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/services/sofa-polishing-bangalore`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+
+    {
+      url: `${baseUrl}/contact`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/faq`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/privacy-policy`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/terms-of-use`,
+      lastModified: new Date(),
+      changeFrequency: 'yearly',
+      priority: 0.5,
+    },
+  ]
 }
