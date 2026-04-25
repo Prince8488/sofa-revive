@@ -19,46 +19,6 @@ const roboto = Roboto({
   variable: '--font-roboto',
 })
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      '@type': 'Question',
-      name: 'How much does sofa repair cost in Bangalore?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Sofa repair costs depend on material and damage. Contact us for a free quote.',
-      },
-    },
-
-    {
-      '@type': 'Question',
-      name: 'Do you provide sofa pickup and delivery in Bangalore?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, we offer free pickup and delivery across Bengaluru.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'How long does sofa repair take?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Most sofa repairs are completed within 7 days depending on the work required.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you offer custom upholstery?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'Yes, we provide a wide range of fabric and leather upholstery options.',
-      },
-    },
-  ],
-}
-
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
@@ -220,15 +180,6 @@ export default function RootLayout({
           type="application/ld+json"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-
-        <Script
-          id="faq-schema"
-          type="application/ld+json"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema),
-          }}
         />
         <GTMClient />
         <noscript>
