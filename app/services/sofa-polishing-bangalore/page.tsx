@@ -1,24 +1,81 @@
 import SofaPolishingClient from '@/components/services/SofaPolishingClient'
+import Script from 'next/script'
 
 export const metadata = {
-  title:
-    'Wood Furniture Polishing & Antique Restoration in Bengaluru | SofaRevive',
+  title: 'Wood Polishing Services in Bangalore | Furniture Restoration Experts',
+
   description:
-    'Restore the shine to your teak, rosewood, or mahogany furniture. Professional Melamine and PU polishing for a mirror-like finish. Expert sofa upholstery services. 5-Star Rated. 5+ Years Experience. Choose from 50+ premium fabrics',
+    'Looking for wood polishing services in Bangalore? We restore teak, rosewood, and antique furniture with PU and melamine polish for a premium finish. Free pickup available.',
+
   keywords:
-    'wood polishing near me, teak wood restoration, furniture buffing, antique sofa polishing',
+    'wood polishing bangalore, furniture polishing bangalore, teak wood polishing, antique furniture restoration, sofa polishing bangalore',
+
   openGraph: {
-    title: 'Luxury Wood Polishing & Restoration',
-    description: 'Bringing back the natural glow of your wooden furniture.',
-    images: ['/images/wood-polishing-results.jpg'],
+    title: 'Wood Polishing Services in Bangalore | SofaRevive',
+    description:
+      'Professional wood and furniture polishing services in Bangalore. Restore shine with expert finishing and durable coating.',
+    images: ['https://www.sofarevive.com/images/wood-polishing-results.jpg'],
   },
+
   alternates: {
-    canonical: '/services/sofa-polishing-bangalore',
+    canonical: 'https://www.sofarevive.com/services/sofa-polishing-bangalore',
+  },
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+
+  name: 'Wood Polishing Services in Bangalore',
+
+  description:
+    'Professional wood polishing and furniture restoration services in Bangalore including teak wood polishing, PU coating, and antique furniture restoration.',
+
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'SofaRevive',
+    url: 'https://www.sofarevive.com',
+  },
+
+  areaServed: {
+    '@type': 'City',
+    name: 'Bangalore',
+  },
+
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceLocation: {
+      '@type': 'Place',
+      name: 'Bangalore',
+    },
+  },
+
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'INR',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      minPrice: 800,
+      maxPrice: 20000,
+    },
   },
 }
 
 const SofaPolishingService = () => {
-  return <SofaPolishingClient />
+  return (
+    <>
+      <Script
+        id="sofa-polishing-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
+
+      <SofaPolishingClient />
+    </>
+  )
 }
 
 export default SofaPolishingService

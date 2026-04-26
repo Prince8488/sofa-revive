@@ -1,23 +1,81 @@
 import SofaRepairClient from '@/components/services/SofaRepairClient'
+import Script from 'next/script'
 
 export const metadata = {
-  title: 'Sofa Repair & Sagging Cushion Fix in Bengaluru | SofaRevive',
+  title: 'Sofa Repair in Bangalore | Cushion, Spring & Frame Fix',
+
   description:
-    'Is your sofa sagging or broken? We provide on-site repair for wooden frames, spring replacement, and high-quality cushion refilling.Expert sofa upholstery services. 5-Star Rated. 5+ Years Experience. Choose from 50+ premium fabrics',
+    'Looking for sofa repair in Bangalore? We fix sagging cushions, broken frames, and springs with expert craftsmanship. Free pickup & delivery available across Bengaluru.',
+
   keywords:
-    'sagging sofa repair, broken sofa frame fix, sofa spring replacement, cushion refilling service',
+    'sofa repair bangalore, sagging sofa repair, sofa spring replacement, cushion refilling, couch repair bangalore',
+
   openGraph: {
-    title: 'Professional Sofa Repair Services',
-    description: "Don't buy new—repair your favorite sofa today.",
-    images: ['/images/sofa-repair-process.jpg'],
+    title: 'Sofa Repair in Bangalore | SofaRevive',
+    description:
+      'Fix your sofa with expert repair services in Bangalore. Cushion refilling, frame repair & spring replacement with free pickup.',
+    images: ['https://www.sofarevive.com/images/sofa-repair-process.jpg'],
   },
+
   alternates: {
-    canonical: '/services/sofa-repair-bangalore',
+    canonical: 'https://www.sofarevive.com/services/sofa-repair-bangalore',
+  },
+}
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+
+  name: 'Sofa Repair in Bangalore',
+
+  description:
+    'Professional sofa repair services in Bangalore including cushion refilling, frame fixing, and spring replacement with free pickup and delivery.',
+
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'SofaRevive',
+    url: 'https://www.sofarevive.com',
+  },
+
+  areaServed: {
+    '@type': 'City',
+    name: 'Bangalore',
+  },
+
+  availableChannel: {
+    '@type': 'ServiceChannel',
+    serviceLocation: {
+      '@type': 'Place',
+      name: 'Bangalore',
+    },
+  },
+
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'INR',
+    priceSpecification: {
+      '@type': 'PriceSpecification',
+      minPrice: 1000,
+      maxPrice: 30000,
+    },
   },
 }
 
 const SofaFurnitureService = () => {
-  return <SofaRepairClient />
+  return (
+    <>
+      <Script
+        id="sofa-repair-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
+
+      <SofaRepairClient />
+    </>
+  )
 }
 
 export default SofaFurnitureService

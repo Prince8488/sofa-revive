@@ -21,9 +21,9 @@ const roboto = Roboto({
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': 'https://www.sofarevive.com',
-  name: 'SofaRevive',
+  '@type': ['LocalBusiness', 'ProfessionalService'],
+  '@id': 'https://www.sofarevive.com/#business',
+  name: 'Sofarevive',
   url: 'https://www.sofarevive.com',
   image: 'https://www.sofarevive.com/og-image.svg',
   description:
@@ -46,6 +46,7 @@ const jsonLd = {
   },
 
   telephone: '+916366921602',
+  priceRange: '₹₹',
 
   openingHoursSpecification: [
     {
@@ -88,10 +89,42 @@ const jsonLd = {
     },
   ],
 
-  areaServed: {
-    '@type': 'City',
-    name: 'Bengaluru',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+916366921602',
+    contactType: 'customer service',
+    areaServed: 'IN',
+    availableLanguage: ['English', 'Hindi'],
   },
+
+  areaServed: [
+    { '@type': 'City', name: 'Bangalore' },
+    { '@type': 'City', name: 'Bengaluru' },
+    { '@type': 'City', name: 'HSR Layout' },
+    { '@type': 'City', name: 'BTM Layout' },
+    { '@type': 'City', name: 'Whitefield' },
+    { '@type': 'City', name: 'Koramangala' },
+    { '@type': 'City', name: 'Indiranagar' },
+    { '@type': 'City', name: 'Jayanagar' },
+    { '@type': 'City', name: 'Malleshwaram' },
+    { '@type': 'City', name: 'Rajajinagar' },
+    { '@type': 'City', name: 'Bommanahalli' },
+    { '@type': 'City', name: 'Electronic City' },
+    { '@type': 'City', name: 'Varthur' },
+    { '@type': 'City', name: 'Marathahalli' },
+    { '@type': 'City', name: 'Yelahanka' },
+    { '@type': 'City', name: 'Kengeri' },
+    { '@type': 'City', name: 'Kanakapura' },
+    { '@type': 'City', name: 'Bannerghatta Road' },
+    { '@type': 'City', name: 'Sarjapur Road' },
+    { '@type': 'City', name: 'Hebbal' },
+    { '@type': 'City', name: 'Rajarajeshwari Nagar' },
+    { '@type': 'City', name: 'Dasarahalli' },
+    { '@type': 'City', name: 'Kundalahalli' },
+    { '@type': 'City', name: 'Hosur Road' },
+    { '@type': 'City', name: 'Bellandur' },
+    { '@type': 'City', name: 'Electronic City Phase 2' },
+  ],
 }
 
 export const dynamic = 'force-static'
@@ -100,7 +133,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://www.sofarevive.com'),
 
   alternates: {
-    canonical: '/',
+    canonical: 'https://www.sofarevive.com/',
   },
 
   robots: {
@@ -178,7 +211,7 @@ export default function RootLayout({
         <Script
           id="json-ld"
           type="application/ld+json"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <GTMClient />

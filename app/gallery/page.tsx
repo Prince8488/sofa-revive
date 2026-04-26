@@ -1,15 +1,43 @@
 import { Metadata } from 'next'
+import Script from 'next/script'
 import GallerySection from '@/components/layout/sections/Gallery'
 
 export const metadata: Metadata = {
-  title: 'Gallery | Sofa Restoration & Upholstery Projects in Bengaluru',
+  title: 'Sofa Repair Before & After in Bangalore | Upholstery Gallery',
+
   description:
-    'Explore our gallery of completed sofa repair, upholstery, and polishing projects. See the quality craftsmanship that defines SofaRevive and get inspired for your own furniture transformation.',
+    'View before and after sofa repair, upholstery, and polishing projects in Bangalore. See real transformations and expert craftsmanship by SofaRevive.',
+
   alternates: {
-    canonical: '/gallery',
+    canonical: 'https://www.sofarevive.com/gallery',
   },
 }
 
+const gallerySchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+
+  name: 'Sofa Repair and Upholstery Gallery Bangalore',
+
+  description:
+    'Gallery showcasing before and after sofa repair, upholstery, and furniture polishing projects in Bangalore.',
+
+  url: 'https://www.sofarevive.com/gallery',
+}
+
 export default function GalleryPage() {
-  return <GallerySection />
+  return (
+    <>
+      <Script
+        id="gallery-schema"
+        type="application/ld+json"
+        strategy="beforeInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(gallerySchema),
+        }}
+      />
+
+      <GallerySection />
+    </>
+  )
 }
