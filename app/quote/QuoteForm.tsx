@@ -21,11 +21,40 @@ const QuoteForm = () => {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+    const ref = typeof document !== 'undefined' ? document.referrer : ''
 
-    const src = params.get('utm_source') || params.get('source') || 'website'
+    // Logic to determine primary source (Google Ads, Referrer, or Website)
+    let detectedSource =
+      params.get('utm_source') ||
+      (params.get('gclid') ? 'google_ads' : 'website')
 
-    setSource(src)
-    localStorage.setItem('lead_source', src)
+    if (
+      detectedSource === 'website' &&
+      ref &&
+      !ref.includes(window.location.hostname)
+    ) {
+      try {
+        detectedSource = `ref: ${new URL(ref).hostname}`
+      } catch (e) {
+        detectedSource = 'referral'
+      }
+    }
+
+    setSource(detectedSource)
+
+    // Update formData with all tracking parameters
+    setFormData((prev) => ({
+      ...prev,
+      source: detectedSource,
+      utm_medium: params.get('utm_medium') || '',
+      utm_campaign: params.get('utm_campaign') || '',
+      utm_term: params.get('utm_term') || '',
+      referrer: ref || 'direct',
+      gclid: params.get('gclid') || '',
+      landing_page: window.location.pathname,
+    }))
+
+    localStorage.setItem('lead_source', detectedSource)
   }, [])
 
   useEffect(() => {
@@ -66,6 +95,12 @@ const QuoteForm = () => {
     serviceType: 'Sofa Repair',
     condition: '',
     source: source,
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    referrer: '',
+    landing_page: '',
+    gclid: '',
   })
 
   const [errors, setErrors] = useState<
@@ -129,15 +164,12 @@ const QuoteForm = () => {
 
     if (result.isValid) {
       setIsLoading(true)
-      const payload = {
-        ...formData,
-        source: localStorage.getItem('lead_source') || 'website',
-      }
+      // Send formData directly as it now contains all tracking fields
       try {
         const response = await fetch('/api/quote', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload),
+          body: JSON.stringify(formData),
         })
 
         if (!response.ok) throw new Error('Server error')
@@ -217,7 +249,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
       ref={formTopRef}
       className="min-h-screen border-slate-200 bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
     >
-      <div className="mx-auto flex max-w-6xl flex-col items-start gap-16 lg:flex-row">
+      {/* flex-col-reverse makes form appear first on mobile */}
+      <div className="mx-auto flex max-w-6xl flex-col-reverse items-start gap-16 lg:flex-row">
         {/* LEFT COLUMN */}
         <div className="w-full space-y-12 lg:sticky lg:top-32 lg:w-[35%]">
           <motion.div

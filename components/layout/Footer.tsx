@@ -105,26 +105,26 @@ export default function Footer() {
               </p>
               <div className="flex gap-3">
                 <Link
-                  href="https://www.instagram.com/your-instagram"
+                  href="https://www.instagram.com/sofarevive72"
                   aria-label="Visit our Instagram page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
                   <Icon name="Instagram" size={18} aria-hidden="true" />
                 </Link>
                 <Link
-                  href="https://www.facebook.com/your-facebook"
+                  href="https://www.facebook.com/share/1bY4qDtG8H/"
                   aria-label="Visit our Facebook page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
                   <Icon name="Facebook" size={18} aria-hidden="true" />
                 </Link>
-                <Link
+                {/* <Link
                   href="https://www.twitter.com/your-twitter"
                   aria-label="Visit our Twitter page"
                   className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-900 text-slate-300 transition-all hover:bg-gray-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-500 active:scale-90"
                 >
                   <Icon name="Twitter" size={18} aria-hidden="true" />
-                </Link>
+                </Link> */}
               </div>
             </section>
           </div>

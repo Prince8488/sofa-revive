@@ -5,6 +5,12 @@ export type FormData = {
   serviceType: string
   condition: string
   source?: string
+  utm_medium?: string
+  utm_campaign?: string
+  utm_term?: string
+  referrer?: string
+  landing_page?: string
+  gclid?: string
 }
 
 export const validateIndustryForm = (data: FormData) => {
