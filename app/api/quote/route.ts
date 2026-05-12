@@ -39,25 +39,6 @@ export async function POST(req: Request) {
       gclid,
     } = body
 
-    // =========================
-    // ✅ VALIDATION
-    // =========================
-    if (!fullName || !phone) {
-      return new Response(
-        JSON.stringify({ error: 'Missing required fields' }),
-        { status: 400 },
-      )
-    }
-
-    const isValidPhone = /^[6-9]\d{9}$/.test(phone)
-    if (!isValidPhone) {
-      return new Response(JSON.stringify({ error: 'Invalid phone number' }), {
-        status: 400,
-      })
-    }
-
-    const isValidEmail = email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-
     const { env } = getRequestContext()
     const db = env?.DB
     if (!db) console.warn('⚠️ DB not available (local dev)')
@@ -103,7 +84,7 @@ export async function POST(req: Request) {
     // =========================
     // 📧 AUTO REPLY TO CUSTOMER (Unchanged Pattern)
     // =========================
-    if (email && isValidEmail) {
+    if (email) {
       const whatsappLink = `https://wa.me/6366921602`
       try {
         await sendEmail({
@@ -163,7 +144,6 @@ export async function POST(req: Request) {
           whatsappStatus,
           'new',
           source || 'website',
-          isValidPhone ? 1 : 0,
           utm_medium || '',
           utm_campaign || '',
           utm_term || '',
