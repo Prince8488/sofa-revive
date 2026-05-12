@@ -130,8 +130,8 @@ export async function POST(req: Request) {
         .prepare(
           `
           INSERT INTO quotes 
-          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source, isValidLead, utm_medium, utm_campaign, utm_term, referrer, landing_page, gclid)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source, utm_medium, utm_campaign, utm_term, referrer, landing_page, gclid)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,
         )
         .bind(
