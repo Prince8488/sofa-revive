@@ -3,7 +3,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { Metadata } from 'next'
 import './globals.css'
-import GTMClient from '@/components/GTMClient'
+// import GTMClient from '@/components/GTMClient'
 import Script from 'next/script'
 
 const inter = Inter({
@@ -214,7 +214,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <GTMClient />
+        {/* <GTMClient /> */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-N97Q3C7P"
