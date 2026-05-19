@@ -117,7 +117,7 @@ const QuoteForm = () => {
     if (name === 'fullName' && /\d/.test(value)) return
 
     if (name === 'phone') {
-      const cleaned = value.replace(/\D/g, '').slice(0, 10)
+      const cleaned = value.replace(/\D/g, '').slice(0, 15)
       setFormData({ ...formData, [name]: cleaned })
     } else {
       setFormData({ ...formData, [name]: value })

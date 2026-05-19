@@ -34,7 +34,7 @@ export const validateIndustryForm = (data: FormData) => {
   }
 
   // 3. Phone Validation: Exactly 10-15 digits with example
-  const phoneRegex = /^[0-9]{15}$/
+  const phoneRegex = /^[0-9]{10,15}$/
   if (!phoneRegex.test(data.phone)) {
     errors.phone = 'Enter valid phone number. (Example: 9xxxxxxxxx)'
   }
