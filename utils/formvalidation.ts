@@ -33,10 +33,10 @@ export const validateIndustryForm = (data: FormData) => {
     errors.email = 'Enter a valid email. (Example: name@gmail.com)'
   }
 
-  // 3. Phone Validation: Exactly 10 digits with example
-  const phoneRegex = /^[0-9]{10}$/
+  // 3. Phone Validation: Exactly 10-15 digits with example
+  const phoneRegex = /^[0-9]{15}$/
   if (!phoneRegex.test(data.phone)) {
-    errors.phone = 'Enter exactly 10 digits number. (Example: 9876543210)'
+    errors.phone = 'Enter valid phone number. (Example: 9xxxxxxxxx)'
   }
 
   // 4. Service Type Validation
