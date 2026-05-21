@@ -82,7 +82,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    // Quick inline validation matching your pattern
     const newErrors: Partial<Record<keyof ModalFormData, string>> = {}
     if (!formData.fullName.trim()) newErrors.fullName = 'Name is required'
     if (!formData.phone || formData.phone.length < 10)
@@ -114,7 +113,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     }
   }
 
-  // Exact matching UI style tokens from your layout pattern
   const inputBase = (fieldName: keyof ModalFormData) => `
     w-full p-4 bg-slate-50 border-slate-200 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
     ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
@@ -154,7 +152,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
           {/* Modal Container */}
           <motion.div
             ref={modalContentRef}
-            className="relative z-10 h-[88vh] w-full overflow-hidden rounded-t-[2.5rem]
+            className="relative z-10 flex h-[88vh] w-full flex-col overflow-hidden rounded-t-[2.5rem]
                        border border-t-slate-100 bg-white
                        shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] sm:h-auto 
                        sm:max-w-lg sm:rounded-[2.5rem] sm:border-white"
@@ -184,10 +182,10 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
             transition={{ type: 'spring', damping: 25, stiffness: 220 }}
           >
             {/* Top Micro Deco Accent Bar for Mobile Pull Drawer Feel */}
-            <div className="mx-auto mt-3 h-1.5 w-12 rounded-full bg-slate-200 sm:hidden" />
+            <div className="mx-auto mt-3 h-1.5 w-12 shrink-0 rounded-full bg-slate-200 sm:hidden" />
 
             {/* Static Tracking Top Header Bar */}
-            <div className="absolute left-0 top-0 h-1.5 w-full bg-slate-50">
+            <div className="absolute left-0 top-0 z-30 h-1.5 w-full bg-slate-50">
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: '100%' }}
@@ -196,16 +194,29 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               />
             </div>
 
-            {/* Sticky/Fixed Absolute Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute right-6 top-6 z-20 flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-slate-100 bg-slate-50 text-slate-400 transition-transform hover:scale-105 hover:text-slate-700 active:scale-95"
-            >
-              <Icon name="X" size={16} />
-            </button>
+            {/* Sticky Header Wrapper: Contains Title, Badge & Close Button */}
+            <div className="relative z-20 flex shrink-0 items-start justify-between bg-white px-6 pb-4 pt-8 md:px-10 md:pt-10">
+              <div>
+                <div className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">
+                  <Icon name="Zap" size={10} fill="currentColor" /> Direct
+                  Priority Booking
+                </div>
+                <h2 className="text-xl font-bold tracking-tight text-slate-900">
+                  Schedule Estimate
+                </h2>
+              </div>
+
+              <button
+                onClick={onClose}
+                type="button"
+                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-slate-100 bg-slate-50 text-slate-400 transition-transform hover:scale-105 hover:text-slate-700 active:scale-95"
+              >
+                <Icon name="X" size={16} />
+              </button>
+            </div>
 
             {/* Scrollable Form Body Shell */}
-            <div className="h-full max-h-[calc(88vh-20px)] overflow-y-auto px-6 py-10 sm:max-h-none md:p-10">
+            <div className="flex-1 overflow-y-auto px-6 pb-10 pt-2 md:px-10 md:pb-10">
               <AnimatePresence mode="wait">
                 {submissionStatus === 'idle' && (
                   <motion.form
@@ -214,17 +225,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                     className="space-y-6"
                     noValidate
                   >
-                    {/* Intro Block */}
-                    <div>
-                      <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">
-                        <Icon name="Zap" size={10} fill="currentColor" /> Direct
-                        Priority Booking
-                      </div>
-                      <h2 className="text-xl font-bold tracking-tight text-slate-900">
-                        Schedule Estimate
-                      </h2>
-                    </div>
-
                     {/* Section 01: Contact Information */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2">
@@ -373,7 +373,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </p>
                     </div>
 
-                    {/* Direct Contact Buttons Layer */}
                     <div className="grid grid-cols-1 gap-3 pt-2">
                       <a
                         href="https://wa.me/916366921602?text=Hi%20SofaRevive,%20I'm%20looking%20for%20a%20sofa%20repair%20estimate."
