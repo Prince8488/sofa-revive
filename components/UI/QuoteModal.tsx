@@ -12,7 +12,6 @@ interface QuoteModalProps {
 interface ModalFormData {
   fullName: string
   phone: string
-  serviceType: string
   notes: string
 }
 
@@ -28,7 +27,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState<ModalFormData>({
     fullName: '',
     phone: '',
-    serviceType: 'Sofa Repair',
     notes: '',
   })
 
@@ -47,7 +45,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       setFormData({
         fullName: '',
         phone: '',
-        serviceType: 'Sofa Repair',
         notes: '',
       })
       setErrors({})
@@ -294,33 +291,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </div>
 
                       <div className="group">
-                        <label className={labelBase}>Service Type *</label>
-                        <div className="relative">
-                          <Icon
-                            name="Sofa"
-                            className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-300"
-                            size={16}
-                          />
-                          <select
-                            name="serviceType"
-                            value={formData.serviceType}
-                            onChange={handleChange}
-                            className={`${inputBase('serviceType')} appearance-none pl-12 pr-10`}
-                          >
-                            <option>Sofa Repair</option>
-                            <option>Sofa Upholstery</option>
-                            <option>Sofa Polishing</option>
-                            <option>Others</option>
-                          </select>
-                          <Icon
-                            name="ChevronDown"
-                            className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-slate-300"
-                            size={16}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="group">
                         <label className={labelBase}>Notes / Condition</label>
                         <textarea
                           name="notes"
@@ -379,7 +349,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   </motion.div>
                 )}
 
-                {/* Error Lifecycle Screen Layer (Updated with Support Triggers) */}
+                {/* Error Lifecycle Screen Layer */}
                 {submissionStatus === 'error' && (
                   <motion.div
                     key="modal-error"
