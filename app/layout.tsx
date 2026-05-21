@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import './globals.css'
 // import GTMClient from '@/components/GTMClient'
 import Script from 'next/script'
+import LandingPopupTrigger from '@/components/UI/LandingPopupTrigger'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -226,6 +227,7 @@ export default function RootLayout({
 
         <Header />
         {children}
+        <LandingPopupTrigger />
         <Footer />
       </body>
     </html>

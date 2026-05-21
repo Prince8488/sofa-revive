@@ -17,19 +17,19 @@ const QuoteForm = () => {
   const successRef = useRef<HTMLDivElement>(null)
   const errorRef = useRef<HTMLDivElement>(null)
 
-  const [source, setSource] = useState('website')
+  const [source, setSource] = useState('website_quote_form')
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const ref = typeof document !== 'undefined' ? document.referrer : ''
 
-    // Logic to determine primary source (Google Ads, Referrer, or Website)
+    // Logic to determine primary source (Google Ads, Referrer, or website_quote_form)
     let detectedSource =
       params.get('utm_source') ||
-      (params.get('gclid') ? 'google_ads' : 'website')
+      (params.get('gclid') ? 'google_ads' : 'website_quote_form')
 
     if (
-      detectedSource === 'website' &&
+      detectedSource === 'website_quote_form' &&
       ref &&
       !ref.includes(window.location.hostname)
     ) {
