@@ -12,6 +12,7 @@ interface QuoteModalProps {
 interface ModalFormData {
   fullName: string
   phone: string
+  email: string
   notes: string
 }
 
@@ -27,6 +28,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   const [formData, setFormData] = useState<ModalFormData>({
     fullName: '',
     phone: '',
+    email: '',
     notes: '',
   })
 
@@ -40,11 +42,11 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'unset'
-      // Reset state when closed
       setSubmissionStatus('idle')
       setFormData({
         fullName: '',
         phone: '',
+        email: '',
         notes: '',
       })
       setErrors({})
@@ -66,13 +68,13 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
     if (name === 'phone') {
       const cleaned = value.replace(/\D/g, '').slice(0, 15)
-      setFormData({ ...formData, [name]: cleaned })
+      setFormData((prev) => ({ ...prev, [name]: cleaned }))
     } else {
-      setFormData({ ...formData, [name]: value })
+      setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
     if (errors[name as keyof ModalFormData]) {
-      setErrors({ ...errors, [name]: '' })
+      setErrors((prev) => ({ ...prev, [name]: '' }))
     }
     if (activeErrorField === name) {
       setActiveErrorField(null)
@@ -84,8 +86,17 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
     const newErrors: Partial<Record<keyof ModalFormData, string>> = {}
     if (!formData.fullName.trim()) newErrors.fullName = 'Name is required'
-    if (!formData.phone || formData.phone.length < 10)
+
+    if (!formData.phone || formData.phone.length < 10) {
       newErrors.phone = 'Enter a valid phone number'
+    }
+
+    // Strict Mandatory Email Validation
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email address is required'
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'Enter a valid email address'
+    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors)
@@ -139,8 +150,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/40 px-0 backdrop-blur-sm sm:items-center sm:px-4">
-          {/* Backdrop Click Dismissal Area */}
+        <div className="fixed inset-0 z-[110] flex items-end justify-center bg-slate-900/50 px-0 backdrop-blur-sm sm:items-center sm:px-4">
           <motion.div
             className="absolute inset-0"
             initial={{ opacity: 0 }}
@@ -152,9 +162,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
           {/* Modal Container */}
           <motion.div
             ref={modalContentRef}
-            className="relative z-10 flex h-[88vh] w-full flex-col overflow-hidden rounded-t-[2.5rem]
+            className="relative z-10 flex h-[85vh] w-full flex-col overflow-hidden rounded-t-[2.5rem]
                        border border-t-slate-100 bg-white
-                       shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] sm:h-auto 
+                       shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] sm:h-auto sm:max-h-[90vh]
                        sm:max-w-lg sm:rounded-[2.5rem] sm:border-white"
             initial={{
               y:
@@ -184,7 +194,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
             {/* Top Micro Deco Accent Bar for Mobile Pull Drawer Feel */}
             <div className="mx-auto mt-3 h-1.5 w-12 shrink-0 rounded-full bg-slate-200 sm:hidden" />
 
-            {/* Static Tracking Top Header Bar */}
+            {/* Static Tracking Top Header Progress Bar */}
             <div className="absolute left-0 top-0 z-30 h-1.5 w-full bg-slate-50">
               <motion.div
                 initial={{ width: 0 }}
@@ -194,7 +204,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               />
             </div>
 
-            {/* Sticky Header Wrapper: Contains Title, Badge & Close Button */}
+            {/* Fixed Modal Header Container */}
             <div className="relative z-20 flex shrink-0 items-start justify-between bg-white px-6 pb-4 pt-8 md:px-10 md:pt-10">
               <div>
                 <div className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">
@@ -209,7 +219,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               <button
                 onClick={onClose}
                 type="button"
-                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-slate-100 bg-slate-50 text-slate-400 transition-transform hover:scale-105 hover:text-slate-700 active:scale-95"
+                className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-full border border-slate-200 bg-slate-50 text-slate-500 transition-transform hover:scale-105 hover:text-slate-800 active:scale-95"
               >
                 <Icon name="X" size={16} />
               </button>
@@ -237,6 +247,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </div>
 
                       <div className="grid grid-cols-1 gap-4">
+                        {/* Full Name Field */}
                         <div className="group">
                           <label className={labelBase}>Full Name *</label>
                           <div className="relative">
@@ -257,6 +268,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                           <ErrorMsg name="fullName" />
                         </div>
 
+                        {/* WhatsApp Number Field */}
                         <div className="group">
                           <label className={labelBase}>WhatsApp Number *</label>
                           <div className="relative">
@@ -275,6 +287,27 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                             />
                           </div>
                           <ErrorMsg name="phone" />
+                        </div>
+
+                        {/* Mandatory Email Address Field */}
+                        <div className="group">
+                          <label className={labelBase}>Email Address *</label>
+                          <div className="relative">
+                            <Icon
+                              name="Mail"
+                              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-gray-800"
+                              size={16}
+                            />
+                            <input
+                              name="email"
+                              type="email"
+                              value={formData.email}
+                              onChange={handleChange}
+                              placeholder="rohan@gmail.com"
+                              className={`${inputBase('email')} pl-12`}
+                            />
+                          </div>
+                          <ErrorMsg name="email" />
                         </div>
                       </div>
                     </div>
