@@ -73,11 +73,15 @@ export function getTrackingPayload(
   const ua = headers.get('user-agent') || ''
   const { browser, os, deviceType } = parseUserAgent(ua)
 
-  // Cloudflare injects geolocation & networking parameters directly into incoming requests
+  // Case-insensitive header checks to guarantee edge matching
+  const getHeader = (key: string) =>
+    headers.get(key) || headers.get(key.toLowerCase()) || 'Unknown'
+
   return {
-    // 1. IP Address tracking (Falls back along proxies if missing)
+    // 1. IP Address tracking
     ip:
       headers.get('cf-connecting-ip') ||
+      headers.get('CF-Connecting-IP') ||
       headers.get('x-forwarded-for') ||
       '0.0.0.0',
 
@@ -89,17 +93,17 @@ export function getTrackingPayload(
     language: headers.get('accept-language')?.split(',')[0] || 'Unknown',
     screenResolution: clientData?.screenResolution || 'N/A',
 
-    // 3. Complete Cloudflare-provided Location Telemetry
-    country: headers.get('cf-ipcountry') || 'Unknown',
-    city: headers.get('cf-ipcity') || 'Unknown',
-    region: headers.get('cf-region') || 'Unknown',
-    latitude: headers.get('cf-latitude') || 'Unknown',
-    longitude: headers.get('cf-longitude') || 'Unknown',
-    postalCode: headers.get('cf-postal-code') || 'Unknown',
-    timezone: headers.get('cf-timezone') || 'Unknown',
+    // 3. Cloudflare Geolocation Headers (Supports mixed casing automatically)
+    country: getHeader('cf-ipcountry') || 'Unknown',
+    city: getHeader('cf-ipcity') || 'Unknown',
+    region: getHeader('cf-region') || 'Unknown',
+    latitude: getHeader('cf-latitude') || 'Unknown',
+    longitude: getHeader('cf-longitude') || 'Unknown',
+    postalCode: getHeader('cf-postal-code') || 'Unknown',
+    timezone: getHeader('cf-timezone') || 'Unknown',
 
-    // 4. Network Layer Meta (Autonomous System Number & Organization)
-    asn: headers.get('cf-asn') || 'Unknown',
-    isp: headers.get('cf-as-org') || 'Unknown',
+    // 4. Network Layer Meta
+    asn: getHeader('cf-asn') || 'Unknown',
+    isp: getHeader('cf-as-org') || 'Unknown',
   }
 }
