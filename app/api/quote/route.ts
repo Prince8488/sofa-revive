@@ -1,5 +1,6 @@
 export const runtime = 'edge'
 
+import { getTrackingPayload } from '@/public/utils/tracker'
 import { getRequestContext } from '@cloudflare/next-on-pages'
 
 const sendEmail = async (payload: any) => {
@@ -11,7 +12,6 @@ const sendEmail = async (payload: any) => {
     },
     body: JSON.stringify(payload),
   })
-
   return res.json()
 }
 
@@ -21,9 +21,11 @@ export async function POST(req: Request) {
   try {
     console.log('🔥 API HIT')
 
+    // Clone request before running read operations to handle any potential payload locks safely
+    const trackingData = getTrackingPayload(req.clone())
+
     body = await req.json()
 
-    // Destructure all new tracking fields from body
     const {
       fullName,
       email,
@@ -41,11 +43,10 @@ export async function POST(req: Request) {
 
     const { env } = getRequestContext()
     const db = env?.DB
-    if (!db) console.warn('⚠️ DB not available (local dev)')
 
-    // =========================
-    // 📧 SEND EMAIL (ADMIN) - Updated with Tracking Info
-    // =========================
+    // ============================================
+    // 📧 SEND EMAIL (ADMIN) - Enhanced with Complete Telemetry
+    // ============================================
     let emailStatus = 'failed'
 
     try {
@@ -54,36 +55,49 @@ export async function POST(req: Request) {
         to: ['sofarevive72@gmail.com'],
         subject: `New Lead: ${fullName} 🚀`,
         html: `
-          <h2>New Booking</h2>
+          <h2>New Booking Detail</h2>
           <p><b>Name:</b> ${fullName}</p>
           <p><b>Phone:</b> ${phone}</p>
           <p><b>Email:</b> ${email || 'N/A'}</p>
           <p><b>Service:</b> ${serviceType}</p>
           <p><b>Condition:</b> ${condition}</p>
+          
           <hr />
-          <h3>Tracking Info</h3>
+          <h3>🕵️‍♂️ Advanced Device & IP Fingerprinting</h3>
+          <p><b>IP Address:</b> ${trackingData.ip}</p>
+          <p><b>Browser:</b> ${trackingData.browser}</p>
+          <p><b>Operating System:</b> ${trackingData.os}</p>
+          <p><b>Device Category:</b> ${trackingData.deviceType}</p>
+          <p><b>Language Profile:</b> ${trackingData.language}</p>
+          <p><b>Network / ISP Provider:</b> ${trackingData.isp} (ASN: ${trackingData.asn})</p>
+
+          <hr />
+          <h3>📍 Geolocation Parameters</h3>
+          <p><b>City/Location:</b> ${trackingData.city}, ${trackingData.region}, ${trackingData.country}</p>
+          <p><b>Postal Pin Code:</b> ${trackingData.postalCode}</p>
+          <p><b>Local Timezone:</b> ${trackingData.timezone}</p>
+          <p><b>Geo Coordinates:</b> Lat: ${trackingData.latitude}, Long: ${trackingData.longitude}</p>
+
+          <hr />
+          <h3>📊 Marketing Campaign Tracking</h3>
           <p><b>Source:</b> ${source || 'direct'}</p>
           <p><b>Keyword (Term):</b> ${utm_term || 'N/A'}</p>
-          <p><b>Referrer:</b> ${referrer || 'Direct Traffic'}</p>
-          <p><b>Campaign:</b> ${utm_campaign || 'N/A'}</p>
-          <p><b>Landing Page:</b> ${landing_page || 'N/A'}</p>
-          <p><b>Google Click ID:</b> ${gclid || 'N/A'}</p>
+          <p><b>Referrer URL:</b> ${referrer || 'Direct Traffic'}</p>
+          <p><b>Campaign name:</b> ${utm_campaign || 'N/A'}</p>
+          <p><b>Landing Target:</b> ${landing_page || 'N/A'}</p>
+          <p><b>Google Click ID (GCLID):</b> ${gclid || 'N/A'}</p>
         `,
       })
 
-      if (emailResponse?.id) {
-        emailStatus = 'sent'
-      } else {
-        emailStatus = 'failed'
-        console.error('Email error:', emailResponse)
-      }
+      if (emailResponse?.id) emailStatus = 'sent'
     } catch (err) {
       console.error('Email send failed:', err)
     }
 
-    // =========================
-    // 📧 AUTO REPLY TO CUSTOMER (Unchanged Pattern)
-    // =========================
+    // ============================================
+    // 💾 SAVE TO DB - Make sure these matching columns exist in your table
+    // ============================================
+
     if (email) {
       const whatsappLink = `https://wa.me/6366921602`
       try {
@@ -113,25 +127,17 @@ export async function POST(req: Request) {
       }
     }
 
-    // =========================
-    // 📲 WHATSAPP LINK (Unchanged Pattern)
-    // =========================
-    const whatsappMessage = encodeURIComponent(
-      `Hi ${fullName}, your booking for ${serviceType} is confirmed. Our team will contact you shortly.`,
-    )
-    const whatsappUrl = `https://wa.me/91${phone}?text=${whatsappMessage}`
-    const whatsappStatus = 'initiated'
-
-    // =========================
-    // 💾 SAVE TO DB - Updated with 6 New Tracking Columns
-    // =========================
     if (db) {
       await db
         .prepare(
           `
           INSERT INTO quotes 
-          (fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, source, utm_medium, utm_campaign, utm_term, referrer, landing_page, gclid)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          (
+            fullName, email, phone, serviceType, condition, emailStatus, whatsappStatus, status, 
+            source, utm_medium, utm_campaign, utm_term, referrer, landing_page, gclid,
+            ipAddress, browser, os, deviceType, city, country, isp
+          )
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `,
         )
         .bind(
@@ -141,7 +147,7 @@ export async function POST(req: Request) {
           serviceType || '',
           condition || '',
           emailStatus,
-          whatsappStatus,
+          'initiated',
           'new',
           source || 'website',
           utm_medium || '',
@@ -150,25 +156,31 @@ export async function POST(req: Request) {
           referrer || '',
           landing_page || '',
           gclid || '',
+          // Add newly captured fields safely to database record pipeline
+          trackingData.ip,
+          trackingData.browser,
+          trackingData.os,
+          trackingData.deviceType,
+          trackingData.city,
+          trackingData.country,
+          trackingData.isp,
         )
         .run()
     }
 
+    const whatsappMessage = encodeURIComponent(
+      `Hi ${fullName}, your booking is confirmed.`,
+    )
+    const whatsappUrl = `https://wa.me/91${phone}?text=${whatsappMessage}`
+
     return new Response(
-      JSON.stringify({
-        success: true,
-        whatsappUrl,
-        emailStatus,
-      }),
+      JSON.stringify({ success: true, whatsappUrl, emailStatus }),
       { status: 200 },
     )
   } catch (error: any) {
     console.error('API Error:', error)
-    return new Response(
-      JSON.stringify({
-        error: error?.message || 'Something went wrong',
-      }),
-      { status: 500 },
-    )
+    return new Response(JSON.stringify({ error: error?.message }), {
+      status: 500,
+    })
   }
 }
