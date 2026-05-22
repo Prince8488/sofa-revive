@@ -13,7 +13,7 @@ interface ModalFormData {
   fullName: string
   phone: string
   email: string
-  notes: string
+  condition: string // Changed from 'notes' to match backend schema
 }
 
 const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
@@ -29,7 +29,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     fullName: '',
     phone: '',
     email: '',
-    notes: '',
+    condition: '',
   })
 
   const [errors, setErrors] = useState<
@@ -47,7 +47,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
         fullName: '',
         phone: '',
         email: '',
-        notes: '',
+        condition: '',
       })
       setErrors({})
       setActiveErrorField(null)
@@ -91,7 +91,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       newErrors.phone = 'Enter a valid phone number'
     }
 
-    // Strict Mandatory Email Validation
     if (!formData.email.trim()) {
       newErrors.email = 'Email address is required'
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -110,7 +109,11 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       const response = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...formData, source: 'website_modal_popup' }),
+        body: JSON.stringify({
+          ...formData,
+          serviceType: 'Sofa Repair', // Default fallback so backend variable doesn't remain blank
+          source: 'website_modal_popup',
+        }),
       })
 
       if (!response.ok) throw new Error('Network error')
@@ -191,7 +194,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
             }}
             transition={{ type: 'spring', damping: 25, stiffness: 220 }}
           >
-            {/* Top Micro Deco Accent Bar for Mobile Pull Drawer Feel */}
+            {/* Top Bar for Mobile */}
             <div className="mx-auto mt-3 h-1.5 w-12 shrink-0 rounded-full bg-slate-200 sm:hidden" />
 
             {/* Static Tracking Top Header Progress Bar */}
@@ -323,15 +326,16 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </h3>
                       </div>
 
+                      {/* Unified Condition Field mapped explicitly to Backend expectations */}
                       <div className="group">
                         <label className={labelBase}>Notes / Condition</label>
                         <textarea
-                          name="notes"
-                          value={formData.notes}
+                          name="condition"
+                          value={formData.condition}
                           onChange={handleChange}
                           placeholder="Describe damage or leather/fabric upgrade targets..."
                           rows={3}
-                          className={`${inputBase('notes')} resize-none`}
+                          className={`${inputBase('condition')} resize-none`}
                         />
                       </div>
                     </div>
@@ -353,7 +357,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   </motion.form>
                 )}
 
-                {/* Success Lifecycle Screen Layer */}
+                {/* Success Screen */}
                 {submissionStatus === 'success' && (
                   <motion.div
                     key="modal-success"
@@ -382,7 +386,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                   </motion.div>
                 )}
 
-                {/* Error Lifecycle Screen Layer */}
+                {/* Error Screen */}
                 {submissionStatus === 'error' && (
                   <motion.div
                     key="modal-error"
