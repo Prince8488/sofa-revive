@@ -1,48 +1,68 @@
 'use client'
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
 import Icon from '@/components/icons'
 import { validateIndustryForm, FormData } from '@/utils/formvalidation'
 
-const QuoteForm = () => {
-  const [submissionStatus, setSubmissionStatus] = useState<
-    'idle' | 'success' | 'error'
-  >('idle')
-  const [isLoading, setIsLoading] = useState(false)
+type SubmissionStatus = 'idle' | 'success' | 'error'
 
+const QuoteForm = () => {
+  const [submissionStatus, setSubmissionStatus] =
+    useState<SubmissionStatus>('idle')
+  const [isLoading, setIsLoading] = useState(false)
   const [activeErrorField, setActiveErrorField] = useState<string | null>(null)
 
   const successRef = useRef<HTMLDivElement>(null)
   const errorRef = useRef<HTMLDivElement>(null)
+  const formTopRef = useRef<HTMLDivElement>(null)
 
-  const [source, setSource] = useState('website_quote_form')
+  const nameRef = useRef<HTMLDivElement>(null)
+  const emailRef = useRef<HTMLDivElement>(null)
+  const phoneRef = useRef<HTMLDivElement>(null)
+  const serviceRef = useRef<HTMLDivElement>(null)
 
+  const [formData, setFormData] = useState<FormData>({
+    fullName: '',
+    email: '',
+    phone: '',
+    serviceType: 'Sofa Repair',
+    condition: '',
+    source: 'website_quote_form',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    referrer: '',
+    landing_page: '',
+    gclid: '',
+  })
+
+  const [errors, setErrors] = useState<
+    Partial<Record<keyof FormData | 'form', string>>
+  >({})
+
+  // Run once on mount to handle UTM tracking parameters and referrals securely
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const params = new URLSearchParams(window.location.search)
     const ref = typeof document !== 'undefined' ? document.referrer : ''
 
-    // Logic to determine primary source (Google Ads, Referrer, or website_quote_form)
     let detectedSource =
       params.get('utm_source') ||
-      (params.get('gclid') ? 'google_ads' : 'website_quote_form')
+      (params.get('gclid') ? 'google_ads' : 'google_ads_quote_form')
 
-    if (
-      detectedSource === 'website_quote_form' &&
-      ref &&
-      !ref.includes(window.location.hostname)
-    ) {
+    if (detectedSource === 'website_quote_form' && ref) {
       try {
-        detectedSource = `ref: ${new URL(ref).hostname}`
+        const refUrl = new URL(ref)
+        if (refUrl.hostname !== window.location.hostname) {
+          detectedSource = `ref: ${refUrl.hostname}`
+        }
       } catch (e) {
         detectedSource = 'referral'
       }
     }
 
-    setSource(detectedSource)
-
-    // Update formData with all tracking parameters
     setFormData((prev) => ({
       ...prev,
       source: detectedSource,
@@ -57,55 +77,24 @@ const QuoteForm = () => {
     localStorage.setItem('lead_source', detectedSource)
   }, [])
 
+  // Manage viewport positioning accurately when submission views transition
   useEffect(() => {
-    if (submissionStatus === 'success') {
-      setTimeout(() => {
-        if (successRef.current) {
-          successRef.current.scrollIntoView({
+    let timeoutId: NodeJS.Timeout
+
+    if (submissionStatus === 'success' || submissionStatus === 'error') {
+      timeoutId = setTimeout(() => {
+        const targetRef = submissionStatus === 'success' ? successRef : errorRef
+        if (targetRef.current) {
+          targetRef.current.scrollIntoView({
             behavior: 'smooth',
             block: 'center',
           })
         }
-      }, 300)
+      }, 100)
     }
 
-    if (submissionStatus === 'error') {
-      setTimeout(() => {
-        if (errorRef.current) {
-          errorRef.current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-          })
-        }
-      }, 300)
-    }
+    return () => clearTimeout(timeoutId)
   }, [submissionStatus])
-
-  // --- REFS FOR NAVIGATION ---
-  const formTopRef = useRef<HTMLDivElement>(null)
-  const nameRef = useRef<HTMLDivElement>(null)
-  const emailRef = useRef<HTMLDivElement>(null)
-  const phoneRef = useRef<HTMLDivElement>(null)
-  const serviceRef = useRef<HTMLDivElement>(null)
-
-  const [formData, setFormData] = useState<FormData>({
-    fullName: '',
-    email: '',
-    phone: '',
-    serviceType: 'Sofa Repair',
-    condition: '',
-    source: source,
-    utm_medium: '',
-    utm_campaign: '',
-    utm_term: '',
-    referrer: '',
-    landing_page: '',
-    gclid: '',
-  })
-
-  const [errors, setErrors] = useState<
-    Partial<Record<keyof FormData | 'form', string>>
-  >({})
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -114,21 +103,21 @@ const QuoteForm = () => {
   ) => {
     const { name, value } = e.target
 
+    // Basic UI restrictions for optimized inputs
     if (name === 'fullName' && /\d/.test(value)) return
 
     if (name === 'phone') {
       const cleaned = value.replace(/\D/g, '').slice(0, 15)
-      setFormData({ ...formData, [name]: cleaned })
+      setFormData((prev) => ({ ...prev, [name]: cleaned }))
     } else {
-      setFormData({ ...formData, [name]: value })
+      setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    // ✅ clear field error
+    // Reset error messages smoothly as user interacts with fields
     if (errors[name as keyof FormData]) {
-      setErrors({ ...errors, [name]: '' })
+      setErrors((prev) => ({ ...prev, [name]: '' }))
     }
 
-    // ✅ ADD THIS HERE (very important)
     if (activeErrorField === name) {
       setActiveErrorField(null)
     }
@@ -139,6 +128,7 @@ const QuoteForm = () => {
     window.open(
       `https://wa.me/916366921602?text=${encodeURIComponent(message)}`,
       '_blank',
+      'noopener,noreferrer',
     )
   }
 
@@ -154,7 +144,6 @@ const QuoteForm = () => {
     const input = ref.current.querySelector(
       'input, select, textarea',
     ) as HTMLElement
-
     input?.focus()
   }
 
@@ -162,56 +151,8 @@ const QuoteForm = () => {
     e.preventDefault()
     const result = validateIndustryForm(formData)
 
-    if (result.isValid) {
-      setIsLoading(true)
-      // Send formData directly as it now contains all tracking fields
-      try {
-        const response = await fetch('/api/quote', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        })
-
-        if (!response.ok) throw new Error('Server error')
-
-        // ✅ GTM Event
-        if (typeof window !== 'undefined') {
-          window.dataLayer = window.dataLayer || []
-
-          window.dataLayer.push({
-            event: 'form_submit',
-            form_name: 'quote_form',
-            service_type: formData.serviceType,
-          })
-        }
-
-        setSubmissionStatus('success')
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            successRef.current?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
-            })
-          })
-        })
-      } catch (error) {
-        console.error('Failed to submit form:', error)
-        setSubmissionStatus('error')
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            errorRef.current?.scrollIntoView({
-              behavior: 'smooth',
-              block: 'center',
-            })
-          })
-        })
-      } finally {
-        setIsLoading(false)
-      }
-    } else {
-      setErrors(result.errors)
+    if (!result.isValid) {
+      setErrors(result.errors || {})
       setActiveErrorField(result.firstErrorField || null)
 
       if (result.firstErrorField === 'fullName') scrollToField(nameRef)
@@ -219,14 +160,46 @@ const QuoteForm = () => {
       else if (result.firstErrorField === 'phone') scrollToField(phoneRef)
       else if (result.firstErrorField === 'serviceType')
         scrollToField(serviceRef)
+      return
+    }
+
+    setIsLoading(true)
+
+    try {
+      const response = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      })
+
+      if (!response.ok) throw new Error('Server error')
+
+      // Secure GTM event push via global window definition safely
+      if (typeof window !== 'undefined') {
+        const globalWindow = window as any
+        globalWindow.dataLayer = globalWindow.dataLayer || []
+        globalWindow.dataLayer.push({
+          event: 'form_submit',
+          form_name: 'quote_form',
+          service_type: formData.serviceType,
+        })
+      }
+
+      setSubmissionStatus('success')
+    } catch (error) {
+      console.error('Failed to submit form:', error)
+      setSubmissionStatus('error')
+    } finally {
+      setIsLoading(false)
     }
   }
 
   const inputBase = (fieldName: keyof FormData) => `
-    w-full p-5 bg-slate-50 border-slate-200 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
+    w-full p-5 bg-slate-50 border-2 rounded-2xl outline-none transition-all font-medium text-slate-700 placeholder:text-slate-300 text-sm
     ${errors[fieldName] ? 'border-red-400 focus:border-red-500 bg-red-50/30' : 'border-slate-100 focus:border-gray-800 focus:bg-white'}
-${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
+    ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
   `
+
   const labelBase =
     'text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 mb-3 block ml-1'
 
@@ -236,6 +209,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
         <motion.span
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -5 }}
           className="ml-1 mt-2 flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-red-500"
         >
           <Icon name="AlertCircle" size={10} /> {errors[name]}
@@ -249,9 +223,8 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
       ref={formTopRef}
       className="min-h-screen border-slate-200 bg-slate-50 px-4 py-12 selection:bg-gray-200 md:py-32"
     >
-      {/* flex-col-reverse makes form appear first on mobile */}
       <div className="mx-auto flex max-w-6xl flex-col-reverse items-start gap-16 lg:flex-row">
-        {/* LEFT COLUMN */}
+        {/* LEFT COLUMN - Brand Positioning */}
         <div className="w-full space-y-12 lg:sticky lg:top-32 lg:w-[35%]">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
@@ -272,6 +245,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
               Bengaluru’s most trusted restoration studio.
             </p>
           </motion.div>
+
           <div className="space-y-4">
             {[
               {
@@ -301,13 +275,13 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
           </div>
         </div>
 
-        {/* RIGHT COLUMN */}
+        {/* RIGHT COLUMN - Lead Engine */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           className="relative w-full overflow-hidden rounded-[2.5rem] border border-white bg-white p-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.06)] md:p-16 lg:w-[65%]"
         >
-          <div className="absolute left-0 top-0 h-1.5 w-full border-slate-200 bg-slate-50">
+          <div className="absolute left-0 top-0 h-1.5 w-full bg-slate-50">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: '100%' }}
@@ -334,6 +308,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                       Logistics
                     </h3>
                   </div>
+
                   <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                     <div ref={serviceRef} className="group md:col-span-2">
                       <label className={labelBase}>Service Type *</label>
@@ -349,10 +324,12 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                           onChange={handleChange}
                           className={`${inputBase('serviceType')} appearance-none pl-14`}
                         >
-                          <option>Sofa Repair</option>
-                          <option>Sofa Upholstery</option>
-                          <option>Sofa Polishing</option>
-                          <option>Others</option>
+                          <option value="Sofa Repair">Sofa Repair</option>
+                          <option value="Sofa Upholstery">
+                            Sofa Upholstery
+                          </option>
+                          <option value="Sofa Polishing">Sofa Polishing</option>
+                          <option value="Others">Others</option>
                         </select>
                         <Icon
                           name="ChevronDown"
@@ -362,6 +339,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                       </div>
                       <ErrorMsg name="serviceType" />
                     </div>
+
                     <div ref={nameRef} className="group">
                       <label className={labelBase}>Full Name *</label>
                       <div className="relative">
@@ -381,6 +359,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                       </div>
                       <ErrorMsg name="fullName" />
                     </div>
+
                     <div ref={emailRef} className="group">
                       <label className={labelBase}>Email Address *</label>
                       <div className="relative">
@@ -400,6 +379,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                       </div>
                       <ErrorMsg name="email" />
                     </div>
+
                     <div ref={phoneRef} className="group md:col-span-2">
                       <label className={labelBase}>WhatsApp Number *</label>
                       <div className="relative">
@@ -421,6 +401,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     </div>
                   </div>
                 </div>
+
                 <div className="space-y-8">
                   <div className="flex items-center gap-4">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-900 text-[10px] font-bold text-white">
@@ -430,6 +411,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                       Project Details
                     </h3>
                   </div>
+
                   <div className="group">
                     <label className={labelBase}>Current Condition</label>
                     <textarea
@@ -442,6 +424,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                     />
                   </div>
                 </div>
+
                 <div className="pt-6">
                   <button
                     type="submit"
@@ -464,6 +447,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
                 className="space-y-6 py-20 text-center"
               >
                 <Icon
@@ -478,6 +462,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                   Expect a WhatsApp estimate within 15 minutes.
                 </p>
                 <button
+                  type="button"
                   onClick={() => setSubmissionStatus('idle')}
                   className="mt-8 cursor-pointer text-[10px] font-bold uppercase tracking-widest text-gray-800 hover:underline"
                 >
@@ -492,6 +477,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                 key="error"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
                 className="space-y-8 py-20 text-center"
               >
                 <Icon
@@ -511,12 +497,14 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
                   <button
+                    type="button"
                     onClick={handleWhatsApp}
                     className="flex items-center justify-center gap-2 rounded-xl bg-green-600 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
                   >
                     <Icon name="MessageSquare" size={16} /> WhatsApp Us
                   </button>
                   <button
+                    type="button"
                     onClick={() => (window.location.href = 'tel:+916366921602')}
                     className="flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-8 py-4 text-[10px] font-bold uppercase tracking-widest text-white shadow-lg transition-transform hover:-translate-y-1 active:scale-95"
                   >
@@ -525,6 +513,7 @@ ${activeErrorField === fieldName ? 'ring-2 ring-red-500 animate-pulse' : ''}
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => setSubmissionStatus('idle')}
                   className="mx-auto mt-4 flex items-center justify-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-600 transition-colors hover:text-slate-900"
                 >

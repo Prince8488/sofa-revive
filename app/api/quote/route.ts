@@ -69,14 +69,6 @@ export async function POST(req: Request) {
           <p><b>Operating System:</b> ${trackingData.os}</p>
           <p><b>Device Category:</b> ${trackingData.deviceType}</p>
           <p><b>Language Profile:</b> ${trackingData.language}</p>
-          <p><b>Network / ISP Provider:</b> ${trackingData.isp} (ASN: ${trackingData.asn})</p>
-
-          <hr />
-          <h3>📍 Geolocation Parameters</h3>
-          <p><b>City/Location:</b> ${trackingData.city}, ${trackingData.region}, ${trackingData.country}</p>
-          <p><b>Postal Pin Code:</b> ${trackingData.postalCode}</p>
-          <p><b>Local Timezone:</b> ${trackingData.timezone}</p>
-          <p><b>Geo Coordinates:</b> Lat: ${trackingData.latitude}, Long: ${trackingData.longitude}</p>
 
           <hr />
           <h3>📊 Marketing Campaign Tracking</h3>
@@ -156,7 +148,6 @@ export async function POST(req: Request) {
           referrer || '',
           landing_page || '',
           gclid || '',
-          // Add newly captured fields safely to database record pipeline
           trackingData.ip,
           trackingData.browser,
           trackingData.os,

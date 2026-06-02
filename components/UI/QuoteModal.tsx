@@ -13,7 +13,7 @@ interface ModalFormData {
   fullName: string
   phone: string
   email: string
-  condition: string // Changed from 'notes' to match backend schema
+  condition: string
 }
 
 const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
@@ -105,14 +105,57 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     }
 
     setIsLoading(true)
+
+    // 🎯 Dynamically resolve marketing context parameters & determine tracking tags
+    let sourceTag = 'website_landing_modal_popup'
+    let prefix = '[Website Modal]'
+    let gclidVal = ''
+    let utmCampaignVal = ''
+    let utmMediumVal = ''
+    let utmTermVal = ''
+
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search)
+      gclidVal = urlParams.get('gclid') || ''
+      utmCampaignVal = urlParams.get('utm_campaign') || ''
+      utmMediumVal = urlParams.get('utm_medium') || ''
+      utmTermVal = urlParams.get('utm_term') || ''
+
+      const utmSource = urlParams.get('utm_source')?.toLowerCase() || ''
+
+      // If Google Click Identifier is present, or source states google, mark as Google Ads
+      if (gclidVal || utmSource === 'google' || utmSource === 'googleads') {
+        sourceTag = 'google_ads_landing_modal_popup'
+        prefix = '[Google Ad]'
+      } else if (utmSource) {
+        sourceTag = `${utmSource}_landing_modal_popup`
+        prefix = `[${urlParams.get('utm_source')}]`
+      }
+    }
+
+    // Prepend the source identifier securely to your core description text string
+    const finalConditionPayload = formData.condition.trim()
+      ? `${prefix} ${formData.condition.trim()}`
+      : `${prefix} No explicit description provided by user.`
+
     try {
       const response = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          ...formData,
-          serviceType: 'Sofa Repair', // Default fallback so backend variable doesn't remain blank
-          source: 'website_modal_popup',
+          fullName: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          condition: finalConditionPayload, // Injects prefixed data string cleanly to API
+          serviceType: 'Sofa Repair',
+          source: sourceTag,
+          gclid: gclidVal,
+          utm_campaign: utmCampaignVal,
+          utm_medium: utmMediumVal,
+          utm_term: utmTermVal,
+          referrer: typeof document !== 'undefined' ? document.referrer : '',
+          landing_page:
+            typeof window !== 'undefined' ? window.location.href : '',
         }),
       })
 
@@ -326,7 +369,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </h3>
                       </div>
 
-                      {/* Unified Condition Field mapped explicitly to Backend expectations */}
+                      {/* Unified Condition Field */}
                       <div className="group">
                         <label className={labelBase}>Notes / Condition</label>
                         <textarea
