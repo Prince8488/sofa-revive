@@ -36,12 +36,11 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
     Partial<Record<keyof ModalFormData, string>>
   >({})
 
-  // Prevent background scrolling when modal is active
+  // Prevent background scrolling when modal is active & clean reset states cleanly
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = 'unset'
+
       setSubmissionStatus('idle')
       setFormData({
         fullName: '',
@@ -51,6 +50,8 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
       })
       setErrors({})
       setActiveErrorField(null)
+    } else {
+      document.body.style.overflow = 'unset'
     }
     return () => {
       document.body.style.overflow = 'unset'
@@ -106,9 +107,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
     setIsLoading(true)
 
-    // 🎯 Dynamically resolve marketing context parameters & determine tracking tags
     let sourceTag = 'website_landing_modal_popup'
-    let prefix = '[Website Modal]'
     let gclidVal = ''
     let utmCampaignVal = ''
     let utmMediumVal = ''
@@ -123,20 +122,12 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
 
       const utmSource = urlParams.get('utm_source')?.toLowerCase() || ''
 
-      // If Google Click Identifier is present, or source states google, mark as Google Ads
       if (gclidVal || utmSource === 'google' || utmSource === 'googleads') {
         sourceTag = 'google_ads_landing_modal_popup'
-        prefix = '[Google Ad]'
       } else if (utmSource) {
         sourceTag = `${utmSource}_landing_modal_popup`
-        prefix = `[${urlParams.get('utm_source')}]`
       }
     }
-
-    // Prepend the source identifier securely to your core description text string
-    const finalConditionPayload = formData.condition.trim()
-      ? `${prefix} ${formData.condition.trim()}`
-      : `${prefix} No explicit description provided by user.`
 
     try {
       const response = await fetch('/api/quote', {
@@ -146,9 +137,9 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
           fullName: formData.fullName,
           phone: formData.phone,
           email: formData.email,
-          condition: finalConditionPayload, // Injects prefixed data string cleanly to API
+          condition: formData.condition.trim(), // ✅ Clean, raw user text only
           serviceType: 'Sofa Repair',
-          source: sourceTag,
+          source: sourceTag, // Hidden tracking tag keeps your analytics working flawlessly
           gclid: gclidVal,
           utm_campaign: utmCampaignVal,
           utm_medium: utmMediumVal,
@@ -240,7 +231,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
             {/* Top Bar for Mobile */}
             <div className="mx-auto mt-3 h-1.5 w-12 shrink-0 rounded-full bg-slate-200 sm:hidden" />
 
-            {/* Static Tracking Top Header Progress Bar */}
+            {/* Tracking Header Progress Bar */}
             <div className="absolute left-0 top-0 z-30 h-1.5 w-full bg-slate-50">
               <motion.div
                 initial={{ width: 0 }}
@@ -250,7 +241,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               />
             </div>
 
-            {/* Fixed Modal Header Container */}
+            {/* Modal Header */}
             <div className="relative z-20 flex shrink-0 items-start justify-between bg-white px-6 pb-4 pt-8 md:px-10 md:pt-10">
               <div>
                 <div className="mb-2.5 inline-flex items-center gap-2 rounded-full border border-blue-100 bg-blue-50 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-blue-600">
@@ -271,7 +262,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
 
-            {/* Scrollable Form Body Shell */}
+            {/* Scrollable Form Body */}
             <div className="flex-1 overflow-y-auto px-6 pb-10 pt-2 md:px-10 md:pb-10">
               <AnimatePresence mode="wait">
                 {submissionStatus === 'idle' && (
@@ -293,7 +284,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </div>
 
                       <div className="grid grid-cols-1 gap-4">
-                        {/* Full Name Field */}
+                        {/* Full Name */}
                         <div className="group">
                           <label className={labelBase}>Full Name *</label>
                           <div className="relative">
@@ -314,7 +305,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                           <ErrorMsg name="fullName" />
                         </div>
 
-                        {/* WhatsApp Number Field */}
+                        {/* WhatsApp Number */}
                         <div className="group">
                           <label className={labelBase}>WhatsApp Number *</label>
                           <div className="relative">
@@ -335,7 +326,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                           <ErrorMsg name="phone" />
                         </div>
 
-                        {/* Mandatory Email Address Field */}
+                        {/* Email Address */}
                         <div className="group">
                           <label className={labelBase}>Email Address *</label>
                           <div className="relative">
@@ -358,7 +349,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </div>
                     </div>
 
-                    {/* Section 02: Logistics and Options */}
+                    {/* Section 02: Logistics */}
                     <div className="space-y-4">
                       <div className="flex items-center gap-2">
                         <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-900 text-[8px] font-bold text-white">
@@ -369,7 +360,6 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                         </h3>
                       </div>
 
-                      {/* Unified Condition Field */}
                       <div className="group">
                         <label className={labelBase}>Notes / Condition</label>
                         <textarea
@@ -383,7 +373,7 @@ const QuoteModal: React.FC<QuoteModalProps> = ({ isOpen, onClose }) => {
                       </div>
                     </div>
 
-                    {/* CTA Actions Group */}
+                    {/* Submit CTA */}
                     <div className="pt-2">
                       <button
                         type="submit"

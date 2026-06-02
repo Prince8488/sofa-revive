@@ -41,16 +41,23 @@ const QuoteForm = () => {
     Partial<Record<keyof FormData | 'form', string>>
   >({})
 
-  // Run once on mount to handle UTM tracking parameters and referrals securely
   useEffect(() => {
     if (typeof window === 'undefined') return
 
     const params = new URLSearchParams(window.location.search)
     const ref = typeof document !== 'undefined' ? document.referrer : ''
 
-    let detectedSource =
-      params.get('utm_source') ||
-      (params.get('gclid') ? 'google_ads' : 'google_ads_quote_form')
+    // 1. Extract utm_source if it explicitly exists
+    let detectedSource = params.get('utm_source')
+
+    // 2. If no utm_source, handle gclid tracking or fallback to standard website form
+    if (!detectedSource) {
+      if (params.get('gclid')) {
+        detectedSource = 'google_ads'
+      } else {
+        detectedSource = 'website_quote_form'
+      }
+    }
 
     if (detectedSource === 'website_quote_form' && ref) {
       try {
@@ -65,7 +72,7 @@ const QuoteForm = () => {
 
     setFormData((prev) => ({
       ...prev,
-      source: detectedSource,
+      source: detectedSource || 'website_quote_form',
       utm_medium: params.get('utm_medium') || '',
       utm_campaign: params.get('utm_campaign') || '',
       utm_term: params.get('utm_term') || '',
@@ -74,7 +81,9 @@ const QuoteForm = () => {
       landing_page: window.location.pathname,
     }))
 
-    localStorage.setItem('lead_source', detectedSource)
+    if (detectedSource) {
+      localStorage.setItem('lead_source', detectedSource)
+    }
   }, [])
 
   // Manage viewport positioning accurately when submission views transition
